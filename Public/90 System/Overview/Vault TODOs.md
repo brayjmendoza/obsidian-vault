@@ -11,7 +11,6 @@ This is a list of improvements or extensions that need to be made to the vault.
 
 * Skill for daily/weekly notes
 	* End of day skill for reflection (highlights, energy level?, etc.)
-* Check note bodies for broken interlinks (only typed links in properties are checked so far)
 * Populate it
 * Setup on windows (git stuff & plugins)
 * Plugins
@@ -42,7 +41,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 4. Make plan pages
 5. Make homepages?
 6. Move benefits in
-7. Review STYLE.md
+7. Review STYLE.md -- add examples of note you made not generated
 8. Move stuff out of archive/populate vault
 9. Plugins
 

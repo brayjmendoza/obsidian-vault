@@ -1,7 +1,9 @@
 """Enforce the vault's link rules, without touching the network.
 
 Checks, per note: no link into Private/ (wikilinks, embeds, and Markdown links,
-in the body and in any property); URLs appear only in the `url` property; and
+in the body and in any property); every link, in the body or a property,
+reaches a note or file in Public/ and, when it names one, a heading or block
+in that note (warnings otherwise); URLs appear only in the `url` property; and
 every `url` is a single well-formed http or https URL. Code blocks and inline
 code are ignored. Whether each URL actually loads is validate_urls's job.
 
@@ -14,18 +16,22 @@ from collections.abc import Iterator, Sequence
 from typing import Final
 
 from vault_tools.cli import run_cli
-from vault_tools.issues import CheckName, Issue, IssueCode, error_issue
+from vault_tools.issues import CheckName, Issue, IssueCode, error_issue, warning_issue
 from vault_tools.markup import (
+    Link,
     blank_code,
+    has_heading_chain,
     is_web_url,
     markdown_link_targets,
     markdown_links,
     urls,
     wikilinks,
 )
-from vault_tools.vault import Note, PrivateMatch, Vault, YamlValue
+from vault_tools.vault import TEMPLATE_TYPE, Note, PrivateMatch, Vault, YamlValue
 
-DESCRIPTION: Final = "Enforce the link rules: nothing links into Private/, URLs only in `url`."
+DESCRIPTION: Final = (
+    "Enforce the link rules: no broken links or links into Private/, URLs only in `url`."
+)
 CHECK: Final = CheckName.LINKS
 URL_PROPERTY: Final = "url"
 
@@ -114,10 +120,10 @@ class LinkChecker:
                 yield self._error(note, IssueCode.URL_MISPLACED, message, prop=prop)
             for text in texts:
                 for link in wikilinks(text):
-                    yield from self._private_issue(note, f"[[{link.text}]]", [link.text], prop)
+                    yield from self._link_issues(note, link, [link.target], prop)
 
     def _body_issues(self, note: Note) -> Iterator[Issue]:
-        """Check the body, outside code: private links and URLs.
+        """Check the body, outside code: every link, and that it holds no URLs.
 
         Args:
             note: The note.
@@ -127,12 +133,10 @@ class LinkChecker:
         """
         text = blank_code(note.body)
         for link in wikilinks(text):
-            where = f"line {note.file_line(link.line)}: [[{link.text}]]"
-            yield from self._private_issue(note, where, [link.text], None)
+            yield from self._link_issues(note, self._on_line(note, link), [link.target], None)
         for link in markdown_links(text):
-            where = f"line {note.file_line(link.line)}: ({link.text})"
-            targets = markdown_link_targets(note.rel, link.text)
-            yield from self._private_issue(note, where, targets, None)
+            targets = markdown_link_targets(note.rel, link.target) if link.target else [""]
+            yield from self._link_issues(note, self._on_line(note, link), targets, None)
         for url in urls(text):
             message = (
                 f"line {note.file_line(url.line)}: URLs belong in the `{URL_PROPERTY}` property, "
@@ -140,9 +144,93 @@ class LinkChecker:
             )
             yield self._error(note, IssueCode.URL_MISPLACED, message)
 
+    @staticmethod
+    def _on_line(note: Note, link: Link) -> Link:
+        """Prefix a body link's shown text with its line in the file.
+
+        Args:
+            note: The note holding the link.
+            link: The link, its line counted within the body.
+
+        Returns:
+            The link, shown as e.g. `line 12: [[Note]]`.
+        """
+        shown = f"line {note.file_line(link.line)}: {link.shown}"
+        return link.model_copy(update={"shown": shown})
+
+    def _link_issues(
+        self, note: Note, link: Link, targets: list[str], prop: str | None
+    ) -> Iterator[Issue]:
+        """Check that one link resolves: not into Private/, to a note or file, and to its anchor.
+
+        Unresolved links and anchors are only warnings: the note or heading
+        may not be written yet (CONVENTIONS.md section 1). Templates hold
+        placeholder links, so theirs aren't resolved.
+
+        Args:
+            note: The note holding the link.
+            link: The link.
+            targets: Every reading of its target; any one resolving is enough.
+                `[""]` means the same note.
+            prop: The property holding the link, or None for the body.
+
+        Yields:
+            At most one issue.
+        """
+        if not any(targets):
+            yield from self._anchor_issues(note, link, [note], prop)
+            return
+        private = self._private_issue(note, link.shown, targets, prop)
+        if private is not None:
+            yield private
+            return
+        if note.note_type == TEMPLATE_TYPE:
+            return
+        resolved = [match for target in targets for match in self.vault.resolve(target).notes]
+        if resolved:
+            yield from self._anchor_issues(note, link, resolved, prop)
+        elif not any(self.vault.link_exists(target) for target in targets):
+            message = f"{link.shown} matches no note or file (broken, or not written yet)"
+            yield warning_issue(CHECK, IssueCode.LINK_UNRESOLVED, note.rel, message, prop=prop)
+        # A link to another kind of file (e.g., `doc.pdf#page=2`) has no anchors to check.
+
+    def _anchor_issues(
+        self, note: Note, link: Link, targets: list[Note], prop: str | None
+    ) -> Iterator[Issue]:
+        """Check that a link's heading chain or block exists in the note it reaches.
+
+        Args:
+            note: The note holding the link.
+            link: The link.
+            targets: The notes its target resolved to; one having the anchor is enough.
+            prop: The property holding the link, or None for the body.
+
+        Yields:
+            At most one issue.
+        """
+        anchor = link.anchor
+        if not anchor.headings and anchor.block is None:
+            return
+        found = [self.vault.anchors(target) for target in targets]
+        has_headings = not anchor.headings or any(
+            has_heading_chain(anchors.headings, anchor.headings) for anchors in found
+        )
+        has_block = anchor.block is None or any(
+            anchor.block.casefold() in anchors.blocks for anchors in found
+        )
+        if has_headings and has_block:
+            return
+        where = "this note" if targets == [note] else targets[0].stem
+        if not has_headings:
+            missing = "heading " + "#".join(anchor.headings)
+        else:
+            missing = f"block ^{anchor.block}"
+        message = f"{link.shown}: {where} has no {missing}"
+        yield warning_issue(CHECK, IssueCode.ANCHOR_UNRESOLVED, note.rel, message, prop=prop)
+
     def _private_issue(
         self, note: Note, shown: str, targets: list[str], prop: str | None
-    ) -> Iterator[Issue]:
+    ) -> Issue | None:
         """Report a link whose target (under any reading) points into Private/.
 
         Args:
@@ -151,8 +239,8 @@ class LinkChecker:
             targets: Every reading of the link's target.
             prop: The property holding the link, or None for the body.
 
-        Yields:
-            At most one issue: a definite private link wins over an ambiguous one.
+        Returns:
+            The issue, or None. A definite private link wins over an ambiguous one.
         """
         matches = {self.vault.private_match(target) for target in targets}
         if PrivateMatch.PRIVATE in matches:
@@ -160,8 +248,8 @@ class LinkChecker:
         elif PrivateMatch.AMBIGUOUS in matches:
             message = private_message(shown, ambiguous=True)
         else:
-            return
-        yield self._error(note, IssueCode.PRIVATE_LINK, message, prop=prop)
+            return None
+        return self._error(note, IssueCode.PRIVATE_LINK, message, prop=prop)
 
     @staticmethod
     def _error(note: Note, code: IssueCode, message: str, *, prop: str | None = None) -> Issue:

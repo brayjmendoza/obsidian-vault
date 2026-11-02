@@ -28,7 +28,7 @@ Status: **v0.12**. This file and both schemas share one version number. Bump all
 - Claude's access is limited to the `Public/` folder. Every path in this file is relative to `Public/`.
 - A `Private/` folder exists outside Claude's access. Claude never asks for it and never guesses at its contents.
 - **Public notes never link into `Private/`.** Private notes may link to Public ones, not the other way round. This covers every kind of link (wikilinks, embeds, and Markdown links) in note bodies and in properties. `vault-validate` reports one as `private-link`: a link written as a `Private/…` path is caught on every run, and a link by bare name is caught only where `Private/`'s file names are visible (your Mac and CI). Claude's runs can't see them, so its report lists that check under `skipped`. A name both folders have is an error too, since Obsidian could pick either.
-- An unresolved link in `Public/` is either a broken link or a note not yet written. Claude never "repairs" one by guessing its target.
+- An unresolved link in `Public/` is either a broken link or a note not yet written. `vault-validate` reports each one, in note bodies and in properties, as a warning, never an error: `link-unresolved` when no note or file matches, `anchor-unresolved` when the note lacks the heading (`[[Note#Heading]]`, or a nested `[[Note#Part#Section]]`) or block (`[[Note#^id]]`) the link names. Claude never "repairs" one by guessing its target.
 - Plugin settings (`.obsidian/`) are outside Claude's access. Claude never assumes a plugin setting. If a skill depends on one, it says so to the user.
 
 ## 2. Placement
@@ -190,6 +190,8 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of this file
 
+- 2026-11-01 · v0.12 · Section 1: links to a heading or block that the target note lacks are reported too (`anchor-unresolved`). No version bump: no rule or schema changed.
+- 2026-11-01 · v0.12 · Section 1: unresolved links in note bodies are now reported too, as warnings like those in properties. No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Section 7: `vault-validate` fetches every `url` on every run; the `--check-urls` option is gone. No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Empty folders keep a `.gitkeep` so git and CI see them (section 2); `structure-schema.yaml` ignores `.gitkeep`.
 - 2026-11-01 · v0.11 · Section 6: inline `#tags` in note bodies are now checked against the four allowed tags, like the `tags` property; spelled out that tags are lowercase and never nested. No version bump: the allowed tags are unchanged.

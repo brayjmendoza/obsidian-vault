@@ -17,12 +17,12 @@ from typing import Final, TypeIs, assert_never
 from pydantic import BaseModel, ConfigDict
 
 from vault_tools.cli import run_cli
-from vault_tools.issues import CheckName, Issue, IssueCode, error_issue, warning_issue
+from vault_tools.issues import CheckName, Issue, IssueCode, error_issue
 from vault_tools.schemas import PROPERTIES_SCHEMA, Constraint, ObsidianType
 from vault_tools.vault import (
+    TEMPLATE_TYPE,
     UNTYPED_ALLOWED_FOLDERS,
     Note,
-    PrivateMatch,
     Vault,
     YamlValue,
     parse_link,
@@ -30,7 +30,6 @@ from vault_tools.vault import (
 
 DESCRIPTION: Final = "Enforce properties-schema.yaml on every note's frontmatter."
 CHECK: Final = CheckName.PROPERTIES
-TEMPLATE_TYPE: Final = "template"
 ISO_DATE_RE: Final = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
@@ -415,8 +414,8 @@ class PropertyChecker:
     def _check_link(self, note: Note, prop: str, item: YamlValue, wanted: list[str]) -> list[Issue]:
         """Check that a value is a wikilink to a note of one of the wanted types.
 
-        An unresolved link is only a warning: it is broken, or its note isn't
-        written yet (CONVENTIONS.md section 1).
+        Whether a link resolves at all (and isn't into Private/) is
+        validate_links's job; this check only judges links that do resolve.
 
         Args:
             note: The note.
@@ -435,11 +434,8 @@ class PropertyChecker:
         if not target:
             return [self._error(note, IssueCode.NOT_A_LINK, f"{item!r} has no target note", prop)]
         found = self.vault.resolve(target).notes
-        if not found and self.vault.private_match(target) != PrivateMatch.NONE:
-            return []  # a link into Private/: validate_links reports it
         if not found:
-            message = f"[[{target}]] matches no note (broken, or not written yet)"
-            return [warning_issue(CHECK, IssueCode.LINK_UNRESOLVED, note.rel, message, prop=prop)]
+            return []  # unresolved or into Private/: validate_links reports it
         if len(found) > 1:
             paths = ", ".join(match.rel for match in found)
             message = f"[[{target}]] matches several notes ({paths}); use a path to pick one"

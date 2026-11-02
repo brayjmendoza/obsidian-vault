@@ -7,7 +7,7 @@ url: https://example.com/page
 ---
 # Good Bookmark
 
-Install with `curl -O https://example.com/install.sh` and read [[Budget Basics]].
+Install with `curl -O https://example.com/install.sh` and read [[Topic URL]].
 
 ```bash
 curl https://example.com/api   # [[Salary]] in code is not a link

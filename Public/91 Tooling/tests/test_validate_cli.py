@@ -42,10 +42,10 @@ def test_json_report() -> None:
     issue = next(i for i in data["issues"] if i["code"] == "link-unresolved")
     assert issue == {
         "severity": "warning",
-        "check": "properties",
+        "check": "links",
         "code": "link-unresolved",
         "path": "20 Hobbies/Music/Piano/Pieces/Schumann - Missing Composer.md",
-        "message": "[[Clara Schumann]] matches no note (broken, or not written yet)",
+        "message": "[[Clara Schumann]] matches no note or file (broken, or not written yet)",
         "property": "composer",
     }
 

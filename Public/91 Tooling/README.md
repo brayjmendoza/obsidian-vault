@@ -75,7 +75,7 @@ Installing the package creates six console scripts:
 | `vault-validate` | Everything: the shared version of [[CONVENTIONS]] and both schemas, then structure, properties, links, tags, and a fetch of every `url` |
 | `vault-validate-structure` | Only `structure-schema.yaml`: folders, note types per folder, filenames, hubs, and non-note files |
 | `vault-validate-properties` | Only `properties-schema.yaml`: types, required properties, value types, vocabularies, and typed links |
-| `vault-validate-links` | Only the link rules: no links into `Private/`, URLs only in `url`, and every `url` well formed |
+| `vault-validate-links` | Only the link rules: no links into `Private/`, no broken links or missing headings and blocks, in bodies or properties (warnings), URLs only in `url`, and every `url` well formed |
 | `vault-validate-tags` | Only inline `#tags` in note bodies: each must be one of the four allowed tags (the `tags` property is checked with the properties) |
 | `vault-validate-urls` | Only the network check: fetches every `url` and reports pages that are gone or unreachable |
 

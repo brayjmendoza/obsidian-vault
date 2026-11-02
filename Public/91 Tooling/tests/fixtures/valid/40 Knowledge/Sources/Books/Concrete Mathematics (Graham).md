@@ -8,3 +8,7 @@ fields: [math, computer-science]
 status: reading
 ---
 # Concrete Mathematics
+
+## Chapter 7
+
+Generating functions.

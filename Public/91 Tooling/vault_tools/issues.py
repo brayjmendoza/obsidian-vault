@@ -60,6 +60,7 @@ class IssueCode(StrEnum):
     FILENAME_MISMATCH = "filename-mismatch"
     # Links and URLs
     PRIVATE_LINK = "private-link"
+    ANCHOR_UNRESOLVED = "anchor-unresolved"
     URL_MISPLACED = "url-misplaced"
     URL_INVALID = "url-invalid"
     URL_BROKEN = "url-broken"

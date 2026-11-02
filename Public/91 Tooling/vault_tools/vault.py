@@ -19,7 +19,7 @@ import yaml
 from pydantic import BaseModel, ConfigDict, SkipValidation
 
 from vault_tools.issues import CheckName, Issue, IssueCode, error_issue
-from vault_tools.markup import NOTE_SUFFIX, clean_target
+from vault_tools.markup import NOTE_SUFFIX, Heading, block_ids, clean_target, headings
 from vault_tools.schemas import FolderSchema, PropertiesSchema, StructureSchema, load_schemas
 
 PACKAGE_DIR: Final = Path(__file__).resolve().parent  # 91 Tooling/vault_tools/
@@ -32,6 +32,9 @@ CONVENTIONS_PATH: Final = "90 System/Claude/CONVENTIONS.md"
 # Folders marked `skip: true` in structure-schema.yaml are never validated, but
 # properties-schema.yaml says archived notes still count as link targets.
 LINK_TARGET_SKIP_FOLDERS: Final = frozenset({"99 Archive"})
+
+# Templates hold placeholders (e.g., `[[{{composer}}]]`), so only their type and version count.
+TEMPLATE_TYPE: Final = "template"
 
 # Folders where a note may have no `type` (CONVENTIONS.md section 4).
 UNTYPED_ALLOWED_FOLDERS: Final = frozenset({"00 Inbox", "98 Attachments"})
@@ -305,6 +308,20 @@ class Resolution(BaseModel):
         return self.notes[0] if len(self.notes) == 1 else None
 
 
+class NoteAnchors(BaseModel):
+    """What a link can point to inside a note.
+
+    Attributes:
+        headings: The note's headings, in order.
+        blocks: Its block IDs, case-folded.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    headings: list[Heading]
+    blocks: frozenset[str]
+
+
 class PrivateMatch(StrEnum):
     """Whether a link target points into Private/."""
 
@@ -317,16 +334,19 @@ class _NoteScan(BaseModel):
     """Every note found under Public/, split by whether it is checked.
 
     Attributes:
-        checked: Notes the properties validator checks.
-        archived: Notes in skipped folders that still count as link targets.
-        file_keys: Link keys of the other files links may embed (e.g., `scan.png`).
+        checked: Notes the validators check.
+        targets_only: Notes that aren't checked but still count as link targets:
+            99 Archive/ and exempt files (e.g., the changelog).
+        file_keys: Link keys of the names of other files links may embed (e.g., `scan.png`).
+        file_paths: Link keys of those files' paths relative to Public/.
     """
 
     model_config = ConfigDict(frozen=True)
 
     checked: list[Note]
-    archived: list[Note]
+    targets_only: list[Note]
     file_keys: frozenset[str]
+    file_paths: frozenset[str]
 
 
 class _LinkIndex(BaseModel):
@@ -389,6 +409,7 @@ class Vault:
         self.properties_schema: PropertiesSchema = schemas.properties
         self.structure_schema: StructureSchema = schemas.structure
         self._exempt = frozenset(nfc(path) for path in schemas.structure.exempt)
+        self._anchors: dict[str, NoteAnchors] = {}
 
     # -- walking --------------------------------------------------------------
 
@@ -461,8 +482,9 @@ class Vault:
         """Load every note under Public/ once."""
         archived_folders = self.skipped_folders & LINK_TARGET_SKIP_FOLDERS
         checked: list[Note] = []
-        archived: list[Note] = []
+        targets_only: list[Note] = []
         file_keys: set[str] = set()
+        file_paths: set[str] = set()
         for path in self.iter_paths():
             if not path.is_file():
                 continue
@@ -472,13 +494,17 @@ class Vault:
                 continue
             if path.suffix.lower() != NOTE_SUFFIX:
                 file_keys.add(link_key(path.name))
-            elif self.is_exempt(rel):
-                continue
-            elif archived_file:
-                archived.append(load_note(path, self.root))
+                file_paths.add(link_key(rel))
+            elif archived_file or self.is_exempt(rel):
+                targets_only.append(load_note(path, self.root))
             else:
                 checked.append(load_note(path, self.root))
-        return _NoteScan(checked=checked, archived=archived, file_keys=frozenset(file_keys))
+        return _NoteScan(
+            checked=checked,
+            targets_only=targets_only,
+            file_keys=frozenset(file_keys),
+            file_paths=frozenset(file_paths),
+        )
 
     @property
     def notes(self) -> list[Note]:
@@ -490,8 +516,8 @@ class Vault:
 
     @property
     def link_targets(self) -> list[Note]:
-        """Every note a link may resolve to: `notes` plus 99 Archive/."""
-        return self._scan.checked + self._scan.archived
+        """Every note a link may resolve to: `notes`, plus 99 Archive/ and exempt files."""
+        return self._scan.checked + self._scan.targets_only
 
     # -- links ----------------------------------------------------------------
 
@@ -508,10 +534,27 @@ class Vault:
                 by_alias.setdefault(link_key(alias), []).append(note)
         return _LinkIndex(by_name=by_name, by_alias=by_alias, by_path=by_path)
 
-    def resolve(self, target: str) -> Resolution:
-        """Resolve a link target the way Obsidian does.
+    def _path_key(self, target: str) -> str:
+        """Turn a link target into a lookup key relative to Public/.
 
-        A target with a `/` is a path from Public/. A bare name matches a
+        Obsidian writes paths from the vault root (`Public/10 Projects/X`);
+        the leading Public/ folder name is dropped so both forms match.
+
+        Args:
+            target: A link target.
+
+        Returns:
+            The lookup key.
+        """
+        key = link_key(target.strip("/"))
+        return key.removeprefix(link_key(self.root.name) + "/")
+
+    def resolve(self, target: str) -> Resolution:
+        """Resolve a link target to notes the way Obsidian does.
+
+        A target with a `/` is a path, from Public/ or from the vault root;
+        when no note sits at exactly that path, it matches every note whose
+        path ends with it (e.g., `Piano/Piano`). A bare name matches a
         filename first, then an alias. Matching ignores case.
 
         Args:
@@ -521,13 +564,53 @@ class Vault:
             Every distinct note it matches.
         """
         index = self._link_index
-        key = link_key(target.strip("/"))
+        key = self._path_key(target)
         if "/" in key:
             note = index.by_path.get(key)
-            return Resolution(notes=[note] if note else [])
+            if note is not None:
+                return Resolution(notes=[note])
+            ending = "/" + key
+            return Resolution(
+                notes=[n for path, n in index.by_path.items() if path.endswith(ending)]
+            )
         matches = index.by_name.get(key) or index.by_alias.get(key) or []
         distinct = {note.rel: note for note in matches}
         return Resolution(notes=list(distinct.values()))
+
+    def link_exists(self, target: str) -> bool:
+        """Check whether a link target reaches any note or other file in Public/.
+
+        Args:
+            target: A link target, already stripped of `#`, `^`, and `|` parts.
+
+        Returns:
+            Whether it resolves to a note (see `resolve`) or to a file such as
+            an attachment, by name or by path.
+        """
+        if self.resolve(target).notes:
+            return True
+        key = self._path_key(target)
+        if "/" not in key:
+            return key in self._scan.file_keys
+        ending = "/" + key
+        return key in self._scan.file_paths or any(
+            path.endswith(ending) for path in self._scan.file_paths
+        )
+
+    def anchors(self, note: Note) -> NoteAnchors:
+        """Find the headings and block IDs inside a note, once per note.
+
+        Args:
+            note: Any note.
+
+        Returns:
+            Its headings and block IDs.
+        """
+        if note.rel not in self._anchors:
+            self._anchors[note.rel] = NoteAnchors(
+                headings=headings(note.body), blocks=block_ids(note.body)
+            )
+        return self._anchors[note.rel]
 
     # -- Private/ -------------------------------------------------------------
 

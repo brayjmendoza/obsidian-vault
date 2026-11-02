@@ -74,7 +74,7 @@ def test_messages_carry_hints(load_vault: LoadVault) -> None:
 
 
 def test_typed_links(load_vault: LoadVault) -> None:
-    """Links must resolve to one note of the right type; unresolved ones only warn."""
+    """A resolving typed link must reach one note of the right type."""
     issues = validate_properties.check(load_vault("bad-links"))
     pieces = "20 Hobbies/Music/Piano/Pieces"
     assert keys(issues) == {
@@ -82,7 +82,6 @@ def test_typed_links(load_vault: LoadVault) -> None:
         (E, "not-a-link", f"{pieces}/Chopin - Not A Link.md", "composer"),
         (E, "link-wrong-type", f"{pieces}/Chopin - Wrong Type.md", "composer"),
         (E, "link-ambiguous", f"{pieces}/Liszt - Ambiguous.md", "composer"),
-        (W, "link-unresolved", f"{pieces}/Schumann - Missing Composer.md", "composer"),
         (E, "link-wrong-type", f"{pieces}/Someone - Untyped Target.md", "composer"),
         (E, "link-wrong-type", "20 Hobbies/Music/Piano/Practice/2026-10-30 Practice.md", "pieces"),
     }

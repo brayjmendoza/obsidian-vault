@@ -8,34 +8,22 @@ version: "0.12"
 
 Every rule a machine can check lives in a schema in `91 Tooling/`, and scripts enforce them in two places: Claude runs them after each skill run, and GitHub Actions run them on every push (see [[CI Workflows]]). [[CONVENTIONS]] keeps only the rules that need judgment, and points to the schemas instead of restating them.
 
-The current layout of `91 Tooling/` is as follows:
+The current layout of `91 Tooling/` is as follows. This is a summary and excludes files that are more relevant for development. For the full layout, see the [[Public/91 Tooling/README|README]].
 
 ```
 91 Tooling/
 ├── README.md                    how to set up, run, and change the tooling
-├── pyproject.toml               the vault-tools package: dependencies, console scripts, ruff, mypy, and pytest settings
-├── uv.lock                      exact version of every dependency (written by uv, committed)
-├── .python-version              the Python version uv uses (3.14)
 ├── schemas/
 │   ├── properties-schema.yaml
 │   └── structure-schema.yaml
-├── vault_tools/
-│   ├── issues.py                the Issue model and its severities, checks, and codes
-│   ├── schemas.py               both schemas as pydantic models, loaded and cross-checked
-│   ├── vault.py                 walks Public/, parses frontmatter, resolves links
-│   ├── markup.py                finds links and URLs in note text, skipping code
-│   ├── cli.py                   arguments, reports, and exit codes every validator shares
+├── vault_tools/                 data structures & validation scripts that use them
 │   ├── validate_properties.py   enforces properties-schema.yaml
 │   ├── validate_structure.py    enforces structure-schema.yaml
 │   ├── validate_links.py        no links into Private/, URLs only in `url`
 │   ├── validate_urls.py         fetches every `url` (network; only on request)
 │   ├── validate_tags.py         every inline #tag is one of the four allowed tags
 │   └── validate.py              runs every offline check: versions, structure, properties, links, and tags
-└── tests/
-    ├── conftest.py              loads fixture vaults with the real schemas
-    ├── test_*.py                one file per validator, plus the schemas and the CLI
-    ├── private_sample/          a stand-in Private/ folder: only its file names matter
-    └── fixtures/                small sample Public/ folders that must pass or fail
+└── tests/                       pytest tests to ensure scripts run as expected
 ```
 
 ## Python Environment
@@ -51,7 +39,7 @@ The code itself follows [[CODE_STYLE]]: ruff lints and formats it before every c
 | `properties-schema.yaml` | Core                                   | Frontmatter: each property's one value type, vocabularies, required and optional properties per note type, value constraints                                                                                                 |
 | `structure-schema.yaml`  | Core                                   | Layout: the allowed top-level folders, every domain and its role folders, which note types live in each folder, filename patterns, hubs present, flat folders, how deep open folders may go, allowed non-note files          |
 | Typed links              | Core, inside the properties schema     | `link: composer` instead of `link: true`: `piece.composer` must point to a composer, `project.area` to a hub, `concept.sources` to a paper, book, course, or article. Wrong type is an error; an unresolved link is a warning |
-| Link rules               | Core, a script rather than a schema    | No link into `Private/`, in bodies or properties; URLs only in `url`, each a single well-formed http(s) URL that loads. Code blocks and inline code are skipped |
+| Link rules               | Core, a script rather than a schema    | No link into `Private/`, in bodies or properties; every link, in a body or a property, reaches a note or file in `Public/`, and any heading or block it names exists in that note (warnings otherwise, since the note may not be written yet); URLs only in `url`, each a single well-formed http(s) URL that loads. Code blocks and inline code are skipped |
 | Tags                     | Core, a script reading the `tag` vocabulary | Every inline `#tag` in a note body (outside code) is one of the four allowed tags; the `tags` property is held to the same list by the properties schema |
 | `body-schema.yaml`       | Planned                                | Required headings and tables per type: hub headings, concept Connections and Sources, the spending Categories table, the session sets table, and daily and weekly sections. Templates can be generated from it                   |
 | `access-schema.yaml`     | Planned                                | Per folder, what Claude may do: create, edit, regenerate whole (daily and weekly notes), or read only. CI can then check that Claude's commits touched only allowed files                                                     |
