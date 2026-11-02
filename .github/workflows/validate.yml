@@ -1,10 +1,13 @@
-# Checks Public/ against the vault schemas (see Public/90 System/Overview/CI Workflows.md).
+# Runs every vault check with vault-validate: the schemas, links into Private/,
+# the allowed tags, and whether every `url` loads (see Public/90 System/Overview/CI Workflows.md).
 # Lives at .github/workflows/validate.yml in the repository root.
 name: Validate vault
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 9 * * 1"     # weekly, Mondays 1am PST: catches URLs that died without a push
   workflow_dispatch:
 
 permissions:
@@ -74,7 +77,9 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      # No git-crypt key: Private/ stays encrypted and is never read.
+      # No git-crypt key: Private/'s contents stay encrypted and are never read.
+      # Its file names aren't encrypted, and vault-validate finds Private/ beside
+      # Public/ and checks Public links against those names.
       - name: Check out
         uses: actions/checkout@v7
 
@@ -92,10 +97,13 @@ jobs:
         run: uv run --locked pytest -v
 
       # vault-validate is the console script defined in pyproject.toml.
+      # --check-urls fetches every `url`. shell: bash adds pipefail, so the step
+      # fails when vault-validate does, not only when tee does.
       - name: Validate Public/
         id: validate
+        shell: bash
         run: |
-          uv run --locked --project "$TOOLING" vault-validate Public \
+          uv run --locked --project "$TOOLING" vault-validate Public --check-urls \
             --output "$RUNNER_TEMP/vault-validation.json" \
             | tee "$RUNNER_TEMP/vault-validation.txt"
 

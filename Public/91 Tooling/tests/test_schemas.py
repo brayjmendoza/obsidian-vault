@@ -64,6 +64,18 @@ def remove_from(path: str, value: object) -> Edit:
     return edit
 
 
+def delete_key(path: str) -> Edit:
+    """An edit that deletes the dotted key `path`."""
+
+    def edit(data: object) -> None:
+        *parents, key = path.split(".")
+        target = _walk(data, parents)
+        assert isinstance(target, dict)
+        del target[key]
+
+    return edit
+
+
 def edit_yaml(path: Path, edit: Edit) -> None:
     """Apply an edit to a YAML file in place."""
     data: object = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -131,6 +143,10 @@ PROPERTY_BREAKS: Final[dict[str, tuple[Edit, str]]] = {
     "bad pattern": (
         set_key("types.weekly.constraints.week.pattern", "(["),
         "does not compile",
+    ),
+    "missing tag vocabulary": (
+        delete_key("vocabularies.tag"),
+        "vocabularies.tag is missing: it lists the allowed tags",
     ),
     "unquoted version": (
         set_key("version", 0.1),

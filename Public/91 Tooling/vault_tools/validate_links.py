@@ -127,16 +127,15 @@ class LinkChecker:
         """
         text = blank_code(note.body)
         for link in wikilinks(text):
-            where = f"line {note.body_line + link.line - 1}: [[{link.text}]]"
+            where = f"line {note.file_line(link.line)}: [[{link.text}]]"
             yield from self._private_issue(note, where, [link.text], None)
         for link in markdown_links(text):
-            where = f"line {note.body_line + link.line - 1}: ({link.text})"
+            where = f"line {note.file_line(link.line)}: ({link.text})"
             targets = markdown_link_targets(note.rel, link.text)
             yield from self._private_issue(note, where, targets, None)
         for url in urls(text):
-            line = note.body_line + url.line - 1
             message = (
-                f"line {line}: URLs belong in the `{URL_PROPERTY}` property, "
+                f"line {note.file_line(url.line)}: URLs belong in the `{URL_PROPERTY}` property, "
                 f"not the note body ({url.text})"
             )
             yield self._error(note, IssueCode.URL_MISPLACED, message)

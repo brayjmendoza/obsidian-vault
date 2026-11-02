@@ -13,7 +13,7 @@ import pytest
 from tests.conftest import CopyFixture, LoadVault, keys, run_module
 from vault_tools.cli import ExitCode
 from vault_tools.issues import IssueCode, Severity
-from vault_tools.validate_urls import FetchFailure, FetchResult, check, fetch_url, url_issue
+from vault_tools.validate_urls import FetchFailure, FetchResult, UrlFetcher, check, url_issue
 from vault_tools.vault import Note
 
 E: Final = Severity.ERROR
@@ -50,7 +50,7 @@ def server(monkeypatch: pytest.MonkeyPatch) -> Iterator[str]:
     monkeypatch.setenv("NO_PROXY", "127.0.0.1,localhost")
     monkeypatch.setenv("no_proxy", "127.0.0.1,localhost")
     httpd = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+    thread = threading.Thread(target=httpd.serve_forever, args=(0.01,), daemon=True)
     thread.start()
     yield f"http://127.0.0.1:{httpd.server_port}"
     httpd.shutdown()
@@ -89,6 +89,15 @@ def test_url_issue(result: FetchResult, expected: tuple[Severity, IssueCode] | N
     assert (None if issue is None else (issue.severity, issue.code)) == expected
 
 
+def test_sessions_are_reused_per_thread(server: str) -> None:
+    """One thread fetching many URLs uses one session, and closing releases it."""
+    with UrlFetcher() as fetcher:
+        for path in ("/ok", "/gone", "/moved"):
+            fetcher.fetch(server + path)
+        assert fetcher.open_sessions == 1
+    assert fetcher.open_sessions == 0
+
+
 def test_each_url_fetched_once(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
     """Every distinct URL is fetched once, and its result applies to every note using it."""
     root = copy_fixture("valid")
@@ -113,14 +122,18 @@ def test_each_url_fetched_once(copy_fixture: CopyFixture, load_vault: LoadVault)
     ("path", "status"),
     [("/ok", 200), ("/moved", 200), ("/no-head", 200), ("/gone", 410), ("/error", 500)],
 )
-def test_fetch_url(server: str, path: str, status: int) -> None:
+def test_fetch(server: str, path: str, status: int) -> None:
     """Redirects are followed and GET stands in when HEAD is refused."""
-    assert fetch_url(server + path).status == status
+    with UrlFetcher() as fetcher:
+        assert fetcher.fetch(server + path).status == status
 
 
-def test_fetch_refused() -> None:
+def test_fetch_refused(monkeypatch: pytest.MonkeyPatch) -> None:
     """A port nothing listens on is a refused connection."""
-    result = fetch_url(f"http://127.0.0.1:{free_port()}/")
+    monkeypatch.setenv("NO_PROXY", "127.0.0.1")
+    monkeypatch.setenv("no_proxy", "127.0.0.1")
+    with UrlFetcher() as fetcher:
+        result = fetcher.fetch(f"http://127.0.0.1:{free_port()}/")
     assert result.failure == FetchFailure.REFUSED, result
 
 

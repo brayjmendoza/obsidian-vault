@@ -149,7 +149,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 
 ## 6. Tags (reserved list)
 
-Tags are only for things that cut across types. Use only these:
+Tags are only for things that cut across types. Use only these, exactly as written (lowercase, never nested like `#idea/music`). `vault-validate` checks both the `tags` property and every inline `#tag` in note bodies, outside code:
 
 - `#inbox`: needs triage but isn't in `00 Inbox/`, such as a QuickAdd capture made straight into a note type, or a note started in its folder but left unfinished. Notes in `00 Inbox/` don't need it, since the folder already says so. inbox-triage works through both the folder and this tag. Claude removes the tag once the note is complete (required properties, links, body) and in the right folder. If a tagged note's placement, type, or status is ambiguous, Claude leaves it where it is, keeps the tag, and adds a `#question` line.
 - `#review`: the user wants to revisit this
@@ -188,6 +188,7 @@ Tags are only for things that cut across types. Use only these:
 
 ## 8. Changelog of this file
 
+- 2026-11-01 · v0.11 · Section 6: inline `#tags` in note bodies are now checked against the four allowed tags, like the `tags` property; spelled out that tags are lowercase and never nested. No version bump: the allowed tags are unchanged.
 - 2026-11-01 · v0.11 · URLs live only in the `url` property, never in other properties or note bodies (sections 4 and 5); code is exempt. `vault-validate` now checks links into `Private/` (section 1) and every URL's form, and fetches URLs with `--check-urls` (section 7). `asset` notes may set `url`, and `manual` holds only an attachment link.
 - 2026-11-01 · v0.10 · Added `CODE_STYLE.md` to the file table and to the reading rule in section 7. No version bump: `CODE_STYLE.md` keeps its own changelog and isn't schema-checked.
 - 2026-11-01 · v0.10 · `91 Tooling/` is managed by uv: dependencies live in `pyproject.toml` (runtime) and its `dev` dependency group, `requirements.txt` is gone, and `.python-version` pins Python 3.14. `structure-schema.yaml` ignores `.python-version` and `.envrc`, and `91 Tooling/` allows only `toml` files. Section 7 now gives the validator command, with the virtual environment kept outside the vault.

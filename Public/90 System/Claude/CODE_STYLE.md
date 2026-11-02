@@ -100,7 +100,7 @@ uv run pytest
 ## Dependencies
 
 - **Managed by uv.** Add packages with `uv add` or `uv add --dev`, never pip, and commit `pyproject.toml` and `uv.lock` together (see `91 Tooling/README.md`).
-- **Few runtime dependencies.** PyYAML and pydantic are the runtime dependencies. A new one needs your approval and a reason the standard library can't do the job.
+- **Few runtime dependencies.** PyYAML, pydantic, and requests are the runtime dependencies. A new one needs your approval and a reason the standard library can't do the job.
 
 ## Changelog
 

@@ -23,6 +23,9 @@ MARKDOWN_LINK_RE: Final = re.compile(
 )
 URL_RE: Final = re.compile(r"https?://[^\s<>\"'`()\[\]]+", re.IGNORECASE)
 SCHEME_RE: Final = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
+# Obsidian: `#` at the start of a line or after whitespace, then letters, digits,
+# `_`, `-`, or `/`. So `C#`, `[[Note#Heading]]`, `url/#anchor`, and `# Heading` aren't tags.
+TAG_RE: Final = re.compile(r"(?<!\S)#([\w/-]+)")
 
 
 class Found(BaseModel):
@@ -139,6 +142,24 @@ def urls(text: str) -> list[Found]:
     return [
         Found(text=match.group(0), line=_line_of(text, match.start()))
         for match in URL_RE.finditer(text)
+    ]
+
+
+def tags(text: str) -> list[Found]:
+    """Find every inline tag, the way Obsidian recognizes them.
+
+    A tag needs at least one character that isn't a digit, so `#123` isn't one.
+
+    Args:
+        text: Text with code already blanked out.
+
+    Returns:
+        Each tag without its `#`, and its line.
+    """
+    return [
+        Found(text=match.group(1), line=_line_of(text, match.start()))
+        for match in TAG_RE.finditer(text)
+        if not match.group(1).isdigit()
     ]
 
 

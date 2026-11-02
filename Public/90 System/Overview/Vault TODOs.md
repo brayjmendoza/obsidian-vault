@@ -35,7 +35,6 @@ This is a list of improvements or extensions that need to be made to the vault.
 	* Honestly every note type...
 * Folder homepages
 * Tell Claude about writing style
-* Add `--check-urls` to `validate.yml` (every push, or only its weekly run), and decide whether `validate-links.yml` is still needed now that `vault-validate` checks links into Private
 * Note style
 	* Horizontal scroll for code snippets
 

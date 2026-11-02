@@ -12,6 +12,7 @@ requires-python = ">=3.14"
 dependencies = [
     "pydantic>=2.14.2",
     "pyyaml>=6.0.3",
+    "requests>=2.34.2",
 ]
 
 [project.scripts]
@@ -21,6 +22,7 @@ vault-validate = "vault_tools.validate:main"
 vault-validate-properties = "vault_tools.validate_properties:main"
 vault-validate-structure = "vault_tools.validate_structure:main"
 vault-validate-links = "vault_tools.validate_links:main"
+vault-validate-tags = "vault_tools.validate_tags:main"
 vault-validate-urls = "vault_tools.validate_urls:main"
 
 [tool.setuptools.packages.find]
@@ -66,4 +68,5 @@ dev = [
     "pytest>=9.2.0",
     "ruff>=0.17.3",
     "types-pyyaml>=6.0.12.20261030",
+    "types-requests>=2.33.0.20261030",
 ]

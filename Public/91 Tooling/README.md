@@ -31,12 +31,13 @@ The folder is laid out as follows:
 │   ├── validate_structure.py    enforces structure-schema.yaml
 │   ├── validate_links.py        no links into Private/, URLs only in `url`
 │   ├── validate_urls.py         fetches every `url` (network; only on request)
+│   ├── validate_tags.py         every inline #tag is one of the four allowed tags
 │   └── validate.py              runs the version check and both validators
 └── tests/
     ├── conftest.py              loads fixture vaults with the real schemas
     ├── test_*.py                one file per validator, plus the schemas and the CLI
     ├── private_sample/          a stand-in Private/ folder: only its file names matter
-    └── fixtures/                small sample Public/ folders: valid, bad-links, bad-link-rules, bad-properties, bad-structure
+    └── fixtures/                small sample Public/ folders: valid, bad-links, bad-link-rules, bad-properties, bad-structure, bad-tags
 ```
 
 Two files sit outside this folder: `.envrc` at the repository root (see [[#The Python Environment]]) and `.pre-commit-config.yaml`, also at the root.
@@ -45,7 +46,7 @@ Two files sit outside this folder: `.envrc` at the repository root (see [[#The P
 
 - **uv:** installs Python 3.14, the dependencies, and the package itself (`brew install uv`).
 - **direnv:** optional but recommended. It keeps the virtual environment out of iCloud and activates it for you (`brew install direnv`, then add `eval "$(direnv hook zsh)"` to `~/.zshrc`).
-- **PyYAML and pydantic** are the runtime dependencies. Everything else is a dev tool.
+- **PyYAML, pydantic, and requests** are the runtime dependencies. Everything else is a dev tool.
 
 ## Setup
 
@@ -66,14 +67,15 @@ On each new machine:
 
 ## Commands
 
-Installing the package creates five console scripts:
+Installing the package creates six console scripts:
 
 | Command | Checks |
 |---|---|
-| `vault-validate` | Everything offline: the shared version of [[CONVENTIONS]] and both schemas, then structure, properties, and links. With `--check-urls`, also fetches every `url` |
+| `vault-validate` | Everything offline: the shared version of [[CONVENTIONS]] and both schemas, then structure, properties, links, and tags. With `--check-urls`, also fetches every `url` |
 | `vault-validate-structure` | Only `structure-schema.yaml`: folders, note types per folder, filenames, hubs, and non-note files |
 | `vault-validate-properties` | Only `properties-schema.yaml`: types, required properties, value types, vocabularies, and typed links |
 | `vault-validate-links` | Only the link rules: no links into `Private/`, URLs only in `url`, and every `url` well formed |
+| `vault-validate-tags` | Only inline `#tags` in note bodies: each must be one of the four allowed tags (the `tags` property is checked with the properties) |
 | `vault-validate-urls` | Only the network check: fetches every `url` and reports pages that are gone or unreachable |
 
 All of them take these options:

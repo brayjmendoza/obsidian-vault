@@ -36,7 +36,7 @@ Because tags cost nothing to create, they spread. Nothing stops `#todo`, `#to-do
 | `#to-read`, `#done`               | The `status` property, which only accepts allowed values         |
 | `#book`, `#paper`                 | The `type` property (see [[Note Types and Properties]])          |
 
-Properties have a value type and a list of allowed values, and the validators check them (see [[Schemas and Validation]]). Tags can't be checked that way. So the rule is: **prefer properties over tags.** Tags are kept only for what properties handle badly: flags that apply to any note type, often to one spot inside a note, and that are meant to be removed later.
+Properties have a value type and a list of allowed values, and the validators check them (see [[Schemas and Validation]]). Tags carry no value type, so the most a validator can do is hold them to a fixed list. So the rule is: **prefer properties over tags.** Tags are kept only for what properties handle badly: flags that apply to any note type, often to one spot inside a note, and that are meant to be removed later.
 
 A nested tag such as `#idea/music` counts as a different tag, so it isn't on the list either. To tie an idea to a subject, link the note it's about instead.
 
@@ -60,6 +60,14 @@ Don't use `#inbox` on a single line of a daily or weekly note: those are generat
 ### Why the Short List Matters
 
 Because the list is fixed and short, clicking any of these tags gives a complete, trustworthy list: every open question in the vault, every note waiting for review, whatever kind of note it lives in.
+
+## How Tags are Checked
+
+`vault-validate` holds every tag to the four, wherever it's written:
+
+- **In the frontmatter:** the `tags` property only accepts values from the `tag` vocabulary in `properties-schema.yaml`.
+- **In the body:** every inline `#tag` is checked against the same vocabulary and reported with its line. Tags are recognized the way Obsidian recognizes them: `#` at the start of a line or after a space, so `C#`, `issue #123`, `[[Note#Heading]]`, and headings don't count. Tags inside code blocks and inline code are ignored.
+- **Near misses get a hint:** `#Idea` must be lowercase, and `#idea/music` is a nested tag, so it's reported too.
 
 ## Adding a Tag
 

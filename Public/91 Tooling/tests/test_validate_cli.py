@@ -1,4 +1,4 @@
-"""validate and the two validators as command-line programs."""
+"""Validate and the validators as command-line programs."""
 
 import json
 from pathlib import Path
@@ -9,7 +9,7 @@ import pytest
 from tests.conftest import FIXTURES_DIR, CopyFixture, run_module
 from vault_tools.cli import ExitCode
 
-FAILING: Final = ["bad-properties", "bad-links", "bad-structure", "bad-link-rules"]
+FAILING: Final = ["bad-properties", "bad-links", "bad-structure", "bad-link-rules", "bad-tags"]
 
 
 def test_valid_vault_passes() -> None:

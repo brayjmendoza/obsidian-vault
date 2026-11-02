@@ -1,4 +1,4 @@
-"""Run every vault check: schema versions, structure, properties, then links.
+"""Run every vault check: schema versions, structure, properties, links, then tags.
 
 Exit code 0 when there are no errors (warnings are allowed), 1 when there are
 errors, 2 when the vault or a schema file can't be read. From anywhere in the
@@ -15,13 +15,19 @@ import sys
 from collections.abc import Sequence
 from typing import Final
 
-from vault_tools import validate_links, validate_properties, validate_structure, validate_urls
+from vault_tools import (
+    validate_links,
+    validate_properties,
+    validate_structure,
+    validate_tags,
+    validate_urls,
+)
 from vault_tools.cli import run_cli
 from vault_tools.issues import CheckName, Issue, IssueCode, error_issue
 from vault_tools.schemas import PROPERTIES_SCHEMA, STRUCTURE_SCHEMA
 from vault_tools.vault import CONVENTIONS_PATH, Vault, load_note
 
-DESCRIPTION: Final = "Run every vault check: schema versions, structure, properties, then links."
+DESCRIPTION: Final = "Run every vault check: schema versions, structure, properties, links, tags."
 
 
 def version_issues(vault: Vault) -> list[Issue]:
@@ -62,6 +68,7 @@ def check(vault: Vault) -> list[Issue]:
         + validate_structure.check(vault)
         + validate_properties.check(vault)
         + validate_links.check(vault)
+        + validate_tags.check(vault)
     )
 
 

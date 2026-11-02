@@ -36,6 +36,9 @@ ANY: Final = "any"
 # The vocabulary that must list exactly the note types under `types`.
 NOTE_TYPE_VOCAB: Final = "note_type"
 
+# The vocabulary of allowed tags, in frontmatter and in note bodies alike.
+TAG_VOCAB: Final = "tag"
+
 
 class SchemaError(Exception):
     """A schema file is valid YAML but breaks the schema's own rules.
@@ -413,6 +416,8 @@ def properties_problems(schema: PropertiesSchema) -> list[str]:
         allowed = set(rules.declared) | set(schema.common.declared)
         problems += _rule_problems(f"types.{name}", rules, allowed, schema)
     problems += _note_type_vocab_problems(schema)
+    if TAG_VOCAB not in schema.vocabularies:
+        problems.append(f"vocabularies.{TAG_VOCAB} is missing: it lists the allowed tags")
     return problems
 
 

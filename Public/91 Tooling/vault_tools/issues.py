@@ -20,6 +20,7 @@ class CheckName(StrEnum):
     STRUCTURE = "structure"
     LINKS = "links"
     URLS = "urls"
+    TAGS = "tags"
 
 
 class IssueCode(StrEnum):
@@ -63,6 +64,8 @@ class IssueCode(StrEnum):
     URL_INVALID = "url-invalid"
     URL_BROKEN = "url-broken"
     URL_UNVERIFIED = "url-unverified"
+    # Tags
+    UNKNOWN_TAG = "unknown-tag"
 
 
 class Issue(BaseModel):

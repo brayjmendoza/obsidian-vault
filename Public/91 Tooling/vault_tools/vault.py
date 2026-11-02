@@ -207,6 +207,17 @@ class Note(BaseModel):
         parts = self.rel.split("/")
         return parts[0] if len(parts) > 1 else None
 
+    def file_line(self, body_line: int) -> int:
+        """Turn a line number within the body into a line number within the file.
+
+        Args:
+            body_line: A 1-based line number counted from the start of the body.
+
+        Returns:
+            The 1-based line number in the note's file.
+        """
+        return self.body_line + body_line - 1
+
     @property
     def note_type(self) -> YamlValue:
         """The `type` property as written, or None."""

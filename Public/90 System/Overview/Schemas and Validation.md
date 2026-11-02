@@ -29,6 +29,7 @@ The current layout of `91 Tooling/` is as follows:
 │   ├── validate_structure.py    enforces structure-schema.yaml
 │   ├── validate_links.py        no links into Private/, URLs only in `url`
 │   ├── validate_urls.py         fetches every `url` (network; only on request)
+│   ├── validate_tags.py         every inline #tag is one of the four allowed tags
 │   └── validate.py              runs the version check and both validators
 └── tests/fixtures/              small sample vaults that must pass or fail
 ```
@@ -45,6 +46,7 @@ uv manages the tooling's Python, packages, and virtual environment, and `uv.lock
 | `structure-schema.yaml`  | Core                                   | Layout: the allowed top-level folders, every domain and its role folders, which note types live in each folder, filename patterns, hubs present, flat folders, how deep open folders may go, allowed non-note files          |
 | Typed links              | Core, inside the properties schema     | `link: composer` instead of `link: true`: `piece.composer` must point to a composer, `project.area` to a hub, `concept.sources` to a paper, book, course, or article. Wrong type is an error; an unresolved link is a warning |
 | Link rules               | Core, a script rather than a schema    | No link into `Private/`, in bodies or properties; URLs only in `url`, each a single well-formed http(s) URL; with `--check-urls`, every URL loads. Code blocks and inline code are skipped |
+| Tags                     | Core, a script reading the `tag` vocabulary | Every inline `#tag` in a note body (outside code) is one of the four allowed tags; the `tags` property is held to the same list by the properties schema |
 | `body-schema.yaml`       | Planned                                | Required headings and tables per type: hub headings, concept Connections and Sources, the spending Categories table, the session sets table, and daily and weekly sections. Templates can be generated from it                   |
 | `access-schema.yaml`     | Planned                                | Per folder, what Claude may do: create, edit, regenerate whole (daily and weekly notes), or read only. CI can then check that Claude's commits touched only allowed files                                                     |
 | Template check           | Planned, a script rather than a schema | Each template in `90 System/Templates/` yields a note that passes every schema                                                                                                                                               |
