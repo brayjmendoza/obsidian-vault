@@ -34,17 +34,16 @@ This is a list of improvements or extensions that need to be made to the vault.
 	* Horizontal scroll for code snippets
 
 **Order of TODOs**
-1. Review CONVENTIONS.md
-2. Make Templates
+1. Make Templates
 	1. Create uv concept from the claude chat where you added uv, use 91 tooling as the example
 	2. Update CONVENTIONS
-3. Make hubs
-4. Make plan pages
-5. Make homepages?
-6. Move benefits in
-7. Review STYLE.md -- add examples of note you made not generated
-8. Move stuff out of archive/populate vault
-9. Plugins
+2. Make hubs
+3. Make plan pages
+4. Make homepages?
+5. Move benefits in
+6. Review STYLE.md -- add examples of note you made not generated
+7. Move stuff out of archive/populate vault
+8. Plugins
 
 ---
 ← [[Vault Rollout]] · Back to [[Vault Overview]]
