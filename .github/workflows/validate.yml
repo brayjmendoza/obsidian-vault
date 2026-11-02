@@ -74,7 +74,7 @@ jobs:
           uv run --locked --project "$TOOLING"
           pre-commit run --all-files --show-diff-on-failure --color always
 
-  validate:
+  test-and-validate:
     runs-on: ubuntu-latest
     steps:
       # No git-crypt key: Private/'s contents stay encrypted and are never read.

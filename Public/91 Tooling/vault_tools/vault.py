@@ -389,7 +389,6 @@ class Vault:
         self.properties_schema: PropertiesSchema = schemas.properties
         self.structure_schema: StructureSchema = schemas.structure
         self._exempt = frozenset(nfc(path) for path in schemas.structure.exempt)
-        self._has_files: dict[Path, bool] = {}
 
     # -- walking --------------------------------------------------------------
 
@@ -415,53 +414,17 @@ class Vault:
         """
         return rel in self._exempt
 
-    def _listing(self, directory: Path) -> list[Path]:
+    def children(self, directory: Path) -> list[Path]:
         """List a folder's entries in name order, without ignored names.
 
         Args:
             directory: The folder.
 
         Returns:
-            Its files and folders, empty folders included.
+            Its files and folders.
         """
         entries = sorted(directory.iterdir(), key=lambda path: path.name)
         return [entry for entry in entries if not self.is_ignored(entry.name)]
-
-    def has_files(self, directory: Path) -> bool:
-        """Check whether a folder holds any file, at any depth, that isn't ignored.
-
-        Git tracks files, not folders, so a folder without one doesn't exist in
-        the repository or in CI's checkout. Treating it as absent keeps a local
-        run's results the same as CI's.
-
-        Args:
-            directory: The folder.
-
-        Returns:
-            Whether git would see the folder.
-        """
-        if directory not in self._has_files:
-            self._has_files[directory] = any(
-                not entry.is_dir() or self.has_files(entry) for entry in self._listing(directory)
-            )
-        return self._has_files[directory]
-
-    def children(self, directory: Path) -> list[Path]:
-        """List a folder's entries as git sees them: in name order, without ignored names.
-
-        Folders that hold no files are left out (see `has_files`).
-
-        Args:
-            directory: The folder.
-
-        Returns:
-            Its files and the subfolders that hold files.
-        """
-        return [
-            entry
-            for entry in self._listing(directory)
-            if not entry.is_dir() or self.has_files(entry)
-        ]
 
     def iter_paths(self, start: Path | None = None) -> Iterator[Path]:
         """Walk every file and folder below a folder, depth first, skipping ignored names.

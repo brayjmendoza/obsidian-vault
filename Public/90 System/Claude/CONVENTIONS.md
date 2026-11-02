@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-01
-version: "0.11"
+version: "0.12"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between the person who owns this vault and every Claud
 
 The schemas are checked by scripts, so they win on anything they cover. This file does not restate them.
 
-Status: **v0.11**. This file and both schemas share one version number. Bump all three, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.12**. This file and both schemas share one version number. Bump all three, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -73,6 +73,8 @@ Placement decisions that follow:
 - Composers are items shared by every instrument in Music; biography and style analysis go to Knowledge.
 
 New domains, role folders, top-level folders, or fields need the user's approval and a `structure-schema.yaml` edit before Claude creates them. Every new domain gets a hub.
+
+**Empty folders keep a `.gitkeep`.** Git doesn't track empty folders, and CI only sees what git tracks, so every innermost folder with nothing else in it holds an empty `.gitkeep` file. That keeps the vault's skeleton in the repository, and a domain folder without a hub fails in CI just as it does on your Mac. The validators ignore `.gitkeep`, so it can stay once notes arrive. When Claude creates a folder that stays empty, it adds one.
 
 **Bands.** Top-level folders are named `NN Name`. The first digit is the band (the kind of folder); the second is the folder's position within the band. Numbers only set sort order. Subfolders are not numbered.
 
@@ -188,6 +190,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of this file
 
+- 2026-11-01 · v0.12 · Empty folders keep a `.gitkeep` so git and CI see them (section 2); `structure-schema.yaml` ignores `.gitkeep`.
 - 2026-11-01 · v0.11 · Section 6: inline `#tags` in note bodies are now checked against the four allowed tags, like the `tags` property; spelled out that tags are lowercase and never nested. No version bump: the allowed tags are unchanged.
 - 2026-11-01 · v0.11 · URLs live only in the `url` property, never in other properties or note bodies (sections 4 and 5); code is exempt. `vault-validate` now checks links into `Private/` (section 1) and every URL's form, and fetches URLs with `--check-urls` (section 7). `asset` notes may set `url`, and `manual` holds only an attachment link.
 - 2026-11-01 · v0.10 · Added `CODE_STYLE.md` to the file table and to the reading rule in section 7. No version bump: `CODE_STYLE.md` keeps its own changelog and isn't schema-checked.

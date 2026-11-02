@@ -11,7 +11,7 @@ GitHub Actions workflows live in `.github/workflows/` at the repository root. Th
 
 ## `validate.yml`
 
-Runs on every push to main, weekly on Mondays (to catch URLs that died without a push), and on demand. Three jobs run side by side: `static-check` (mypy), `pre-commit` (the ruff hooks on every file), and `validate`, which checks the vault:
+Runs on every push to main, weekly on Mondays (to catch URLs that died without a push), and on demand. Three jobs run side by side: `static-check` (mypy), `pre-commit` (the ruff hooks on every file), and `test-and-validate`, which runs the tests and then checks the vault:
 
 1. Check out the repository. CI gets no git-crypt key, so the contents of `Private/` stay encrypted and are never read (see [[Sync and Backup#git-crypt|git-crypt]]).
 2. Set up uv (`astral-sh/setup-uv`), which installs the Python in `.python-version` and runs `uv sync --locked`. `--locked` fails the run if `uv.lock` is out of date with `pyproject.toml`.
