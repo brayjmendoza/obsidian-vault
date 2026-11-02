@@ -38,7 +38,7 @@ Keeps `.pre-commit-config.yaml` on the latest ruff release, so you never run `pr
 
 Each desktop's hooks switch to the new version after Obsidian Git pulls the commit. This is the only workflow that writes to the repository, so it's the only one with `contents: write`.
 
-## Pre-commit Hooks
+## Pre-Commit Hooks
 
 `.pre-commit-config.yaml` at the repository root runs two ruff hooks before every commit: `ruff check --fix`, then `ruff format`. Each desktop installs them once (see the tooling's [[Public/91 Tooling/README|README]]).
 

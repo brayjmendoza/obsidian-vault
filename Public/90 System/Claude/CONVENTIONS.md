@@ -6,7 +6,7 @@ version: "0.12"
 ---
 # Vault Conventions
 
-This file is the contract between the person who owns this vault and every Claude skill that maintains it. **Every skill reads this file and both schemas before reading or writing any other note.** When this file and a skill disagree, this file wins.
+This file is the contract between the person who owns this vault and every Claude skill that maintains it. **Every skill reads this file and all schemas before reading or writing any other note.** When this file and a skill disagree, this file wins.
 
 | File | Holds |
 |---|---|
@@ -19,16 +19,16 @@ This file is the contract between the person who owns this vault and every Claud
 
 The schemas are checked by scripts, so they win on anything they cover. This file does not restate them.
 
-Status: **v0.12**. This file and both schemas share one version number. Bump all three, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.12**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
-## 1. Scope and access
+## 1. Scope and Access
 
 - Claude's access is limited to the `Public/` folder. Every path in this file is relative to `Public/`.
 - A `Private/` folder exists outside Claude's access. Claude never asks for it and never guesses at its contents.
 - **Public notes never link into `Private/`.** Private notes may link to Public ones, not the other way round. This covers every kind of link (wikilinks, embeds, and Markdown links) in note bodies and in properties. `vault-validate` reports one as `private-link`: a link written as a `Private/…` path is caught on every run, and a link by bare name is caught only where `Private/`'s file names are visible (your Mac and CI). Claude's runs can't see them, so its report lists that check under `skipped`. A name both folders have is an error too, since Obsidian could pick either.
-- An unresolved link in `Public/` is either a broken link or a note not yet written. `vault-validate` reports each one, in note bodies and in properties, as a warning, never an error: `link-unresolved` when no note or file matches, `anchor-unresolved` when the note lacks the heading (`[[Note#Heading]]`, or a nested `[[Note#Part#Section]]`) or block (`[[Note#^id]]`) the link names. Claude never "repairs" one by guessing its target.
+- An unresolved link in `Public/` is either a broken link or a note not yet written. `vault-validate` reports each one, in note bodies and in properties, as a warning, never an error. Possible warnings are `link-unresolved` when no note or file matches, `anchor-unresolved` when the note lacks the heading (e.g., `[[Note#Heading]]`, or a nested `[[Note#Part#Section]]`) or block (e.g., `[[Note#^id]]`) that the link names. Claude never "repairs" one by guessing its target.
 - Plugin settings (`.obsidian/`) are outside Claude's access. Claude never assumes a plugin setting. If a skill depends on one, it says so to the user.
 
 ## 2. Placement
@@ -41,7 +41,7 @@ Ask these in order:
 4. Is it something learned? → `40 Knowledge/`
 5. Is it something looked up? → `50 References/`
 
-If none of these fits clearly, leave the note in `00 Inbox/` and ask.
+If none of these fits clearly, leave the note in `00 Inbox/` and ask with a tagged question.
 
 `structure-schema.yaml` lists every allowed folder and the note types each one holds. A folder it doesn't declare is an error.
 

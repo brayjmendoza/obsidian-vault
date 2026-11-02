@@ -6,7 +6,7 @@ version: "0.12"
 ---
 # Claude Skills
 
-Ten skills, built in priority order (see [[Vault Rollout]]). All of them read [[CONVENTIONS]] and both schemas first, follow the [[Claude Guardrails]], and log to the [[changelog]].
+Ten skills, built in priority order (see [[Vault Rollout]]). All of them read [[CONVENTIONS]] and all schemas first, follow the [[Claude Guardrails]], and log to the [[changelog]].
 
 | #   | Skill             | What it does                                                                                                                                                                                                                                               | Cadence            |
 | --- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
