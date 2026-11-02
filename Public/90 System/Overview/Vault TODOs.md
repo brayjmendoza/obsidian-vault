@@ -37,6 +37,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 1. Review CONVENTIONS.md
 2. Make Templates
 	1. Create uv concept from the claude chat where you added uv, use 91 tooling as the example
+	2. Update CONVENTIONS
 3. Make hubs
 4. Make plan pages
 5. Make homepages?
