@@ -13,11 +13,11 @@ GitHub Actions workflows live in `.github/workflows/` at the repository root. `v
 
 Runs on every push to main, weekly on Mondays (to catch URLs that died without a push), and on demand. Three jobs run side by side, so a failure in one doesn't hide the others:
 
-| Job                 | Runs                                                       | Catches                                                                                                                                                                                                  |
-| ------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `static-check`      | Strict mypy on `vault_tools/` and `tests/`                 | Type errors in the tooling                                                                                                                                                                               |
+| Job                 | Runs                                                         | Catches                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `static-check`      | Strict mypy on `vault_tools/` and `tests/`                   | Type errors in the tooling                                                                                                                                                                                      |
 | `pre-commit`        | The ruff hooks from `.pre-commit-config.yaml`, on every file | Lint and format problems, even in commits that skipped the hooks (e.g., a desktop without `pre-commit install`, `--no-verify`, or a GitHub web edit). Fixes aren't committed: the job fails and prints the diff |
-| `test-and-validate` | The tests, then `vault-validate`                           | A broken schema or validator, then anything in `Public/` that breaks a rule                                                                                                                              |
+| `test-and-validate` | pytest tests, then `vault-validate`                          | A broken schema or validator, then anything in `Public/` that breaks a rule                                                                                                                                     |
 
 `test-and-validate` runs these steps:
 
