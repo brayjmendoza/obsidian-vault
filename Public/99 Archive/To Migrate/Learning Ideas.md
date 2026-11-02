@@ -1,0 +1,3 @@
++ STEM
++ Philosophy
++ Humanities readings

@@ -1,0 +1,2 @@
+Segmentation faults ("segfaults" for short) occur when the program tries to access memory outside of its allocated region
++ In these cases, the operating system shuts down the program, causing a segfault

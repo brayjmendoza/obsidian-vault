@@ -1,0 +1,3 @@
+.columns {
+	column-count: var(--column-count, 2);
+}

@@ -1,0 +1,187 @@
+# Vault structure schema
+# Location: Public/91 Tooling/schemas/structure-schema.yaml
+#
+# Single source of truth for the layout of Public/: which folders may exist,
+# which note types each folder holds, the domain skeleton for 20 Hobbies/ and
+# 30 Life Admin/, and filename patterns. Read by Claude skills and by
+# validate_structure.py.
+#
+# Property rules live in properties-schema.yaml; the two files join on note
+# type names. Paths are relative to Public/.
+#
+# Validation rules
+#   1. Every folder in Public/ is declared here (or sits under an `open` or
+#      `skip` folder). An undeclared folder is an error, so a new domain or
+#      role folder means editing this file, which needs the owner's approval.
+#   2. Every note (.md file) carries a `type` allowed in the folder it sits in.
+#   3. If its type has a pattern in `filenames`, the filename (without .md)
+#      must match it.
+#   4. Every domain has a hub: <Domain>/<Domain>.md with type: hub.
+#   5. Non-note files are allowed only where a folder lists their extension
+#      in `files`.
+#   6. Names in `ignore` (exact names or glob patterns, e.g. *.egg-info) are
+#      skipped everywhere; `exempt` files are skipped by both validators.
+#   7. Under a folder with `max_depth: N`, no folder may sit more than N
+#      levels below it.
+#
+# Folder keys
+#   types:      note types allowed directly in this folder ([any] = any type,
+#               or none at all)
+#   subfolders: name -> folder spec, for fixed subfolders
+#   flat:       true = no subfolders allowed
+#   open:       true = any subfolders allowed; they inherit types and files
+#   max_depth:  with open: true, how many levels of subfolders may sit below
+#               this folder (1 = subfolders, but none inside them). Omitted =
+#               no limit
+#   files:      extensions of non-note files allowed here ([any] = anything)
+#   skip:       true = not validated at all by either validator (test
+#               fixtures, the archive)
+#
+# Domain keys (inside `domains:`; see the `domain` block for the skeleton)
+#   items / logs / plans: role folder name -> note types it holds.
+#                         Role folders are flat.
+#   domains:              name -> nested domain (same keys)
+#
+# Versioning: shares one version number with CONVENTIONS.md and
+# properties-schema.yaml.
+
+version: "0.11"
+
+# ---------------------------------------------------------------------------
+# Skipped everywhere: OS and app clutter.
+# ---------------------------------------------------------------------------
+ignore: [".DS_Store", ".obsidian", ".trash", ".git", ".gitattributes",
+         ".gitignore", "__pycache__", ".pytest_cache", ".mypy_cache",
+         ".ruff_cache", "*.egg-info", ".venv", "uv.lock", ".python-version",
+         ".envrc"]
+
+# Files neither validator checks.
+exempt:
+  - "90 System/Claude/changelog.md"     # append-only run log, no frontmatter
+
+# ---------------------------------------------------------------------------
+# The domain skeleton, shared by every folder under 20 Hobbies/ and
+# 30 Life Admin/.
+# ---------------------------------------------------------------------------
+domain:
+  hub: required             # <Domain>/<Domain>.md, type: hub
+  root_types: [plan]        # loose notes allowed at a domain root, beside the hub
+  roles: [items, logs, plans, domains]
+  role_folders_flat: true
+
+# ---------------------------------------------------------------------------
+# Top-level folders. Nothing else may exist at the top of Public/.
+# ---------------------------------------------------------------------------
+root:
+
+  "00 Inbox":
+    types: [any]            # captures may be untyped until triaged
+    flat: true
+    files: [any]
+
+  "01 Logs":
+    types: []
+    subfolders:
+      Daily:   {types: [daily],   flat: true}
+      Weekly:  {types: [weekly],  flat: true}
+      Monthly: {types: [monthly], flat: true}
+
+  "10 Projects":
+    types: [project]
+    flat: true
+
+  # Band folders hold only declared domains: no loose notes.
+  "20 Hobbies":
+    types: []
+    domains:
+      Music:
+        items: {Composers: [composer]}
+        domains:
+          Piano: &instrument
+            items: {Pieces: [piece], Technique: [technique]}
+            logs:  {Practice: [practice]}
+          Violin: *instrument
+      Fitness:
+        items: {Exercises: [exercise]}
+        logs:  {Sessions: [session]}
+        plans: {Routines: [routine]}
+      Travel:
+        items: {Trips: [trip], Places: [place]}
+
+  "30 Life Admin":
+    types: []
+    domains:
+      Finance:
+        items: {Accounts: [account]}
+        logs:  {Spending: [spending]}
+      Health:
+        logs:  {"Health Log": [log]}
+      Home:
+        items: {Assets: [asset], Contractors: [contractor]}
+        logs:  {"Maintenance Log": [log]}
+      Planning: {}
+      Work:
+        items: {Benefits: [benefit]}
+
+  "40 Knowledge":
+    types: []
+    subfolders:
+      Sources:
+        types: []
+        subfolders:
+          Papers:   {types: [paper],   flat: true}
+          Books:    {types: [book],    flat: true}
+          Courses:  {types: [course],  flat: true}
+          Articles: {types: [article], flat: true}
+      Concepts: {types: [concept], flat: true}
+      Maps:     {types: [map],     flat: true}
+
+  "50 References":
+    types: [reference]
+    open: true              # group references in topic subfolders as needed
+    max_depth: 1            # one level of topic subfolders, no deeper
+
+  "90 System":
+    types: [system]
+    subfolders:
+      Templates: {types: [template], flat: true}
+      Bases:     {types: [], flat: true, files: [base]}
+      Claude:    {types: [system], flat: true}
+      Overview:  {types: [system], flat: true}   # vault documentation for people
+
+  "91 Tooling":
+    types: [system]         # README.md
+    files: [toml]           # pyproject.toml
+    subfolders:
+      schemas: {types: [], flat: true, files: [yaml]}
+      vault_tools: {types: [], open: true, files: [py]}   # the Python package
+      tests:   {skip: true} # fixtures are sample vaults that must fail
+
+  "98 Attachments":
+    types: []               # no notes, only embedded files
+    open: true
+    files: [any]
+
+  "99 Archive":
+    skip: true              # mirrors original paths; not validated, but its
+                            # notes still count as link targets
+
+# ---------------------------------------------------------------------------
+# Filename patterns (regex on the name without .md). Types not listed use a
+# plain descriptive title; hubs are covered by the domain rule above.
+# ---------------------------------------------------------------------------
+filenames:
+  daily:    '^\d{4}-\d{2}-\d{2}$'
+  weekly:   '^\d{4}-W\d{2}$'
+  monthly:  '^\d{4}-\d{2}$'
+  piece:    '^.+ - .+$'
+  practice: '^\d{4}-\d{2}-\d{2} Practice$'
+  routine:  '^\d{4}-W\d{2} Routine$'
+  session:  '^\d{4}-\d{2}-\d{2} Workout$'
+  trip:     '^\d{4}-\d{2} .+$'
+  place:    '^.+, .+$'
+  paper:    '^.+ \d{4} - .+$'
+  book:     '^.+ \(.+\)$'
+  course:   '^.+ \(.+\)$'
+  spending: '^\d{4}-\d{2} Spending$'
+  log:      '^\d{4}-\d{2}-\d{2} .+$'

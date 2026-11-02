@@ -1,0 +1,1 @@
+Just text, no properties.

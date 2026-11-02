@@ -1,0 +1,24 @@
+# Lints and formats the vault's Python with ruff before each commit. Lives in the repository root.
+# Install once per desktop, from the repo root: pip install -e "Public/91 Tooling", then pre-commit install
+# `rev` is bumped automatically by .github/workflows/pre-commit-autoupdate.yml (weekly).
+#
+# Only .py files under Public/91 Tooling/ are touched (fixture vaults excluded).
+# Commits of notes alone have no matching files, so the hooks pass without running ruff.
+# ruff reads its settings from Public/91 Tooling/pyproject.toml.
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.3
+    hooks:
+      # Lint first and apply safe fixes (e.g. import order), then format.
+      - id: ruff-check
+        args: [--fix]
+        types: [python]
+        files: ^Public/91 Tooling/
+        exclude: ^Public/91 Tooling/tests/fixtures/
+      - id: ruff-format
+        types: [python]
+        files: ^Public/91 Tooling/
+        exclude: ^Public/91 Tooling/tests/fixtures/
+ 
+exclude: ^\.obsidian/
+ 

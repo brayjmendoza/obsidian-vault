@@ -1,0 +1,1 @@
+An untyped capture.

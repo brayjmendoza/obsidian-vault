@@ -1,0 +1,394 @@
+# Vault properties schema
+# Location: Public/91 Tooling/schemas/properties-schema.yaml
+#
+# Single source of truth for the properties (frontmatter) at the top of every
+# note. Read by Claude skills and by validate_properties.py.
+#
+# This file says WHAT a note of each type may carry. WHERE a note may live and
+# what it must be named is in structure-schema.yaml; the two files join on note
+# type names. Rules that need judgment live in 90 System/Claude/CONVENTIONS.md.
+#
+# Structure
+#   property_types  every property name in the vault and its ONE Obsidian type
+#   vocabularies    named lists of allowed values
+#   common          properties every typed note gets
+#   types           per note type: required/optional properties and constraints
+#
+# Type keys (under types.<type>):
+#   required:    properties the note must have, in addition to common.required
+#   optional:    properties the note may have, in addition to common.optional
+#   constraints: value rules, keyed by property (see below)
+#
+# Constraint keys (under types.<type>.constraints.<property>):
+#   vocab:   name of a vocabulary; the value (or every list item) must be in it
+#   range:   [min, max] inclusive, for numbers
+#   pattern: regex the text value must match
+#   link:    a note type, or a list of note types. The value (or every list
+#            item) must be a quoted [[wikilink]] whose target note's declared
+#            `type` is that type (or one of those types). See "Typed links".
+#
+# Typed links (the link: constraint)
+#   - Every type named in a link: constraint must be a key under `types`.
+#   - Targets resolve the way Obsidian resolves them: `#heading`, `^block` and
+#     `|display` parts are dropped; a bare name matches a note by filename
+#     (or by alias), a path matches from Public/.
+#   - A link that resolves to a note of the wrong type is an error.
+#   - A link that resolves to no note is a warning, not an error: it is either
+#     broken or a note not yet written (CONVENTIONS.md section 1). Claude never
+#     "fixes" one by guessing a target.
+#   - A link that matches more than one note is an error; use a path to
+#     disambiguate.
+#   - Archived notes (99 Archive/) keep their type and count as targets.
+#
+# A note's rules come from its declared `type`, never inferred from its folder.
+# A property not listed for a type (or in common) is an error.
+#
+# Versioning: CONVENTIONS.md, this file and structure-schema.yaml share one
+# version number. Bump all three and add a line to CONVENTIONS.md section 8
+# whenever any of them changes.
+
+version: "0.11"
+
+# ---------------------------------------------------------------------------
+# Global property types: every property name allowed anywhere in the vault,
+# with its type.
+#
+# Obsidian types: text, list, number, checkbox, date, datetime
+# A property name has exactly one type across the whole vault.
+# ---------------------------------------------------------------------------
+property_types:
+  # common
+  type: text
+  created: date
+  updated: date
+  aliases: list
+  tags: list
+  claude: text
+
+  # logs
+  date: date
+  week: text
+  month: text
+  energy: number
+  sleep_hours: number
+  practice_minutes: number
+  exercise_minutes: number
+  workouts: number
+  spending_total: number
+
+  # projects
+  status: text
+  area: text
+  due: date
+  outcome: text
+
+  # music (piano, violin, composer)
+  composer: text
+  era: text
+  lived: text
+  difficulty: number
+  grade: text
+  started: date
+  finished: date
+  last_practiced: date
+  memorized: checkbox
+  minutes: number
+  pieces: list
+  focus: list
+  category: text
+  resources: list
+
+  # fitness
+  modality: text
+  goal: text
+  routine: text
+  kind: text
+  duration_min: number
+  muscle_groups: list
+  equipment: list
+
+  # travel
+  start: date
+  end: date
+  places: list
+  companions: list
+  budget: number
+  country: text
+  city: text
+  visited: checkbox
+  first_visit: date
+  rating: number
+
+  # knowledge
+  authors: list
+  year: number
+  fields: list
+  field: text
+  url: text               # one http(s) URL: the only place a URL may appear
+  venue: text
+  progress: text
+  sources: list           # links to source notes a concept was learned from
+  confidence: number
+  last_reviewed: date
+
+  # life admin
+  total: number
+  topic: text
+  review_by: date
+  purchased: date
+  warranty_until: date
+  manual: text            # a link to the manual in 98 Attachments/; an online manual goes in url
+
+  # system
+  version: text
+
+# ---------------------------------------------------------------------------
+# Vocabularies. Lowercase, exact match. Add values here (with approval)
+# before using them anywhere.
+# ---------------------------------------------------------------------------
+vocabularies:
+  note_type: [daily, weekly, monthly, project, hub, plan, piece, practice,
+              technique, composer, routine, session, exercise, trip, place,
+              paper, book, course, article, concept, map, spending, account,
+              asset, contractor, benefit, log, reference, system, template]
+  field: [computer-science, math, physics, music-theory, philosophy]
+  project_status: [idea, active, paused, done, dropped]
+  piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
+  trip_status: [idea, planning, booked, done]
+  source_status: [to-read, reading, read, abandoned]
+  practice_focus: [technique, sight-reading, learning, memorization, performance, theory]
+  technique_category: [scales, arpeggios, etudes, voicing, pedaling, bowing,
+                       shifting, vibrato, intonation, other]
+  composer_era: [medieval, renaissance, baroque, classical, romantic,
+                 modern, contemporary]
+  session_kind: [strength, cardio, mobility, sport]
+  exercise_modality: [calisthenics, running, weights]
+  routine_goal: [strength, hypertrophy, endurance, mobility, maintenance]
+  muscle_group: [chest, back, shoulders, biceps, triceps, forearms, core,
+                 glutes, quads, hamstrings, calves, upper-body, lower-body, 
+                 full-body]
+  equipment: [barbell, dumbbell, kettlebell, cable, machine, bands, bench,
+              pull-up-bar, paralletes]
+  spending_category: [housing, utilities, groceries, dining, transport, health,
+                      fitness, travel, hobbies, subscriptions, shopping, gifts,
+                      other]
+  claude_access: [read-only]
+  tag: [inbox, review, idea, question]   # inbox: needs triage outside 00 Inbox/ (CONVENTIONS section 6)
+
+# ---------------------------------------------------------------------------
+# Applied to every typed note.
+# ---------------------------------------------------------------------------
+common:
+  required: [type, created, updated]
+  optional: [aliases, tags, claude]
+  constraints:
+    type: {vocab: note_type}
+    claude: {vocab: claude_access}
+    tags: {vocab: tag}
+
+# ---------------------------------------------------------------------------
+# Note types. required/optional don't repeat the properties in `common`.
+# ---------------------------------------------------------------------------
+types:
+
+  # --- Logs ----------------------------------------------------------------
+  # Daily and weekly notes are generated entirely by skills. Weekly rollups
+  # (practice_minutes, workouts, spending_total, etc.) are computed from stuff
+  # like practice, session and spending notes, never entered by hand.
+  daily:
+    required: [date]
+    optional: [energy, sleep_hours]
+    constraints:
+      energy: {range: [1, 5]}
+      sleep_hours: {range: [0, 24]}
+
+  weekly:
+    required: [week]
+    optional: [practice_minutes, exercise_minutes, workouts, spending_total]
+    constraints:
+      week: {pattern: '^\d{4}-W\d{2}$'}
+
+  monthly:
+    required: [month]
+    optional: [practice_minutes, exercise_minutes, workouts, spending_total]
+    constraints:
+      month: {pattern: '^\d{4}-\d{2}$'}
+
+  # --- Projects ------------------------------------------------------------
+  project:
+    required: [status, area]
+    optional: [start, due, outcome]
+    constraints:
+      status: {vocab: project_status}
+      area: {link: hub}           # the hub of the domain it serves
+
+  # --- Domain notes (any domain in Hobbies or Life Admin) ------------
+  # hub: the landing note for a domain, named after its folder.
+  # plan: a standing plan at a domain root (Budget, Schedule, Wishlist,
+  #       To-dos, a practice rotation, an eating plan).
+  hub:
+    required: []
+    optional: []
+
+  plan:
+    required: []
+    optional: [review_by]
+
+  # --- Music ---------------------------------------------------------------
+  # Instrument is implied by folder (Music/<Instrument>/Pieces etc.).
+  # Composers are shared by all instruments.
+  piece:
+    required: [composer, status]
+    optional: [difficulty, grade, started, last_practiced, memorized]
+    constraints:
+      composer: {link: composer}
+      status: {vocab: piece_status}
+      difficulty: {range: [1, 10]}
+
+  practice:
+    required: [date, minutes, focus]
+    optional: [pieces]
+    constraints:
+      minutes: {range: [1, 600]}
+      pieces: {link: piece}
+      focus: {vocab: practice_focus}
+
+  technique:
+    required: [category]
+    optional: [resources]
+    constraints:
+      category: {vocab: technique_category}
+
+  composer:
+    required: [lived]
+    optional: [era]
+    constraints:
+      era: {vocab: composer_era}
+      lived: {pattern: '^(1\d{3}|20\d{2})-(1\d{3}|20\d{2}|Present)$'}
+
+  # --- Fitness -------------------------------------------------------------
+  routine:
+    required: [modality, muscle_groups, goal]
+    optional: []
+    constraints:
+      modality: {vocab: exercise_modality}
+      goal: {vocab: routine_goal}
+
+  session:
+    required: [date, kind]
+    optional: [routine, duration_min]
+    constraints:
+      kind: {vocab: session_kind}
+      routine: {link: routine}
+      duration_min: {range: [1, 600]}
+
+  exercise:
+    required: [muscle_groups, equipment]
+    optional: []
+    constraints:
+      muscle_groups: {vocab: muscle_group}
+      equipment: {vocab: equipment}
+
+  # --- Travel --------------------------------------------------------------
+  trip:
+    required: [status]
+    optional: [start, end, places, companions, budget]
+    constraints:
+      status: {vocab: trip_status}
+      places: {link: place}
+
+  place:
+    required: [country, visited]
+    optional: [city, first_visit, rating]
+    constraints:
+      rating: {range: [1, 5]}
+
+  # --- Knowledge -----------------------------------------------------------
+  paper:
+    required: [authors, year, fields, status]
+    optional: [url, venue]
+    constraints:
+      fields: {vocab: field}
+      status: {vocab: source_status}
+
+  book:
+    required: [authors, year, fields, status]
+    optional: [progress, started, finished, url]
+    constraints:
+      fields: {vocab: field}
+      status: {vocab: source_status}
+
+  course:
+    required: [authors, year, fields, status]
+    optional: [progress, started, finished, url]
+    constraints:
+      fields: {vocab: field}
+      status: {vocab: source_status}
+
+  article:
+    required: [url, year, status, fields]
+    optional: [authors]
+    constraints:
+      fields: {vocab: field}
+      status: {vocab: source_status}
+
+  concept:
+    required: [fields, confidence, last_reviewed]
+    optional: [sources]
+    constraints:
+      fields: {vocab: field}
+      sources: {link: [paper, book, course, article]}
+      confidence: {range: [1, 5]}
+
+  map:
+    required: [field]
+    optional: []
+    constraints:
+      field: {vocab: field}
+
+  # --- Life Admin ----------------------------------------------------------
+  spending:
+    required: [month, total]
+    optional: [budget]
+    constraints:
+      month: {pattern: '^\d{4}-\d{2}$'}
+    # Category breakdown lives in a body table (CONVENTIONS.md section 5);
+    # its category names use the spending_category vocabulary.
+
+  account:          # one financial account; never numbers or credentials
+    required: [url]
+    optional: [review_by]
+
+  asset:            # an appliance or other thing you own and maintain
+    required: [purchased]
+    optional: [warranty_until, manual, url]
+
+  contractor:       # a person or company you hire
+    required: []
+    optional: [url]
+
+  benefit:          # one of your work benefit elections
+    required: []
+    optional: [review_by]
+
+  log:              # a dated Life Admin record (health, home maintenance)
+    required: [date]
+    optional: []
+
+  # --- References ----------------------------------------------------------
+  # General look-up material and how-tos. Notes about your own situation are
+  # items in their domain instead.
+  reference:
+    required: [topic]
+    optional: [url, review_by]
+
+  # --- System --------------------------------------------------------------
+  system:
+    required: [version]
+    optional: []
+
+  template:
+    required: [version]
+    optional: []
+    # Templates contain placeholder values and are exempt from validation
+    # beyond having type: template and a version.

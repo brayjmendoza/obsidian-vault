@@ -1,0 +1,13 @@
++ [ ] Laptop case
+- [ ] iPad Case
+- [ ] Page turner pedal — $60
+- [ ] Box jump thingy
+- [ ] Single wire holder thingys
+- [ ] Intermediate level violin — ~$2,000
+- [ ] NVIDIA RTX 5070 Ti — ~$750
+- [ ] Homelabbing stuff — ~$1,000 (need to do more research)
+- [ ] Books of sorts
+- [ ] Fire ahh fits
+- [ ] Supra? — ~$50,000
+- [ ] House — ~$200,000 down payment?
+- [ ] ~~Wedding ring~~

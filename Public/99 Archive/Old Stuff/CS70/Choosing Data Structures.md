@@ -1,0 +1,17 @@
+- High-level interface categories:
+    - **Linear data structures** (e.g., list, stack, queue)
+        - Good at keeping things in a particular order.
+        - Not always good at searching the data for a particular item.
+    - **Associative data structures** (e.g., set, map/dictionary)
+        - Good at searching the data for a particular item.
+        - Not always good at keeping track of the order of things.
+    - **Priority queue** (kind of a category of its own)
+        - Good at finding the minimum item (or the maximum item if we set it up that way instead).
+        - Not good at searching the data for a particular item.
+        - Not good at keeping things in a particular order (although we can keep removing the minimum).
+ 
+- There's no one data structure that's "best"
+	- The best data structure depends on the particular application
+	- Every data structure has different trade-offs
+- The more you know about the assumptions you can make about the data you want to store, the more easily you can pick the best data structure
+- For small problems, the choice of data structure may not make a noticeable difference in performance; it's not always necessary to do extra work to optimize!

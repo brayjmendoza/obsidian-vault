@@ -1,0 +1,119 @@
+# Checks Public/ against the vault schemas (see Public/90 System/Overview/CI Workflows.md).
+# Lives at .github/workflows/validate.yml in the repository root.
+name: Validate vault
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:                # Obsidian Git auto-commits often; only the latest push matters
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TOOLING: Public/91 Tooling
+
+jobs:
+  # Type-checks the tooling and tests. Formatting and linting are left to the
+  # ruff pre-commit hooks. Runs beside `validate`, so a type error doesn't hide
+  # the vault report.
+  static-check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Public/91 Tooling
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      # uv installs the Python in .python-version and caches packages by uv.lock.
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          enable-cache: true
+
+      # --locked fails if uv.lock is out of date with pyproject.toml.
+      - name: Install the tooling and dev tools from uv.lock
+        run: uv sync --locked
+
+      - name: mypy
+        run: uv run --locked mypy
+
+  # Runs the same hooks as .pre-commit-config.yaml (ruff check and format) on
+  # every file, so lint problems show up even in commits that skipped the hooks
+  # (a desktop without `pre-commit install`, --no-verify, a GitHub web edit).
+  # The hooks fix what they can; here that fails the job and prints the diff.
+  pre-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          enable-cache: true
+
+      - name: Cache hook environments
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+
+      # pre-commit comes from uv.lock (the dev group). --project points uv at
+      # the tooling while the hooks run from the repository root.
+      - name: Run the hooks on every file
+        run: >-
+          uv run --locked --project "$TOOLING"
+          pre-commit run --all-files --show-diff-on-failure --color always
+
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      # No git-crypt key: Private/ stays encrypted and is never read.
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          enable-cache: true
+
+      - name: Install the tooling and dev tools from uv.lock
+        run: uv sync --locked --project "$TOOLING"
+
+      # A broken schema or script fails here, before the vault is judged.
+      - name: Run test fixtures
+        working-directory: Public/91 Tooling
+        run: uv run --locked pytest -v
+
+      # vault-validate is the console script defined in pyproject.toml.
+      - name: Validate Public/
+        id: validate
+        run: |
+          uv run --locked --project "$TOOLING" vault-validate Public \
+            --output "$RUNNER_TEMP/vault-validation.json" \
+            | tee "$RUNNER_TEMP/vault-validation.txt"
+
+      - name: Write job summary
+        if: always() && steps.validate.outcome != 'skipped'
+        run: |
+          {
+            echo "## Vault validation"
+            echo
+            echo '```'
+            tail -n 400 "$RUNNER_TEMP/vault-validation.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload JSON report
+        if: always() && steps.validate.outcome != 'skipped'
+        uses: actions/upload-artifact@v7
+        with:
+          name: vault-validation
+          path: ${{ runner.temp }}/vault-validation.json
+          retention-days: 30

@@ -1,0 +1,47 @@
+# Keeps .pre-commit-config.yaml on the latest hook releases (ruff), so nobody
+# has to run `pre-commit autoupdate` by hand. Commits straight to main; each
+# desktop's pre-commit picks up the new version after Obsidian Git pulls.
+# Lives at .github/workflows/pre-commit-autoupdate.yml in the repository root.
+name: Update pre-commit hooks
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # weekly, Mondays 12am PST
+  workflow_dispatch:
+
+permissions:
+  contents: write           # to push the updated config
+
+concurrency:
+  group: pre-commit-autoupdate
+  cancel-in-progress: true
+
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+    steps:
+      # No git-crypt key: Private/ stays encrypted and is never read.
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10.3.2
+
+      # uvx runs the latest pre-commit in a throwaway environment.
+      - name: Update hook versions
+        run: uvx pre-commit autoupdate
+
+      - name: Commit and push if anything changed
+        run: |
+          if git diff --quiet -- .pre-commit-config.yaml; then
+            echo "Hooks are already on their latest versions."
+            exit 0
+          fi
+          git diff -- .pre-commit-config.yaml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898341+github-actions[bot]@users.noreply.github.com"
+          git add .pre-commit-config.yaml
+          git commit -m "Update pre-commit hooks"
+          # Obsidian Git may have pushed in the meantime.
+          git pull --rebase
+          git push

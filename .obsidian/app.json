@@ -1,0 +1,12 @@
+{
+  "attachmentFolderPath": "Public/98 Attachments",
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true,
+  "userIgnoreFilters": [
+    "/Public/98 Attachments/",
+    "/Public/91 Tooling/tests/",
+    "/Public/91 Tooling/schemas/",
+    "/Public/91 Tooling/vault_tools/",
+    "/(egg-info$)|(egg-info/)/"
+  ]
+}

@@ -1,0 +1,1 @@
+only .py files belong in scripts/

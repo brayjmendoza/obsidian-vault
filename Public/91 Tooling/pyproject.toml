@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vault-tools"
+version = "0.1.0"
+description = "Validators for the Obsidian vault's schemas"
+requires-python = ">=3.14"
+# Managed by uv: `uv add <pkg>` / `uv add --dev <pkg>` edit these lists, and
+# uv.lock pins the exact versions. `uv lock --upgrade` moves to the latest.
+dependencies = [
+    "pydantic>=2.14.2",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+# Installed commands, runnable from anywhere, e.g. the repository root
+# (Obsidian Vault/). With no folder argument they check this vault's Public/.
+vault-validate = "vault_tools.validate:main"
+vault-validate-properties = "vault_tools.validate_properties:main"
+vault-validate-structure = "vault_tools.validate_structure:main"
+vault-validate-links = "vault_tools.validate_links:main"
+vault-validate-urls = "vault_tools.validate_urls:main"
+
+[tool.setuptools.packages.find]
+# vault_tools/ and any subpackages added later.
+include = ["vault_tools*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+# Python only: never markdown, notebooks, or anything else in the vault.
+include = ["*.py"]
+# Fixture vaults are sample data, not code. force-exclude makes the exclusion
+# hold even when pre-commit passes file paths directly.
+extend-exclude = ["tests/fixtures"]
+force-exclude = true
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["vault_tools", "tests"]
+
+[tool.mypy]
+python_version = "3.14"
+files = ["vault_tools", "tests"]
+exclude = ["^tests/fixtures/"]
+strict = true
+plugins = ["pydantic.mypy"]
+
+# Checks pydantic models' constructors and fields, not just their methods.
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+    "types-pyyaml>=6.0.12.20261030",
+]
