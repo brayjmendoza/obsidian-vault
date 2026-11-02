@@ -291,7 +291,7 @@ class StructureSchema(SchemaModel):
 
 
 class Schemas(BaseModel):
-    """Both schemas, parsed and consistent with each other.
+    """The schemas, parsed and consistent with each other.
 
     Attributes:
         properties: The properties schema.
