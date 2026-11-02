@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-25
 updated: 2026-11-01
-version: "0.10"
+version: "0.12"
 ---
 # Schemas and Validation
 
@@ -30,13 +30,19 @@ The current layout of `91 Tooling/` is as follows:
 │   ├── validate_links.py        no links into Private/, URLs only in `url`
 │   ├── validate_urls.py         fetches every `url` (network; only on request)
 │   ├── validate_tags.py         every inline #tag is one of the four allowed tags
-│   └── validate.py              runs the version check and both validators
-└── tests/fixtures/              small sample vaults that must pass or fail
+│   └── validate.py              runs every offline check: versions, structure, properties, links, and tags
+└── tests/
+    ├── conftest.py              loads fixture vaults with the real schemas
+    ├── test_*.py                one file per validator, plus the schemas and the CLI
+    ├── private_sample/          a stand-in Private/ folder: only its file names matter
+    └── fixtures/                small sample Public/ folders that must pass or fail
 ```
 
 ## Python Environment
 
-uv manages the tooling's Python, packages, and virtual environment, and `uv.lock` pins every package, so every machine and CI get the same set. The environment lives at `~/.venvs/vault-tools`, outside the vault: iCloud would otherwise sync thousands of machine-specific files. direnv points uv there through `.envrc` at the repository root and activates the environment anywhere in the repository. Setup, commands, and dependency management are in `91 Tooling/README.md`.
+uv manages the tooling's Python, packages, and virtual environment, and `uv.lock` pins every package, so every machine and CI get the same set. The environment lives at `~/.venvs/vault-tools`, outside the vault: iCloud would otherwise sync thousands of machine-specific files. direnv points uv there through `.envrc` at the repository root and activates the environment anywhere in the repository. Setup, commands, and dependency management are in the tooling's [[Public/91 Tooling/README|README]].
+
+The code itself follows [[CODE_STYLE]]: ruff lints and formats it before every commit, and CI also runs strict mypy and the tests (see [[CI Workflows]]).
 
 ## The Schemas
 
@@ -55,7 +61,7 @@ Which of the planned schemas to build, and when, is still open: see [[Vault Open
 
 - **One home per rule:** the core schemas join on note type names. A type's folders and filename pattern are declared once, in the structure schema; its properties once, in the properties schema. [[Note Types and Properties]] summarizes both.
 - **Approval enforces itself:** an undeclared folder fails validation, so a new hobby or area means a schema edit, which needs your approval.
-- **Shared version:** `CONVENTIONS.md` and both schemas carry one version number and change together.
+- **Shared version:** [[CONVENTIONS]] and both schemas carry one version number and change together. `vault-validate` reports an error when they differ.
 
 ## Where Validation Runs
 

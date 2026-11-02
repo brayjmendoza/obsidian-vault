@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-25
 updated: 2026-11-01
-version: "0.7"
+version: "0.12"
 ---
 # Claude Skills
 
@@ -19,7 +19,7 @@ Ten skills, built in priority order (see [[Vault Rollout]]). All of them read [[
 | 7   | hobby planners    | Piano practice rotation, next week's workout, trip itinerary, and post-trip write-up                                                                                                                                                                       | Weekly / on demand |
 | 8   | spending-import   | Bank CSV → categorized monthly spending note                                                                                                                                                                                                               | Monthly            |
 | 9   | quiz-me           | Spaced review of low-confidence or stale concepts                                                                                                                                                                                                          | On demand          |
-| 10  | vault-health      | Runs validate.py and reads the latest CI results (see [[Schemas and Validation]]); finds broken links, orphans, stale statuses, and iCloud duplicate copies (see [[Sync and Backup#Conflicts and Backup\|Conflicts and Backup]]); fixes only with approval | Monthly, scheduled |
+| 10  | vault-health      | Runs `vault-validate` and reads the latest CI results (see [[Schemas and Validation]]); finds broken links, orphans, stale statuses, and iCloud duplicate copies (see [[Sync and Backup#Conflicts and Backup\|Conflicts and Backup]]); fixes only with approval | Monthly, scheduled |
 
 ---
 ← [[Sync and Backup]] · Next: [[Vault Rollout]] →

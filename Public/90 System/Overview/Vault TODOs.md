@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-31
 updated: 2026-11-01
-version: "0.6"
+version: "0.12"
 ---
 # TODOs
 
@@ -10,11 +10,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 
 * Skill for daily/weekly notes
 	* End of day skill for reflection (highlights, energy level?, etc.)
-* Python script to enforce schema.yaml
-	* GitHub action
-* GitHub action to make sure no public notes link to private notes -- checks broken interlinks too
-	* Check all URLs resolve
-	* Make sure no tags outside of allowed four
+* Check note bodies for broken interlinks (only typed links in properties are checked so far)
 * Populate it
 * Setup on windows (git stuff & plugins)
 * Plugins
@@ -34,23 +30,20 @@ This is a list of improvements or extensions that need to be made to the vault.
 	* Exercise
 	* Honestly every note type...
 * Folder homepages
-* Tell Claude about writing style
 * Note style
 	* Horizontal scroll for code snippets
 
 **Order of TODOs**
-1. CI & validation scripts (basically the entire `91 Toolings/` folder)
-	1. Update relevant overview notes after
-2. Review CONVENTIONS.md
-3. Make Templates
+1. Review CONVENTIONS.md
+2. Make Templates
 	1. Create uv concept from the claude chat where you added uv, use 91 tooling as the example
-4. Make hubs
-5. Make plan pages
-6. Make homepages?
-7. Move benefits in
-8. Review STYLE.md
-9. Move stuff out of archive/populate vault
-10. Plugins
+3. Make hubs
+4. Make plan pages
+5. Make homepages?
+6. Move benefits in
+7. Review STYLE.md
+8. Move stuff out of archive/populate vault
+9. Plugins
 
 ---
 ← [[Vault Rollout]] · Back to [[Vault Overview]]

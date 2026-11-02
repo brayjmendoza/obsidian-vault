@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-25
 updated: 2026-11-01
-version: "0.6"
+version: "0.12"
 aliases:
   - Overview
 ---
@@ -20,7 +20,7 @@ Three files make up the contract between you and every Claude skill. These overv
 | `91 Tooling/schemas/properties-schema.yaml` | Defines every note type's properties, value types, and allowed values (i.e., constraints on YAML frontmatter) |
 | `91 Tooling/schemas/structure-schema.yaml`  | Defines every allowed folder, the note types each holds, the domain skeleton, filename patterns              |
 
-See [[Vault Principles]] for why it's split this way, and [[Schemas and Validation]] for how the schemas are enforced.
+Two style guides sit beside the contract: [[STYLE]] for how note bodies read, and [[CODE_STYLE]] for the Python in `91 Tooling/`. See [[Vault Principles]] for why it's split this way, and [[Schemas and Validation]] for how the schemas are enforced.
 
 ## Contents
 

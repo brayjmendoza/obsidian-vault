@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-25
 updated: 2026-11-01
-version: "0.6"
+version: "0.12"
 ---
 # Folder Structure
 
@@ -30,8 +30,8 @@ Public/
 ├── 50 References/       look-up info and how-tos; at most one level of topic 
 subfolders
 |   └── Bookmarks/       links to interesting online tools and visualizations
-├── 90 System/           Templates/, Bases/, Claude/ (CONVENTIONS.md, changelog), Overview/ (these notes)
-├── 91 Tooling/          schemas, validation scripts, tests
+├── 90 System/           Templates/, Bases/, Claude/ (CONVENTIONS.md, style guides, changelog), Overview/ (these notes)
+├── 91 Tooling/          schemas and the vault-tools Python package: validators and their tests
 ├── 98 Attachments/      images, PDFs, and files embedded in notes
 └── 99 Archive/          retired notes; mirrors the original path
 ```
