@@ -168,8 +168,8 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 - At the end of every run, run the validators from `Public/`:
   `UV_PROJECT_ENVIRONMENT=$HOME/.venvs/vault-tools uv run --project "91 Tooling" vault-validate --json`.
   Fix what you broke and report the rest. Always set `UV_PROJECT_ENVIRONMENT` so uv never builds a virtual environment inside the vault, where iCloud would sync it.
-- When a run adds or changes a `url`, also run the validator with `--check-urls`, which fetches every `url`. An error (`url-broken`) means the page is gone or the host doesn't exist: fix it. A warning (`url-unverified`) often means Claude's network can't reach the site: report it rather than changing the URL.
-- Read the report's `skipped` list and repeat it in the run's report, so a clean run without `Private/` or `--check-urls` isn't mistaken for a full one.
+- The validator fetches every `url` on every run. An error (`url-broken`) means the page is gone or the host doesn't exist: fix it. A warning (`url-unverified`) often means Claude's network can't reach the site: report it rather than changing the URL.
+- Read the report's `skipped` list and repeat it in the run's report, so a clean run without `Private/` isn't mistaken for a full one.
 - Set `updated` on any note you edit.
 - Append one line per run to `90 System/Claude/changelog.md`:
   `- 2026-10-10 21:40 · inbox-triage · moved 4 notes from Inbox; created [[Fourier Transform]]`
@@ -190,6 +190,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of this file
 
+- 2026-11-01 · v0.12 · Section 7: `vault-validate` fetches every `url` on every run; the `--check-urls` option is gone. No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Empty folders keep a `.gitkeep` so git and CI see them (section 2); `structure-schema.yaml` ignores `.gitkeep`.
 - 2026-11-01 · v0.11 · Section 6: inline `#tags` in note bodies are now checked against the four allowed tags, like the `tags` property; spelled out that tags are lowercase and never nested. No version bump: the allowed tags are unchanged.
 - 2026-11-01 · v0.11 · URLs live only in the `url` property, never in other properties or note bodies (sections 4 and 5); code is exempt. `vault-validate` now checks links into `Private/` (section 1) and every URL's form, and fetches URLs with `--check-urls` (section 7). `asset` notes may set `url`, and `manual` holds only an attachment link.

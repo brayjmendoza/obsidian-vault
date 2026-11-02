@@ -12,7 +12,7 @@ One hard boundary, several soft ones, and a full audit trail. The binding wordin
 - **Hard:** folder access. Claude is connected to `Public/` only (see [[Privacy Boundary]]).
 - **Schema-valid writes:** Claude runs `vault-validate` before finishing, and every note it touched must pass all schemas (see [[Schemas and Validation]]). Claude never invents properties, types, vocabulary values, tags, folders, or domains, and never edits [[CONVENTIONS]], a schema, or anything else in `91 Tooling/` without approval of the specific change.
 - **No links into Private:** Public notes never link to Private ones. `vault-validate` catches links written as a `Private/` path on every run, and links by name wherever `Private/`'s file names are visible, CI included (see [[CI Workflows]]).
-- **URLs only in `url`:** a URL lives in a note's `url` property, never in a body or another property. Claude fetches URLs with `--check-urls` whenever it adds or changes one.
+- **URLs only in `url`:** a URL lives in a note's `url` property, never in a body or another property. `vault-validate` fetches every URL on every run.
 - **Code style:** Python that Claude writes follows [[CODE_STYLE]] and isn't done until ruff, mypy, and pytest pass.
 - **Read-only notes:** a `claude: read-only` property means read but never edit.
 - **Generated notes:** daily and weekly notes are written entirely by skills (see [[Claude Skills]]), so Claude may create and rewrite them whole. Anything you write by hand goes in another note and gets linked.

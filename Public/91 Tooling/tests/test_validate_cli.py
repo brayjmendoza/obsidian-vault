@@ -12,17 +12,17 @@ from vault_tools.cli import ExitCode
 FAILING: Final = ["bad-properties", "bad-links", "bad-structure", "bad-link-rules", "bad-tags"]
 
 
-def test_valid_vault_passes() -> None:
+def test_valid_vault_passes(served_copy: CopyFixture) -> None:
     """The valid fixture exits 0 with nothing to report."""
-    result = run_module("validate", str(FIXTURES_DIR / "valid"))
+    result = run_module("validate", str(served_copy("valid")))
     assert result.returncode == ExitCode.OK, result.stdout + result.stderr
     assert "0 errors, 0 warnings" in result.stdout
 
 
 @pytest.mark.parametrize("name", FAILING)
-def test_failing_vaults_exit_1(name: str) -> None:
+def test_failing_vaults_exit_1(name: str, served_copy: CopyFixture) -> None:
     """Every failing fixture exits 1."""
-    result = run_module("validate", str(FIXTURES_DIR / name))
+    result = run_module("validate", str(served_copy(name)))
     assert result.returncode == ExitCode.ERRORS, result.stdout + result.stderr
 
 
@@ -50,9 +50,9 @@ def test_json_report() -> None:
     }
 
 
-def test_warnings_alone_do_not_fail(copy_fixture: CopyFixture) -> None:
+def test_warnings_alone_do_not_fail(served_copy: CopyFixture) -> None:
     """A run with only warnings exits 0."""
-    root = copy_fixture("valid")
+    root = served_copy("valid")
     note = root / "10 Projects/Spring Recital.md"
     note.write_text(
         note.read_text(encoding="utf-8").replace("[[Piano]]", "[[Harpsichord]]"), encoding="utf-8"
@@ -88,8 +88,8 @@ def test_missing_schema_exits_2(tmp_path: Path) -> None:
     assert result.returncode == ExitCode.LOAD_FAILED
 
 
-def test_runs_from_another_folder(tmp_path: Path) -> None:
+def test_runs_from_another_folder(tmp_path: Path, served_copy: CopyFixture) -> None:
     """The installed package runs from outside 91 Tooling/, as from the repository root."""
-    result = run_module("validate", str(FIXTURES_DIR / "valid"), cwd=tmp_path)
+    result = run_module("validate", str(served_copy("valid")), cwd=tmp_path)
     assert result.returncode == ExitCode.OK, result.stdout + result.stderr
     assert "0 errors, 0 warnings" in result.stdout

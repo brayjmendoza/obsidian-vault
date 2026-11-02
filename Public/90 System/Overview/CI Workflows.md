@@ -17,14 +17,14 @@ Runs on every push to main, weekly on Mondays (to catch URLs that died without a
 | ------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `static-check`      | Strict mypy on `vault_tools/` and `tests/`                 | Type errors in the tooling                                                                                                                                                                               |
 | `pre-commit`        | The ruff hooks from `.pre-commit-config.yaml`, on every file | Lint and format problems, even in commits that skipped the hooks (e.g., a desktop without `pre-commit install`, `--no-verify`, or a GitHub web edit). Fixes aren't committed: the job fails and prints the diff |
-| `test-and-validate` | The tests, then `vault-validate --check-urls`              | A broken schema or validator, then anything in `Public/` that breaks a rule                                                                                                                              |
+| `test-and-validate` | The tests, then `vault-validate`                           | A broken schema or validator, then anything in `Public/` that breaks a rule                                                                                                                              |
 
 `test-and-validate` runs these steps:
 
 1. Check out the repository. CI gets no git-crypt key, so the contents of `Private/` stay encrypted and are never read (see [[Sync and Backup#git-crypt|git-crypt]]).
 2. Set up uv (`astral-sh/setup-uv`), which installs the Python in `.python-version` and runs `uv sync --locked`. `--locked` fails the run if `uv.lock` is out of date with `pyproject.toml`.
 3. Run the test fixtures, so a broken schema or script fails before the vault is judged.
-4. Run `vault-validate --check-urls` over `Public/`: the schemas, the link rules, the allowed tags, and a fetch of every `url`. The checkout puts `Private/` beside `Public/`. git-crypt encrypts contents, not file names, so links into `Private/` by name are caught from the names alone (see [[Privacy Boundary]]).
+4. Run `vault-validate` over `Public/`: the schemas, the link rules, the allowed tags, and a fetch of every `url`. The checkout puts `Private/` beside `Public/`. git-crypt encrypts contents, not file names, so links into `Private/` by name are caught from the names alone (see [[Privacy Boundary]]).
 5. Write the text report to the job summary and upload the JSON report as a build artifact.
 6. On any error, mark the commit red. Warnings (e.g., a URL that couldn't be verified) don't.
 

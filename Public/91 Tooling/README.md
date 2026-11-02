@@ -2,11 +2,11 @@
 type: system
 created: 2026-11-01
 updated: 2026-11-01
-version: "0.10"
+version: "0.12"
 ---
 # Vault Tools
 
-`vault-tools` is the Python package that checks `Public/` against the vault's two schemas. It walks every note, parses its frontmatter, resolves its links the way Obsidian does, and reports anything that breaks `properties-schema.yaml` or `structure-schema.yaml`. What each schema checks, and why, is in [[Schemas and Validation]]. How GitHub runs these checks is in [[CI Workflows]].
+`vault-tools` is the Python package that checks `Public/` against the vault's two schemas. It walks every note, parses its frontmatter, resolves its links the way Obsidian does, and reports anything that breaks `properties-schema.yaml`, `structure-schema.yaml`, the link rules, or the four allowed tags. What each schema checks, and why, is in [[Schemas and Validation]]. How GitHub runs these checks is in [[CI Workflows]].
 
 ## Folder Layout
 
@@ -32,8 +32,9 @@ The folder is laid out as follows:
 │   ├── validate_links.py        no links into Private/, URLs only in `url`
 │   ├── validate_urls.py         fetches every `url` (network; only on request)
 │   ├── validate_tags.py         every inline #tag is one of the four allowed tags
-│   └── validate.py              runs the version check and both validators
+│   └── validate.py              runs every offline check: versions, structure, properties, links, and tags
 └── tests/
+    ├── __init__.py              makes tests/ a package, so mypy and ruff see it as tests.*
     ├── conftest.py              loads fixture vaults with the real schemas
     ├── test_*.py                one file per validator, plus the schemas and the CLI
     ├── private_sample/          a stand-in Private/ folder: only its file names matter
@@ -71,7 +72,7 @@ Installing the package creates six console scripts:
 
 | Command | Checks |
 |---|---|
-| `vault-validate` | Everything offline: the shared version of [[CONVENTIONS]] and both schemas, then structure, properties, links, and tags. With `--check-urls`, also fetches every `url` |
+| `vault-validate` | Everything: the shared version of [[CONVENTIONS]] and both schemas, then structure, properties, links, tags, and a fetch of every `url` |
 | `vault-validate-structure` | Only `structure-schema.yaml`: folders, note types per folder, filenames, hubs, and non-note files |
 | `vault-validate-properties` | Only `properties-schema.yaml`: types, required properties, value types, vocabularies, and typed links |
 | `vault-validate-links` | Only the link rules: no links into `Private/`, URLs only in `url`, and every `url` well formed |
@@ -87,11 +88,10 @@ All of them take these options:
 | `--json`        | Print a JSON report instead of text                                      |
 | `--output FILE` | Also write the JSON report to `FILE`                                     |
 | `--private DIR` | The `Private/` folder whose file names (never contents) links are checked against. Defaults to `Private/` beside `Public/`, if it exists |
-| `--check-urls`  | `vault-validate` only: also fetch every `url` (slow, needs the network)  |
 
 The exit code is 0 when there are no errors (warnings are allowed), 1 when there are errors, and 2 when the vault or a schema file can't be read. A schema that reads fine but breaks its own rules counts as errors: its problems become the whole report, each naming the key at fault.
 
-The report's `skipped` list names checks a run couldn't or didn't do: links into `Private/` by name when there's no `Private/` folder to see, and URLs without `--check-urls`.
+The report's `skipped` list names checks a run couldn't or didn't do: links into `Private/` by name when there's no `Private/` folder to see.
 
 A URL that's gone (HTTP 404 or 410), or whose host doesn't exist, refuses connections, or fails TLS, is an error. Anything that might be temporary or a bot block (other 4xx, 5xx, timeouts, proxy refusals) is a warning: open the page by hand to confirm.
 
@@ -100,7 +100,6 @@ With direnv active, run them from anywhere in the repository:
 ```bash
 vault-validate
 vault-validate --json --output report.json
-vault-validate --check-urls
 vault-validate-structure
 ```
 

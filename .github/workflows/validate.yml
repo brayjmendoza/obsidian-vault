@@ -96,14 +96,14 @@ jobs:
         working-directory: Public/91 Tooling
         run: uv run --locked pytest -v
 
-      # vault-validate is the console script defined in pyproject.toml.
-      # --check-urls fetches every `url`. shell: bash adds pipefail, so the step
-      # fails when vault-validate does, not only when tee does.
+      # vault-validate is the console script defined in pyproject.toml; it
+      # fetches every `url` too. shell: bash adds pipefail, so the step fails
+      # when vault-validate does, not only when tee does.
       - name: Validate Public/
         id: validate
         shell: bash
         run: |
-          uv run --locked --project "$TOOLING" vault-validate Public --check-urls \
+          uv run --locked --project "$TOOLING" vault-validate Public \
             --output "$RUNNER_TEMP/vault-validation.json" \
             | tee "$RUNNER_TEMP/vault-validation.txt"
 

@@ -2,9 +2,6 @@
 
 import json
 import socket
-import threading
-from collections.abc import Iterator
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Final
 
@@ -18,43 +15,6 @@ from vault_tools.vault import Note
 
 E: Final = Severity.ERROR
 W: Final = Severity.WARNING
-ROUTES: Final = {"/ok": 200, "/moved": 301, "/gone": 410, "/forbidden": 403, "/error": 500}
-
-
-class Handler(BaseHTTPRequestHandler):
-    """Answers each route with its status; `/no-head` refuses HEAD but serves GET."""
-
-    def do_HEAD(self) -> None:
-        """Answer a HEAD request."""
-        self._respond(405 if self.path == "/no-head" else ROUTES.get(self.path, 404))
-
-    def do_GET(self) -> None:
-        """Answer a GET request."""
-        self._respond(200 if self.path == "/no-head" else ROUTES.get(self.path, 404))
-
-    def _respond(self, status: int) -> None:
-        """Send an empty response with a status; redirects go to /ok."""
-        self.send_response(status)
-        if status == 301:
-            self.send_header("Location", "/ok")
-        self.send_header("Content-Length", "0")
-        self.end_headers()
-
-    def log_message(self, format: str, *args: object) -> None:
-        """Keep test output quiet."""
-
-
-@pytest.fixture
-def server(monkeypatch: pytest.MonkeyPatch) -> Iterator[str]:
-    """Serve ROUTES on localhost, bypassing any proxy, and yield the base URL."""
-    monkeypatch.setenv("NO_PROXY", "127.0.0.1,localhost")
-    monkeypatch.setenv("no_proxy", "127.0.0.1,localhost")
-    httpd = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    thread = threading.Thread(target=httpd.serve_forever, args=(0.01,), daemon=True)
-    thread.start()
-    yield f"http://127.0.0.1:{httpd.server_port}"
-    httpd.shutdown()
-    httpd.server_close()
 
 
 def free_port() -> int:
@@ -137,24 +97,16 @@ def test_fetch_refused(monkeypatch: pytest.MonkeyPatch) -> None:
     assert result.failure == FetchFailure.REFUSED, result
 
 
-def test_cli_checks_urls_only_when_asked(server: str, copy_fixture: CopyFixture) -> None:
-    """vault-validate fetches URLs only with --check-urls, and says when it didn't."""
-    root = copy_fixture("valid")
-    for name, path in (("Mathcha.md", "/ok"), ("Bookmarks/Desmos.md", "/gone")):
-        note = root / "50 References" / name
-        text = note.read_text(encoding="utf-8")
-        start = text.index("url: ")
-        end = text.index("\n", start)
-        note.write_text(text[:start] + f"url: {server}{path}" + text[end:], encoding="utf-8")
+def test_vault_validate_always_fetches_urls(served_copy: CopyFixture, server: str) -> None:
+    """vault-validate fetches every `url` on every run, and a gone page fails it."""
+    root = served_copy("valid")
+    desmos = root / "50 References/Bookmarks/Desmos.md"
+    text = desmos.read_text(encoding="utf-8")
+    desmos.write_text(text.replace(f"{server}/ok", f"{server}/gone"), encoding="utf-8")
 
-    offline = json.loads(run_module("validate", str(root), "--json").stdout)
-    assert offline["summary"]["ok"] is True
-    assert any("--check-urls" in reason for reason in offline["skipped"])
-
-    result = run_module("validate", str(root), "--json", "--check-urls")
+    result = run_module("validate", str(root), "--json")
     assert result.returncode == ExitCode.ERRORS, result.stdout + result.stderr
     data = json.loads(result.stdout)
     assert [(i["code"], i["path"]) for i in data["issues"]] == [
         ("url-broken", "50 References/Bookmarks/Desmos.md")
     ]
-    assert not any("--check-urls" in reason for reason in data["skipped"])

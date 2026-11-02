@@ -8,8 +8,8 @@ hosts that don't exist, refuse connections, or fail TLS are errors. Anything
 that might be temporary or a bot block (other 4xx, 5xx, timeouts, proxy
 failures) is a warning, since only opening the page by hand can tell.
 
-Slow and dependent on the network, so `vault-validate` runs it only with
-`--check-urls`.
+`vault-validate` always runs it. Where the network can't reach a site (e.g.,
+in Claude's runs), its URLs come back as warnings, never errors.
 
     vault-validate-urls [PUBLIC_DIR] [--json]
     python -m vault_tools.validate_urls

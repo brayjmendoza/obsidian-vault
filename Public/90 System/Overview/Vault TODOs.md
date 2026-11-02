@@ -3,6 +3,7 @@ type: system
 created: 2026-10-31
 updated: 2026-11-01
 version: "0.12"
+claude: read-only
 ---
 # TODOs
 

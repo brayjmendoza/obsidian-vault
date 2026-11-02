@@ -51,7 +51,7 @@ The code itself follows [[CODE_STYLE]]: ruff lints and formats it before every c
 | `properties-schema.yaml` | Core                                   | Frontmatter: each property's one value type, vocabularies, required and optional properties per note type, value constraints                                                                                                 |
 | `structure-schema.yaml`  | Core                                   | Layout: the allowed top-level folders, every domain and its role folders, which note types live in each folder, filename patterns, hubs present, flat folders, how deep open folders may go, allowed non-note files          |
 | Typed links              | Core, inside the properties schema     | `link: composer` instead of `link: true`: `piece.composer` must point to a composer, `project.area` to a hub, `concept.sources` to a paper, book, course, or article. Wrong type is an error; an unresolved link is a warning |
-| Link rules               | Core, a script rather than a schema    | No link into `Private/`, in bodies or properties; URLs only in `url`, each a single well-formed http(s) URL; with `--check-urls`, every URL loads. Code blocks and inline code are skipped |
+| Link rules               | Core, a script rather than a schema    | No link into `Private/`, in bodies or properties; URLs only in `url`, each a single well-formed http(s) URL that loads. Code blocks and inline code are skipped |
 | Tags                     | Core, a script reading the `tag` vocabulary | Every inline `#tag` in a note body (outside code) is one of the four allowed tags; the `tags` property is held to the same list by the properties schema |
 | `body-schema.yaml`       | Planned                                | Required headings and tables per type: hub headings, concept Connections and Sources, the spending Categories table, the session sets table, and daily and weekly sections. Templates can be generated from it                   |
 | `access-schema.yaml`     | Planned                                | Per folder, what Claude may do: create, edit, regenerate whole (daily and weekly notes), or read only. CI can then check that Claude's commits touched only allowed files                                                     |
@@ -67,7 +67,7 @@ Which of the planned schemas to build, and when, is still open: see [[Vault Open
 
 | Where | When | On failure |
 | --- | --- | --- |
-| Claude | End of every skill run (`vault-validate --json`), plus `--check-urls` when a run adds or changes a `url` | Fixes what it broke; reports the rest, and anything `skipped`, in the changelog |
+| Claude | End of every skill run (`vault-validate --json`) | Fixes what it broke; reports the rest, and anything `skipped`, in the changelog |
 | GitHub Actions | Every push to main, plus a weekly scheduled run | Red check and a JSON report; vault-health reads the latest result |
 | Any desktop | On demand (`vault-validate`) | Prints the failures |
 
