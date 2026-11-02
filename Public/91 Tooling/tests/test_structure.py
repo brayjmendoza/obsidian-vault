@@ -102,10 +102,25 @@ def test_absent_domains_need_no_hub(load_vault: LoadVault) -> None:
     assert validate_structure.check(vault) == []
 
 
-def test_empty_domain_folder_needs_a_hub(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
-    """A domain folder that exists needs its hub, even when empty."""
+def test_empty_folders_are_ignored(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
+    """Git doesn't track empty folders, so neither does the validator: results match CI's."""
+    root = copy_fixture("valid")
+    (root / "30 Life Admin/Planning/Notes").mkdir(parents=True)  # a domain without a hub
+    (root / "15 Extras").mkdir()  # an undeclared folder
+    (root / "30 Life Admin/Work/.DS_Store").parent.mkdir()
+    (root / "30 Life Admin/Work/.DS_Store").write_bytes(b"\0")  # only an ignored file
+    assert validate_structure.check(load_vault(root)) == []
+
+
+def test_domain_folder_with_files_needs_a_hub(
+    copy_fixture: CopyFixture, load_vault: LoadVault
+) -> None:
+    """Once a domain folder holds a file, git sees it, and it needs its hub."""
     root = copy_fixture("valid")
     (root / "30 Life Admin/Planning").mkdir()
+    (root / "30 Life Admin/Planning/Budget.md").write_text(
+        "---\ntype: plan\ncreated: 2026-10-01\nupdated: 2026-10-01\n---\n", encoding="utf-8"
+    )
     assert keys(validate_structure.check(load_vault(root))) == {
         (E, "missing-hub", "30 Life Admin/Planning/", None)
     }

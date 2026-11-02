@@ -1,5 +1,6 @@
 [
   "meld-encrypt",
   "templater-obsidian",
-  "hide-folders"
+  "hide-folders",
+  "obsidian-git"
 ]
