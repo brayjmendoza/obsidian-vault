@@ -1,0 +1,20 @@
+# Shared views for field maps in 40 Knowledge/Maps (see CONVENTIONS section 5).
+# A map embeds a view, e.g. ![[Map.base#Unmapped Concepts]]. In an embedded
+# base, `this` is the embedding map.
+views:
+  - type: table
+    name: Unmapped Concepts
+    # Concepts in this map's field that the map doesn't link to yet.
+    filters:
+      and:
+        - type == "concept"
+        - fields.contains(this.field)
+        - "!this.file.hasLink(file)"
+    order:
+      - file.name
+      - fields
+      - confidence
+      - last_reviewed
+    sort:
+      - property: file.name
+        direction: ASC

@@ -1,0 +1,65 @@
+# Shared views for every domain hub (see CONVENTIONS section 5).
+# A hub embeds one view per section, e.g. ![[Hub.base#Now]]. In an embedded
+# base, `this` is the embedding note, so one file serves every hub and a change
+# here reaches all of them.
+views:
+  - type: table
+    name: Now
+    # Items anywhere under this domain (subdomains included) with an active status.
+    filters:
+      and:
+        - file.inFolder(this.file.folder)
+        - or:
+            - status == "learning"
+            - status == "polishing"
+            - status == "relearning"
+            - status == "planning"
+            - status == "booked"
+    order:
+      - file.name
+      - type
+      - status
+      - last_practiced
+      - start
+    sort:
+      - property: type
+        direction: ASC
+      - property: file.name
+        direction: ASC
+
+  - type: table
+    name: Projects
+    # Open projects whose area links to this hub.
+    filters:
+      and:
+        - type == "project"
+        - file.hasLink(this.file)
+        - status != "done"
+        - status != "dropped"
+    order:
+      - file.name
+      - status
+      - due
+    sort:
+      - property: due
+        direction: ASC
+
+  - type: table
+    name: Recent
+    # The latest log notes under this domain. Log filenames start with the
+    # date, so sorting by name puts the newest first.
+    filters:
+      and:
+        - file.inFolder(this.file.folder)
+        - or:
+            - type == "practice"
+            - type == "session"
+            - type == "spending"
+            - type == "log"
+    order:
+      - file.name
+      - type
+    sort:
+      - property: file.name
+        direction: DESC
+    limit: 7
