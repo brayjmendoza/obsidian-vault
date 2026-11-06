@@ -32,6 +32,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 * Folder homepages
 * Note style
 	* Horizontal scroll for code snippets
+	* Vault theme
 
 **Order of TODOs**
 1. Make Templates
