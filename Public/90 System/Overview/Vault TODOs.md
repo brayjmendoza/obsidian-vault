@@ -32,7 +32,9 @@ This is a list of improvements or extensions that need to be made to the vault.
 * Folder homepages
 * Note style
 	* Horizontal scroll for code snippets
-	* Vault theme
+	* Vault theme & fonts (Appearance settings in obsidian)
+	* CSS snippets
+* Obsidian settings: hotkeys (for keyboard shortcuts)
 
 **Order of TODOs**
 1. Make Templates
