@@ -2,5 +2,6 @@
   "meld-encrypt",
   "templater-obsidian",
   "hide-folders",
-  "obsidian-git"
+  "obsidian-git",
+  "frontmatter-modified-date"
 ]

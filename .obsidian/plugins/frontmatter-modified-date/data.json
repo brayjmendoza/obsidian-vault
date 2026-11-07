@@ -1,0 +1,22 @@
+{
+  "frontmatterProperty": "updated",
+  "createdDateProperty": "created",
+  "momentFormat": "",
+  "momentLocale": "",
+  "storeHistoryLog": false,
+  "historyNewestFirst": false,
+  "historyMaxItems": 0,
+  "excludedFolders": [
+    "Public/91 Tooling/tests",
+    "Public/91 Tooling/schemas",
+    "Public/91 Tooling/vault_tools",
+    "endsWith::egg-info",
+    "Public/98 Attachments"
+  ],
+  "useKeyupEvents": false,
+  "onlyUpdateExisting": false,
+  "timeout": 10,
+  "excludeField": "exclude_modified_update",
+  "appendField": "append_modified_update",
+  "appendMaximumFrequency": "day"
+}
