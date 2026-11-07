@@ -45,7 +45,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.12"
+version: "0.13"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -174,7 +174,7 @@ filenames:
   daily:    '^\d{4}-\d{2}-\d{2}$'
   weekly:   '^\d{4}-W\d{2}$'
   monthly:  '^\d{4}-\d{2}$'
-  piece:    '^.+ - .+$'
+  piece:    '^.+ - .+$'          # Title - Composer surname, e.g., Ballade No. 1 in G Minor - Chopin
   practice: '^\d{4}-\d{2}-\d{2} Practice$'
   routine:  '^\d{4}-W\d{2} Routine$'
   session:  '^\d{4}-\d{2}-\d{2} Workout$'

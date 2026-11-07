@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-10-10
-updated: 2026-11-01
-version: "0.12"
+updated: 2026-11-07
+version: "0.13"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.12**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.13**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -196,6 +196,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.13 · Piece notes are named `Title - Composer` with the composer's surname (e.g., `Ballade No. 1 in G Minor - Chopin`), noted beside the pattern in `structure-schema.yaml`. The pattern itself is unchanged. `routine` notes' `muscle_groups` now use the `muscle_group` vocabulary, like `exercise`.
 - 2026-11-01 · v0.12 · Rewritten to follow [[STYLE]]: "you" for the vault's owner, title-case headers, e.g. and i.e. in parentheses, "see" cross-references, the Oxford comma, and fewer semicolons. Domains, Empty Folders, and Bands are now subsections of section 2. No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Section 1: links to a heading or block that the target note lacks are reported too (`anchor-unresolved`). No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Section 1: unresolved links in note bodies are now reported too, as warnings like those in properties. No version bump: no rule or schema changed.

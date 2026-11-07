@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-07
-version: "0.12"
+version: "0.13"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -339,7 +339,153 @@ for (;;) {
   if (value != null) values[prop] = value;
 }
 
-// A required property left blank makes the note unfinished, so it's tagged inbox.
+// --- Name the note -------------------------------------------------------------
+// New notes only. A note that already has a name fitting its type keeps it.
+// Names fully set by properties (e.g., a practice log's date) are filled in;
+// otherwise you're asked for the part of the name that isn't a property.
+let unnamed = false;
+if (!adding) {
+  let structure = null;
+  try {
+    structure = parseYaml(await app.vault.adapter.read(`${root}91 Tooling/schemas/structure-schema.yaml`));
+  } catch (error) {
+    new Notice("Frontmatter: couldn't read structure-schema.yaml, so names aren't checked against it.", 10000);
+  }
+  const source = structure?.filenames?.[noteType];
+  const pattern = source ? new RegExp(source) : null;
+  const forbidden = /[#^[\]|\\:/]/;
+  const folder = target.parent?.path ?? "";
+  const taken = (name) => {
+    const file = app.vault.getAbstractFileByPath(`${folder ? `${folder}/` : ""}${name}.md`);
+    return file && file !== target;
+  };
+  const check = (name) => {
+    if (forbidden.test(name)) return "Names can't use # ^ [ ] | \\ : or /. Try again.";
+    if (pattern && !pattern.test(name)) return `That doesn't fit the pattern for ${noteType} notes. Try again.`;
+    if (taken(name)) return `${name} already exists here. Try another name.`;
+    return null;
+  };
+
+  // The last word of a name or link, e.g., "[[Frédéric Chopin]]" → "Chopin".
+  const surname = (value) => String(value ?? "")
+    .replace(/^\[\[|\]\]$/g, "").split("|")[0].split("/").pop().trim().split(/\s+/).pop();
+  const thisMonth = tp.date.now("YYYY-MM");
+  const examples = {
+    daily: "2026-11-07", weekly: "2026-W45", monthly: "2026-11",
+    piece: "Ballade No. 1 in G Minor - Chopin", practice: "2026-11-07 Practice",
+    routine: "2026-W45 Routine", session: "2026-11-07 Workout", trip: "2026-11 Kyoto",
+    place: "Kyoto, Japan", paper: "Vaswani 2017 - Attention Is All You Need",
+    book: "Mathematical Methods in the Physical Sciences (Boas)",
+    course: "Linear Algebra (MIT OpenCourseWare)", spending: "2026-11 Spending",
+    log: "2026-11-07 Annual Checkup",
+  };
+  const titleQuestions = {
+    project: "What's the project called?",
+    plan: "What's the plan called? (e.g., Budget)",
+    technique: "What's the drill called? (e.g., C Major Scale)",
+    composer: "What's the composer's full name? (e.g., Frédéric Chopin)",
+    exercise: "What's the exercise called? (e.g., Back Squat)",
+    article: "What's the article's title?",
+    concept: "What's the concept called? (its full name, e.g., Fast Fourier Transform)",
+    account: "What's the account called? (e.g., Chase Checking)",
+    asset: "What is it? (e.g., Dishwasher)",
+    contractor: "Who are they? (e.g., Bay Area Plumbing)",
+    benefit: "What's the benefit? (e.g., Dental Plan)",
+    reference: "What's the reference called?",
+    system: "What's the note called?",
+  };
+
+  // How each type is named: `auto` is the whole name, or `ask` and `build`
+  // turn your answer into one. A plan that can't be used falls through to
+  // asking for the whole name.
+  const plans = {
+    daily: { auto: values.date },
+    weekly: { auto: values.week },
+    monthly: { auto: values.month },
+    practice: { auto: values.date && `${values.date} Practice` },
+    session: { auto: values.date && `${values.date} Workout` },
+    spending: { auto: values.month && `${values.month} Spending` },
+    routine: {
+      ask: "Which week does this routine start? (e.g., 2026-W45)",
+      initial: tp.date.now("GGGG-[W]WW"),
+      build: async (week) => `${week} Routine`,
+    },
+    log: {
+      ask: "What happened, in a few words? (e.g., Annual Checkup)",
+      build: async (what) => `${values.date ?? today} ${what}`,
+    },
+    piece: values.composer && {
+      ask: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
+      build: async (piece) => `${piece} - ${surname(values.composer)}`,
+    },
+    trip: {
+      ask: "Where are you going? (e.g., Kyoto)",
+      build: async (where) => {
+        const month = values.start?.slice(0, 7) ?? (await promptUntilValid(
+          "Which month is the trip? (e.g., 2026-11)", thisMonth,
+          (text) => (/^\d{4}-\d{2}$/.test(text) ? { ok: true, value: text } : { ok: false, why: "Months are written YYYY-MM. Try again." })
+        ));
+        return month && `${month} ${where}`;
+      },
+    },
+    place: values.country && {
+      ask: `What's the place called? (e.g., Kyoto)`,
+      initial: values.city ?? "",
+      build: async (place) => `${place}, ${values.country}`,
+    },
+    paper: values.authors?.length && values.year && {
+      ask: "What's the paper's title?",
+      build: async (title) => `${surname(values.authors[0])} ${values.year} - ${title}`,
+    },
+    book: values.authors?.length && {
+      ask: "What's the book's title?",
+      build: async (title) => `${title} (${surname(values.authors[0])})`,
+    },
+    course: {
+      ask: "What's the course called?",
+      build: async (title) => {
+        const provider = await promptUntilValid(
+          "Who offers it? (e.g., MIT OpenCourseWare)", "", (text) => ({ ok: true, value: text })
+        );
+        return provider && `${title} (${provider})`;
+      },
+    },
+  };
+  const plan = plans[noteType] || (pattern ? null : {
+    ask: titleQuestions[noteType] ?? "What should this note be called?",
+    build: async (title) => title,
+  });
+
+  const untitled = /^Untitled( \d+)?$/.test(title);
+  if (untitled || check(title)) {
+    let name = plan?.auto ?? null;
+    let skipped = false;   // Esc on a naming question leaves the note unnamed
+    if (!name && plan?.ask) {
+      const part = await promptUntilValid(plan.ask, plan.initial ?? (untitled ? "" : title), (text) =>
+        forbidden.test(text) ? { ok: false, why: "Names can't use # ^ [ ] | \\ : or /. Try again." } : { ok: true, value: text }
+      );
+      if (part) name = await plan.build(part);
+      skipped = !name;
+    }
+    // The whole name, when the parts didn't make one that fits.
+    if (name && check(name)) {
+      new Notice(check(name), 8000);
+      name = null;
+    }
+    if (!name && !skipped) {
+      const example = examples[noteType] ? ` (e.g., ${examples[noteType]})` : "";
+      name = await promptUntilValid(`What should this note be called?${example}`, untitled ? "" : title, (text) => {
+        const why = check(text);
+        return why ? { ok: false, why } : { ok: true, value: text };
+      });
+    }
+    if (name) await tp.file.rename(name);
+    else unnamed = true;
+  }
+}
+
+// A required property or name left blank makes the note unfinished, so it's tagged inbox.
+if (unnamed) blank.push("name");
 if (blank.length && !adding) {
   const tags = values.tags ?? [];
   if (!tags.includes("inbox")) values.tags = [...tags, "inbox"];

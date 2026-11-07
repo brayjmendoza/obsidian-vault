@@ -47,7 +47,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.12"
+version: "0.13"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -272,6 +272,7 @@ types:
     optional: []
     constraints:
       modality: {vocab: exercise_modality}
+      muscle_groups: {vocab: muscle_group}
       goal: {vocab: routine_goal}
 
   session:
