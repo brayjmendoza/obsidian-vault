@@ -1,9 +1,10 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.6"
-aliases: [Obsidian plugins]
+aliases:
+  - Obsidian plugins
 ---
 # Vault Plugins
 
@@ -22,6 +23,7 @@ Keep the plugin list short: every plugin with its own syntax is something Claude
 | Spaced Repetition                                                | Community | Flashcards from concept notes                                                                                                                                     |
 | Zotero Integration                                               | Community | Paper citations and highlights, if using Zotero (see [[Vault Open Questions]])                                                                                    |
 | Hide Folders                                                     | Community | Hide folders without real notes. Currently hides `91 Tooling/` and `98 Attachments/`.                                                                             |
+| Update modified date                                             | Community | Update the `created` and `updated` properties when modifying a file                                                                                               |
 | Meld Encrypt                                                     | Community | Encrypt single notes in Private                                                                                                                                   |
 | Dataview, Excalidraw, Omnisearch, Homepage                       | Optional  | Only if a real need appears                                                                                                                                       |
 

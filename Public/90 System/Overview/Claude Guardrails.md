@@ -1,9 +1,10 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.12"
-aliases: [Guardrails for self-maintenance]
+aliases:
+  - Guardrails for self-maintenance
 ---
 # Claude Guardrails
 

@@ -1,7 +1,7 @@
 {
   "frontmatterProperty": "updated",
   "createdDateProperty": "created",
-  "momentFormat": "",
+  "momentFormat": "YYYY-MM-DD",
   "momentLocale": "",
   "storeHistoryLog": false,
   "historyNewestFirst": false,
@@ -14,7 +14,7 @@
     "Public/98 Attachments"
   ],
   "useKeyupEvents": false,
-  "onlyUpdateExisting": false,
+  "onlyUpdateExisting": true,
   "timeout": 10,
   "excludeField": "exclude_modified_update",
   "appendField": "append_modified_update",
