@@ -46,7 +46,7 @@ const current = adding ? { ...frontmatter(target) } : {};
 let noteType = adding ? current.type : outer.basename.replace(/ Template$/, "").toLowerCase();
 if (adding && !noteType) {
   const types = vocab("note_type").filter((t) => t !== "template");
-  noteType = await tp.system.suggester(types, types, false, "This note has no type yet. Pick one");
+  noteType = await tp.system.suggester(types, types, false, "This note has no type yet. What type is it?");
   if (!noteType) fail("no type picked, so nothing was added.");
 }
 const spec = schema.types?.[noteType];
@@ -69,22 +69,127 @@ const automatic = {
   month: title.match(/^\d{4}-\d{2}(?![-\d])/)?.[0],
 };
 
-// Hints for free-text properties, shown in the prompt.
+// --- Questions -----------------------------------------------------------------
+// Every prompt is a question. A property can be asked differently by note type
+// (e.g., `status` on a piece versus a trip); otherwise the shared question is used.
+const questions = {
+  type: "What type of note is this?",
+  aliases: "What other names should this note go by?",
+  tags: "Which tags does this note need?",
+  claude: "Should Claude treat this note as read-only?",
+  date: "What date is this for?",
+  week: "Which week is this for?",
+  month: "Which month is this for?",
+  energy: "How was your energy?",
+  sleep_hours: "How many hours did you sleep?",
+  practice_minutes: "How many minutes did you practice?",
+  exercise_minutes: "How many minutes did you exercise?",
+  workouts: "How many workouts did you do?",
+  spending_total: "How much did you spend in total, in USD?",
+  status: "What's its status?",
+  area: "Which domain hub does this project serve?",
+  start: "When does it start?",
+  due: "When is it due?",
+  outcome: "What does done look like?",
+  composer: "Who composed it?",
+  era: "Which era is this composer from?",
+  lived: "When did this composer live?",
+  difficulty: "How difficult is it?",
+  grade: "What grade is it?",
+  started: "When did you start it?",
+  finished: "When did you finish it?",
+  last_practiced: "When did you last practice it?",
+  memorized: "Have you memorized it?",
+  minutes: "How many minutes did you practice?",
+  pieces: "Which pieces did you practice?",
+  focus: "What did you focus on?",
+  category: "What kind of technique is it?",
+  resources: "Which resources help with it?",
+  modality: "What kind of training is this routine?",
+  goal: "What's the routine's goal?",
+  routine: "Which routine did you follow?",
+  kind: "What kind of workout was it?",
+  duration_min: "How many minutes did the workout take?",
+  muscle_groups: "Which muscle groups does it work?",
+  equipment: "What equipment does it need?",
+  end: "When does it end?",
+  places: "Which places does the trip include?",
+  companions: "Who's going with you?",
+  budget: "What's the budget, in USD?",
+  country: "Which country is it in?",
+  city: "Which city is it in?",
+  visited: "Have you been there?",
+  first_visit: "When did you first visit?",
+  rating: "How would you rate it?",
+  authors: "Who wrote it?",
+  year: "What year was it published?",
+  fields: "Which fields does it belong to?",
+  field: "Which field does this map cover?",
+  url: "What's its URL?",
+  venue: "Where was it published?",
+  progress: "How far along are you?",
+  sources: "Which sources did you learn it from?",
+  confidence: "How well do you know it?",
+  last_reviewed: "When did you last review it?",
+  total: "How much did you spend this month, in USD?",
+  topic: "What's it about?",
+  review_by: "When should it be reviewed next?",
+  purchased: "When did you buy it?",
+  warranty_until: "When does the warranty end?",
+  manual: "What's the manual's file called?",
+  version: "Which conventions version does it match?",
+};
+const questionsByType = {
+  daily: { date: "Which day is this note for?" },
+  project: { status: "Where does the project stand?", start: "When did the project start?" },
+  piece: { status: "Where are you with this piece?", started: "When did you start learning it?" },
+  practice: { date: "When did you practice?" },
+  session: { date: "When did you work out?" },
+  trip: { status: "Where is the trip in planning?", start: "When does the trip start?",
+          end: "When does the trip end?", budget: "What's the trip's budget, in USD?" },
+  place: { rating: "How much did you like it?" },
+  paper: { status: "Where are you in reading it?" },
+  book: { status: "Where are you in reading it?" },
+  course: { status: "Where are you in the course?", authors: "Who teaches it?", year: "What year is it from?" },
+  article: { status: "Where are you in reading it?", year: "What year was it published?" },
+  spending: { month: "Which month does this spending cover?", budget: "What was this month's budget, in USD?" },
+  account: { url: "What's the account's website?", review_by: "When should you next review this account?" },
+  asset: { url: "What's the product's web page?" },
+  contractor: { url: "What's their website?" },
+  benefit: { review_by: "When should you next review this election?" },
+  log: { date: "When did this happen?" },
+  reference: { url: "Which web page does it point to?" },
+};
+
+// Examples for free-text properties, shown after the question.
 const hints = {
   lived: "e.g., 1810-1849, or 1946-Present",
   week: "e.g., 2026-W45",
   month: "e.g., 2026-11",
-  url: "one http or https URL",
-  manual: "the attachment's name in 98 Attachments/, e.g., 2026-11-07 Dishwasher Manual.pdf",
+  manual: "e.g., 2026-11-07 Dishwasher Manual.pdf in 98 Attachments/",
   grade: "e.g., ABRSM Grade 7",
   progress: "e.g., chapter 4, or 60%",
-  outcome: "what done looks like",
-  topic: "what the reference is about, e.g., cooking",
-  venue: "where it was published, e.g., NeurIPS",
+  topic: "e.g., cooking",
+  venue: "e.g., NeurIPS",
   version: "e.g., 0.12",
 };
 
-// What a property holds, for the optional list and the prompts.
+// The question for a property, with any notes in parentheses, e.g.,
+// "When did this composer live? (e.g., 1810-1849, or 1946-Present)".
+const question = (prop, isRequired, extra = []) => {
+  const kind = kinds[prop];
+  const c = constraints[prop] ?? {};
+  const text = questionsByType[noteType]?.[prop] ?? questions[prop] ??
+    `What's its ${prop.replaceAll("_", " ")}?`;
+  const notes = isRequired ? [] : ["optional"];
+  if (c.range) notes.push(`${c.range[0]}–${c.range[1]}`);
+  else if (hints[prop]) notes.push(hints[prop]);
+  else if (kind === "date") notes.push("YYYY-MM-DD");
+  notes.push(...extra);
+  return notes.length ? `${text} (${notes.join(", ")})` : text;
+};
+
+// What a property holds, shown beside it in the list of optional properties.
 const describe = (prop) => {
   const kind = kinds[prop];
   const c = constraints[prop] ?? {};
@@ -103,6 +208,7 @@ const describe = (prop) => {
 // Each returns the value, or null when you press Esc or leave it blank.
 const DONE = Symbol("done");
 const NEW = Symbol("new");
+const PICK_MANY = "pick one at a time, then Done";
 
 async function pickMany(labels, values, label, extra = null) {
   const chosen = [];
@@ -115,7 +221,7 @@ async function pickMany(labels, values, label, extra = null) {
       results.push(NEW);
     }
     if (options.length === 1) break;
-    let value = await tp.system.suggester(options, results, false, `${label}: pick one at a time, then Done`);
+    let value = await tp.system.suggester(options, results, false, label);
     if (value == null || value === DONE) break;
     if (value === NEW) {
       value = await extra.ask();
@@ -133,14 +239,15 @@ async function promptUntilValid(label, initial, parse) {
     if (!text) return null;
     const result = parse(text);
     if (result.ok) return result.value;
-    new Notice(`Frontmatter: ${result.why}`, 6000);
+    new Notice(result.why, 6000);
   }
 }
 
 async function ask(prop, isRequired) {
   const kind = kinds[prop];
   const c = constraints[prop] ?? {};
-  const label = `${noteType} · ${prop}${isRequired ? "" : " (optional)"} · ${describe(prop)}`;
+  const many = kind === "list" && (c.vocab || c.link);
+  const label = question(prop, isRequired, many ? [PICK_MANY] : kind === "list" ? ["separate with commas"] : []);
 
   if (c.vocab) {
     const values = vocab(c.vocab);
@@ -160,7 +267,7 @@ async function ask(prop, isRequired) {
     const unwritten = {
       label: "A note not written yet: type its name",
       ask: async () => {
-        const name = (await tp.system.prompt(`${prop}: name of the note`, "", false))?.trim();
+        const name = (await tp.system.prompt(`What's the name of the ${types.join(" or ")} note to link?`, "", false))?.trim();
         return name ? `[[${name}]]` : null;
       },
     };
@@ -173,13 +280,13 @@ async function ask(prop, isRequired) {
 
   switch (kind) {
     case "checkbox":
-      return tp.system.suggester(["true", "false"], [true, false], false, label);
+      return tp.system.suggester(["Yes", "No"], [true, false], false, label);
     case "number":
       return promptUntilValid(label, "", (text) => {
         const n = Number(text);
-        if (Number.isNaN(n)) return { ok: false, why: `${prop} needs a number.` };
+        if (Number.isNaN(n)) return { ok: false, why: "That isn't a number. Try again." };
         if (c.range && (n < c.range[0] || n > c.range[1])) {
-          return { ok: false, why: `${prop} must be ${c.range[0]}–${c.range[1]}.` };
+          return { ok: false, why: `That's outside ${c.range[0]}–${c.range[1]}. Try again.` };
         }
         return { ok: true, value: n };
       });
@@ -187,17 +294,17 @@ async function ask(prop, isRequired) {
       return promptUntilValid(label, today, (text) =>
         /^\d{4}-\d{2}-\d{2}$/.test(text) && !Number.isNaN(Date.parse(text))
           ? { ok: true, value: text }
-          : { ok: false, why: `${prop} needs a date written YYYY-MM-DD.` }
+          : { ok: false, why: "Dates are written YYYY-MM-DD. Try again." }
       );
     case "list":
-      return promptUntilValid(`${label} (separate items with commas)`, "", (text) => {
+      return promptUntilValid(label, "", (text) => {
         const items = text.split(",").map((s) => s.trim()).filter(Boolean);
         return { ok: true, value: items };
       });
     default:
       return promptUntilValid(label, "", (text) => {
         if (c.pattern && !new RegExp(c.pattern).test(text)) {
-          return { ok: false, why: `${prop} doesn't match ${hints[prop] ?? c.pattern}.` };
+          return { ok: false, why: `That doesn't fit the format${hints[prop] ? ` (${hints[prop]})` : ""}. Try again.` };
         }
         if (prop === "manual" && !text.startsWith("[[")) return { ok: true, value: `[[${text}]]` };
         return { ok: true, value: text };
@@ -225,7 +332,7 @@ for (;;) {
   if (!left.length) break;
   const prop = await tp.system.suggester(
     ["Done", ...left.map((p) => `${p} · ${describe(p)}`)], [DONE, ...left], false,
-    `${noteType}: add an optional property, or Done`
+    "Do you want to add an optional property? (pick one at a time, then Done)"
   );
   if (prop == null || prop === DONE) break;
   const value = await ask(prop, false);

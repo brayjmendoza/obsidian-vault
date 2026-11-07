@@ -40,7 +40,7 @@ const linkTo = (file) => app.fileManager.generateMarkdownLink(file, hubPath);
 
 // Opening paragraph. Left empty, the hub is tagged inbox until it's written.
 const context = (await tp.system.prompt(
-  `${domain}: what it is to you and your current goals (one paragraph)`, "", false, true
+  `What is ${domain} to you, and what are your current goals? (one paragraph)`, "", false, true
 ))?.trim();
 
 // Plans: the plan notes already at the domain root.
@@ -59,7 +59,7 @@ while (linkable.length > picked.length) {
   const left = linkable.filter((f) => !picked.includes(f));
   const labels = left.map((f) => `${frontmatter(f).type === "map" ? "Map" : "Reference"} · ${f.basename}`);
   const choice = await tp.system.suggester(
-    ["Done", ...labels], [null, ...left], false, `Link a map or reference from ${domain} (Esc to finish)`
+    ["Done", ...labels], [null, ...left], false, `Which maps or references should ${domain} link to? (pick one at a time, then Done)`
   );
   if (!choice) break;
   picked.push(choice);

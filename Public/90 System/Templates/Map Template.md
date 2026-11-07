@@ -1,7 +1,7 @@
 ---
 type: template
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-07
 version: "0.12"
 ---
 <%*
@@ -44,7 +44,7 @@ const maps = app.vault.getMarkdownFiles()
 
 // Field map or sub-map.
 const kind = maps.length
-  ? await tp.system.suggester(["Field map", "Sub-map of an existing map"], ["field", "sub"], true, "New map")
+  ? await tp.system.suggester(["Field map", "Sub-map of an existing map"], ["field", "sub"], true, "What kind of map is this?")
   : "field";
 
 let field;
@@ -52,17 +52,17 @@ let name;
 let parent = null;
 if (kind === "sub") {
   // A sub-map keeps its parent's field.
-  parent = await tp.system.suggester(maps.map((m) => m.basename), maps, true, "Parent map");
+  parent = await tp.system.suggester(maps.map((m) => m.basename), maps, true, "Which map is this a sub-map of?");
   field = frontmatter(parent).field;
   const suggested = tp.file.title.startsWith("Untitled") ? "" : tp.file.title;
-  name = (await tp.system.prompt("Sub-map name (e.g., Quantum Mechanics)", suggested, true)).trim();
+  name = (await tp.system.prompt("What's the sub-map called? (e.g., Quantum Mechanics)", suggested, true)).trim();
 } else {
   const mapped = new Set(maps.map((m) => frontmatter(m).field));
   field = fields
     ? await tp.system.suggester(
-        fields.map((f) => (mapped.has(f) ? `${f} (already has a map)` : f)), fields, true, "Field"
+        fields.map((f) => (mapped.has(f) ? `${f} (already has a map)` : f)), fields, true, "Which field does this map cover?"
       )
-    : (await tp.system.prompt("Field, from the field vocabulary (e.g., physics)", "", true)).trim();
+    : (await tp.system.prompt("Which field does this map cover? (e.g., physics)", "", true)).trim();
   name = titleCase(field);
 }
 
@@ -81,11 +81,11 @@ const mapPath = tp.file.path(true);
 
 // Opening paragraph and subtopics.
 const context = (await tp.system.prompt(
-  `${name}: what the map covers and where to start (one paragraph)`, "", false, true
+  `What does ${name} cover, and where should you start? (one paragraph)`, "", false, true
 ))?.trim();
 if (!context) needsTriage = true;
 const subtopics = ((await tp.system.prompt(
-  "Subtopics, in learning order, comma-separated (optional)", "", false
+  "What are its subtopics, in learning order? (separate with commas, optional)", "", false
 )) ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 
 const parentLink = parent ? app.fileManager.generateMarkdownLink(parent, mapPath) : "";
