@@ -1,6 +1,14 @@
+---
+type: plan
+created: 2026-11-07
+updated: 2026-11-07
+---
+
+#inbox TODO: migrate & delete
 ## Actively Learning
 ---
-+ Transcendental Etude No. 12 (Chasse-neige) — Liszt
++ Transcendental Etude No. 12 (Ch
+asse-neige) — Liszt
 + Clair de Lune — Debussy
 + Moonlight Sonata Movement I — Beethoven (with sheet music)
 + Pas de Deux — Tchaikovsky, arranged by Pletnev (kinda)

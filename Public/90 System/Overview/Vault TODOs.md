@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-31
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.12"
 claude: read-only
 ---
@@ -35,6 +35,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 	* Vault theme & fonts (Appearance settings in obsidian)
 	* CSS snippets
 * Obsidian settings: hotkeys (for keyboard shortcuts)
+	* templater hotkeys
 
 **Order of TODOs**
 1. Make Templates
