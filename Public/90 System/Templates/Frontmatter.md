@@ -22,6 +22,10 @@ const outer = tp.config.template_file;
 const target = tp.config.target_file;
 const root = outer.path.split("90 System/")[0];
 const frontmatter = (file) => app.metadataCache.getFileCache(file)?.frontmatter ?? {};
+// Notes you can link to: everything except 91 Tooling/, whose test vaults hold
+// sample notes (e.g., a second Frédéric Chopin) that aren't yours.
+const vaultNotes = () => app.vault.getMarkdownFiles()
+  .filter((f) => !f.path.startsWith(`${root}91 Tooling/`));
 const fail = (message) => {
   new Notice(`Frontmatter: ${message}`, 10000);
   throw new Error(message);
@@ -146,10 +150,13 @@ async function ask(prop, isRequired) {
 
   if (c.link) {
     const types = [].concat(c.link);
-    const notes = app.vault.getMarkdownFiles()
+    const notes = vaultNotes()
       .filter((f) => f !== target && types.includes(frontmatter(f).type))
       .sort((a, b) => a.basename.localeCompare(b.basename));
-    const links = notes.map((f) => `[[${app.metadataCache.fileToLinktext(f, target.path, true)}]]`);
+    // A bare name, unless two of your notes share it.
+    const shared = (f) => notes.filter((g) => g.basename === f.basename).length > 1;
+    const linktext = (f) => (shared(f) ? app.metadataCache.fileToLinktext(f, target.path, true) : f.basename);
+    const links = notes.map((f) => `[[${linktext(f)}]]`);
     const unwritten = {
       label: "A note not written yet: type its name",
       ask: async () => {

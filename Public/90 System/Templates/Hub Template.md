@@ -1,7 +1,7 @@
 ---
 type: template
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-07
 version: "0.12"
 ---
 <%*
@@ -44,7 +44,8 @@ const context = (await tp.system.prompt(
 ))?.trim();
 
 // Plans: the plan notes already at the domain root.
-const notes = app.vault.getMarkdownFiles();
+// Every note except 91 Tooling/, whose test vaults hold sample notes.
+const notes = app.vault.getMarkdownFiles().filter((f) => !f.path.startsWith(`${root}91 Tooling/`));
 const plans = notes
   .filter((f) => f.parent?.path === folderPath && frontmatter(f).type === "plan")
   .map((f) => `- ${linkTo(f)}`);
