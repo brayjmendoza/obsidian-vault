@@ -6,7 +6,7 @@ version: "0.6"
 ---
 # Note Types and Properties
 
-Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, which are defined in `properties-schema.yaml`. So, a note type is a note with a given `type` property. Each of these notes also has their type's properties. Every type requires `type`, `created`, and `updated`, and may additionally have `aliases`, `tags`, and `claude`. Folders and filename patterns belong to `structure-schema.yaml`; the "Lives in" column in the table below summarizes it (see [[Folder Structure]] and [[Domain Skeleton]]). What each property means is in [[Note Properties]]. How the schemas are checked is described in [[Schemas and Validation]].
+Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, which are defined in `properties-schema.yaml`. So, a note type is a note with a given `type` property. Each of these notes also has their type's properties. Every type requires `type`, `created`, and `updated`, and may additionally have `aliases`, `tags`, and `claude`. The one exception is `scratch` (see [[#Scratch Notes]]). Folders and filename patterns belong to `structure-schema.yaml`; the "Lives in" column in the table below summarizes it (see [[Folder Structure]] and [[Domain Skeleton]]). What each property means is in [[Note Properties]]. How the schemas are checked is described in [[Schemas and Validation]].
 
 | Note Type         | Lives in                                         | Required                                | Optional Properties                                                                  |
 | ----------------- | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------------------------ |
@@ -38,6 +38,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | log               | Health/Log, Home/Maintenance Log                 | date                                    |                                                                                      |
 | reference         | 50 References                                    | topic                                   | url, review_by                                                                       |
 | system / template | 90 System, 91 Tooling                            | version                                 |                                                                                      |
+| scratch           | Any declared folder, under any name              | type only                               | the common properties; never validated (see [[#Scratch Notes]])                      |
 
 ## Schema Rules that Shape Every Note
 
@@ -45,6 +46,10 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 - **No nested objects.** Structured data goes in a body table: spending categories, workout sets.
 - **Fixed vocabularies.** Statuses, fields, focus areas, composer styles, muscle groups, equipment, categories, etc. come from lists in the schema. New values, properties, or types are proposed, approved, added to `properties-schema.yaml`, then used (see [[Claude Guardrails]]).
 - **Four tags only:** `#inbox`, `#review`, `#idea`, `#question`. Everything else is a property.
+
+## Scratch Notes
+
+A `scratch` note is scratch work: a place to think without the schemas getting in the way. It needs only `type: scratch`, can sit in any declared folder under any name, and may carry the common properties. `vault-validate` skips it: no folder, filename, property, link, tag, or URL check runs on it, so nothing in it is reported. Two rules still apply. It never links into `Private/` (see [[Privacy Boundary]]), and it can't take a domain's hub name. It's still a link target, so other notes can link to it, but a typed link to one (e.g., a piece's `composers`) is the wrong type. When the work is ready to keep, give the note its real type and the validator checks it from then on.
 
 ---
 ← [[Knowledge Structure]] · Next: [[Note Properties]] →

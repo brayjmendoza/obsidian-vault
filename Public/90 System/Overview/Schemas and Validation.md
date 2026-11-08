@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 version: "0.12"
 ---
 # Schemas and Validation
@@ -44,6 +44,7 @@ Which of the planned schemas to build, and when, is still open: see [[Vault Open
 - **One home per rule:** the core schemas join on note type names. A type's folders and filename pattern are declared once, in the structure schema; its properties once, in the properties schema. [[Note Types and Properties]] summarizes both.
 - **Approval enforces itself:** an undeclared folder fails validation, so a new hobby or area means a schema edit, which needs your approval.
 - **Shared version:** [[CONVENTIONS]] and all schemas carry one version number and change together. `vault-validate` reports an error when they differ.
+- **Scratch notes are skipped:** a note with `type: scratch` passes every check except the private-link check and the reserved hub name, wherever it sits (see [[Note Types and Properties#Scratch Notes|Scratch Notes]]). Like archived notes, scratch notes still count as link targets.
 
 ## Where Validation Runs
 

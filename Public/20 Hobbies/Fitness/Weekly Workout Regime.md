@@ -1,3 +1,7 @@
+---
+type: scratch
+---
+
 <div style="border: 2px solid #cfcfcf; padding-left: 20px; padding-right: 20px; border-radius: 10px;">  
 	<h2>Overview</h2>
 	<hr>

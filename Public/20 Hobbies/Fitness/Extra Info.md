@@ -1,3 +1,6 @@
+---
+type: scratch
+---
 
 deload every 4th week
 ## De-Loading

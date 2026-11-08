@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.23"
+version: "0.24"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.23**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.24**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -112,6 +112,7 @@ Filename patterns per type are in `structure-schema.yaml` under `filenames`. Typ
 The full schema is `properties-schema.yaml`. These rules apply on top of it.
 
 - Every note outside `00 Inbox/` and `98 Attachments/` has a `type` from the schema.
+- **Scratch notes aren't checked.** A note with `type: scratch` is scratch work. It may sit in any folder under any name, and it may carry the `common` properties (i.e., `created`, `updated`, `aliases`, `tags`, and `claude`). `vault-validate` checks nothing else about it, so its folder, filename, properties, links, tags, and URLs are never reported. Two rules still hold: it never links into `Private/` (see section 1), and it can't take a domain's hub name. Other notes can link to it, but a typed link to it (e.g., a piece's `composers`) is still the wrong type.
 - **One property name, one value type, vault-wide.** Obsidian gives each property name a single type across the vault. A property never changes type between note types. If two meanings need different types, they get different names (e.g., `difficulty` is a number, and `grade` is text).
 - **No nested objects.** Obsidian's properties panel doesn't handle maps or objects. Structured data goes in a table in the note body (see section 5).
 - Property names are `snake_case`. Vocabulary values are lowercase and must match the schema exactly.
@@ -188,6 +189,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.24 · Added the `scratch` note type, for scratch work that `vault-validate` doesn't check: any folder, any name, and the `common` properties (see section 4). The private-link check and the hub name still apply. Added [[Scratch Template]].
 - 2026-11-08 · v0.23 · The `exercise_modality` vocabulary adds `mobility`, for routines and exercises that are stretching, foam rolling, or joint work rather than strength or running (e.g., [[Sunday - Recovery]]).
 - 2026-11-07 · v0.22 · `90 System/Templates/` has two subfolders in `structure-schema.yaml`: `Automations/` for templates run on an existing note (e.g., Add Properties and Sync Last Practiced) and `Includes/` for shared parts other templates include (e.g., Frontmatter). Type templates stay at the root of `Templates/`. Added [[Vault Templates]].
 - 2026-11-07 · v0.21 · A hub's Plans view includes plan notes in its subdomains too (e.g., the Music hub lists Piano's and Violin's plans).

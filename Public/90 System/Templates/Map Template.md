@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-08
-version: "0.23"
+version: "0.24"
 ---
 <%*
 // Map Template: a field map, or a sub-map split off an existing map.
@@ -100,7 +100,7 @@ if (parent) {
 ---
 type: map
 created: <% today %>
-updated: <% today %>
+updated: 2026-11-08
 field: <% field %>
 <% needsTriage ? "tags: [inbox]\n" : "" %>---
 <% up %><% sections %>

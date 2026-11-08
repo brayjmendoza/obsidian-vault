@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-08
-version: "0.23"
+version: "0.24"
 ---
 <%*
 // Hub Template: the hub for the domain folder the new note sits in.
@@ -65,7 +65,7 @@ const referenceLinks = picked.filter((f) => !isMap(f)).map((f) => `- ${linkTo(f)
 ---
 type: hub
 created: <% today %>
-updated: <% today %>
+updated: 2026-11-08
 ---
 # Current
 
