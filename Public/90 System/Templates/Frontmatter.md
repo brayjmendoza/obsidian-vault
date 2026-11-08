@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-07
-version: "0.15"
+version: "0.16"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -92,7 +92,7 @@ const questions = {
   due: "When is it due?",
   outcome: "What does done look like?",
   composers: "Who composed it, and who arranged it? (original composer first)",
-  era: "Which era is this composer from?",
+  eras: "Which eras does this composer belong to? (more than one for a transitional figure)",
   lived: "When did this composer live?",
   difficulty: "How difficult is it?",
   grade: "What grade is it?",

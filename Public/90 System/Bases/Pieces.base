@@ -13,11 +13,53 @@ views:
       - retired
       - wishlist
   - type: table
-    name: Liszt
+    name: Bach
     filters:
       and:
         - type == "piece"
-        - composers.contains(link("Franz Liszt"))
+        - composers.contains(link("Johann Sebastian Bach"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Beethoven
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Ludwig Van Beethoven"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Brahms
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Johannes Brahms"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Busoni
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Ferruccio Busoni"))
     groupBy:
       property: status
       direction: ASC
@@ -37,6 +79,91 @@ views:
       direction: ASC
     groupOrder:
       - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Czerny
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Carl Czerny"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Debussy
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Claude Debussy"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Gardel
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Carlos Gardel"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Glinka
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Mikhail Glinka"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Haydn
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Joseph Haydn"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Liszt
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Franz Liszt"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
       - retired
       - wishlist
   - type: table
@@ -49,4 +176,133 @@ views:
       property: status
       direction: ASC
     groupOrder:
+      - repertoire
+      - learning
       - retired
+      - wishlist
+  - type: table
+    name: Mendelssohn
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Felix Mendelssohn"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Mozart
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Wolfgang Amadeus Mozart"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Pletnev
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Mikhail Pletnev"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Rachmaninoff
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Sergei Rachmaninoff"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Saint-Saëns
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Camille Saint-Saëns"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Siloti
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Alexander Siloti"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Tchaikovsky
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Pyotr Ilyich Tchaikovsky"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: Williams
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("John Williams"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: "Sibelius"
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Jean Sibelius"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist

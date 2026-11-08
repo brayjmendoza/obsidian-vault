@@ -47,7 +47,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.15"
+version: "0.16"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -84,7 +84,7 @@ property_types:
 
   # music (piano, violin, composer)
   composers: list         # links to composer notes: the original composer first, then any arrangers
-  era: text
+  eras: list              # the composer's musical periods; a transitional figure gets more than one
   lived: text
   difficulty: number
   grade: text
@@ -261,9 +261,9 @@ types:
 
   composer:
     required: [lived]
-    optional: [era]
+    optional: [eras]
     constraints:
-      era: {vocab: composer_era}
+      eras: {vocab: composer_era}
       lived: {pattern: '^(1\d{3}|20\d{2})-(1\d{3}|20\d{2}|Present)$'}
 
   # --- Fitness -------------------------------------------------------------

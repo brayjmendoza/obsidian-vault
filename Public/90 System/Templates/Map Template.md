@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-07
-version: "0.15"
+version: "0.16"
 ---
 <%*
 // Map Template: a field map, or a sub-map split off an existing map.

@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-07
-version: "0.15"
+version: "0.16"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.15**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.16**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -196,6 +196,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.16 · Composer notes take `eras`, a list from the `composer_era` vocabulary, instead of `era`, so a transitional figure can have more than one (e.g., Beethoven: `classical` and `romantic`). `era` is gone from `properties-schema.yaml`.
 - 2026-11-07 · v0.15 · Piece notes take `composers`, a list of links to composer notes, instead of `composer`: the original composer comes first, then any arrangers (e.g., Bach, then Busoni for the Bach–Busoni Chaconne). The piece filename uses the first composer's surname. `composer` is gone from `properties-schema.yaml`.
 - 2026-11-07 · v0.14 · A `routine` is a workout you do, with no tie to a week: it has no `week` property, and `structure-schema.yaml` no longer gives routines a filename pattern, so they take a plain descriptive title (e.g., `Full-Body Strength`).
 - 2026-11-07 · v0.13 · Piece notes are named `Title - Composer` with the composer's surname (e.g., `Ballade No. 1 in G Minor - Chopin`), noted beside the pattern in `structure-schema.yaml`. The pattern itself is unchanged. `routine` notes' `muscle_groups` now use the `muscle_group` vocabulary, like `exercise`.

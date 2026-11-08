@@ -72,7 +72,7 @@ Properties for the music hobby in `20 Hobbies/Music`. These properties are for t
 | `focus`          | list         | practice            | What the session concentrated on                  | `technique`, `sight-reading`, `learning`, `memorization`, `performance`, `theory`                              |
 | `category`       | text         | technique           | What kind of drill it is                          | `scales`, `arpeggios`, `etudes`, `voicing`, `pedaling`, `bowing`, `shifting`, `vibrato`, `intonation`, `other` |
 | `resources`      | list         | technique           | Material for the drill: books, videos, exercises  |                                                                                                                |
-| `era`            | text         | composer            | The composer's musical period                     | `medieval`, `renaissance`, `baroque`, `classical`, `romantic`, `modern`, `contemporary`                        |
+| `eras`           | list         | composer            | The composer's musical periods, more than one for a transitional figure (e.g., Beethoven) | `medieval`, `renaissance`, `baroque`, `classical`, `romantic`, `modern`, `contemporary`                        |
 | `lived`          | text         | composer            | The years a composer lived                        | `YYYY-YYYY` or `YYYY-Present` (e.g., `1810-1839`)                                                              |
 
 ## Fitness
