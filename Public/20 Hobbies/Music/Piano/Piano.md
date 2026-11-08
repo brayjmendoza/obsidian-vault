@@ -3,32 +3,32 @@ type: hub
 created: 2026-11-07
 updated: 2026-11-07
 ---
-# Piano
+# Learning
 
-para
+![[Hub.base#Current]]
 
-## Now
-
-![[Hub.base#Now]]
+# Tasks
 
 ```tasks
 not done
 folder includes {{query.file.folder}}
-sort by due
+sort by priority
 ```
 
-## Projects
+# Plans
 
-![[Hub.base#Projects]]
++ [[Practice Schedule]]
 
-## Plans
-
-%% Links to the current plan notes (e.g., Budget, Schedule, or a practice rotation). %%
-
-## Recent
+# Recent
 
 ![[Hub.base#Recent]]
 
-## Links
+# Resources
 
 %% Relevant maps in 40 Knowledge and notes in 50 References. %%
+
+# Repertoire
+![[Pieces.base]]
+
+# Retired Pieces
+![[Pieces.base]]

@@ -6,4 +6,6 @@ composers:
   - "[[Franz Liszt]]"
 status: wishlist
 grade: Henle Level 7/8
+aliases:
+  - Un sospiro
 ---

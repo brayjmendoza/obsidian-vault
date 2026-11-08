@@ -293,7 +293,7 @@ views:
       - retired
       - wishlist
   - type: table
-    name: "Sibelius"
+    name: Sibelius
     filters:
       and:
         - type == "piece"
@@ -307,7 +307,7 @@ views:
       - retired
       - wishlist
   - type: table
-    name: "Marcello"
+    name: Marcello
     filters:
       and:
         - type == "piece"
@@ -321,7 +321,7 @@ views:
       - retired
       - wishlist
   - type: table
-    name: "Balakirev"
+    name: Balakirev
     filters:
       and:
         - type == "piece"
@@ -335,7 +335,7 @@ views:
       - retired
       - wishlist
   - type: table
-    name: "Petzold"
+    name: Petzold
     filters:
       and:
         - type == "piece"
@@ -348,3 +348,15 @@ views:
       - learning
       - retired
       - wishlist
+  - type: table
+    name: Repertoire
+    filters:
+      and:
+        - type == "piece"
+        - status == "repertoire"
+  - type: table
+    name: Retired
+    filters:
+      and:
+        - type == "piece"
+        - status == "retired"

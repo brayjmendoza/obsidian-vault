@@ -40,7 +40,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 **Order of TODOs**
 1. Make Templates
 	1. Create uv concept from the claude chat where you added uv, use 91 tooling as the example
-	2. Update CONVENTIONS
+	2. Update CONVENTIONS (particularly blurbs on formatting of hubs and maps)
 2. Make hubs
 3. Make plan pages
 4. Make homepages?
@@ -48,8 +48,10 @@ This is a list of improvements or extensions that need to be made to the vault.
 6. Review STYLE.md -- add examples of note you made not generated
 7. Move stuff out of archive/populate vault
 8. Plugins
+	1. Explain tasks plugin
 9. Add blurbs in overview docs on templates
-	1. add properties
+	1. add properties template
+	2. hotkeys
 
 ---
 ← [[Vault Rollout]] · Back to [[Vault Overview]]

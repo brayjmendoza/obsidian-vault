@@ -79,24 +79,18 @@ if (tp.file.path(true) !== `${target}.md`) {
 }
 const mapPath = tp.file.path(true);
 
-// Opening paragraph and subtopics.
-const context = (await tp.system.prompt(
-  `What does ${name} cover, and where should you start? (one paragraph)`, "", false, true
-))?.trim();
-if (!context) needsTriage = true;
+// Subtopics, each its own heading.
 const subtopics = ((await tp.system.prompt(
   "What are its subtopics, in learning order? (separate with commas, optional)", "", false
 )) ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 
 const parentLink = parent ? app.fileManager.generateMarkdownLink(parent, mapPath) : "";
-const opening = [
-  context || `%% One paragraph: what ${name} covers and where to start. %%`,
-  parent ? `A sub-map of ${parentLink}.` : "",
-].filter(Boolean).join(" ");
+// A sub-map starts with a link up to its parent map.
+const up = parent ? `↑ ${parentLink}\n\n` : "";
 
 const conceptHint = "%% Concepts in learning order, as a numbered list of links, each with a few words on how it connects. %%";
 const sections = subtopics.length
-  ? subtopics.map((s) => `## ${s}\n\n${conceptHint}`).join("\n\n")
+  ? subtopics.map((s) => `# ${s}\n\n${conceptHint}`).join("\n\n")
   : `%% One heading per subtopic. ${conceptHint.slice(3)}`;
 
 if (parent) {
@@ -109,14 +103,10 @@ created: <% today %>
 updated: <% today %>
 field: <% field %>
 <% needsTriage ? "tags: [inbox]\n" : "" %>---
-# <% name %>
-
-<% opening %>
-
-<% sections %>
+<% up %><% sections %>
 <%* if (!parent) { -%>
 
-## Unmapped Concepts
+# Unmapped Concepts
 
 ![[Map.base#Unmapped Concepts]]
 <%* } -%>

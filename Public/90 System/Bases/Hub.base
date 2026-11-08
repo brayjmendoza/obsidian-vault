@@ -1,6 +1,6 @@
 views:
   - type: table
-    name: Now
+    name: Current
     filters:
       and:
         - file.inFolder(this.file.folder)

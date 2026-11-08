@@ -38,11 +38,6 @@ if (tp.file.title !== domain) {
 const hubPath = `${folderPath}/${domain}.md`;
 const linkTo = (file) => app.fileManager.generateMarkdownLink(file, hubPath);
 
-// Opening paragraph. Left empty, the hub is tagged inbox until it's written.
-const context = (await tp.system.prompt(
-  `What is ${domain} to you, and what are your current goals? (one paragraph)`, "", false, true
-))?.trim();
-
 // Plans: the plan notes already at the domain root.
 // Every note except 91 Tooling/, whose test vaults hold sample notes.
 const notes = app.vault.getMarkdownFiles().filter((f) => !f.path.startsWith(`${root}91 Tooling/`));
@@ -70,14 +65,10 @@ const links = picked.map((f) => `- ${linkTo(f)}`);
 type: hub
 created: <% today %>
 updated: <% today %>
-<% context ? "" : "tags: [inbox]\n" %>---
-# <% domain %>
+---
+# Current
 
-<% context || `%% One paragraph: what ${domain} is to you and your current goals. %%` %>
-
-## Now
-
-![[Hub.base#Now]]
+![[Hub.base#Current]]
 
 ```tasks
 not done
@@ -85,18 +76,18 @@ folder includes {{query.file.folder}}
 sort by due
 ```
 
-## Projects
+# Projects
 
 ![[Hub.base#Projects]]
 
-## Plans
+# Plans
 
 <% plans.length ? plans.join("\n") : "%% Links to the current plan notes (e.g., Budget, Schedule, or a practice rotation). %%" %>
 
-## Recent
+# Recent
 
 ![[Hub.base#Recent]]
 
-## Links
+# Resources
 
 <% links.length ? links.join("\n") : "%% Relevant maps in 40 Knowledge and notes in 50 References. %%" %>

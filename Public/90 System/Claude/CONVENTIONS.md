@@ -126,7 +126,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 - **Link, don't duplicate.** Each fact lives in exactly one note, and other notes link to it.
 - **Hub notes** start with one paragraph of context, then these headings in order. Most of the content is queries, so nothing is copied:
   ```markdown
-  ## Now        Bases view: items with an active status, plus a Tasks query for this folder
+  ## C        Bases view: items with an active status, plus a Tasks query for this folder
   ## Projects   Bases view: projects where area = this hub
   ## Plans      links to the current plan notes
   ## Recent     Bases view: the latest log notes
