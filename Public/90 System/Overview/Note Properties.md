@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 version: "0.6"
 aliases:
   - Property Reference
@@ -64,7 +64,7 @@ Properties for the music hobby in `20 Hobbies/Music`. These properties are for t
 | ---------------- | ------------ | ------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `composers`      | list (links) | piece               | Who wrote the piece, then who arranged it                                                 | Links to composer notes, the original composer first (e.g., Tchaikovsky, then Pletnev)                         |
 | `status`         | text         | piece               | Where the piece is in your repertoire                                                     | `wishlist`, `learning`, `polishing`, `repertoire`, `retired`, `relearning`                                     |
-| `difficulty`     | number       | piece               | How hard the piece is, on your own scale                                                  | 1–10                                                                                                           |
+| `difficulty`     | number       | piece, exercise     | How hard it is for you, on your own scale                                                 | 1–10 for a piece, 1–5 for an exercise                                                                          |
 | `grade`          | text         | piece               | A grade from an external syllabus, e.g., "ABRSM 8"                                        |                                                                                                                |
 | `started`        | date         | piece, book, course | When you started learning or reading it                                                   |                                                                                                                |
 | `last_practiced` | date         | piece               | The most recent day you practiced it. Set from practice notes by [[Sync Last Practiced]]  |                                                                                                                |
@@ -83,13 +83,15 @@ Properties for the fitness hobby in `20 Hobbies/Fitness`.
 
 | Property        | Type        | Used by  | Meaning                                  | Values                                                                                                                                                    |
 | --------------- | ----------- | -------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `modality`      | text        | routine  | The particular way the routine is done   | `running`, `calisthenics`, `weights`                                                                                                                      |
+| `modality`      | text        | routine  | The particular way the routine is done   | `running`, `calisthenics`, `weights`, `mobility`                                                                                                          |
 | `goal`          | text        | routine  | What the routine trains for              | `strength`, `hypertrophy`, `endurance`, `mobility`, `maintenance`                                                                                         |
 | `kind`          | text        | session  | What sort of workout it was              | `strength`, `cardio`, `mobility`, `sport`, `other`                                                                                                        |
 | `routine`       | text (link) | session  | The routine this session followed        | Link to a routine note                                                                                                                                    |
 | `duration_min`  | number      | session  | Length of the session in minutes         | 1–600                                                                                                                                                     |
 | `muscle_groups` | list        | exercise | The muscles the exercise works           | `chest`, `back`, `shoulders`, `biceps`, `triceps`, `forearms`, `core`, `glutes`, `quads`, `hamstrings`, `calves`, `upper-body`, `lower-body`, `full-body` |
 | `equipment`     | list        | exercise | What the exercise needs                  | `barbell`, `dumbbell`, `kettlebell`, `cable`, `machine`, `bands`, `bench`, `pull-up-bar`, `paralletes`                                                    |
+| `form`          | text (link) | exercise | The video of good form                   | Link to a reference note (see [[CONVENTIONS]], section 5)                                                                                                  |
+| `last_performed` | date       | exercise | The most recent day a session logged it. Set from session notes by [[Sync Last Performed]] |                                                                                                                                                 |
 
 ## Travel
 

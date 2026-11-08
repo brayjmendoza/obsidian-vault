@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.24"
+version: "0.25"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -109,6 +109,8 @@ property_types:
   duration_min: number
   muscle_groups: list
   equipment: list
+  form: text              # a link to the reference note with a video of good form
+  last_performed: date    # set from session notes by Sync Last Performed
 
   # travel
   start: date
@@ -290,10 +292,12 @@ types:
 
   exercise:
     required: [muscle_groups]
-    optional: [equipment]
+    optional: [equipment, form, difficulty, last_performed]
     constraints:
       muscle_groups: {vocab: muscle_group}
       equipment: {vocab: equipment}
+      form: {link: reference}     # the form video (CONVENTIONS.md section 5)
+      difficulty: {range: [1, 5]}
 
   # --- Travel --------------------------------------------------------------
   trip:

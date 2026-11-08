@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.24"
+version: "0.25"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -112,6 +112,8 @@ const questions = {
   duration_min: "How many minutes did the workout take?",
   muscle_groups: "Which muscle groups does it work?",
   equipment: "What equipment does it need?",
+  form: "Which reference note shows good form for it?",
+  last_performed: "When did you last do it?",
   end: "When does it end?",
   places: "Which places does the trip include?",
   companions: "Who's going with you?",
@@ -145,6 +147,7 @@ const questionsByType = {
   piece: { status: "Where are you with this piece?", started: "When did you start learning it?" },
   practice: { date: "When did you practice?" },
   session: { date: "When did you work out?" },
+  exercise: { difficulty: "How hard is it for you right now?" },
   trip: { status: "Where is the trip in planning?", start: "When does the trip start?",
           end: "When does the trip end?", budget: "What's the trip's budget, in USD?" },
   place: { rating: "How much did you like it?" },

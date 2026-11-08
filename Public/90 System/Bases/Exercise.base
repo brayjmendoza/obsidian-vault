@@ -1,0 +1,18 @@
+views:
+  - type: table
+    name: Sessions
+    filters:
+      and:
+        - type == "session"
+        - file.hasLink(this.file)
+        - '!file.path.contains("99 Archive")'
+    order:
+      - file.name
+      - routine
+      - kind
+      - duration_min
+    sort:
+      - property: note.date
+        direction: DESC
+      - property: file.name
+        direction: DESC

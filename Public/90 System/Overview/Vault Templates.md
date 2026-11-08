@@ -19,9 +19,11 @@ As an example:
 ├── …
 ├── Automations/             run on a note you already have
 │   ├── Add Properties.md
+│   ├── Sync Last Performed.md
 │   └── Sync Last Practiced.md
 └── Includes/                shared parts other templates include, never run alone
-    └── Frontmatter.md
+    ├── Frontmatter.md
+    └── Session Table.md
 ```
 
 ## Three Kinds
@@ -29,8 +31,8 @@ As an example:
 | Kind | Where | Run on | Examples |
 |---|---|---|---|
 | Type template | Root of `Templates/`, named `<Type> Template` | A new note | [[Piece Template]], [[Hub Template]] |
-| Automation | `Automations/` | Any existing note (Templater: Insert template) | [[Add Properties]], [[Sync Last Practiced]] |
-| Include | `Includes/` | Nothing: other templates pull it in with `tp.file.include` | [[Frontmatter]] |
+| Automation | `Automations/` | Any existing note (Templater: Insert template) | [[Add Properties]], [[Sync Last Practiced]], [[Sync Last Performed]] |
+| Include | `Includes/` | Nothing: other templates pull it in with `tp.file.include` | [[Frontmatter]], [[Session Table]] |
 
 - **Type templates stay thin.** Most are a single line that includes [[Frontmatter]], so a schema change reaches every template without editing them.
 - **Automations act more like scripts than templates.** They insert nothing into the note they run on, and they change other notes' properties instead.
@@ -40,6 +42,12 @@ As an example:
 
 - **[[Add Properties]]:** adds a note's missing required properties, then offers the optional ones it doesn't have yet. It's [[Frontmatter]] in its adding mode.
 - **[[Sync Last Practiced]]:** used for piece note types. It sets each piece's `last_practiced` to the latest practice note that lists it. Dates only move forward, so a later date set by hand is kept. The [[Practice Template]] runs it for one new note. Run it alone to sync every practice note (e.g., after adding pieces to an old one), since Templater can't react to property edits.
+- **[[Sync Last Performed]]:** used for exercise notes. It sets each exercise's `last_performed` to the latest session note that logs it, meaning its row's Reps cell is filled. Dates only move forward. Run it alone after logging a workout: a new session note's table is still empty, so no template runs it.
+
+# Includes
+
+- **[[Frontmatter]]:** the property engine (see [[#The Frontmatter Engine]]).
+- **[[Session Table]]:** the [[Session Template]] includes it to write the sets table, with the Exercise column filled from the session's `routine`. In a progression, only the highlighted tier goes in, and every linked exercise in other sections does (see [[CONVENTIONS]], section 5).
 
 # Hotkeys
 
