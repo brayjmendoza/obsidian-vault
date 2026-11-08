@@ -47,7 +47,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.16"
+version: "0.17"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -84,7 +84,7 @@ property_types:
 
   # music (piano, violin, composer)
   composers: list         # links to composer notes: the original composer first, then any arrangers
-  eras: list              # the composer's musical periods; a transitional figure gets more than one
+  styles: list            # the composer's styles: periods, movements, and traditions; one composer may have several
   lived: text
   difficulty: number
   grade: text
@@ -159,8 +159,9 @@ vocabularies:
   practice_focus: [technique, sight-reading, learning, memorization, performance, theory]
   technique_category: [scales, arpeggios, etudes, voicing, pedaling, bowing,
                        shifting, vibrato, intonation, other]
-  composer_era: [medieval, renaissance, baroque, classical, romantic,
-                 impressionist, modern, contemporary]
+  composer_style: [medieval, renaissance, baroque, classical, romantic, nationalist,
+                   impressionist, expressionist, neoclassical, modern, minimalist,
+                   contemporary, film, jazz, ragtime, tango, folk]
   session_kind: [strength, cardio, mobility, sport]
   exercise_modality: [calisthenics, running, weights]
   routine_goal: [strength, hypertrophy, endurance, mobility, maintenance]
@@ -261,9 +262,9 @@ types:
 
   composer:
     required: [lived]
-    optional: [eras]
+    optional: [styles]
     constraints:
-      eras: {vocab: composer_era}
+      styles: {vocab: composer_style}
       lived: {pattern: '^(1\d{3}|20\d{2})-(1\d{3}|20\d{2}|Present)$'}
 
   # --- Fitness -------------------------------------------------------------

@@ -19,7 +19,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | piece             | Music/Piano/Pieces and Music/Violin/Pieces       | composers, status                        | difficulty (1–10), grade, started, last_practiced, memorized                         |
 | practice          | Music/Piano/Practice and Music/Violin/Practice   | date, minutes, focus                     | pieces                                                                               |
 | technique         | Music/Piano/Technique and Music/Violin/Technique | category                                 | resources                                                                            |
-| composer          | Music/Composers                                  | lived                                    | eras                                                                                 |
+| composer          | Music/Composers                                  | lived                                    | styles                                                                               |
 | routine           | Fitness/Routines                                 | modality, muscle_groups, goal            |                                                                                      |
 | session           | Fitness/Sessions                                 | date, kind                               | routine, duration_min                                                                |
 | exercise          | Fitness/Exercises                                | muscle_groups, equipment                 |                                                                                      |
@@ -43,7 +43,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 
 - **One property name, one value type, vault-wide.** `difficulty` is always a number; a text grade gets its own name, `grade`.
 - **No nested objects.** Structured data goes in a body table: spending categories, workout sets.
-- **Fixed vocabularies.** Statuses, fields, focus areas, eras, muscle groups, equipment, categories, etc. come from lists in the schema. New values, properties, or types are proposed, approved, added to `properties-schema.yaml`, then used (see [[Claude Guardrails]]).
+- **Fixed vocabularies.** Statuses, fields, focus areas, composer styles, muscle groups, equipment, categories, etc. come from lists in the schema. New values, properties, or types are proposed, approved, added to `properties-schema.yaml`, then used (see [[Claude Guardrails]]).
 - **Four tags only:** `#inbox`, `#review`, `#idea`, `#question`. Everything else is a property.
 
 ---

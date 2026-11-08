@@ -3,9 +3,10 @@ type: composer
 created: 2026-11-07
 updated: 2026-11-07
 lived: 1865-1957
-eras:
+styles:
   - romantic
   - modern
+  - nationalist
 ---
 
 # Pieces
