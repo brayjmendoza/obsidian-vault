@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.12"
 ---
 # Vault Tools
@@ -38,7 +38,7 @@ The folder is laid out as follows:
     ├── conftest.py              loads fixture vaults with the real schemas
     ├── test_*.py                one file per validator, plus the schemas and the CLI
     ├── private_sample/          a stand-in Private/ folder: only its file names matter
-    └── fixtures/                small sample Public/ folders: valid, bad-links, bad-link-rules, bad-properties, bad-structure, bad-tags
+    └── .fixtures/               small sample Public/ folders: valid, bad-links, bad-link-rules, bad-properties, bad-structure, bad-tags
 ```
 
 Two files sit outside this folder: `.envrc` at the repository root (see [[#The Python Environment]]) and `.pre-commit-config.yaml`, also at the root.
@@ -125,8 +125,8 @@ From `91 Tooling/`:
 | Type-check | `uv run mypy` |
 | Run the pre-commit hooks | `uv run pre-commit run --all-files` (from the repository root, with `--project`) |
 
-- **Tests use the real schemas.** Each fixture in `tests/fixtures/` is a small `Public/` folder judged by the schemas in `schemas/`, so a broken schema fails the tests before CI judges the real vault.
-- **Fixtures are data, not code.** ruff and mypy skip `tests/fixtures/`, and the structure validator skips `tests/` entirely.
+- **Tests use the real schemas.** Each fixture in `tests/.fixtures/` is a small `Public/` folder judged by the schemas in `schemas/`, so a broken schema fails the tests before CI judges the real vault.
+- **Fixtures are data, not code.** ruff and mypy skip `tests/.fixtures/`, and the structure validator skips `tests/` entirely.
 - **mypy is strict** on `vault_tools/` and `tests/` alike, with the pydantic plugin.
 - **Code style:** every change follows [[CODE_STYLE]], and isn't done until ruff, mypy, and pytest pass.
 

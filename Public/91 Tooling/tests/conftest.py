@@ -1,6 +1,6 @@
 """Shared pytest setup: loads fixture vaults and runs the validators as programs.
 
-Each folder in tests/fixtures/ is a small Public/ folder. Every vault is judged
+Each folder in tests/.fixtures/ is a small Public/ folder. Every vault is judged
 by the real schemas in 91 Tooling/schemas/, so a broken schema fails the tests
 before CI judges the real vault.
 """
