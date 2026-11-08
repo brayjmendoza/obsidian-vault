@@ -3,15 +3,13 @@ type: plan
 created: 2026-11-07
 updated: 2026-11-07
 ---
-
 #inbox TODO: migrate & delete
 ## Actively Learning
 ---
-+ Transcendental Etude No. 12 (Ch
-asse-neige) — Liszt
++ Transcendental Etude No. 12 (Chasse-neige) — Liszt
 + Clair de Lune — Debussy
 + Moonlight Sonata Movement I — Beethoven (with sheet music)
-+ Pas de Deux — Tchaikovsky, arranged by Pletnev (kinda)
++ Pas de Deux — Tchaikovsky, arranged by Pletnev
 
 ## Want to Learn
 ---
@@ -44,7 +42,6 @@ Stuff I can currently play
 Without sheet music:
 + Nocturne Op. 27 No. 2 in Db major — Chopin
 + Nocturne Op. 48 No. 1 in C Minor — Chopin
-+ Ballade No. 1 in G minor — Chopin
 + Etude Op. 10 No. 1 (Waterfall) — Chopin (need to bring up to speed)
 + Etude Op. 10 No. 4 (Torrent) — Chopin
 + Etude Op. 10 No. 12 (Revolutionary) — Chopin

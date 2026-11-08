@@ -4,3 +4,21 @@ views:
     filters:
       and:
         - type == "piece"
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - wishlist
+  - type: table
+    name: Liszt
+    filters:
+      and:
+        - type == "piece"
+        - composer == link("Franz Liszt")
+  - type: table
+    name: Chopin
+    filters:
+      and:
+        - type == "piece"
+        - composer == link("Frédéric Chopin")
