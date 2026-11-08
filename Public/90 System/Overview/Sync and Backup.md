@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.12"
 ---
 # Sync and Backup
@@ -25,7 +25,7 @@ iPhone / iPad ── iCloud ──▶ Mac ◀── Git remote ──▶ Windows
 - **Keep `.git` out of iCloud:** iCloud can corrupt Git's many small object files and would copy them to the phone. Either keep the Git directory outside the vault (`git init --separate-git-dir`) or rename it `.git.nosync` (iCloud skips `.nosync`) and point a `.git` file at it.
 - **`.gitignore`:** `.obsidian/workspace*.json`, `.trash/`, and `.DS_Store`, which change constantly and cause needless conflicts, plus the tooling's generated folders (`__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`, and `*.egg-info/`).
 - **Remote:** a private GitHub repository holding the whole vault, `Private/` included.
-- **Tooling on each desktop:** a desktop that runs the validators or edits `91 Tooling/` needs uv, direnv, and the pre-commit hooks, set up once from the tooling's [[Public/91 Tooling/README|README]]. The Python environment lives in `~/.venvs/vault-tools`, outside iCloud (see [[Schemas and Validation#Python Environment|Python Environment]]).
+- **Tooling on each desktop:** a desktop that runs the validators or edits `91 Tooling/` needs uv, direnv, and the pre-commit hooks, set up once from the tooling's [[Public/91 Tooling/README|README]]. The Python environment lives in `~/.venvs/vault-tools`, outside iCloud (see [[README#The Python Environment|Python Environment]]).
 
 ## git-crypt
 

@@ -1,0 +1,6 @@
+views:
+  - type: table
+    name: Pieces
+    filters:
+      and:
+        - type == "piece"
