@@ -7,6 +7,7 @@ composers:
   - "[[Alessandro Marcello]]"
 status: retired
 grade: PS 5
+difficulty: 2
 ---
 
 The first piece you ever learned, at RMA.

@@ -3,10 +3,11 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Franz Liszt]]"
+  - "[[Frédéric Chopin]]"
 status: repertoire
-difficulty: 10
-grade: Henle Level 9
+grade: Henle Level 8
+aliases:
+  - Revolutionary
+difficulty: 6
 memorized: true
-claude: read-only
 ---

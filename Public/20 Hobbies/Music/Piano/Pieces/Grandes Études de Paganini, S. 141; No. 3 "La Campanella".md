@@ -6,4 +6,7 @@ composers:
   - "[[Franz Liszt]]"
 status: wishlist
 grade: PS 10
+aliases:
+  - La Campanella
 ---
+

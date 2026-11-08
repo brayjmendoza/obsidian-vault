@@ -6,4 +6,6 @@ composers:
   - "[[Carl Czerny]]"
 status: retired
 grade: PS 9
+difficulty: 5
 ---
+

@@ -3,7 +3,8 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Johannes Brahms]]"
+  - "[[Franz Liszt]]"
 status: retired
-grade: Henle Level 6
+grade: Henle Level 8
+difficulty: 9
 ---

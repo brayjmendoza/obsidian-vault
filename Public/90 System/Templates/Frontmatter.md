@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-07
-version: "0.17"
+version: "0.18"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -372,7 +372,7 @@ if (!adding) {
   const thisMonth = tp.date.now("YYYY-MM");
   const examples = {
     daily: "2026-11-07", weekly: "2026-W45", monthly: "2026-11",
-    piece: "Ballade No. 1 in G Minor - Chopin", practice: "2026-11-07 Practice",
+    practice: "2026-11-07 Practice",
     session: "2026-11-07 Workout", trip: "2026-11 Kyoto",
     place: "Kyoto, Japan", paper: "Vaswani 2017 - Attention Is All You Need",
     book: "Mathematical Methods in the Physical Sciences (Boas)",
@@ -394,6 +394,7 @@ if (!adding) {
     reference: "What's the reference called?",
     system: "What's the note called?",
     routine: "What's the routine called? (e.g., Full-Body Strength)",
+    piece: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
   };
 
   // How each type is named: `auto` is the whole name, or `ask` and `build`
@@ -409,10 +410,6 @@ if (!adding) {
     log: {
       ask: "What happened, in a few words? (e.g., Annual Checkup)",
       build: async (what) => `${values.date ?? today} ${what}`,
-    },
-    piece: values.composers?.length && {
-      ask: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
-      build: async (piece) => `${piece} - ${surname(values.composers[0])}`,
     },
     trip: {
       ask: "Where are you going? (e.g., Kyoto)",

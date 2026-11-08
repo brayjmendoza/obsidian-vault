@@ -4,7 +4,8 @@ created: 2026-11-07
 updated: 2026-11-07
 composers:
   - "[[Franz Liszt]]"
-status: repertoire
-grade: PS 10
+status: wishlist
+grade: Henle Level 9
+aliases:
+  - Dante Sonata
 ---
-You play it without sheet music.

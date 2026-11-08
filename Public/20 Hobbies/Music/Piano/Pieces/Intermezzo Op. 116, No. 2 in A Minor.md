@@ -3,6 +3,9 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Carl Albert Löschhorn]]"
+  - "[[Johannes Brahms]]"
 status: retired
+grade: Henle Level 6
+difficulty: 5
 ---
+

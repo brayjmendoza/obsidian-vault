@@ -4,7 +4,10 @@ created: 2026-11-07
 updated: 2026-11-07
 composers:
   - "[[Frédéric Chopin]]"
-status: wishlist
+status: repertoire
 grade: Henle Level 8
+aliases:
+  - Torrent
+difficulty: 8
+memorized: true
 ---
-

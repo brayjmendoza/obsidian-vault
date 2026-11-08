@@ -5,4 +5,6 @@ updated: 2026-11-07
 composers:
   - "[[Carl Czerny]]"
 status: retired
+difficulty: 5
 ---
+

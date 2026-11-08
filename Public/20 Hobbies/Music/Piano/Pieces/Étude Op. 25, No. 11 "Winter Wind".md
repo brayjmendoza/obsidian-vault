@@ -6,4 +6,7 @@ composers:
   - "[[Frédéric Chopin]]"
 status: wishlist
 grade: Henle Level 9
+aliases:
+  - Winter Wind
 ---
+

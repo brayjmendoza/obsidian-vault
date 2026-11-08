@@ -3,7 +3,9 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Franz Liszt]]"
+  - "[[Claude Debussy]]"
 status: wishlist
-grade: Henle Level 9
+grade: Henle Level 5
+aliases:
+  - Clair de Lune
 ---
