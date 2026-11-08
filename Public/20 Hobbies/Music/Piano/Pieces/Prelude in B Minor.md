@@ -7,4 +7,6 @@ composers:
   - "[[Alexander Siloti]]"
 status: retired
 grade: PS 8
+difficulty: 3
 ---
+Siloti's arrangement of the prelude in Bach's [[Prelude & Fugue No. 10 in E Minor, BWV 855]]

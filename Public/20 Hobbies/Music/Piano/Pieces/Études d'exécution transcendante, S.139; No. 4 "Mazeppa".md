@@ -3,7 +3,9 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Frédéric Chopin]]"
+  - "[[Franz Liszt]]"
 status: wishlist
-grade: Henle Level 5
+grade: Henle Level 9
+aliases:
+  - Mazeppa
 ---

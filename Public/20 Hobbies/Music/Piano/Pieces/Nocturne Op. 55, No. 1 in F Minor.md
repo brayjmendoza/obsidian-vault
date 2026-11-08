@@ -6,4 +6,6 @@ composers:
   - "[[Frédéric Chopin]]"
 status: retired
 grade: Henle Level 5/6
+difficulty: 4
 ---
+

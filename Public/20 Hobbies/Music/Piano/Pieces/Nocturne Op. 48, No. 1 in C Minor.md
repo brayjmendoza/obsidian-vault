@@ -6,5 +6,7 @@ composers:
   - "[[Frédéric Chopin]]"
 status: repertoire
 grade: Henle Level 7
+difficulty: 7
+memorized: true
 ---
-You play it without sheet music.
+

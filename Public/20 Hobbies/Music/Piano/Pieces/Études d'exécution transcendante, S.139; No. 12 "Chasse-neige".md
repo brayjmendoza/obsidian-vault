@@ -4,6 +4,9 @@ created: 2026-11-07
 updated: 2026-11-07
 composers:
   - "[[Franz Liszt]]"
-status: wishlist
+status: learning
 grade: Henle Level 9
+aliases:
+  - Chasse-neige
+difficulty: 10
 ---

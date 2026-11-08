@@ -6,6 +6,6 @@ composers:
   - "[[Johannes Brahms]]"
 status: retired
 grade: Henle Level 6
-difficulty: 5
+difficulty: 4
 ---
 

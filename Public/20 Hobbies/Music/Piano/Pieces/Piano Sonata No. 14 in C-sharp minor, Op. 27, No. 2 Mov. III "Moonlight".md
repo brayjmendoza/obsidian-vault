@@ -6,5 +6,7 @@ composers:
   - "[[Ludwig Van Beethoven]]"
 status: wishlist
 grade: Henle Level 7
+aliases:
+  - Moonlight Sonata
 ---
-The full sonata.
+[[Piano Sonata No. 14 in C-sharp minor, Op. 27, No. 2 Mov. I "Moonlight"|First Movement]]

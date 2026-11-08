@@ -3,8 +3,8 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Pyotr Ilyich Tchaikovsky]]"
-  - "[[Mikhail Pletnev]]"
+  - "[[Frédéric Chopin]]"
 status: learning
-grade: PS 10
+grade: Henle Level 5
+difficulty: 4
 ---

@@ -6,5 +6,8 @@ composers:
   - "[[Felix Mendelssohn]]"
 status: repertoire
 grade: PS 7
+difficulty: 5
+memorized: true
 ---
-You play it without sheet music.
+Never *really* brought it up to good concert level
+

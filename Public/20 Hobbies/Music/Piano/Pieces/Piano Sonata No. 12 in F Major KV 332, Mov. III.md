@@ -6,4 +6,5 @@ composers:
   - "[[Wolfgang Amadeus Mozart]]"
 status: retired
 grade: PS 8
+difficulty: 6
 ---

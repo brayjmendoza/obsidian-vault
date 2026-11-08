@@ -4,7 +4,9 @@ created: 2026-11-07
 updated: 2026-11-07
 composers:
   - "[[Ludwig Van Beethoven]]"
-status: learning
+status: wishlist
 grade: Henle Level 3/4
+aliases:
+  - Moonlight Sonata
 ---
-You're learning it with sheet music.
+Goal is to be able to sight read this

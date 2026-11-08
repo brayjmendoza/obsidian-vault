@@ -6,4 +6,5 @@ composers:
   - "[[Johann Sebastian Bach]]"
 status: retired
 grade: Henle Level 2
+difficulty: 1
 ---
