@@ -160,7 +160,7 @@ vocabularies:
   technique_category: [scales, arpeggios, etudes, voicing, pedaling, bowing,
                        shifting, vibrato, intonation, other]
   composer_era: [medieval, renaissance, baroque, classical, romantic,
-                 modern, contemporary]
+                 impressionist, modern, contemporary]
   session_kind: [strength, cardio, mobility, sport]
   exercise_modality: [calisthenics, running, weights]
   routine_goal: [strength, hypertrophy, endurance, mobility, maintenance]

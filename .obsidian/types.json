@@ -5,6 +5,7 @@
     "tags": "tags",
     "type": "text",
     "spending_total": "text",
-    "area": "multitext"
+    "area": "multitext",
+    "eras": "multitext"
   }
 }

@@ -3,7 +3,9 @@ type: system
 created: 2026-10-25
 updated: 2026-11-07
 version: "0.6"
-aliases: [Property Reference, Properties]
+aliases:
+  - Property Reference
+  - Properties
 ---
 # Note Properties
 
@@ -58,22 +60,22 @@ Properties for projects with a defined goal in `10 Projects/`
 
 Properties for the music hobby in `20 Hobbies/Music`. These properties are for the pieces, practice, technique, and composers note types. Instrument is implied by folder and composers are shared by all instruments.
 
-| Property         | Type         | Used by             | Meaning                                           | Values                                                                                                         |
-| ---------------- | ------------ | ------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `composers`      | list (links) | piece               | Who wrote the piece, then who arranged it         | Links to composer notes, the original composer first (e.g., Tchaikovsky, then Pletnev)                         |
-| `status`         | text         | piece               | Where the piece is in your repertoire             | `wishlist`, `learning`, `polishing`, `repertoire`, `retired`, `relearning`                                     |
-| `difficulty`     | number       | piece               | How hard the piece is, on your own scale          | 1–10                                                                                                           |
-| `grade`          | text         | piece               | A grade from an external syllabus, e.g., "ABRSM 8" |                                                                                                                |
-| `started`        | date         | piece, book, course | When you started learning or reading it           |                                                                                                                |
-| `last_practiced` | date         | piece               | The most recent day you practiced it              |                                                                                                                |
-| `memorized`      | checkbox     | piece               | Whether you can play it from memory               |                                                                                                                |
-| `minutes`        | number       | practice            | Length of the practice session                    | 1–600                                                                                                          |
-| `pieces`         | list (links) | practice            | The pieces worked on in the session               | Links to piece notes                                                                                           |
-| `focus`          | list         | practice            | What the session concentrated on                  | `technique`, `sight-reading`, `learning`, `memorization`, `performance`, `theory`                              |
-| `category`       | text         | technique           | What kind of drill it is                          | `scales`, `arpeggios`, `etudes`, `voicing`, `pedaling`, `bowing`, `shifting`, `vibrato`, `intonation`, `other` |
-| `resources`      | list         | technique           | Material for the drill: books, videos, exercises  |                                                                                                                |
-| `eras`           | list         | composer            | The composer's musical periods, more than one for a transitional figure (e.g., Beethoven) | `medieval`, `renaissance`, `baroque`, `classical`, `romantic`, `modern`, `contemporary`                        |
-| `lived`          | text         | composer            | The years a composer lived                        | `YYYY-YYYY` or `YYYY-Present` (e.g., `1810-1839`)                                                              |
+| Property         | Type         | Used by             | Meaning                                                                                   | Values                                                                                                         |
+| ---------------- | ------------ | ------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `composers`      | list (links) | piece               | Who wrote the piece, then who arranged it                                                 | Links to composer notes, the original composer first (e.g., Tchaikovsky, then Pletnev)                         |
+| `status`         | text         | piece               | Where the piece is in your repertoire                                                     | `wishlist`, `learning`, `polishing`, `repertoire`, `retired`, `relearning`                                     |
+| `difficulty`     | number       | piece               | How hard the piece is, on your own scale                                                  | 1–10                                                                                                           |
+| `grade`          | text         | piece               | A grade from an external syllabus, e.g., "ABRSM 8"                                        |                                                                                                                |
+| `started`        | date         | piece, book, course | When you started learning or reading it                                                   |                                                                                                                |
+| `last_practiced` | date         | piece               | The most recent day you practiced it                                                      |                                                                                                                |
+| `memorized`      | checkbox     | piece               | Whether you can play it from memory                                                       |                                                                                                                |
+| `minutes`        | number       | practice            | Length of the practice session                                                            | 1–600                                                                                                          |
+| `pieces`         | list (links) | practice            | The pieces worked on in the session                                                       | Links to piece notes                                                                                           |
+| `focus`          | list         | practice            | What the session concentrated on                                                          | `technique`, `sight-reading`, `learning`, `memorization`, `performance`, `theory`                              |
+| `category`       | text         | technique           | What kind of drill it is                                                                  | `scales`, `arpeggios`, `etudes`, `voicing`, `pedaling`, `bowing`, `shifting`, `vibrato`, `intonation`, `other` |
+| `resources`      | list         | technique           | Material for the drill: books, videos, exercises                                          |                                                                                                                |
+| `eras`           | list         | composer            | The composer's musical periods, more than one for a transitional figure (e.g., Beethoven) | `medieval`, `renaissance`, `baroque`, `classical`, `romantic`, `impressionist`, `modern`, `contemporary`       |
+| `lived`          | text         | composer            | The years a composer lived                                                                | `YYYY-YYYY` or `YYYY-Present` (e.g., `1810-1839`)                                                              |
 
 ## Fitness
 

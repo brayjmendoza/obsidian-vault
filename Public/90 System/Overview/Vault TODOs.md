@@ -48,6 +48,8 @@ This is a list of improvements or extensions that need to be made to the vault.
 6. Review STYLE.md -- add examples of note you made not generated
 7. Move stuff out of archive/populate vault
 8. Plugins
+9. Add blurbs in overview docs on templates
+	1. add properties
 
 ---
 ← [[Vault Rollout]] · Back to [[Vault Overview]]
