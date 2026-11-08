@@ -1,0 +1,16 @@
+views:
+  - type: table
+    name: Plans
+    filters:
+      and:
+        - type == "plan"
+        - file.inFolder(this.file.folder)
+    order:
+      - file.name
+      - review_by
+      - updated
+    sort:
+      - property: file.folder
+        direction: ASC
+      - property: file.name
+        direction: ASC

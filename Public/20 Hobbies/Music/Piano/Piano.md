@@ -19,10 +19,10 @@ sort by priority
 
 # Plans
 
-+ [[Practice Schedule]]
+![[Plan.base]]
 
 
-# Recent
+# Recent Logs
 
 ![[Hub.base#Recent]]
 

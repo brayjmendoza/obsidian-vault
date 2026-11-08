@@ -21,7 +21,7 @@ sort by due
 
 # Plans
 
-%% Links to the current plan notes (e.g., Budget, Schedule, or a practice rotation). %%
+![[Plan.base]]
 
 
 # Recent
@@ -42,7 +42,7 @@ sort by due
 
 # Repertoire
 
-![[Pieces.base#Violin Repertoire]]
+![[Pieces.base#Repertoire]]
 
 
 # Retired

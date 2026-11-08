@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-07
-version: "0.19"
+version: "0.21"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.19**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.21**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -124,7 +124,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 ## 5. Note Bodies and Linking
 
 - **Link, don't duplicate.** Each fact lives in exactly one note, and other notes link to it.
-- **Hub notes** hold only links and queries: no title heading and no opening paragraph. They use  H1 headings and bases to organize links (see [[Hub Template]]). The views come from `90 System/Bases/Hub.base`, so nothing is copied. A hub may add sections of its own that aren't in the template (e.g., a repertoire view in Piano). Claude keeps hub links current.
+- **Hub notes** hold only links and queries: no title heading and no opening paragraph. They use  H1 headings and bases to organize links (see [[Hub Template]]). The views come from `90 System/Bases/` (i.e., `Hub.base`, and `Plan.base` for the plan notes in the hub's folder and its subfolders), so nothing is copied. A hub may add sections of its own that aren't in the template (e.g., a repertoire view in Piano). Claude keeps hub links current.
 - **Map notes** are hand-curated tables of contents for a field: headings for subtopics, links to concept notes in learning order, and a few words on how ideas connect. A concept can appear on several maps. When a map section grows large, it becomes its own sub-map, linked from the parent map.
 - **Concept notes** hold one idea: a one-sentence definition, an explanation, an example, `## Connections` (i.e., links to related concepts), and `## Sources`. Every concept is linked from at least one map.
 - **Source notes** (e.g., papers and books) hold a summary, key ideas each linking to a concept note, open questions, and short quotes with a page or section reference.
@@ -188,6 +188,8 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.21 · A hub's Plans view includes plan notes in its subdomains too (e.g., the Music hub lists Piano's and Violin's plans).
+- 2026-11-07 · v0.20 · A hub's Plans section is a Bases view, `Plan.base`, of the plan notes in the hub's own folder, instead of hand-kept links.
 - 2026-11-07 · v0.19 · Hub notes hold only links and queries, with H1 headings and no title or opening paragraph: Current, Projects, Plans, Recent, and Resources, which lists maps (shown as "<Field> Map") and references under separate `## Maps` and `## References` headings. A hub may add its own sections after Resources.
 - 2026-11-07 · v0.18 · Piece notes are named with the piece's title alone (e.g., `Ballade No. 1 in G Minor`), since `composers` already records who wrote it. `structure-schema.yaml` no longer gives pieces a filename pattern.
 - 2026-11-07 · v0.17 · Composer `eras` renamed `styles`, since periods alone don't describe every composer (e.g., Debussy is `impressionist`, Gardel is `tango`, John Williams is `film` and `romantic`). The `composer_era` vocabulary is now `composer_style`, adding `nationalist`, `expressionist`, `neoclassical`, `minimalist`, `film`, `jazz`, `ragtime`, `tango`, and `folk`.

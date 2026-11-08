@@ -39,14 +39,14 @@ Every hub uses the same headings and holds only links and queries (see [[Vault P
 # Current       Bases view: items with an active status
 # Tasks         Tasks query: TODO items found in this folder
 # Projects      Bases view: open projects where area = [[Piano]]
-# Plans         links to the current plan notes
-# Recent        Bases view: the latest log notes
+# Plans         Bases view: plan notes in this domain and its subdomains
+# Recent Logs   Bases view: the latest log notes
 # Resources
 ## Maps         relevant maps in 40 Knowledge, e.g., [[Music Theory|Music Theory Map]]
 ## References   relevant notes in 50 References
 ```
 
-The three views live in one file, `90 System/Bases/Hub.base`, and each hub embeds them (e.g., `![[Hub.base#Current]]`). A hub may add sections of its own, such as a repertoire view in Piano.
+The views live in `90 System/Bases/`, and each hub embeds them: `Hub.base` for Current, Projects, and Recent Logs (e.g., `![[Hub.base#Current]]`), and `Plan.base` for Plans (`![[Plan.base]]`). Plans includes subdomains, so the Music hub lists Piano's and Violin's plans too, with the folder each sits in. A hub may add sections of its own, such as a repertoire view in Piano.
 
 ## What Stays Out of a Domain
 

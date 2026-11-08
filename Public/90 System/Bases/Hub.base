@@ -51,7 +51,12 @@ views:
     order:
       - file.name
       - type
+      - note.date
+      - note.minutes
+      - note.focus
     sort:
+      - property: note.date
+        direction: DESC
       - property: file.name
         direction: DESC
     limit: 7

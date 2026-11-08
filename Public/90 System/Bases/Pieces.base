@@ -363,12 +363,12 @@ views:
         - status == "retired"
         - file.folder == "Public/20 Hobbies/Music/Piano/Pieces"
   - type: table
-    name: Violin Repertoire
+    name: Repertoire
     filters:
       and:
         - type == "piece"
         - status == "repertoire"
-        - file.folder == "Public/20 Hobbies/Music/Violin/Pieces"
+        - file.inFolder(this.file.folder)
   - type: table
     name: Violin Retired
     filters:

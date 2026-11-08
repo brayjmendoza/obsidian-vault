@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-07
-version: "0.19"
+version: "0.21"
 ---
 <%*
 // Hub Template: the hub for the domain folder the new note sits in.
@@ -38,12 +38,8 @@ if (tp.file.title !== domain) {
 const hubPath = `${folderPath}/${domain}.md`;
 const linkTo = (file) => app.fileManager.generateMarkdownLink(file, hubPath);
 
-// Plans: the plan notes already at the domain root.
 // Every note except 91 Tooling/, whose test vaults hold sample notes.
 const notes = app.vault.getMarkdownFiles().filter((f) => !f.path.startsWith(`${root}91 Tooling/`));
-const plans = notes
-  .filter((f) => f.parent?.path === folderPath && frontmatter(f).type === "plan")
-  .map((f) => `- ${linkTo(f)}`);
 
 // Links: pick maps and references to link, one at a time, until Done or Esc.
 const linkable = notes
@@ -92,10 +88,10 @@ sort by due
 
 # Plans
 
-<% plans.length ? plans.join("\n") : "%% Links to the current plan notes (e.g., Budget, Schedule, or a practice rotation). %%" %>
+![[Plan.base]]
 
 
-# Recent
+# Recent Logs
 
 ![[Hub.base#Recent]]
 

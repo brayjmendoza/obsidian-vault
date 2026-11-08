@@ -45,7 +45,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.19"
+version: "0.21"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
