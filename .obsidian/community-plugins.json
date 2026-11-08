@@ -6,5 +6,7 @@
   "advanced-exclude",
   "hide-folders",
   "obsidian-tasks-plugin",
-  "calendar"
+  "calendar",
+  "dataview",
+  "obsidian-meta-bind-plugin"
 ]
