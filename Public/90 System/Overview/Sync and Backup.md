@@ -37,4 +37,4 @@ iPhone / iPad ── iCloud ──▶ Mac ◀── Git remote ──▶ Windows
 - **Backup:** Git history is the real backup. iCloud is sync, not backup: a deletion syncs everywhere.
 
 ---
-← [[Vault Plugins]] · Next: [[Claude Skills]] →
+← [[Vault Templates]] · Next: [[Claude Skills]] →

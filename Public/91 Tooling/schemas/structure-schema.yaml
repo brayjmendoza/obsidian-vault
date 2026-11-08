@@ -45,7 +45,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.21"
+version: "0.22"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -144,7 +144,11 @@ root:
   "90 System":
     types: [system]
     subfolders:
-      Templates: {types: [template], flat: true}
+      Templates:
+        types: [template]   # type templates (e.g., Piece Template)
+        subfolders:
+          Automations: {types: [template], flat: true}   # run on a note, e.g., Add Properties
+          Includes:    {types: [template], flat: true}   # shared parts other templates include, e.g., Frontmatter
       Bases:     {types: [], flat: true, files: [base]}
       Claude:    {types: [system], flat: true}
       Overview:  {types: [system], flat: true}   # vault documentation for people

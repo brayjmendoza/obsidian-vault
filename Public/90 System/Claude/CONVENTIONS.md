@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-07
-version: "0.21"
+version: "0.22"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.21**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.22**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -188,6 +188,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.22 · `90 System/Templates/` has two subfolders in `structure-schema.yaml`: `Automations/` for templates run on an existing note (e.g., Add Properties and Sync Last Practiced) and `Includes/` for shared parts other templates include (e.g., Frontmatter). Type templates stay at the root of `Templates/`. Added [[Vault Templates]].
 - 2026-11-07 · v0.21 · A hub's Plans view includes plan notes in its subdomains too (e.g., the Music hub lists Piano's and Violin's plans).
 - 2026-11-07 · v0.20 · A hub's Plans section is a Bases view, `Plan.base`, of the plan notes in the hub's own folder, instead of hand-kept links.
 - 2026-11-07 · v0.19 · Hub notes hold only links and queries, with H1 headings and no title or opening paragraph: Current, Projects, Plans, Recent, and Resources, which lists maps (shown as "<Field> Map") and references under separate `## Maps` and `## References` headings. A hub may add its own sections after Resources.

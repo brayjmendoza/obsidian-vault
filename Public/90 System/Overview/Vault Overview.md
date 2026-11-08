@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.12"
 aliases:
   - Overview
@@ -46,13 +46,14 @@ Read in this order the first time; each note links to the next.
 
 **Tools and Sync**
 13. [[Vault Plugins]]: a list of Obsidian plugins used in this vault
-14. [[Sync and Backup]]: iCloud, Git, and git-crypt across devices
-15. [[Claude Skills]]: the AI skills that maintain the vault and help you get the most out of it
+14. [[Vault Templates]]: type templates, automations, and the includes they share
+15. [[Sync and Backup]]: iCloud, Git, and git-crypt across devices
+16. [[Claude Skills]]: the AI skills that maintain the vault and help you get the most out of it
 
 **Roadmap**
-16. [[Vault Rollout]]: the five build phases
-17. [[Vault Open Questions]]: decisions still to make
-18. [[Vault TODOs]]: action items to improve or extend the vault
+17. [[Vault Rollout]]: the five build phases
+18. [[Vault Open Questions]]: decisions still to make
+19. [[Vault TODOs]]: action items to improve or extend the vault
 
 ---
 Start: [[Vault Principles]] →

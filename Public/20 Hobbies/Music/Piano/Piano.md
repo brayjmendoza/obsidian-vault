@@ -39,7 +39,7 @@ sort by priority
 
 
 # Repertoire
-![[Pieces.base#Piano Repertoire]]
+![[Pieces.base#Repertoire]]
 
 # Retired Pieces
-![[Pieces.base#Piano Retired]]
+![[Pieces.base#Retired]]

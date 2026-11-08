@@ -349,19 +349,19 @@ views:
       - retired
       - wishlist
   - type: table
-    name: Piano Repertoire
-    filters:
-      and:
-        - type == "piece"
-        - status == "repertoire"
-        - file.folder == "Public/20 Hobbies/Music/Piano/Pieces"
-  - type: table
-    name: Piano Retired
+    name: Retired
     filters:
       and:
         - type == "piece"
         - status == "retired"
-        - file.folder == "Public/20 Hobbies/Music/Piano/Pieces"
+        - file.inFolder(this.file.folder)
+    order:
+      - file.name
+      - composers
+      - last_practiced
+    columnSize:
+      file.name: 337
+      note.composers: 224
   - type: table
     name: Repertoire
     filters:
@@ -369,10 +369,9 @@ views:
         - type == "piece"
         - status == "repertoire"
         - file.inFolder(this.file.folder)
-  - type: table
-    name: Violin Retired
-    filters:
-      and:
-        - type == "piece"
-        - status == "retired"
-        - file.folder == "Public/20 Hobbies/Music/Violin/Pieces"
+    order:
+      - file.name
+      - composers
+      - last_practiced
+    columnSize:
+      file.name: 364

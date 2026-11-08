@@ -9,4 +9,5 @@ grade: Henle Level 9
 aliases:
   - Chasse-neige
 difficulty: 10
+last_practiced: 2026-11-07
 ---

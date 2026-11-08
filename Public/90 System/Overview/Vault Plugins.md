@@ -15,7 +15,7 @@ Keep the plugin list short: every plugin with its own syntax is something Claude
 | Daily Notes, Properties, Backlinks, Canvas, Bookmarks | Obsidian (Core)      | Basics                                                                                                                                                                                                |
 | Bases                                                 | Obsidian (Core)      | Database views over properties (e.g., repertoire, reading list); plain YAML Claude can edit. Powers the hub and map views (see [[Domain Skeleton#Hub Body\|Hub Body]])                                |
 | Git                                                   | Vinzent              | Version history and sync between desktops (macOS, Windows, Linux); every Claude edit reviewable and reversible. Desktop only. Essential (see [[Sync and Backup]])                                     |
-| Templater                                             | silentvoid13         | Templates with dates, prompt, commands, and more                                                                                                                                                      |
+| Templater                                             | silentvoid13         | Templates with dates, prompt, commands, and more (see [[Vault Templates]])                                                                                                                                                   |
 | Periodic Notes                                        | Community (TODO)     | Weekly and monthly notes                                                                                                                                                                              |
 | Calendar                                              | Liam Cain            | Calendar sidebar                                                                                                                                                                                      |
 | Tasks                                                 | obsidian-tasks-group | Queryable to-dos across the vault (see [[Everyday Lists]])                                                                                                                                            |
@@ -30,4 +30,4 @@ Keep the plugin list short: every plugin with its own syntax is something Claude
 | Dataview, Excalidraw, Omnisearch, Homepage            | Community (TODO)     | Only if a real need appears                                                                                                                                                                           |
 
 ---
-← [[Claude Guardrails]] · Next: [[Sync and Backup]] →
+← [[Claude Guardrails]] · Next: [[Vault Templates]] →

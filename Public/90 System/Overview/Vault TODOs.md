@@ -50,7 +50,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 8. Plugins
 	1. Explain tasks plugin
 9. Add blurbs in overview docs on templates
-	1. add properties template
+	1. Scripts/automations (add properties, sync last practiced)
 	2. hotkeys
 
 ---

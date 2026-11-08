@@ -47,4 +47,4 @@ sort by due
 
 # Retired
 
-![[Pieces.base]]
+![[Pieces.base#Retired]]
