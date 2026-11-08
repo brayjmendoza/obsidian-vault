@@ -1,0 +1,13 @@
+{
+  "excludeMode": "Full",
+  "ignorePatterns": "",
+  "profiles": [],
+  "propertyRules": "",
+  "shouldHideEmptyFolders": false,
+  "shouldIgnoreExcludedFiles": false,
+  "shouldIncludeGitIgnorePatterns": false,
+  "shouldSoftExcludeFromGraph": true,
+  "shouldSoftExcludeFromOtherFeatures": true,
+  "shouldSoftExcludeFromSearch": true,
+  "shouldSoftExcludeFromUnlinkedMentions": true
+}

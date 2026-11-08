@@ -39,7 +39,7 @@ target-version = "py314"
 include = ["*.py"]
 # Fixture vaults are sample data, not code. force-exclude makes the exclusion
 # hold even when pre-commit passes file paths directly.
-extend-exclude = ["tests/.fixtures"]
+extend-exclude = ["tests/fixtures"]
 force-exclude = true
 
 [tool.ruff.lint]
@@ -51,7 +51,7 @@ known-first-party = ["vault_tools", "tests"]
 [tool.mypy]
 python_version = "3.14"
 files = ["vault_tools", "tests"]
-exclude = ["^tests/\\.fixtures/"]
+exclude = ["^tests/fixtures/"]
 strict = true
 plugins = ["pydantic.mypy"]
 

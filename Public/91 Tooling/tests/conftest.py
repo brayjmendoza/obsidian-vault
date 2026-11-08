@@ -1,6 +1,6 @@
 """Shared pytest setup: loads fixture vaults and runs the validators as programs.
 
-Each folder in tests/.fixtures/ is a small Public/ folder. Every vault is judged
+Each folder in tests/fixtures/ is a small Public/ folder. Every vault is judged
 by the real schemas in 91 Tooling/schemas/, so a broken schema fails the tests
 before CI judges the real vault.
 """
@@ -21,7 +21,7 @@ from vault_tools.issues import CheckName, Issue, IssueCode, Severity
 from vault_tools.markup import is_web_url
 from vault_tools.vault import DEFAULT_SCHEMA_DIR, TOOLING_DIR, Vault
 
-FIXTURES_DIR: Final = TOOLING_DIR / "tests" / ".fixtures"
+FIXTURES_DIR: Final = TOOLING_DIR / "tests" / "fixtures"
 # A stand-in Private/ folder: only its file names matter, as in CI.
 PRIVATE_SAMPLE_DIR: Final = TOOLING_DIR / "tests" / "private_sample"
 

@@ -5,10 +5,6 @@
   "hideBottomStatusBarIndicatorText": false,
   "enableCompatQuickExplorer": false,
   "attachmentFolderNames": [
-    "Public/91 Tooling/tests",
-    "Public/91 Tooling/schemas",
-    "Public/91 Tooling/vault_tools",
-    "endsWith::egg-info",
     "Public/98 Attachments"
   ]
 }

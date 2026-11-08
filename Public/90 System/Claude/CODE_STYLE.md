@@ -93,7 +93,7 @@ uv run pytest
 
 - **pytest functions, not classes.** One test file per module in `vault_tools/`, plus files for the schemas and the command line.
 - **Parametrize instead of looping.** A test that checks several cases uses `@pytest.mark.parametrize`, so each case passes or fails on its own.
-- **Never touch the real vault.** Tests read the fixtures in `tests/.fixtures/` and write only under `tmp_path` (e.g., through `copy_fixture`).
+- **Never touch the real vault.** Tests read the fixtures in `tests/fixtures/` and write only under `tmp_path` (e.g., through `copy_fixture`).
 - **Every fix comes with a test** that fails without the fix. Every new check comes with a fixture that trips it.
 - **Assert on whole values.** Compare the full set of issue keys or the full JSON object, so an unexpected extra issue fails the test.
 

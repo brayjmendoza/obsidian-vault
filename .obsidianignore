@@ -1,0 +1,9 @@
+Public/91 Tooling/tests
+Public/91 Tooling/schemas
+Public/91 Tooling/vault_tools
+.DS_Store
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
