@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.27"
+version: "0.28"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -110,6 +110,7 @@ property_types:
   muscle_groups: list
   equipment: list
   last_performed: date    # set from session notes by Sync Last Performed
+  pr: text                # your personal record, written as you'd log it (e.g., 3x25, or 185 lb x 5)
 
   # travel
   start: date
@@ -174,7 +175,8 @@ vocabularies:
                  glutes, quads, hamstrings, calves, upper-body, lower-body, 
                  full-body]
   equipment: [barbell, dumbbell, kettlebell, cable, machine, bands, bench,
-              pull-up-bar, paralletes]
+              pull-up-bar, paralletes, rings, dip-bars, plyo-box, jump-rope,
+              foam-roller]
   spending_category: [housing, utilities, groceries, dining, transport, health,
                       fitness, travel, hobbies, subscriptions, shopping, gifts,
                       other]
@@ -291,7 +293,7 @@ types:
 
   exercise:
     required: [muscle_groups]
-    optional: [equipment, difficulty, last_performed]
+    optional: [equipment, difficulty, last_performed, pr]
     constraints:
       muscle_groups: {vocab: muscle_group}
       equipment: {vocab: equipment}

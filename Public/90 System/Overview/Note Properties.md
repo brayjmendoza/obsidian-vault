@@ -89,8 +89,9 @@ Properties for the fitness hobby in `20 Hobbies/Fitness`.
 | `routine`       | text (link) | session  | The routine this session followed        | Link to a routine note                                                                                                                                    |
 | `duration_min`  | number      | session  | Length of the session in minutes         | 1–600                                                                                                                                                     |
 | `muscle_groups` | list        | exercise | The muscles the exercise works           | `chest`, `back`, `shoulders`, `biceps`, `triceps`, `forearms`, `core`, `glutes`, `quads`, `hamstrings`, `calves`, `upper-body`, `lower-body`, `full-body` |
-| `equipment`     | list        | exercise | What the exercise needs                  | `barbell`, `dumbbell`, `kettlebell`, `cable`, `machine`, `bands`, `bench`, `pull-up-bar`, `paralletes`                                                    |
+| `equipment`     | list        | exercise | What the exercise needs                  | `barbell`, `dumbbell`, `kettlebell`, `cable`, `machine`, `bands`, `bench`, `pull-up-bar`, `paralletes`, `rings`, `dip-bars`, `plyo-box`, `jump-rope`, `foam-roller` |
 | `last_performed` | date       | exercise | The most recent day a session logged it. Set from session notes by [[Sync Last Performed]] |                                                                                                                                                 |
+| `pr`           | text        | exercise | Your personal record, as you'd log it    | e.g., `3x25`, `185 lb x 5`, or `10 km in 44:10`                                                                                                           |
 
 ## Travel
 

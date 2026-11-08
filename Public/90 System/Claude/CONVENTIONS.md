@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.27"
+version: "0.28"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.27**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.28**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -205,6 +205,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.28 · Exercise notes may take `pr`, your personal record as text (e.g., `3x25`). The `equipment` vocabulary adds `rings`, `dip-bars`, `plyo-box`, `jump-rope`, and `foam-roller`.
 - 2026-11-08 · v0.27 · Routine `goal` is now `goals`, a list, and the `routine_goal` vocabulary adds `recovery`. Routines are named for the workout and follow the [[Routine Template]]: every exercise a linked list item with its target after ` — `, and every Core Workout block an H2 with a `Sets:` line. Session tables use `Reps/Time/Distance` and `Weight/Pace` columns, with units in the cells, so they fit runs, holds, and stretches as well as lifts (see section 5).
 - 2026-11-08 · v0.26 · Routine notes have Warm-Up, Core Workout, and Cool-Down H1 sections, and session tables hold only the Core Workout, with a Target column, Sets filled from the routine, and a Sync Last Performed button (Meta Bind) after the table. Exercise notes end with a References section instead of the `form` property, which is gone from `properties-schema.yaml`. See section 5.
 - 2026-11-08 · v0.25 · Exercise notes take `form` (a link to a reference note), `difficulty` (1–5), and `last_performed` (set by [[Sync Last Performed]]), with Last Time, Sessions, and Notes sections. Session tables take per-set values and are filled from the routine, whose exercises are links with the current tier highlighted (see section 5). `structure-schema.yaml` adds `90 System/Scripts/` for Dataview scripts (`js`). Added `Exercise.base`, [[Session Table]], and [[Sync Last Performed]].

@@ -22,7 +22,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | composer          | Music/Composers                                  | lived                                   | styles                                                                               |
 | routine           | Fitness/Routines                                 | modality, muscle_groups, goals          |                                                                                      |
 | session           | Fitness/Sessions                                 | date, kind                              | routine, duration_min                                                                |
-| exercise          | Fitness/Exercises                                | muscle_groups                           | equipment, difficulty (1–5), last_performed                                          |
+| exercise          | Fitness/Exercises                                | muscle_groups                           | equipment, difficulty (1–5), last_performed, pr                                      |
 | trip              | Travel/Trips                                     | status                                  | start, end, places, companions, budget                                               |
 | place             | Travel/Places                                    | country, visited                        | city, first_visit, rating (1–5)                                                      |
 | paper             | Sources/Papers                                   | authors, year, fields, status           | url, venue                                                                           |

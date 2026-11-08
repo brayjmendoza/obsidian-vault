@@ -54,7 +54,7 @@ Total time: ~7-9 mins
 8. [[Slow Muscle-up|Slow controlled muscle-up]]
 
 Rest: 3 mins  
-Sets: 3x5  
+Sets: 3
 Total time: ~15 mins
 
 ## Planche Hold Progression
@@ -82,7 +82,7 @@ Total time: ~8 mins
 7. [[Straddle Planche Push-up|Straddle planche pushups]]
 
 Rest: 3 mins  
-Sets: 3x5-10  
+Sets: 3
 Total time: ~12 mins
 
 ## Front Lever Rows
@@ -94,7 +94,7 @@ Total time: ~12 mins
 5. [[Front Lever Row|Full front lever rows]]
 
 Rest: 3 mins  
-Sets: 3x5-8  
+Sets: 3
 Total time: ~8-9 mins
 
 # Cool-Down

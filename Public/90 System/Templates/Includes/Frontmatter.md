@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.27"
+version: "0.28"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -113,6 +113,7 @@ const questions = {
   muscle_groups: "Which muscle groups does it work?",
   equipment: "What equipment does it need?",
   last_performed: "When did you last do it?",
+  pr: "What's your personal record?",
   end: "When does it end?",
   places: "Which places does the trip include?",
   companions: "Who's going with you?",
@@ -170,6 +171,7 @@ const hints = {
   month: "e.g., 2026-11",
   manual: "e.g., 2026-11-07 Dishwasher Manual.pdf in 98 Attachments/",
   grade: "e.g., ABRSM Grade 7",
+  pr: "e.g., 3x25, or 185 lb x 5",
   progress: "e.g., chapter 4, or 60%",
   topic: "e.g., cooking",
   venue: "e.g., NeurIPS",
