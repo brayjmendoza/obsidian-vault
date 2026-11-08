@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.6"
 aliases: [Knowledge layer, How 40 Knowledge works]
 ---
@@ -80,7 +80,7 @@ Fields are a fixed vocabulary (e.g., `computer-science`, `math`, `physics`, `mus
 
 ## How Knowledge Connects to the Rest of the Vault
 
-- **From domains:** each domain hub's `## Links` section links to the relevant maps (the Music hub links to the music theory map; Fitness could link to a training-science sub-map). Domains hold your own doing; knowledge holds the understanding behind it (see [[Domain Skeleton#What Stays Out of a Domain|What Stays Out of a Domain]]).
+- **From domains:** each domain hub's Resources section lists the relevant maps under `## Maps`, each shown as "<Field> Map" (the Music hub links to the music theory map; Fitness could link to a training-science sub-map). Domains hold your own doing; knowledge holds the understanding behind it (see [[Domain Skeleton#What Stays Out of a Domain|What Stays Out of a Domain]]).
 - **Knowledge versus References:** ask whether you want to *understand* it or just *look it up* when needed. Understanding goes in a concept. A how-to, cheat sheet, or table goes in `50 References/`. A reference can link to the concept that explains why it works.
 - **Learning goals with a deadline:** "finish this course by June" is a project in `10 Projects/` that links to the course note. The course note stays the record of the source.
 

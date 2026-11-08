@@ -12,7 +12,7 @@ Three living lists — a schedule, a wishlist, and small to-dos — are plan not
 | ------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Daily and weekly schedule | `30 Life Admin/Planning/Schedule.md` | A weekday table, or recurring tasks (`- [ ] Practice piano 🔁 every day`) if you want to tick habits off  | daily-note copies today's items into the daily note; weekly-review compares the plan with what happened |
 | Wishlist                  | `30 Life Admin/Finance/Wishlist.md`  | Table: Item, Category, Est. price (USD), Priority, Link. Category uses the `spending_category` vocabulary | spending-import can flag a wishlist item when it shows up in a statement                                |
-| Small to-dos              | `30 Life Admin/Planning/To-dos.md`   | Tasks, due date optional: `- [ ] Return library book 📅 2026-10-30`                                       | daily-note lists open and due items with a Tasks query                                                  |
+| Small to-dos              | `30 Life Admin/Planning/To-dos.md`   | Tasks, due date optional, e.g., `- [ ] Return library book 📅 2026-10-30`                                 | daily-note lists open and due items with a query from the Tasks plugin                                  |
 
 The skills named here are described in [[Claude Skills]].
 

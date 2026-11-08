@@ -33,18 +33,20 @@ Subfolders within a domain each have a role and are named for what they hold (e.
 
 ## Hub Body
 
-Every hub uses the same headings, and most of it is queries (see [[Vault Plugins|Bases and Tasks]] plugins), so nothing is copied. As an example:
+Every hub uses the same headings and holds only links and queries (see [[Vault Plugins|Bases and Tasks]] plugins), so nothing is copied. There's no title heading or opening paragraph: the note's name already says which domain it is. The [[Hub Template]] writes this shape, and the binding version is in [[CONVENTIONS]] (section 5). As an example:
 
 ```markdown
-# Piano
-One paragraph: what this is to you and current goals.
-
-## Now        Bases view: items with an active status; Tasks query for this folder
-## Projects   Bases view: projects where area = [[Piano]]
-## Plans      links to the current plan notes
-## Recent     Bases view: the latest log notes
-## Links      the relevant Maps in 40 Knowledge and notes in 50 References
+# Current       Bases view: items with an active status; Tasks query for this folder
+# Tasks         Tasks query
+# Projects      Bases view: open projects where area = [[Piano]]
+# Plans         links to the current plan notes
+# Recent        Bases view: the latest log notes
+# Resources
+## Maps         relevant maps in 40 Knowledge, e.g., [[Music Theory|Music Theory Map]]
+## References   relevant notes in 50 References
 ```
+
+The three views live in one file, `90 System/Bases/Hub.base`, and each hub embeds them (e.g., `![[Hub.base#Current]]`). A hub may add sections of its own, such as a repertoire view in Piano.
 
 ## What Stays Out of a Domain
 

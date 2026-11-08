@@ -7,6 +7,7 @@ updated: 2026-11-07
 
 ![[Hub.base#Current]]
 
+
 # Tasks
 
 ```tasks
@@ -15,17 +16,27 @@ folder includes {{query.file.folder}}
 sort by priority
 ```
 
+
 # Plans
 
 + [[Practice Schedule]]
+
 
 # Recent
 
 ![[Hub.base#Recent]]
 
+
 # Resources
 
-%% Relevant maps in 40 Knowledge and notes in 50 References. %%
+## Maps
+
+%% Relevant maps in 40 Knowledge, each shown as \<Field> Map. %%
+
+## References
+
+%% Relevant notes in 50 References. %%
+
 
 # Repertoire
 ![[Pieces.base]]

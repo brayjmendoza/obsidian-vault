@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-07
-version: "0.18"
+version: "0.19"
 ---
 <%*
 // Hub Template: the hub for the domain folder the new note sits in.
@@ -59,7 +59,12 @@ while (linkable.length > picked.length) {
   if (!choice) break;
   picked.push(choice);
 }
-const links = picked.map((f) => `- ${linkTo(f)}`);
+// Maps and references are listed apart. A map's link reads "<Field> Map"
+// (e.g., [[Computer Science|Computer Science Map]]).
+const isMap = (f) => frontmatter(f).type === "map";
+const mapLinks = picked.filter(isMap)
+  .map((f) => `- ${app.fileManager.generateMarkdownLink(f, hubPath, "", `${f.basename} Map`)}`);
+const referenceLinks = picked.filter((f) => !isMap(f)).map((f) => `- ${linkTo(f)}`);
 -%>
 ---
 type: hub
@@ -70,24 +75,37 @@ updated: <% today %>
 
 ![[Hub.base#Current]]
 
+
+# Tasks
+
 ```tasks
 not done
 folder includes {{query.file.folder}}
 sort by due
 ```
 
+
 # Projects
 
 ![[Hub.base#Projects]]
+
 
 # Plans
 
 <% plans.length ? plans.join("\n") : "%% Links to the current plan notes (e.g., Budget, Schedule, or a practice rotation). %%" %>
 
+
 # Recent
 
 ![[Hub.base#Recent]]
 
+
 # Resources
 
-<% links.length ? links.join("\n") : "%% Relevant maps in 40 Knowledge and notes in 50 References. %%" %>
+## Maps
+
+<% mapLinks.length ? mapLinks.join("\n") : "%% Relevant maps in 40 Knowledge, each shown as \\<Field> Map. %%" %>
+
+## References
+
+<% referenceLinks.length ? referenceLinks.join("\n") : "%% Relevant notes in 50 References. %%" %>
