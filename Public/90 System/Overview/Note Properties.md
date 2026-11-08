@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.6"
 aliases: [Property Reference, Properties]
 ---
@@ -31,7 +31,7 @@ Properties for daily, weekly, and monthly notes in `01 Logs/`.
 | Property           | Type   | Used by                       | Meaning                                                                                                           | Values                      |
 | ------------------ | ------ | ----------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | `date`             | date   | daily, practice, session, log | The day the note records                                                                                          |                             |
-| `week`             | text   | weekly, routine               | The ISO week the note covers or applies to                                                                        | `YYYY-Www`, e.g., `2026-W43` |
+| `week`             | text   | weekly                        | The ISO week the note covers                                                                                      | `YYYY-Www`, e.g., `2026-W43` |
 | `month`            | text   | monthly, spending             | The month the note covers                                                                                         | `YYYY-MM`                   |
 | `energy`           | number | daily                         | How energetic you felt that day                                                                                   | 1–5                         |
 | `sleep_hours`      | number | daily                         | Hours slept the night before                                                                                      | 0–24                        |
@@ -84,7 +84,7 @@ Properties for the fitness hobby in `20 Hobbies/Fitness`.
 | `modality`      | text        | routine  | The particular way the routine is done   | `running`, `calisthenics`, `weights`                                                                                                                      |
 | `goal`          | text        | routine  | What the routine trains for              | `strength`, `hypertrophy`, `endurance`, `mobility`, `maintenance`                                                                                         |
 | `kind`          | text        | session  | What sort of workout it was              | `strength`, `cardio`, `mobility`, `sport`, `other`                                                                                                        |
-| `routine`       | text (link) | session  | The weekly routine this session followed | Link to a routine note                                                                                                                                    |
+| `routine`       | text (link) | session  | The routine this session followed        | Link to a routine note                                                                                                                                    |
 | `duration_min`  | number      | session  | Length of the session in minutes         | 1–600                                                                                                                                                     |
 | `muscle_groups` | list        | exercise | The muscles the exercise works           | `chest`, `back`, `shoulders`, `biceps`, `triceps`, `forearms`, `core`, `glutes`, `quads`, `hamstrings`, `calves`, `upper-body`, `lower-body`, `full-body` |
 | `equipment`     | list        | exercise | What the exercise needs                  | `barbell`, `dumbbell`, `kettlebell`, `cable`, `machine`, `bands`, `bench`, `pull-up-bar`, `paralletes`                                                    |

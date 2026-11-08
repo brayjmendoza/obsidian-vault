@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-07
-version: "0.13"
+version: "0.14"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -373,7 +373,7 @@ if (!adding) {
   const examples = {
     daily: "2026-11-07", weekly: "2026-W45", monthly: "2026-11",
     piece: "Ballade No. 1 in G Minor - Chopin", practice: "2026-11-07 Practice",
-    routine: "2026-W45 Routine", session: "2026-11-07 Workout", trip: "2026-11 Kyoto",
+    session: "2026-11-07 Workout", trip: "2026-11 Kyoto",
     place: "Kyoto, Japan", paper: "Vaswani 2017 - Attention Is All You Need",
     book: "Mathematical Methods in the Physical Sciences (Boas)",
     course: "Linear Algebra (MIT OpenCourseWare)", spending: "2026-11 Spending",
@@ -393,6 +393,7 @@ if (!adding) {
     benefit: "What's the benefit? (e.g., Dental Plan)",
     reference: "What's the reference called?",
     system: "What's the note called?",
+    routine: "What's the routine called? (e.g., Full-Body Strength)",
   };
 
   // How each type is named: `auto` is the whole name, or `ask` and `build`
@@ -405,11 +406,6 @@ if (!adding) {
     practice: { auto: values.date && `${values.date} Practice` },
     session: { auto: values.date && `${values.date} Workout` },
     spending: { auto: values.month && `${values.month} Spending` },
-    routine: {
-      ask: "Which week does this routine start? (e.g., 2026-W45)",
-      initial: tp.date.now("GGGG-[W]WW"),
-      build: async (week) => `${week} Routine`,
-    },
     log: {
       ask: "What happened, in a few words? (e.g., Annual Checkup)",
       build: async (what) => `${values.date ?? today} ${what}`,

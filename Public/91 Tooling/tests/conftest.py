@@ -21,7 +21,7 @@ from vault_tools.issues import CheckName, Issue, IssueCode, Severity
 from vault_tools.markup import is_web_url
 from vault_tools.vault import DEFAULT_SCHEMA_DIR, TOOLING_DIR, Vault
 
-FIXTURES_DIR: Final = TOOLING_DIR / "tests" / "fixtures"
+FIXTURES_DIR: Final = TOOLING_DIR / "tests" / ".fixtures"
 # A stand-in Private/ folder: only its file names matter, as in CI.
 PRIVATE_SAMPLE_DIR: Final = TOOLING_DIR / "tests" / "private_sample"
 

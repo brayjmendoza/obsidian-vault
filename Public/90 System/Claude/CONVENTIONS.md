@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-07
-version: "0.13"
+version: "0.14"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.13**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.14**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -53,7 +53,7 @@ Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, a
 - **Plan notes (optional):** standing plans at the domain root, with type `plan` (e.g., Budget, Schedule, Wishlist, To-dos, and a practice rotation)
 - **Items (optional role folders):** one note per thing you track or own, each with its own status or history (e.g., `Pieces/`, `Trips/`, and `Assets/`)
 - **Logs (optional role folders):** one note per date or period (e.g., `Practice/`, `Sessions/`, and `Spending/`)
-- **Plans (optional role folder):** a series of standing plans (e.g., weekly routines in `Routines/`)
+- **Plans (optional role folder):** a series of standing plans (e.g., workout routines in `Routines/`)
 - **Subdomains (optional):** a nested domain with the same shape (e.g., `Music/Piano/`)
 
 A domain holds only what is about your own doing or owning. Everything else lives once, elsewhere, and the domain links to it:
@@ -196,6 +196,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.14 · A `routine` is a workout you do, with no tie to a week: it has no `week` property, and `structure-schema.yaml` no longer gives routines a filename pattern, so they take a plain descriptive title (e.g., `Full-Body Strength`).
 - 2026-11-07 · v0.13 · Piece notes are named `Title - Composer` with the composer's surname (e.g., `Ballade No. 1 in G Minor - Chopin`), noted beside the pattern in `structure-schema.yaml`. The pattern itself is unchanged. `routine` notes' `muscle_groups` now use the `muscle_group` vocabulary, like `exercise`.
 - 2026-11-01 · v0.12 · Rewritten to follow [[STYLE]]: "you" for the vault's owner, title-case headers, e.g. and i.e. in parentheses, "see" cross-references, the Oxford comma, and fewer semicolons. Domains, Empty Folders, and Bands are now subsections of section 2. No version bump: no rule or schema changed.
 - 2026-11-01 · v0.12 · Section 1: links to a heading or block that the target note lacks are reported too (`anchor-unresolved`). No version bump: no rule or schema changed.

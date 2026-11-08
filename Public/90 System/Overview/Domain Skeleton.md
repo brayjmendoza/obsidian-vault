@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.6"
 aliases:
   - Hobby and Life Admin skeleton
@@ -16,7 +16,7 @@ Every folder directly under `20 Hobbies/` or `30 Life Admin/` (see [[Folder Stru
 ├── <Plan>.md         standing plan notes (optional): Budget.md, Schedule.md
 ├── <Items>/          things you track or own, one note each (optional, any number)
 ├── <Logs>/           dated records of what you did (optional, any number)
-├── <Plans>/          a series of standing plans, e.g. Weekly Routines/ (optional)
+├── <Plans>/          a series of standing plans, e.g. Routines/ (optional)
 └── <Subdomain>/      a nested domain with the same shape (optional)
 ```
 
