@@ -79,10 +79,10 @@ def test_typed_links(load_vault: LoadVault) -> None:
     pieces = "20 Hobbies/Music/Piano/Pieces"
     assert keys(issues) == {
         (E, "link-wrong-type", "10 Projects/Wrong Area.md", "area"),
-        (E, "not-a-link", f"{pieces}/Chopin - Not A Link.md", "composer"),
-        (E, "link-wrong-type", f"{pieces}/Chopin - Wrong Type.md", "composer"),
-        (E, "link-ambiguous", f"{pieces}/Liszt - Ambiguous.md", "composer"),
-        (E, "link-wrong-type", f"{pieces}/Someone - Untyped Target.md", "composer"),
+        (E, "not-a-link", f"{pieces}/Chopin - Not A Link.md", "composers"),
+        (E, "link-wrong-type", f"{pieces}/Chopin - Wrong Type.md", "composers"),
+        (E, "link-ambiguous", f"{pieces}/Liszt - Ambiguous.md", "composers"),
+        (E, "link-wrong-type", f"{pieces}/Someone - Untyped Target.md", "composers"),
         (E, "link-wrong-type", "20 Hobbies/Music/Piano/Practice/2026-10-30 Practice.md", "pieces"),
     }
     # Resolve by alias, heading + display text, explicit path, and an archived

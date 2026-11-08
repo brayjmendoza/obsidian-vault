@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-01
+updated: 2026-11-07
 version: "0.6"
 ---
 # Note Types and Properties
@@ -16,7 +16,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | project           | 10 Projects                                      | status, area (link to a hub)             | start, due, outcome                                                                  |
 | hub               | Every domain, named after its folder             |                                          |                                                                                      |
 | plan              | Any domain root                                  |                                          | review_by                                                                            |
-| piece             | Music/Piano/Pieces and Music/Violin/Pieces       | composer, status                         | difficulty (1–10), grade, started, last_practiced, memorized                         |
+| piece             | Music/Piano/Pieces and Music/Violin/Pieces       | composers, status                        | difficulty (1–10), grade, started, last_practiced, memorized                         |
 | practice          | Music/Piano/Practice and Music/Violin/Practice   | date, minutes, focus                     | pieces                                                                               |
 | technique         | Music/Piano/Technique and Music/Violin/Technique | category                                 | resources                                                                            |
 | composer          | Music/Composers                                  | lived                                    | era                                                                                  |

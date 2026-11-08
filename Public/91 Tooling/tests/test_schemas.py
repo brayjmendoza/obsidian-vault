@@ -121,7 +121,7 @@ PROPERTY_BREAKS: Final[dict[str, tuple[Edit, str]]] = {
         "no vocabulary named 'nope'",
     ),
     "link to unknown type": (
-        set_key("types.piece.constraints.composer.link", "person"),
+        set_key("types.piece.constraints.composers.link", "person"),
         "link target 'person' is not a note type",
     ),
     "type missing from note_type": (

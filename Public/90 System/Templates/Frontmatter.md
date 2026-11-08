@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-07
-version: "0.14"
+version: "0.15"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -91,7 +91,7 @@ const questions = {
   start: "When does it start?",
   due: "When is it due?",
   outcome: "What does done look like?",
-  composer: "Who composed it?",
+  composers: "Who composed it, and who arranged it? (original composer first)",
   era: "Which era is this composer from?",
   lived: "When did this composer live?",
   difficulty: "How difficult is it?",
@@ -410,9 +410,9 @@ if (!adding) {
       ask: "What happened, in a few words? (e.g., Annual Checkup)",
       build: async (what) => `${values.date ?? today} ${what}`,
     },
-    piece: values.composer && {
+    piece: values.composers?.length && {
       ask: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
-      build: async (piece) => `${piece} - ${surname(values.composer)}`,
+      build: async (piece) => `${piece} - ${surname(values.composers[0])}`,
     },
     trip: {
       ask: "Where are you going? (e.g., Kyoto)",

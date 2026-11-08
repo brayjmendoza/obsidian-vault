@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-07
-version: "0.14"
+version: "0.15"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.14**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.15**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -116,7 +116,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 - **No nested objects.** Obsidian's properties panel doesn't handle maps or objects. Structured data goes in a table in the note body (see section 5).
 - Property names are `snake_case`. Vocabulary values are lowercase and must match the schema exactly.
 - Dates are `YYYY-MM-DD`. Lists are YAML lists, never comma strings.
-- Links inside properties are quoted: `composer: "[[Frédéric Chopin]]"`.
+- Links inside properties are quoted: `area: "[[Piano]]"`, and in a list, `composers: ["[[Johann Sebastian Bach]]", "[[Ferruccio Busoni]]"]`.
 - Don't invent new properties, types, or vocabulary values. Propose them instead, and once you approve them, add them to the schema first, then use them.
 - Prefer properties over tags. Tags are reserved for the short list in section 6.
 - **URLs live only in `url`.** A URL never appears in any other property or in a note body. `url` holds exactly one http or https URL, and a note type that may hold one lists `url` in the properties schema. A note that needs several web pages links to one `reference` note per page instead.
@@ -196,6 +196,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-07 · v0.15 · Piece notes take `composers`, a list of links to composer notes, instead of `composer`: the original composer comes first, then any arrangers (e.g., Bach, then Busoni for the Bach–Busoni Chaconne). The piece filename uses the first composer's surname. `composer` is gone from `properties-schema.yaml`.
 - 2026-11-07 · v0.14 · A `routine` is a workout you do, with no tie to a week: it has no `week` property, and `structure-schema.yaml` no longer gives routines a filename pattern, so they take a plain descriptive title (e.g., `Full-Body Strength`).
 - 2026-11-07 · v0.13 · Piece notes are named `Title - Composer` with the composer's surname (e.g., `Ballade No. 1 in G Minor - Chopin`), noted beside the pattern in `structure-schema.yaml`. The pattern itself is unchanged. `routine` notes' `muscle_groups` now use the `muscle_group` vocabulary, like `exercise`.
 - 2026-11-01 · v0.12 · Rewritten to follow [[STYLE]]: "you" for the vault's owner, title-case headers, e.g. and i.e. in parentheses, "see" cross-references, the Oxford comma, and fewer semicolons. Domains, Empty Folders, and Bands are now subsections of section 2. No version bump: no rule or schema changed.

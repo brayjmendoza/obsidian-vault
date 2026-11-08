@@ -9,16 +9,44 @@ views:
       direction: ASC
     groupOrder:
       - repertoire
+      - learning
+      - retired
       - wishlist
   - type: table
     name: Liszt
     filters:
       and:
         - type == "piece"
-        - composer == link("Franz Liszt")
+        - composers.contains(link("Franz Liszt"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
   - type: table
     name: Chopin
     filters:
       and:
         - type == "piece"
-        - composer == link("Frédéric Chopin")
+        - composers.contains(link("Frédéric Chopin"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - retired
+      - wishlist
+  - type: table
+    name: Löschhorn
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Carl Albert Löschhorn"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - retired

@@ -2,7 +2,8 @@
 type: piece
 created: 2026-10-01
 updated: 2026-10-30
-composer: "[[Franz Liszt]]"
+composers:
+  - "[[Franz Liszt]]"
 status: wishlist
 grade: ABRSM 8
 ---

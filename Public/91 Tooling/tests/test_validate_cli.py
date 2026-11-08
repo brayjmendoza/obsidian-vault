@@ -46,7 +46,7 @@ def test_json_report() -> None:
         "code": "link-unresolved",
         "path": "20 Hobbies/Music/Piano/Pieces/Schumann - Missing Composer.md",
         "message": "[[Clara Schumann]] matches no note or file (broken, or not written yet)",
-        "property": "composer",
+        "property": "composers",
     }
 
 

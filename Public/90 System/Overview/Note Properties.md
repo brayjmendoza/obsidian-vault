@@ -60,7 +60,7 @@ Properties for the music hobby in `20 Hobbies/Music`. These properties are for t
 
 | Property         | Type         | Used by             | Meaning                                           | Values                                                                                                         |
 | ---------------- | ------------ | ------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `composer`       | text (link)  | piece               | Who wrote the piece                               | Link to a composer note                                                                                        |
+| `composers`      | list (links) | piece               | Who wrote the piece, then who arranged it         | Links to composer notes, the original composer first (e.g., Tchaikovsky, then Pletnev)                         |
 | `status`         | text         | piece               | Where the piece is in your repertoire             | `wishlist`, `learning`, `polishing`, `repertoire`, `retired`, `relearning`                                     |
 | `difficulty`     | number       | piece               | How hard the piece is, on your own scale          | 1–10                                                                                                           |
 | `grade`          | text         | piece               | A grade from an external syllabus, e.g., "ABRSM 8" |                                                                                                                |

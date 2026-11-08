@@ -2,7 +2,8 @@
 type: piece
 created: 2026-10-01
 updated: 2026-10-30
-composer: "[[Chopin]]"
+composers:
+  - "[[Chopin]]"
 status: learning
 difficulty: 6
 memorized: false

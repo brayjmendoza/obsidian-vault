@@ -47,7 +47,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.14"
+version: "0.15"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -83,7 +83,7 @@ property_types:
   outcome: text
 
   # music (piano, violin, composer)
-  composer: text
+  composers: list         # links to composer notes: the original composer first, then any arrangers
   era: text
   lived: text
   difficulty: number
@@ -238,10 +238,10 @@ types:
   # Instrument is implied by folder (Music/<Instrument>/Pieces etc.).
   # Composers are shared by all instruments.
   piece:
-    required: [composer, status]
+    required: [composers, status]
     optional: [difficulty, grade, started, last_practiced, memorized]
     constraints:
-      composer: {link: composer}
+      composers: {link: composer}   # every item must link to a composer note
       status: {vocab: piece_status}
       difficulty: {range: [1, 10]}
 
