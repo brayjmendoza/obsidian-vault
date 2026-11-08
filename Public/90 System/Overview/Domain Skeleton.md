@@ -36,8 +36,8 @@ Subfolders within a domain each have a role and are named for what they hold (e.
 Every hub uses the same headings and holds only links and queries (see [[Vault Plugins|Bases and Tasks]] plugins), so nothing is copied. There's no title heading or opening paragraph: the note's name already says which domain it is. The [[Hub Template]] writes this shape, and the binding version is in [[CONVENTIONS]] (section 5). As an example:
 
 ```markdown
-# Current       Bases view: items with an active status; Tasks query for this folder
-# Tasks         Tasks query
+# Current       Bases view: items with an active status
+# Tasks         Tasks query: TODO items found in this folder
 # Projects      Bases view: open projects where area = [[Piano]]
 # Plans         links to the current plan notes
 # Recent        Bases view: the latest log notes

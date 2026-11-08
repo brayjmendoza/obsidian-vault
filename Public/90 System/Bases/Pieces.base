@@ -349,14 +349,30 @@ views:
       - retired
       - wishlist
   - type: table
-    name: Repertoire
+    name: Piano Repertoire
     filters:
       and:
         - type == "piece"
         - status == "repertoire"
+        - file.folder == "Public/20 Hobbies/Music/Piano/Pieces"
   - type: table
-    name: Retired
+    name: Piano Retired
     filters:
       and:
         - type == "piece"
         - status == "retired"
+        - file.folder == "Public/20 Hobbies/Music/Piano/Pieces"
+  - type: table
+    name: Violin Repertoire
+    filters:
+      and:
+        - type == "piece"
+        - status == "repertoire"
+        - file.folder == "Public/20 Hobbies/Music/Violin/Pieces"
+  - type: table
+    name: Violin Retired
+    filters:
+      and:
+        - type == "piece"
+        - status == "retired"
+        - file.folder == "Public/20 Hobbies/Music/Violin/Pieces"
