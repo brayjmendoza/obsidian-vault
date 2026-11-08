@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.26"
+version: "0.27"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -106,7 +106,7 @@ const questions = {
   category: "What kind of technique is it?",
   resources: "Which resources help with it?",
   modality: "What kind of training is this routine?",
-  goal: "What's the routine's goal?",
+  goals: "What does the routine train for?",
   routine: "Which routine did you follow?",
   kind: "What kind of workout was it?",
   duration_min: "How many minutes did the workout take?",

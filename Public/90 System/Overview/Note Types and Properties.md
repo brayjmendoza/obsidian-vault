@@ -20,7 +20,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | practice          | Music/Piano/Practice and Music/Violin/Practice   | date, minutes, focus                    | pieces                                                                               |
 | technique         | Music/Piano/Technique and Music/Violin/Technique | category                                | resources                                                                            |
 | composer          | Music/Composers                                  | lived                                   | styles                                                                               |
-| routine           | Fitness/Routines                                 | modality, muscle_groups, goal           |                                                                                      |
+| routine           | Fitness/Routines                                 | modality, muscle_groups, goals          |                                                                                      |
 | session           | Fitness/Sessions                                 | date, kind                              | routine, duration_min                                                                |
 | exercise          | Fitness/Exercises                                | muscle_groups                           | equipment, difficulty (1–5), last_performed                                          |
 | trip              | Travel/Trips                                     | status                                  | start, end, places, companions, budget                                               |

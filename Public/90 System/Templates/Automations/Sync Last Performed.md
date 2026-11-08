@@ -2,12 +2,12 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.26"
+version: "0.27"
 ---
 <%*
 // Sync Last Performed: keeps each exercise's `last_performed` at the latest date
 // of the session notes that log it. A session logs an exercise when the
-// exercise's row in its table has Reps filled (CONVENTIONS.md section 5), so a
+// exercise's row in its table has Reps/Time/Distance filled (CONVENTIONS.md section 5), so a
 // new session note, whose table is still empty, changes nothing. Dates only move
 // forward, so a later date you set by hand is kept. Run it on its own
 // (Templater: Insert template, on any note) after logging a workout. It checks
@@ -32,7 +32,7 @@ const isoDate = (value) => {
 // The cells of a table row. A `\|` inside a link (i.e., an alias) isn't a column break.
 const cellsOf = (line) => line.trim().replace(/^\||\|$/g, "").split(/(?<!\\)\|/).map((cell) => cell.trim());
 
-// The exercise notes a session note's tables log, i.e., rows with Reps filled.
+// The exercise notes a session note's tables log, i.e., rows with Reps/Time/Distance filled.
 const loggedExercises = (text, source) => {
   const exercises = [];
   let columns = null;

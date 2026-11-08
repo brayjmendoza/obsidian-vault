@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.26"
+version: "0.27"
 ---
 <%*
 // Session Table: writes a new session note's sets table (CONVENTIONS.md section 5)
@@ -10,7 +10,8 @@ version: "0.26"
 // Performed. Only the routine's Core Workout goes in, never its Warm-Up or
 // Cool-Down. Within each Core Workout section (e.g., a progression):
 //   - Exercise: the highlighted items if there are any, else every linked item
-//   - Target:   the item's text after its link (e.g., "3x20")
+//   - Target:   the item's text after " — " (e.g., "3x20"), or after its link
+//               if it has no " — "
 //   - Sets:     the number at the start of the section's `Sets:` line
 // The Session Template includes it after Frontmatter, so it runs once the
 // note's properties are written. Never run it alone.
@@ -20,7 +21,7 @@ const { Notice, parseYaml } = tp.obsidian;
 const target = tp.config.target_file;
 const root = tp.config.template_file.path.split("90 System/")[0];
 const sync = `${root}90 System/Templates/Automations/Sync Last Performed.md`;
-const header = ["| Exercise | Target | Sets | Reps | Weight (lb) | Notes |", "|---|---|---|---|---|---|"];
+const header = ["| Exercise | Target | Sets | Reps/Time/Distance | Weight/Pace | Notes |", "|---|---|---|---|---|---|"];
 const button = [
   "```meta-bind-button",
   "label: Sync Last Performed",
@@ -48,7 +49,8 @@ const routineRows = (core) => {
     for (const line of current.length ? current : items) {
       const name = line.match(/\[\[([^\]|#]+)/)?.[1].trim();
       if (!name) continue;
-      const after = line.replaceAll("==", "").split("]]").slice(1).join("]]").trim()
+      const rest = line.replaceAll("==", "").split("]]").slice(1).join("]]");
+      const after = (rest.includes(" — ") ? rest.split(" — ").slice(1).join(" — ") : rest).trim()
         .replace(/^[,;:—–-]+\s*/, "").replace(/^\(([^()]*)\)$/, "$1").replaceAll("|", "\\|");
       rows.push({ name, target: after, sets });
     }

@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.26"
+version: "0.27"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.26**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.27**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -129,17 +129,25 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 - **Map notes** are hand-curated tables of contents for a field: headings for subtopics, links to concept notes in learning order, and a few words on how ideas connect. A concept can appear on several maps. When a map section grows large, it becomes its own sub-map, linked from the parent map.
 - **Concept notes** hold one idea: a one-sentence definition, an explanation, an example, `## Connections` (i.e., links to related concepts), and `## Sources`. Every concept is linked from at least one map.
 - **Source notes** (e.g., papers and books) hold a summary, key ideas each linking to a concept note, open questions, and short quotes with a page or section reference.
-- **Routine notes** have three H1 sections, in this order: `# Warm-Up`, `# Core Workout`, and `# Cool-Down`. Each part of the Core Workout (e.g., a progression) is an H2 inside it. Every exercise links to its exercise note, with the routine's own wording as display text (e.g., `[[Push-up|Push-ups]] (3x20)`). In a progression, the tier you're on is highlighted (e.g., `==[[Push-up|Push-ups]] (3x20)==`).
-- **Session notes** record the Core Workout in a body table, followed by a button that runs [[Sync Last Performed]]:
+- **Routine notes** are named for the workout, not the day (e.g., `Normal Run`). Which day gets which routine is the [[Weekly Rotation]] plan's job. Every routine follows the [[Routine Template]], whose format the [[Session Template]] reads:
+  - **Three H1 sections,** in this order: `# Warm-Up`, `# Core Workout`, and `# Cool-Down`. Each block of the Core Workout is an H2 (e.g., `## Run` or a progression) ending with a `Sets:` line, which is `Sets: 1` for a run or a single pass.
+  - **One exercise per list item:** a link to its exercise note with the routine's own wording as display text, then ` — ` and the target (e.g., `- [[Push-up|Push-ups]] — 3x20` or `- [[Run]] — 10km @ ~7:30/mi pace`). Words between the link and the ` — ` stay in the routine but not in the target (e.g., `(forward/backward)`). An item linking two exercises (e.g., `[[Shrimp Squat]] / [[Weighted Pistol Squat]]`) counts as its first.
+  - **Progressions** number their tiers and highlight the one you're on (e.g., `1. ==[[Push-up|Push-ups]] — 3x20==`).
+- **Session notes** record the Core Workout in a body table, followed by a button that runs [[Sync Last Performed]]. The columns fit any kind of exercise:
   ```markdown
-  | Exercise | Target | Sets | Reps | Weight (lb) | Notes |
+  | Exercise | Target | Sets | Reps/Time/Distance | Weight/Pace | Notes |
   |---|---|---|---|---|---|
-  | [[Back Squat]] | 3x5 | 3 | 5 | 185 | felt strong |
+  | [[Back Squat]] | 3x5 | 3 | 5 | 185 lb | felt strong |
   | [[Push-up]] | 3x20 | 3 | 20, 18, 15 |  | last set slow |
+  | [[Tuck L-Sit Hold]] | 3x30s | 3 | 30s, 25s, 20s |  |  |
+  | [[Run]] | 10km @ ~7:30/mi pace | 1 | 10 km | 7:28/mi |  |
   ```
-  - **One row per exercise.** Target is the routine's prescription for it, and Sets is how many sets. Reps and Weight hold one value for every set, or one per set separated by commas (e.g., `20, 18, 15`). A hold's reps are a time (e.g., `45s`), and Weight is blank for bodyweight.
-  - **A row counts once Reps is filled.** That's what an exercise's Last Time section and [[Sync Last Performed]] read, so an unfilled row (e.g., something you skipped) can stay.
-  - **The table comes from the routine's Core Workout.** The [[Session Template]] fills it from the session's `routine`, never from the Warm-Up or Cool-Down. In each Core Workout section, the highlighted items go in if there are any, and otherwise every linked exercise does. Target is the item's text after its link, and Sets is the number on the section's `Sets:` line.
+  - **One row per exercise.** Target is the routine's prescription, and Sets is how many sets.
+  - **Reps/Time/Distance** is how much you did: reps (e.g., `20`), a time (e.g., `45s` or `46:30`), or a distance with its unit (e.g., `10 km` or `6.2 mi`).
+  - **Weight/Pace** is how hard: a weight with its unit (e.g., `185 lb`) or a pace (e.g., `7:28/mi`). It's blank for bodyweight.
+  - **Per set:** both columns hold one value for every set, or one per set separated by commas (e.g., `20, 18, 15`).
+  - **A row counts once Reps/Time/Distance is filled.** That's what an exercise's Last Time section and [[Sync Last Performed]] read, so an unfilled row (e.g., something you skipped) can stay.
+  - **The table comes from the routine's Core Workout,** never its Warm-Up or Cool-Down. The [[Session Template]] fills it from the session's `routine`: in each block, the highlighted items go in if there are any, and otherwise every linked exercise does. Target is the item's text after ` — `, and Sets is the number on the block's `Sets:` line.
 - **Exercise notes** have four sections, in this order: `# Last Time` (the latest logged sets, from `90 System/Scripts/last-time.js`), `# Sessions` (the Sessions view of `Exercise.base`), `# Notes` (your own thoughts, which Claude doesn't write in), and `# References` (bulleted links to reference notes, e.g., a form video). [[Sync Last Performed]] sets `last_performed`.
 - **Form videos** are reference notes whose `url` holds the video and whose body runs `90 System/Scripts/form-video.js`, which embeds it with Obsidian's own player (see [[Vault Plugins]]). Shorts and short links are turned into watch links, since Obsidian only embeds those.
 - **Scripts** in `90 System/Scripts/` are run by notes through Dataview (`dv.view`), so each behavior is written once. A note runs one in a `dataviewjs` code block. Paths in code are from the vault root, so they start with `Public/` (e.g., `dv.view("Public/90 System/Scripts/last-time")`).
@@ -197,10 +205,11 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.27 · Routine `goal` is now `goals`, a list, and the `routine_goal` vocabulary adds `recovery`. Routines are named for the workout and follow the [[Routine Template]]: every exercise a linked list item with its target after ` — `, and every Core Workout block an H2 with a `Sets:` line. Session tables use `Reps/Time/Distance` and `Weight/Pace` columns, with units in the cells, so they fit runs, holds, and stretches as well as lifts (see section 5).
 - 2026-11-08 · v0.26 · Routine notes have Warm-Up, Core Workout, and Cool-Down H1 sections, and session tables hold only the Core Workout, with a Target column, Sets filled from the routine, and a Sync Last Performed button (Meta Bind) after the table. Exercise notes end with a References section instead of the `form` property, which is gone from `properties-schema.yaml`. See section 5.
 - 2026-11-08 · v0.25 · Exercise notes take `form` (a link to a reference note), `difficulty` (1–5), and `last_performed` (set by [[Sync Last Performed]]), with Last Time, Sessions, and Notes sections. Session tables take per-set values and are filled from the routine, whose exercises are links with the current tier highlighted (see section 5). `structure-schema.yaml` adds `90 System/Scripts/` for Dataview scripts (`js`). Added `Exercise.base`, [[Session Table]], and [[Sync Last Performed]].
 - 2026-11-08 · v0.24 · Added the `scratch` note type, for scratch work that `vault-validate` doesn't check: any folder, any name, and the `common` properties (see section 4). The private-link check and the hub name still apply. Added [[Scratch Template]].
-- 2026-11-08 · v0.23 · The `exercise_modality` vocabulary adds `mobility`, for routines and exercises that are stretching, foam rolling, or joint work rather than strength or running (e.g., [[Sunday - Recovery]]).
+- 2026-11-08 · v0.23 · The `exercise_modality` vocabulary adds `mobility`, for routines and exercises that are stretching, foam rolling, or joint work rather than strength or running (e.g., [[Mobility Recovery]]).
 - 2026-11-07 · v0.22 · `90 System/Templates/` has two subfolders in `structure-schema.yaml`: `Automations/` for templates run on an existing note (e.g., Add Properties and Sync Last Practiced) and `Includes/` for shared parts other templates include (e.g., Frontmatter). Type templates stay at the root of `Templates/`. Added [[Vault Templates]].
 - 2026-11-07 · v0.21 · A hub's Plans view includes plan notes in its subdomains too (e.g., the Music hub lists Piano's and Violin's plans).
 - 2026-11-07 · v0.20 · A hub's Plans section is a Bases view, `Plan.base`, of the plan notes in the hub's own folder, instead of hand-kept links.

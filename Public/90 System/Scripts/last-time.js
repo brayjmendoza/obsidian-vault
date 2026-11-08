@@ -3,7 +3,9 @@
 //   ```dataviewjs
 //   await dv.view("Public/90 System/Scripts/last-time")
 //   ```
-// A session row counts once its Reps cell is filled (CONVENTIONS.md section 5).
+// A session row counts once its Reps/Time/Distance cell is filled (CONVENTIONS.md
+// section 5). Columns are found by the start of their header (e.g., "reps" or
+// "weight"), so older tables with Reps and Weight (lb) headers still read.
 // Sync Last Performed reads session tables the same way: keep the two in step.
 
 const here = dv.current().file.path;
@@ -23,6 +25,7 @@ const linkedPath = (cell, from) => {
 const loggedRows = (text, from) => {
   const rows = [];
   let columns = null;
+  let labels = null;
   for (const line of text.split("\n")) {
     if (!line.trim().startsWith("|")) {
       columns = null;
@@ -30,6 +33,7 @@ const loggedRows = (text, from) => {
     }
     const cells = cellsOf(line);
     if (!columns) {
+      labels = cells;
       columns = cells.map((cell) => cell.toLowerCase());
       continue;
     }
@@ -37,7 +41,11 @@ const loggedRows = (text, from) => {
     const cell = (name) => cells[columns.findIndex((column) => column.startsWith(name))] ?? "";
     if (!columns.includes("exercise") || !cell("reps")) continue;
     if (linkedPath(cell("exercise"), from) !== here) continue;
-    rows.push({ sets: cell("sets"), reps: cell("reps"), weight: cell("weight"), notes: cell("notes") });
+    const label = (name) => labels[columns.findIndex((column) => column.startsWith(name))] ?? name;
+    rows.push({
+      sets: cell("sets"), reps: cell("reps"), weight: cell("weight"), notes: cell("notes"),
+      repsLabel: label("reps"), weightLabel: label("weight"),
+    });
   }
   return rows;
 };
@@ -63,8 +71,8 @@ for (const page of sessions) {
     const weight = perSet(row.weight, count);
     const total = Math.max(count, reps.length, weight.length);
     const sets = Array.from({ length: total }, (_, i) => [i + 1, reps[i] ?? "", weight[i] ?? ""]);
-    if (weight.length) dv.table(["Set", "Reps", "Weight (lb)"], sets);
-    else dv.table(["Set", "Reps"], sets.map(([set, rep]) => [set, rep]));
+    if (weight.length) dv.table(["Set", row.repsLabel, row.weightLabel], sets);
+    else dv.table(["Set", row.repsLabel], sets.map(([set, rep]) => [set, rep]));
     if (row.notes) dv.paragraph(row.notes);
   }
   shown = true;

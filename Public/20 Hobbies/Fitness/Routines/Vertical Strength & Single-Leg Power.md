@@ -3,7 +3,8 @@ type: routine
 created: 2026-11-08
 updated: 2026-11-08
 modality: calisthenics
-goal: strength
+goals:
+  - strength
 muscle_groups:
   - full-body
 ---
@@ -27,14 +28,14 @@ Total time: ~10 mins
 
 ## Handstand Push-Up (HSPU) Progression
 
-1. ==[[Push-up|Push-ups]] (3x20)==
-2. [[Pike Push-up|Pike push-ups]] (3x12)
-3. [[Feet-Elevated Pike Push-up|Feet-elevated pike push-ups]] (3x10)
-4. [[Chest-to-Wall Handstand Hold|Chest-to-wall Wall handstand hold]] (3x45s solid)
-5. [[Wall Negative Handstand Push-up|Wall negative HSPU]] (3x3 w/ 5-8s descent)
-6. [[Partial Wall Handstand Push-up|Wall HSPU partial ROM]] (4x5)
-7. [[Wall Handstand Push-up|Full wall HSPU]] (4x8)
-8. [[Deficit Wall Handstand Push-up|Deficit wall HSPU]] (4x6)
+1. ==[[Push-up|Push-ups]] — 3x20==
+2. [[Pike Push-up|Pike push-ups]] — 3x12
+3. [[Feet-Elevated Pike Push-up|Feet-elevated pike push-ups]] — 3x10
+4. [[Chest-to-Wall Handstand Hold|Chest-to-wall Wall handstand hold]] — 3x45s solid
+5. [[Wall Negative Handstand Push-up|Wall negative HSPU]] — 3x3 w/ 5-8s descent
+6. [[Partial Wall Handstand Push-up|Wall HSPU partial ROM]] — 4x5
+7. [[Wall Handstand Push-up|Full wall HSPU]] — 4x8
+8. [[Deficit Wall Handstand Push-up|Deficit wall HSPU]] — 4x6
 9. [[Freestanding Handstand Push-up|Freestanding HSPU]]
 
 Rest: 2-3 mins  
@@ -43,13 +44,13 @@ Total time: ~16 mins
 
 ## One Arm Pull-Up Progression
 
-1. ==[[Assisted Pull-up|Assisted pull-ups]] (3x10 w/ lightest assistance)==
-2. [[Negative Pull-up|Negative pull-ups]] (5 reps w/ 8s controlled descent)
-3. [[Pull-up|Pull-ups]] (3x10 strict)
-4. [[Chest-to-Bar Pull-up|Chest-to-bar pull-ups]] (3x8)
-5. [[Archer Pull-up|Archer pull-ups]] (3x5/side with straight extended arm)
-6. [[Assisted One-Arm Pull-up|Assisted one-arm pull-ups]] (5 clean reps per side)
-7. [[One-Arm Negative Pull-up|One-arm negatives]] (5-8s descent, 5 reps/side)
+1. ==[[Assisted Pull-up|Assisted pull-ups]] — 3x10 w/ lightest assistance==
+2. [[Negative Pull-up|Negative pull-ups]] — 5 reps w/ 8s controlled descent
+3. [[Pull-up|Pull-ups]] — 3x10 strict
+4. [[Chest-to-Bar Pull-up|Chest-to-bar pull-ups]] — 3x8
+5. [[Archer Pull-up|Archer pull-ups]] — 3x5/side with straight extended arm
+6. [[Assisted One-Arm Pull-up|Assisted one-arm pull-ups]] — 5 clean reps per side
+7. [[One-Arm Negative Pull-up|One-arm negatives]] — 5-8s descent, 5 reps/side
 8. [[One-Arm Pull-up|One arm pull-up]]
 
 Rest: 2-3 mins  
@@ -73,14 +74,14 @@ Total time: ~10 minutes
 
 ## Single Leg Squat Progression
 
-1. [[Bodyweight Squat|Bodyweight squats]] (3x20)
-2. [[Split Squat|Split squats]] (3x12 / leg)
-3. [[Bulgarian Split Squat|Bulgarian split squats]] (3x10 / leg)
-4. [[Step-down|Step-downs]], slow eccentric (3x8/leg w/ 5s descent)
-5. [[Box Pistol Squat|Box pistol squats]] (3x8/leg)
-6. ==[[Assisted Pistol Squat|Assisted pistol squats]] (3x6/leg)==
-7. [[Pistol Squat|Full pistol squats]] (3x8)
-8. [[Deficit Pistol Squat|Deficit pistol squats]] (3x6)
+1. [[Bodyweight Squat|Bodyweight squats]] — 3x20
+2. [[Split Squat|Split squats]] — 3x12 / leg
+3. [[Bulgarian Split Squat|Bulgarian split squats]] — 3x10 / leg
+4. [[Step-down|Step-downs]], slow eccentric — 3x8/leg w/ 5s descent
+5. [[Box Pistol Squat|Box pistol squats]] — 3x8/leg
+6. ==[[Assisted Pistol Squat|Assisted pistol squats]] — 3x6/leg==
+7. [[Pistol Squat|Full pistol squats]] — 3x8
+8. [[Deficit Pistol Squat|Deficit pistol squats]] — 3x6
 9. [[Shrimp Squat|Shrimp squat]] / [[Weighted Pistol Squat|weighted pistol]]
 
 Rest: 2 mins  

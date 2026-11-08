@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.26"
+version: "0.27"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -103,7 +103,7 @@ property_types:
 
   # fitness
   modality: text
-  goal: text
+  goals: list             # what a routine trains for; one routine may have several
   routine: text
   kind: text
   duration_min: number
@@ -169,7 +169,7 @@ vocabularies:
                    contemporary, film, jazz, ragtime, tango, folk]
   session_kind: [strength, cardio, mobility, sport]
   exercise_modality: [calisthenics, running, weights, mobility]
-  routine_goal: [strength, hypertrophy, endurance, mobility, maintenance]
+  routine_goal: [strength, hypertrophy, endurance, mobility, maintenance, recovery]
   muscle_group: [chest, back, shoulders, biceps, triceps, forearms, core,
                  glutes, quads, hamstrings, calves, upper-body, lower-body, 
                  full-body]
@@ -274,12 +274,12 @@ types:
 
   # --- Fitness -------------------------------------------------------------
   routine:
-    required: [modality, muscle_groups, goal]
+    required: [modality, muscle_groups, goals]
     optional: []
     constraints:
       modality: {vocab: exercise_modality}
       muscle_groups: {vocab: muscle_group}
-      goal: {vocab: routine_goal}
+      goals: {vocab: routine_goal}
 
   session:
     required: [date, kind]
