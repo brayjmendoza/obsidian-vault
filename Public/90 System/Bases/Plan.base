@@ -14,3 +14,10 @@ views:
         direction: ASC
       - property: file.name
         direction: ASC
+  - type: table
+    name: All Plans
+    filters:
+      and:
+        - type == "plan"
+        - '!file.path.contains("Private")'
+        - '!file.path.contains("99 Archive")'

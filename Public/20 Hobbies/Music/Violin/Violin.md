@@ -1,16 +1,19 @@
 ---
 type: hub
 created: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-08
 ---
-# Current
+# Learning
 
 ![[Hub.base#Current]]
+
+
+# Tasks
 
 ```tasks
 not done
 folder includes {{query.file.folder}}
-sort by due
+sort by priority
 ```
 
 
