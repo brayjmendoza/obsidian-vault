@@ -23,6 +23,10 @@
 #      skipped everywhere; `exempt` files are skipped by both validators.
 #   7. Under a folder with `max_depth: N`, no folder may sit more than N
 #      levels below it.
+#   8. A scratch note (type: scratch) may sit in any folder under any name,
+#      so rules 2 and 3 skip it; only a domain's hub name is reserved for the
+#      hub. Its folder must still be declared (rule 1). See
+#      properties-schema.yaml types.scratch.
 #
 # Folder keys
 #   types:      note types allowed directly in this folder ([any] = any type,
@@ -45,7 +49,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.22"
+version: "0.24"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.

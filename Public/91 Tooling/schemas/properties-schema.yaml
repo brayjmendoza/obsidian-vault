@@ -43,11 +43,14 @@
 # A note's rules come from its declared `type`, never inferred from its folder.
 # A property not listed for a type (or in common) is an error.
 #
+# Scratch notes (type: scratch) are the exception: no validator checks them,
+# except that they never link into Private/. See types.scratch.
+#
 # Versioning: CONVENTIONS.md, this file and structure-schema.yaml share one
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.22"
+version: "0.24"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -150,7 +153,8 @@ vocabularies:
   note_type: [daily, weekly, monthly, project, hub, plan, piece, practice,
               technique, composer, routine, session, exercise, trip, place,
               paper, book, course, article, concept, map, spending, account,
-              asset, contractor, benefit, log, reference, system, template]
+              asset, contractor, benefit, log, reference, system, template,
+              scratch]
   field: [computer-science, math, physics, music-theory, philosophy]
   project_status: [idea, active, paused, done, dropped]
   piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
@@ -163,7 +167,7 @@ vocabularies:
                    impressionist, expressionist, neoclassical, modern, minimalist,
                    contemporary, film, jazz, ragtime, tango, folk]
   session_kind: [strength, cardio, mobility, sport]
-  exercise_modality: [calisthenics, running, weights]
+  exercise_modality: [calisthenics, running, weights, mobility]
   routine_goal: [strength, hypertrophy, endurance, mobility, maintenance]
   muscle_group: [chest, back, shoulders, biceps, triceps, forearms, core,
                  glutes, quads, hamstrings, calves, upper-body, lower-body, 
@@ -285,8 +289,8 @@ types:
       duration_min: {range: [1, 600]}
 
   exercise:
-    required: [muscle_groups, equipment]
-    optional: []
+    required: [muscle_groups]
+    optional: [equipment]
     constraints:
       muscle_groups: {vocab: muscle_group}
       equipment: {vocab: equipment}
@@ -394,3 +398,14 @@ types:
     optional: []
     # Templates contain placeholder values and are exempt from validation
     # beyond having type: template and a version.
+
+  # --- Scratch -------------------------------------------------------------
+  # Scratch work, in any folder and under any name. `type: scratch` is all it
+  # needs, and it may carry the common properties too. No validator checks a
+  # scratch note: not its folder, filename, properties, links, tags, or URLs.
+  # Two rules still hold: it never links into Private/ (private-link), and it
+  # can't take a domain's hub name. It still counts as a link target, so a
+  # typed link to it is a wrong-type error.
+  scratch:
+    required: []
+    optional: []

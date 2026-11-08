@@ -3,7 +3,8 @@
 Checks: every folder is declared (or sits under an open folder, within its
 max_depth); flat folders have no subfolders; every note's type is allowed in
 its folder; filenames match their type's pattern; every domain has a hub;
-non-note files appear only where their extension is allowed.
+non-note files appear only where their extension is allowed. Scratch notes
+may sit in any folder under any name; only a domain's hub name is reserved.
 
     vault-validate-structure [PUBLIC_DIR] [--json]
     python -m vault_tools.validate_structure
@@ -27,7 +28,7 @@ from vault_tools.schemas import (
     FolderSchema,
     StructureSchema,
 )
-from vault_tools.vault import Vault, load_note, nfc
+from vault_tools.vault import Vault, is_scratch, load_note, nfc
 
 DESCRIPTION: Final = "Enforce structure-schema.yaml on the layout of Public/."
 CHECK: Final = CheckName.STRUCTURE
@@ -268,7 +269,8 @@ class StructureChecker:
         """Check that a note's type belongs in its folder and its filename fits its type.
 
         A note with a missing or malformed type is left to the properties
-        validator, except where no notes may sit at all.
+        validator, except where no notes may sit at all. A scratch note is
+        never checked, unless it takes the name of its domain's hub.
 
         Args:
             path: The note on disk.
@@ -285,6 +287,8 @@ class StructureChecker:
                 got = f"type {note_type!r}" if note_type else "no type"
                 message = f"the domain hub must have type 'hub', not {got}"
                 yield _error(IssueCode.HUB_WRONG_TYPE, rel, message)
+            return
+        if is_scratch(note):
             return
         if not isinstance(note_type, str):
             if note_type is None and spec.types is not None and not spec.types:

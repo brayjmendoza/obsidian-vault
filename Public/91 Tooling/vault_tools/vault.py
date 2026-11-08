@@ -36,6 +36,11 @@ LINK_TARGET_SKIP_FOLDERS: Final = frozenset({"99 Archive"})
 # Templates hold placeholders (e.g., `[[{{composer}}]]`), so only their type and version count.
 TEMPLATE_TYPE: Final = "template"
 
+# Scratch notes are scratch work: no validator checks them, wherever they sit,
+# except that they still never link into Private/ (CONVENTIONS.md section 4).
+# They still count as link targets.
+SCRATCH_TYPE: Final = "scratch"
+
 # Folders where a note may have no `type` (CONVENTIONS.md section 4).
 UNTYPED_ALLOWED_FOLDERS: Final = frozenset({"00 Inbox", "98 Attachments"})
 
@@ -237,6 +242,21 @@ class Note(BaseModel):
         return []
 
 
+def is_scratch(note: Note) -> bool:
+    """Check whether a note is scratch work, which the validators leave alone.
+
+    A note whose frontmatter is broken can't be told apart, so it is never
+    scratch: its load problem is still reported.
+
+    Args:
+        note: A loaded note.
+
+    Returns:
+        Whether it loaded cleanly and has `type: scratch`.
+    """
+    return not note.load_issues and note.note_type == SCRATCH_TYPE
+
+
 def load_note(path: Path, root: Path) -> Note:
     """Read a note and parse its frontmatter.
 
@@ -335,6 +355,8 @@ class _NoteScan(BaseModel):
 
     Attributes:
         checked: Notes the validators check.
+        scratch: Notes of type `scratch`, outside skipped folders. Only their
+            links into Private/ are checked, and they count as link targets.
         targets_only: Notes that aren't checked but still count as link targets:
             99 Archive/ and exempt files (e.g., the changelog).
         file_keys: Link keys of the names of other files links may embed (e.g., `scan.png`).
@@ -344,6 +366,7 @@ class _NoteScan(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     checked: list[Note]
+    scratch: list[Note]
     targets_only: list[Note]
     file_keys: frozenset[str]
     file_paths: frozenset[str]
@@ -482,6 +505,7 @@ class Vault:
         """Load every note under Public/ once."""
         archived_folders = self.skipped_folders & LINK_TARGET_SKIP_FOLDERS
         checked: list[Note] = []
+        scratch: list[Note] = []
         targets_only: list[Note] = []
         file_keys: set[str] = set()
         file_paths: set[str] = set()
@@ -498,9 +522,11 @@ class Vault:
             elif archived_file or self.is_exempt(rel):
                 targets_only.append(load_note(path, self.root))
             else:
-                checked.append(load_note(path, self.root))
+                note = load_note(path, self.root)
+                (scratch if is_scratch(note) else checked).append(note)
         return _NoteScan(
             checked=checked,
+            scratch=scratch,
             targets_only=targets_only,
             file_keys=frozenset(file_keys),
             file_paths=frozenset(file_paths),
@@ -508,16 +534,21 @@ class Vault:
 
     @property
     def notes(self) -> list[Note]:
-        """Every note the properties validator checks.
+        """Every note the validators check.
 
-        Excludes exempt files and every note under a `skip: true` folder.
+        Excludes scratch notes, exempt files, and every note under a `skip: true` folder.
         """
         return self._scan.checked
 
     @property
+    def scratch_notes(self) -> list[Note]:
+        """Every scratch note outside skipped folders; only its links into Private/ are checked."""
+        return self._scan.scratch
+
+    @property
     def link_targets(self) -> list[Note]:
-        """Every note a link may resolve to: `notes`, plus 99 Archive/ and exempt files."""
-        return self._scan.checked + self._scan.targets_only
+        """Every note a link may resolve to: `notes`, scratch, the archive, and exempt files."""
+        return self._scan.checked + self._scan.scratch + self._scan.targets_only
 
     # -- links ----------------------------------------------------------------
 

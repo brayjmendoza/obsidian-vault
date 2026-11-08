@@ -6,6 +6,7 @@ reaches a note or file in Public/ and, when it names one, a heading or block
 in that note (warnings otherwise); URLs appear only in the `url` property; and
 every `url` is a single well-formed http or https URL. Code blocks and inline
 code are ignored. Whether each URL actually loads is validate_urls's job.
+Scratch notes are checked only for links into Private/.
 
     vault-validate-links [PUBLIC_DIR] [--private DIR] [--json]
     python -m vault_tools.validate_links
@@ -98,10 +99,55 @@ class LinkChecker:
         """
         if note.load_issues:
             return []
-        return [*self._property_issues(note), *self._body_issues(note)]
+        return [
+            *self._property_issues(note),
+            *self._body_issues(note),
+            *(
+                issue
+                for link, targets, prop in self._links(note)
+                for issue in self._link_issues(note, link, targets, prop)
+            ),
+        ]
+
+    def check_private(self, note: Note) -> list[Issue]:
+        """Check only that a note's links stay out of Private/, as for scratch notes.
+
+        Args:
+            note: The note.
+
+        Returns:
+            One issue per link into Private/.
+        """
+        found = (
+            self._private_issue(note, link.shown, targets, prop)
+            for link, targets, prop in self._links(note)
+            if any(targets)
+        )
+        return [issue for issue in found if issue is not None]
+
+    def _links(self, note: Note) -> Iterator[tuple[Link, list[str], str | None]]:
+        """Find every link in a note: in its properties, then in its body outside code.
+
+        Args:
+            note: The note.
+
+        Yields:
+            (link, every reading of its target, the property holding it or None
+            for the body). Body links are shown with their line in the file.
+        """
+        for prop, value in (note.properties or {}).items():
+            for text in text_values(value):
+                for link in wikilinks(text):
+                    yield link, [link.target], prop
+        text = blank_code(note.body)
+        for link in wikilinks(text):
+            yield self._on_line(note, link), [link.target], None
+        for link in markdown_links(text):
+            targets = markdown_link_targets(note.rel, link.target) if link.target else [""]
+            yield self._on_line(note, link), targets, None
 
     def _property_issues(self, note: Note) -> Iterator[Issue]:
-        """Check every property: URL placement, the `url` format, and private links.
+        """Check every property for URL placement and the `url` format.
 
         Args:
             note: The note.
@@ -118,12 +164,9 @@ class LinkChecker:
             elif any(urls(text) for text in texts):
                 message = f"URLs belong in the `{URL_PROPERTY}` property, not `{prop}`"
                 yield self._error(note, IssueCode.URL_MISPLACED, message, prop=prop)
-            for text in texts:
-                for link in wikilinks(text):
-                    yield from self._link_issues(note, link, [link.target], prop)
 
     def _body_issues(self, note: Note) -> Iterator[Issue]:
-        """Check the body, outside code: every link, and that it holds no URLs.
+        """Check that the body, outside code, holds no URLs.
 
         Args:
             note: The note.
@@ -131,13 +174,7 @@ class LinkChecker:
         Yields:
             Each issue found, its message starting with the line number.
         """
-        text = blank_code(note.body)
-        for link in wikilinks(text):
-            yield from self._link_issues(note, self._on_line(note, link), [link.target], None)
-        for link in markdown_links(text):
-            targets = markdown_link_targets(note.rel, link.target) if link.target else [""]
-            yield from self._link_issues(note, self._on_line(note, link), targets, None)
-        for url in urls(text):
+        for url in urls(blank_code(note.body)):
             message = (
                 f"line {note.file_line(url.line)}: URLs belong in the `{URL_PROPERTY}` property, "
                 f"not the note body ({url.text})"
@@ -268,7 +305,7 @@ class LinkChecker:
 
 
 def check(vault: Vault) -> list[Issue]:
-    """Check every note against the link rules.
+    """Check every note against the link rules, and scratch notes for links into Private/.
 
     Args:
         vault: The vault to check.
@@ -277,7 +314,9 @@ def check(vault: Vault) -> list[Issue]:
         Every issue found.
     """
     checker = LinkChecker(vault)
-    return [issue for note in vault.notes for issue in checker.check(note)]
+    return [issue for note in vault.notes for issue in checker.check(note)] + [
+        issue for note in vault.scratch_notes for issue in checker.check_private(note)
+    ]
 
 
 def main(argv: Sequence[str] | None = None) -> int:
