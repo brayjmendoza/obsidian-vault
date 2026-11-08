@@ -6,4 +6,5 @@ composers:
   - "[[Johann Sebastian Bach]]"
   - "[[Ferruccio Busoni]]"
 status: wishlist
+grade: PS 10
 ---

@@ -6,4 +6,5 @@ composers:
   - "[[Pyotr Ilyich Tchaikovsky]]"
   - "[[Mikhail Pletnev]]"
 status: learning
+grade: PS 10
 ---

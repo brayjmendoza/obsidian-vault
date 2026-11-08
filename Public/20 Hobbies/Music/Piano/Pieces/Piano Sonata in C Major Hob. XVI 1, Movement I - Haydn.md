@@ -3,7 +3,9 @@ type: piece
 created: 2026-11-07
 updated: 2026-11-07
 composers:
-  - "[[Johann Sebastian Bach]]"
+  - "[[Joseph Haydn]]"
 status: retired
-grade: Henle Level 1
+grade: PS 6
+difficulty: 2
 ---
+

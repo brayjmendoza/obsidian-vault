@@ -6,4 +6,5 @@ composers:
   - "[[Johann Sebastian Bach]]"
   - "[[Alexander Siloti]]"
 status: retired
+grade: PS 8
 ---

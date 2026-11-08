@@ -306,3 +306,45 @@ views:
       - learning
       - retired
       - wishlist
+  - type: table
+    name: "Marcello"
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Alessandro Marcello"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: "Balakirev"
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Mily Balakirev"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist
+  - type: table
+    name: "Petzold"
+    filters:
+      and:
+        - type == "piece"
+        - composers.contains(link("Christian Petzold"))
+    groupBy:
+      property: status
+      direction: ASC
+    groupOrder:
+      - repertoire
+      - learning
+      - retired
+      - wishlist

@@ -5,5 +5,6 @@ updated: 2026-11-07
 composers:
   - "[[Felix Mendelssohn]]"
 status: repertoire
+grade: PS 7
 ---
 You play it without sheet music.
