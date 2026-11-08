@@ -2,7 +2,7 @@
 // player, which works around YouTube's Error 153 where a hand-written iframe can't.
 // A form video reference note runs it as its body:
 //   ```dataviewjs
-//   await dv.view("90 System/Scripts/form-video")
+//   await dv.view("Public/90 System/Scripts/form-video")
 //   ```
 // Shorts, youtu.be, embed, and live links are turned into watch links, since
 // Obsidian only embeds those. The plain link below the player is for iOS and

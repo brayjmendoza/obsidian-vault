@@ -7,7 +7,7 @@ goal: strength
 muscle_groups:
   - full-body
 ---
-# Warm Up
+# Warm-Up
 
 - General pulse-raiser
 	1. [[Jump Rope|Jump rope]] — 60s
@@ -23,7 +23,9 @@ muscle_groups:
 Rest: None  
 Total time: ~10 mins
 
-# Handstand Push-Up (HSPU) Progression
+# Core Workout
+
+## Handstand Push-Up (HSPU) Progression
 
 1. ==[[Push-up|Push-ups]] (3x20)==
 2. [[Pike Push-up|Pike push-ups]] (3x12)
@@ -39,7 +41,7 @@ Rest: 2-3 mins
 Sets: 3  
 Total time: ~16 mins
 
-# One Arm Pull-Up Progression
+## One Arm Pull-Up Progression
 
 1. ==[[Assisted Pull-up|Assisted pull-ups]] (3x10 w/ lightest assistance)==
 2. [[Negative Pull-up|Negative pull-ups]] (5 reps w/ 8s controlled descent)
@@ -54,7 +56,7 @@ Rest: 2-3 mins
 Sets: 3  
 Total time: ~10 mins
 
-# Hanging Compression
+## Hanging Compression
 
 1. [[Hanging Knee Raise|Hanging knee raises]] — 3x12 (benchmark: 3x15, no swing)
 2. ==[[Hanging Leg Raise|Hanging leg raises]] — 3x10 (3x12, no kip)==
@@ -69,7 +71,7 @@ Rest: 2-3 mins
 Sets: 3  
 Total time: ~10 minutes
 
-# Single Leg Squat Progression
+## Single Leg Squat Progression
 
 1. [[Bodyweight Squat|Bodyweight squats]] (3x20)
 2. [[Split Squat|Split squats]] (3x12 / leg)
@@ -85,7 +87,7 @@ Rest: 2 mins
 Sets: 3  
 Total time: ~10-12 mins
 
-# Mobility Finisher
+# Cool-Down
 
 1. [[Pancake Hold|Pancake hold]] — 2x60s, sink deeper each round
 2. [[Overhead Shoulder Stretch|Wall/doorway overhead shoulder stretch]] — 2x45-60s

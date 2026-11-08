@@ -90,7 +90,6 @@ Properties for the fitness hobby in `20 Hobbies/Fitness`.
 | `duration_min`  | number      | session  | Length of the session in minutes         | 1–600                                                                                                                                                     |
 | `muscle_groups` | list        | exercise | The muscles the exercise works           | `chest`, `back`, `shoulders`, `biceps`, `triceps`, `forearms`, `core`, `glutes`, `quads`, `hamstrings`, `calves`, `upper-body`, `lower-body`, `full-body` |
 | `equipment`     | list        | exercise | What the exercise needs                  | `barbell`, `dumbbell`, `kettlebell`, `cable`, `machine`, `bands`, `bench`, `pull-up-bar`, `paralletes`                                                    |
-| `form`          | text (link) | exercise | The video of good form                   | Link to a reference note (see [[CONVENTIONS]], section 5)                                                                                                  |
 | `last_performed` | date       | exercise | The most recent day a session logged it. Set from session notes by [[Sync Last Performed]] |                                                                                                                                                 |
 
 ## Travel

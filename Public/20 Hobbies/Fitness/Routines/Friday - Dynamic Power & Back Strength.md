@@ -7,7 +7,7 @@ goal: strength
 muscle_groups:
   - full-body
 ---
-# Warm Up
+# Warm-Up
 
 - General pulse-raiser
 	1. Jump rope — 1 min
@@ -25,7 +25,9 @@ muscle_groups:
 Rest: None  
 Total time: ~10-12 mins
 
-# Explosive Legs
+# Core Workout
+
+## Explosive Legs
 
 1. Jump squats (3x10, silent landings & no knee cave)
 2. Broad jumps (3x6, consistent distance & stable landing)
@@ -39,7 +41,7 @@ Sets: 3 (get as close to benchmark with good form, stop once form slips)
 Total time: ~7-9 mins  
 **Note:** Keep volume low due to running
 
-# Muscle-Up Progression
+## Muscle-Up Progression
 
 1. ==Assisted pull-ups (3x10)==
 2. Pull-ups (3x10)
@@ -54,7 +56,7 @@ Rest: 3 mins
 Sets: 3x5  
 Total time: ~15 mins
 
-# Planche Hold Progression
+## Planche Hold Progression
 
 1. Straight arm plank (3x45s, no hip sag)
 2. ==Planche lean (3x30s)==
@@ -68,7 +70,7 @@ Rest: 3 mins
 Sets: 3  
 Total time: ~8 mins
 
-# Planche Push-Up Progression
+## Planche Push-Up Progression
 
 1. ==Push-ups (3x20)==
 2. Incline pseudo planche push-ups (3x12)
@@ -82,7 +84,7 @@ Rest: 3 mins
 Sets: 3x5-10  
 Total time: ~12 mins
 
-# Front Lever Rows
+## Front Lever Rows
 
 1. Inverted rows (3x12)
 2. ==Feet elevated inverted rows (3x10)==
@@ -94,7 +96,7 @@ Rest: 3 mins
 Sets: 3x5-8  
 Total time: ~8-9 mins
 
-# Mobility/Compression Finisher
+# Cool-Down
 
 1. Bodyweight Jefferson curls — 8 slow tempo (3-4s down, 3-4s up)
 2. Basic hamstring stretch — 45s/leg

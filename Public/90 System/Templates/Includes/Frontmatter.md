@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.25"
+version: "0.26"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -112,7 +112,6 @@ const questions = {
   duration_min: "How many minutes did the workout take?",
   muscle_groups: "Which muscle groups does it work?",
   equipment: "What equipment does it need?",
-  form: "Which reference note shows good form for it?",
   last_performed: "When did you last do it?",
   end: "When does it end?",
   places: "Which places does the trip include?",

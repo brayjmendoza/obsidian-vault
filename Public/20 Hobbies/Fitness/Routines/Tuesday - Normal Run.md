@@ -7,11 +7,7 @@ goal: endurance
 muscle_groups:
   - lower-body
 ---
-# Run
-
-10km @ ~7:30/mi pace
-
-# Pre-Workout Dynamic Stretches
+# Warm-Up
 
 - Leg swings (front-back, then side-side) — 10 swings each position & leg
 - Walking high knees — 20 yards
@@ -20,7 +16,11 @@ muscle_groups:
 - Walking lunges w/ torso twist towards front leg — 8 each side
 - Ankle bounces — 20 reps
 
-# Post-Workout Static Stretches
+# Core Workout
+
+10km @ ~7:30/mi pace
+
+# Cool-Down
 
 - Reclined quad stretch — 45s / side
 - Kneeling hip flexor stretch — 45s / side

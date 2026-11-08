@@ -2,14 +2,14 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.25"
+version: "0.26"
 ---
 <%* tR = "" -%>
 <% await tp.file.include("[[Frontmatter]]") -%>
 # Last Time
 
 ```dataviewjs
-await dv.view("90 System/Scripts/last-time")
+await dv.view("Public/90 System/Scripts/last-time")
 ```
 
 # Sessions
@@ -17,4 +17,8 @@ await dv.view("90 System/Scripts/last-time")
 ![[Exercise.base#Sessions]]
 
 # Notes
+
+
+
+# References
 

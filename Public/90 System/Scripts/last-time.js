@@ -1,7 +1,7 @@
 // Last Time: shows this exercise's sets from the latest session note that logs it.
 // An exercise note runs it in its Last Time section:
 //   ```dataviewjs
-//   await dv.view("90 System/Scripts/last-time")
+//   await dv.view("Public/90 System/Scripts/last-time")
 //   ```
 // A session row counts once its Reps cell is filled (CONVENTIONS.md section 5).
 // Sync Last Performed reads session tables the same way: keep the two in step.

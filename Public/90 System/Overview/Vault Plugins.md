@@ -28,6 +28,7 @@ Keep the plugin list short: every plugin with its own syntax is something Claude
 | Update modified date                                  | Alan Grainger        | Update the `created` and `updated` properties when modifying a file                                                                                                                                   |
 | Meld Encrypt                                          | meld-cp              | Encrypt single notes in Private. Can also encrypt specific bits of text within a note                                                                                                                 |
 | Dataview                                              | blacksmithgu         | Runs the scripts in `90 System/Scripts/` that notes call with `dv.view`: an exercise's Last Time section and a form video's embed (see [[CONVENTIONS]], section 5). Needs Enable JavaScript Queries on |
+| Meta Bind                                             | Moritz Jung          | Buttons in notes. A session note's Sync Last Performed button runs that automation (see [[Vault Templates]])                                                                                          |
 | Excalidraw, Omnisearch, Homepage                      | Community (TODO)     | Only if a real need appears                                                                                                                                                                           |
 
 ---

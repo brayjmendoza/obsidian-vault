@@ -7,7 +7,7 @@ goal: strength
 muscle_groups:
   - full-body
 ---
-# Warm Up
+# Warm-Up
 
 - General pulse-raiser
 	1. Jump rope — 60s
@@ -23,7 +23,9 @@ muscle_groups:
 Rest: None  
 Total time: ~10 mins
 
-# Front Lever (FL) Progression
+# Core Workout
+
+## Front Lever (FL) Progression
 
 1. ==Hollow body hold (3x45s, no lower back arch)==
 2. Hanging tuck hold (20s, flat back no swing)
@@ -36,7 +38,7 @@ Rest: 2 mins
 Sets: 3  
 Total time: ~12 mins
 
-# One Arm Push-Up (OAP) Progression
+## One Arm Push-Up (OAP) Progression
 
 1. ==Incline push-ups (3x20)==
 2. Standard push-ups (3x25)
@@ -50,7 +52,7 @@ Rest: 2-3 mins
 Sets: 3x5-10  
 Total time: ~10 mins
 
-# Nordic Hamstring Progression
+## Nordic Hamstring Progression
 
 1. Single-leg glute bridge (3x10/leg)
 2. Hamstring slides (3x12)
@@ -62,7 +64,7 @@ Rest: 2-3 mins
 Sets: 3x3-8  
 Total time: ~9 mins
 
-# Ring Dip Progression
+## Ring Dip Progression
 
 1. Bench dip (3x20, full lockout)
 2. ==Parallel bar dips (3x12)==
@@ -74,7 +76,7 @@ Rest: 2-3 mins
 Sets: 3x5-8  
 Total time: ~8 mins
 
-# L-Sit Progression
+## L-Sit Progression
 
 1. ==Tuck L-sit hold (3x30s, hips fully off ground)==
 2. One-leg L-sit (3x30s/leg)
@@ -85,7 +87,7 @@ Rest: 2 mins
 Sets: 3  
 Total time: ~8 mins
 
-# Mobility Finisher
+# Cool-Down
 
 1. Dead hang — 2x45-60s
 	- Alternative: standing overhead reach with side bend

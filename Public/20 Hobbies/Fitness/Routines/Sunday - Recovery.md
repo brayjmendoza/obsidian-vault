@@ -9,13 +9,15 @@ muscle_groups:
 ---
 Total time: ~57-63 mins
 
-# Aerobic Primer
+# Warm-Up
 
 - Could be walking, easy cycling, or swimming (not running)
 
 Total time: 5-8 mins
 
-# Foam Rolling / Myofascial Release
+# Core Workout
+
+## Foam Rolling / Myofascial Release
 
 - Calves — 90s/leg
 - Quads — 90s/leg
@@ -26,7 +28,7 @@ Total time: 5-8 mins
 
 Total time: 15 mins
 
-# Deep Static Stretching
+## Deep Static Stretching
 
 - Kneeling hip flexor stretch — 60-90s/side
 - Hamstring stretch — 60-90s/side
@@ -38,7 +40,7 @@ Total time: 15 mins
 
 Total time: 18-20 mins
 
-# Joint Mobility / CARs Circuit
+## Joint Mobility / CARs Circuit
 
 - Shoulder CARs — 5 slow reps per direction per arm
 - HIP CARs — 5 slow reps per direction per leg
@@ -48,7 +50,7 @@ Total time: 18-20 mins
 
 Total time: 12-15 mins
 
-# Parasympathetic Down-Regulation
+# Cool-Down
 
 - Box breathing (4s in, 4s hold, 6s out) — 5 mins total
 	- Laying down, legs elevated against wall
