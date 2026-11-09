@@ -18,11 +18,9 @@ These are main hobbies
 + Figure out haircare routine 
 + Figure out skincare routine?
 + Review [[Weekly Workout Regime]]
-	+ Create workout logs
 + Convert CD's to mp4's
 + Plan credit cards -- make a page on this
 + Track spending behaviors
 + Listen to songs
 	+ Superstar - Beach House
 	+ You're Losing Me (From the Vault) - Taylor Swift
-+ Recurring credit card payments -- minimum
