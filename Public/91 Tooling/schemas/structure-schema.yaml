@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.32"
+version: "0.35"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -192,7 +192,7 @@ filenames:
   weekly:   '^\d{4}-W\d{2}$'
   monthly:  '^\d{4}-\d{2}$'
   practice: '^\d{4}-\d{2}-\d{2} Practice$'
-  session:  '^\d{4}-\d{2}-\d{2} Workout$'
+  session:  '^\d{4}-\d{2}-\d{2} [^\W\d_][\w-]*$'   # the date and one word, e.g., 2026-11-06 Basketball
   trip:     '^\d{4}-\d{2} .+$'
   place:    '^.+, .+$'
   paper:    '^.+ \d{4} - .+$'

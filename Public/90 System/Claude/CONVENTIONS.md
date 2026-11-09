@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.32"
+version: "0.35"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.32**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.35**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -175,6 +175,9 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.35 · A session note's name is its date and any one word (e.g., `2026-11-06 Basketball` or `2026-11-07 Swim`), not only Workout, Run, or Mobility. The Start Session button still picks one of those three.
+- 2026-11-08 · v0.34 · Undoes two parts of v0.33: a session's `routine` is optional again, and type templates offer optional properties again. The Run, Mobility, and Workout session names stay, and only a routine's Start Session button uses them. It asks nothing and leaves optional properties for [[Add Properties]].
+- 2026-11-08 · v0.33 · Session notes are named for what kind of workout they were: `YYYY-MM-DD Run` for running, `YYYY-MM-DD Mobility` for mobility, and `YYYY-MM-DD Workout` otherwise (e.g., calisthenics or weights), so one day can hold several. A session's `routine` is required. Type templates ask only for required properties, and [[Add Properties]] offers the optional ones.
 - 2026-11-08 · v0.32 · `90 System/` holds only rules and docs. Templates (with `Automations/` and `Includes/`) moved to `92 Templates/`, and `Bases/` and `Scripts/` moved to `93 Views/` (see section 2). Every script and template path in notes, templates, and section 5 follows.
 - 2026-11-08 · v0.31 · Every domain may have an About page, `<Domain>/About.md` with type `documentation`, explaining how its notes work together and which features serve it (see section 2). `structure-schema.yaml` adds `about: optional` to the domain skeleton, and `vault-validate` reports `about-wrong-type` and `about-misnamed`. [[20 Hobbies/Fitness/About|Fitness Tracking]] is now Fitness's About page.
 - 2026-11-08 · v0.30 · Added the `documentation` note type, for notes that explain the vault to people. It has no `version`, and it's the only type `90 System/Overview/` holds. Section 5 points to each type's template for note bodies instead of describing them. [[20 Hobbies/Fitness/About|Fitness Tracking]] moved to the Fitness domain, and `90 System/Overview/` holds only vault-wide documentation.

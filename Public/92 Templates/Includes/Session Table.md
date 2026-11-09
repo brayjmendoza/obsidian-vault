@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.32"
+version: "0.35"
 ---
 <%*
 // Session Table: writes a new session note's sets table (CONVENTIONS.md section 5)
@@ -28,7 +28,9 @@ tR = "";
 
 const { Notice, parseYaml } = tp.obsidian;
 const target = tp.config.target_file;
-const root = tp.config.template_file.path.split("92 Templates/")[0];
+// The vault root: from the template file, or from the note itself when the
+// note was made from text (e.g., by Start Session).
+const root = (tp.config.template_file?.path ?? target.path).split(/92 Templates\/|20 Hobbies\//)[0];
 const sync = `${root}92 Templates/Automations/Sync Last Performed.md`;
 const header = ["| Exercise | Target | Sets | Reps/Time/Distance | Weight/Pace | Notes |", "|---|---|---|---|---|---|"];
 const button = [

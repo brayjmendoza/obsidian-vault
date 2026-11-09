@@ -13,10 +13,8 @@ muscle_groups:
 label: Start Session
 style: primary
 actions:
-  - type: templaterCreateNote
-    templateFile: "Public/92 Templates/Session Template.md"
-    folderPath: "Public/20 Hobbies/Fitness/Sessions"
-    openNote: true
+  - type: runTemplaterFile
+    templateFile: "Public/92 Templates/Automations/Start Session.md"
 ```
 
 Total time: ~57-63 mins

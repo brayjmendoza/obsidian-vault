@@ -175,3 +175,24 @@ def test_domain_documentation_must_be_named_about(
         (E, "about-misnamed", "20 Hobbies/Fitness/Fitness Tracking.md", None),
         (E, "type-not-allowed", "20 Hobbies/Fitness/Routines/About.md", None),
     }
+
+
+_SESSION: Final = (
+    "---\ntype: session\ncreated: 2026-11-06\nupdated: 2026-11-06\n"
+    "date: 2026-11-06\nkind: sport\n---\n"
+)
+
+
+def test_session_name_is_the_date_and_one_word(
+    copy_fixture: CopyFixture, load_vault: LoadVault
+) -> None:
+    """A session note's name is its date and any one word, e.g., 2026-11-06 Basketball."""
+    root = copy_fixture("valid")
+    sessions = root / "20 Hobbies/Fitness/Sessions"
+    good = ("2026-11-06 Basketball", "2026-11-07 Swim", "2051-08-22 Gym", "2026-11-08 Pull-Day")
+    bad = ("2026-11-09", "2026-11-09 Two Words", "Swim 2026-11-09", "2026-11-09 2")
+    for name in (*good, *bad):
+        (sessions / f"{name}.md").write_text(_SESSION, encoding="utf-8")
+    assert keys(validate_structure.check(load_vault(root))) == {
+        (E, "filename-mismatch", f"20 Hobbies/Fitness/Sessions/{name}.md", None) for name in bad
+    }

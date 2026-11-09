@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.32"
+version: "0.35"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -12,8 +12,6 @@ version: "0.32"
 //                    prompted for, then optional ones are offered from a list.
 //   Add Properties   adds properties to the current note: any missing required
 //                    ones, then optional ones it doesn't have yet.
-// A session created from a routine (i.e., its Start Session button) gets that
-// routine and a matching kind without being asked.
 
 // Drop this file's own properties (type: template) from the output.
 tR = "";
@@ -71,13 +69,6 @@ const automatic = {
   month: title.match(/^\d{4}-\d{2}(?![-\d])/)?.[0],
 };
 
-// A session started from a routine's Start Session button: the routine is the
-// note you were on, and the workout's kind follows from the routine's modality.
-const source = tp.config.active_file;
-const sourceFm = source ? frontmatter(source) : {};
-const fromRoutine = !adding && noteType === "session" && source && source !== target && sourceFm.type === "routine";
-const kindByModality = { running: "cardio", calisthenics: "strength", weights: "strength", mobility: "mobility" };
-if (fromRoutine) automatic.kind = kindByModality[sourceFm.modality];
 
 // --- Questions -----------------------------------------------------------------
 // Every prompt is a question. A property can be asked differently by note type
@@ -329,7 +320,6 @@ async function ask(prop, isRequired) {
 // --- Collect the values ------------------------------------------------------
 const values = {};
 const blank = [];
-if (fromRoutine) values.routine = `[[${app.metadataCache.fileToLinktext(source, target.path, true)}]]`;
 const has = (prop) => current[prop] != null && current[prop] !== "" &&
   !(Array.isArray(current[prop]) && current[prop].length === 0);
 

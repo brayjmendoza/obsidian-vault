@@ -19,6 +19,7 @@ Templates take their questions from the properties schema, so a schema change re
 
 - **[[Add Properties]]:** adds the properties a note is missing.
 - **[[Sync Last Practiced]]:** sets each piece's `last_practiced` from your practice notes. New practice notes run it on their own.
+- **[[Start Session]]:** creates today's session note for the routine you're on, without asking anything: it's named for the kind of workout (e.g., `2026-11-09 Run`), with the routine and its kind filled in. Run it with the Start Session button at the top of a routine. The [[Session Template]] used directly still asks as usual.
 - **[[Sync Last Performed]]:** sets each exercise's `last_performed` from your session notes. Run it with the button at the end of a session note.
 
 ## Hotkeys
