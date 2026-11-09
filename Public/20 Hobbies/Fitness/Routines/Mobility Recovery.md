@@ -21,7 +21,7 @@ Total time: ~57-63 mins
 
 # Warm-Up
 
-- [[Easy Cardio]] (not running) — 5-8 mins
+- [[Walk]] — 5-8 mins
 
 Total time: 5-8 mins
 
