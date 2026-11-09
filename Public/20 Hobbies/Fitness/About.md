@@ -28,7 +28,7 @@ Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶
 
 ## Logging a Workout
 
-1. Create a session note from the [[Session Template]] and pick its routine. Its table fills in with the routine's exercises and targets.
+1. Press **Start Session** at the top of the routine. It creates a session note from the [[Session Template]] with the routine and its kind already filled in, asks for the date, and fills the table with the routine's exercises and targets.
 2. Fill in what you did as you go.
 3. Press the [[Sync Last Performed]] button at the end, which moves each exercise's `last_performed` to that day.
 

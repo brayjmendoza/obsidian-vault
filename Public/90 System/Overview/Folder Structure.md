@@ -16,8 +16,10 @@ Public/
 ├── 30 Life Admin/     one domain per responsibility (e.g., Finance, Home)
 ├── 40 Knowledge/      sources, concepts, and maps
 ├── 50 References/     how-tos and look-up info
-├── 90 System/         templates, the rules, and these docs
+├── 90 System/         the rules and these docs
 ├── 91 Tooling/        the schemas and the scripts that check them
+├── 92 Templates/      templates for new notes, and automations
+├── 93 Views/          bases and scripts that show live content in notes
 ├── 98 Attachments/    files embedded in notes
 └── 99 Archive/        retired notes
 ```
@@ -31,7 +33,7 @@ The first digit of a top-level folder is its **band** (i.e., the kind of folder 
 | 0 | Capture and logs | Material ordered by time: captures and generated logs |
 | 1–5 | Content | Projects, hobbies, life admin, knowledge, and references, in the order of the placement rules |
 | 6–8 | Unused | Room for a new kind of content without renumbering anything |
-| 9 | System | The vault's rules, docs, tooling, attachments, and archive |
+| 9 | System | What runs the vault rather than what's in it: its rules and docs, tooling, templates, and views, then attachments and the archive |
 
 A new top-level folder takes the band that matches its kind, and needs your approval first (see [[Claude Guardrails]]).
 

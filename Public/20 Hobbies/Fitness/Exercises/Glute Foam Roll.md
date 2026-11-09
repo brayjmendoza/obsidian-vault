@@ -10,7 +10,7 @@ equipment:
 # Last Time
 
 ```dataviewjs
-await dv.view("Public/90 System/Scripts/last-time")
+await dv.view("Public/93 Views/Scripts/last-time")
 ```
 
 # Sessions

@@ -9,6 +9,16 @@ goals:
 muscle_groups:
   - full-body
 ---
+```meta-bind-button
+label: Start Session
+style: primary
+actions:
+  - type: templaterCreateNote
+    templateFile: "Public/92 Templates/Session Template.md"
+    folderPath: "Public/20 Hobbies/Fitness/Sessions"
+    openNote: true
+```
+
 Total time: ~57-63 mins
 
 # Warm-Up

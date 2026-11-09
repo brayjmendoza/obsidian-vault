@@ -6,5 +6,5 @@ topic: exercise
 url: https://www.youtube.com/shorts/04FqT6lC0i4
 ---
 ```dataviewjs
-await dv.view("Public/90 System/Scripts/form-video")
+await dv.view("Public/93 Views/Scripts/form-video")
 ```

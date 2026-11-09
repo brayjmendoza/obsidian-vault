@@ -7,7 +7,7 @@ aliases:
 ---
 # Vault Templates
 
-Templates make new notes that already pass the schemas, and a few automations keep notes you already have up to date. They live in `90 System/Templates/` and run through Templater (see [[Vault Plugins]]).
+Templates make new notes that already pass the schemas, and a few automations keep notes you already have up to date. They live in `92 Templates/` and run through Templater (see [[Vault Plugins]]).
 
 - **Type templates:** one per note type (e.g., [[Piece Template]]). Each asks for the note's properties, names the note to fit its type, and lays out its body.
 - **Automations:** run on notes you already have (see [[#Automations]]).

@@ -128,7 +128,7 @@ def test_links_resolve_like_obsidian(tmp_path: Path, load_vault: LoadVault) -> N
 def test_template_links_are_not_resolved(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
     """Templates hold placeholder links, so they aren't reported as broken."""
     root = copy_fixture("valid")
-    template = root / "90 System/Templates/Piece Template.md"
+    template = root / "92 Templates/Piece Template.md"
     template.write_text(
         template.read_text(encoding="utf-8") + "\nComposer: [[{{composer}}]]\n", encoding="utf-8"
     )

@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.31"
+version: "0.32"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -151,13 +151,6 @@ root:
   "90 System":
     types: [system]
     subfolders:
-      Templates:
-        types: [template]   # type templates (e.g., Piece Template)
-        subfolders:
-          Automations: {types: [template], flat: true}   # run on a note, e.g., Add Properties
-          Includes:    {types: [template], flat: true}   # shared parts other templates include, e.g., Frontmatter
-      Bases:     {types: [], flat: true, files: [base]}
-      Scripts:   {types: [], flat: true, files: [js]}     # Dataview scripts notes run with dv.view, e.g., last-time.js
       Claude:    {types: [system], flat: true}
       Overview:  {types: [documentation], flat: true}   # vault-wide documentation for people
 
@@ -168,6 +161,18 @@ root:
       schemas: {types: [], flat: true, files: [yaml]}
       vault_tools: {types: [], open: true, files: [py]}   # the Python package
       tests:   {skip: true} # fixtures are sample vaults that must fail
+
+  "92 Templates":
+    types: [template]       # type templates (e.g., Piece Template)
+    subfolders:
+      Automations: {types: [template], flat: true}   # run on a note, e.g., Add Properties
+      Includes:    {types: [template], flat: true}   # shared parts other templates include, e.g., Frontmatter
+
+  "93 Views":
+    types: []               # live content that notes embed or run
+    subfolders:
+      Bases:   {types: [], flat: true, files: [base]}
+      Scripts: {types: [], flat: true, files: [js]}     # Dataview scripts notes run with dv.view, e.g., last-time.js
 
   "98 Attachments":
     types: []               # no notes, only embedded files

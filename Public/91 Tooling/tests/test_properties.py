@@ -60,7 +60,7 @@ def test_bad_properties(load_vault: LoadVault) -> None:
         (E, "missing-property", "40 Knowledge/Concepts/Wrong Field.md", "fields"),
         (E, "property-not-allowed", "40 Knowledge/Concepts/Wrong Field.md", "field"),
         (E, "unknown-type", "50 References/Pancakes.md", "type"),
-        (E, "missing-property", "90 System/Templates/Bad Template.md", "version"),
+        (E, "missing-property", "92 Templates/Bad Template.md", "version"),
     }
 
 

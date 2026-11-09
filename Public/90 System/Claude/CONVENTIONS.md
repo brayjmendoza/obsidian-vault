@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.31"
+version: "0.32"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.31**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.32**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -94,11 +94,12 @@ Top-level folders are named `NN Name`. The first digit is the **band** (i.e., th
 | 4 | Knowledge | `40 Knowledge/` | Things learned: sources, concepts, and maps |
 | 5 | References | `50 References/` | Things looked up: how-tos and look-up info |
 | 6–8 | Unused | none | Reserved for new kinds of content that fit none of bands 1–5 |
-| 9 | System | `90 System/`, `91 Tooling/`, `98 Attachments/`, `99 Archive/` | Not content. The vault's rules, docs, and tooling count up from 90. Storage for embedded files and retired notes counts down from 99 |
+| 9 | System | `90 System/`, `91 Tooling/`, `92 Templates/`, `93 Views/`, `98 Attachments/`, `99 Archive/` | Not content. Counting up from 90: the vault's rules and docs, its tooling, then the templates and views that make it work. Storage for embedded files and retired notes counts down from 99 |
 
 - Bands 1–5 match the placement questions above, in order.
 - A new top-level folder takes the band that matches its kind and the next free position in it (e.g., a second capture folder would be `02 …`). Like any new folder, it needs your approval and a `structure-schema.yaml` edit first.
 - Opening one of bands 6–8 is a new kind of content and needs your approval.
+- Band 9 splits maintenance from function. `90 System/` holds only the rules (`system` notes) and the docs (`documentation` notes), and `91 Tooling/` checks them. `92 Templates/` makes notes, and `93 Views/` holds the bases and scripts that put live content in them.
 
 ## 3. File Naming
 
@@ -125,9 +126,9 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 
 ## 5. Note Bodies and Linking
 
-- **Note bodies follow their type's template** in `90 System/Templates/` (e.g., [[Routine Template]]). Start every new note from it, and keep to the format it lays out.
+- **Note bodies follow their type's template** in `92 Templates/` (e.g., [[Routine Template]]). Start every new note from it, and keep to the format it lays out.
 - **Link, don't duplicate.** Each fact lives in exactly one note, and other notes link to it.
-- **Scripts** in `90 System/Scripts/` are run by notes through Dataview (`dv.view`), so each behavior is written once. Paths in code are from the vault root, so they start with `Public/` (e.g., `dv.view("Public/90 System/Scripts/last-time")`).
+- **Scripts** in `93 Views/Scripts/` are run by notes through Dataview (`dv.view`), so each behavior is written once. Paths in code are from the vault root, so they start with `Public/` (e.g., `dv.view("Public/93 Views/Scripts/last-time")`).
 - **Links:** Link the first mention of a note per section, not every mention. Use `[[Note|display text]]` when grammar needs it.
 - **No URLs in bodies.** To point at a web page, link to the note whose `url` holds it (see section 4). URLs inside code blocks and inline code are code, not links, and are allowed (e.g., a `curl` command in a how-to).
 - **Attachments** go in `98 Attachments/`, named `YYYY-MM-DD description.ext`.
@@ -174,6 +175,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.32 · `90 System/` holds only rules and docs. Templates (with `Automations/` and `Includes/`) moved to `92 Templates/`, and `Bases/` and `Scripts/` moved to `93 Views/` (see section 2). Every script and template path in notes, templates, and section 5 follows.
 - 2026-11-08 · v0.31 · Every domain may have an About page, `<Domain>/About.md` with type `documentation`, explaining how its notes work together and which features serve it (see section 2). `structure-schema.yaml` adds `about: optional` to the domain skeleton, and `vault-validate` reports `about-wrong-type` and `about-misnamed`. [[20 Hobbies/Fitness/About|Fitness Tracking]] is now Fitness's About page.
 - 2026-11-08 · v0.30 · Added the `documentation` note type, for notes that explain the vault to people. It has no `version`, and it's the only type `90 System/Overview/` holds. Section 5 points to each type's template for note bodies instead of describing them. [[20 Hobbies/Fitness/About|Fitness Tracking]] moved to the Fitness domain, and `90 System/Overview/` holds only vault-wide documentation.
 - 2026-11-08 · v0.29 · The `muscle_group` vocabulary adds `lats`, `traps`, `lower-back`, `obliques`, `hip-flexors`, and `adductors`, and the `equipment` value `paralletes` is spelled `parallettes`. Added [[20 Hobbies/Fitness/About|Fitness Tracking]].
