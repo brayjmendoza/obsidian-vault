@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.35"
+version: "0.36"
 ---
 <%*
 // Start Session: creates today's session note for the routine you're on, in
@@ -15,8 +15,9 @@ version: "0.35"
 //           and `YYYY-MM-DD Workout` otherwise (e.g., calisthenics or weights)
 //   - properties: type, created, updated, date, kind (from the routine's
 //           modality), and routine. Optional ones are left for Add Properties.
-//   - body: the Session Table include, i.e., the routine's Core Workout table
-//           and the Sync Last Performed button
+//   - body: the Session Table include, i.e., Warm-Up, Core Workout, and
+//           Cool-Down sections, each with a table from the routine, and the
+//           Sync Last Performed button
 // If that note already exists (e.g., a second run today), it's opened instead.
 tR = "";
 

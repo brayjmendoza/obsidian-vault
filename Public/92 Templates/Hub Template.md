@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-02
 updated: 2026-11-08
-version: "0.35"
+version: "0.36"
 ---
 <%*
 // Hub Template: the hub for the domain folder the new note sits in.

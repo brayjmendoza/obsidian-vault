@@ -183,14 +183,20 @@ _SESSION: Final = (
 )
 
 
-def test_session_name_is_the_date_and_one_word(
+def test_session_name_starts_with_the_date_and_a_space(
     copy_fixture: CopyFixture, load_vault: LoadVault
 ) -> None:
-    """A session note's name is its date and any one word, e.g., 2026-11-06 Basketball."""
+    """A session note's name is its date, a space, then anything, e.g., 2026-11-06 Basketball."""
     root = copy_fixture("valid")
     sessions = root / "20 Hobbies/Fitness/Sessions"
-    good = ("2026-11-06 Basketball", "2026-11-07 Swim", "2051-08-22 Gym", "2026-11-08 Pull-Day")
-    bad = ("2026-11-09", "2026-11-09 Two Words", "Swim 2026-11-09", "2026-11-09 2")
+    good = (
+        "2026-11-06 Basketball",
+        "2026-11-07 Swim",
+        "2051-08-22 Gym",
+        "2026-11-08 Pick-up Game with Friends",
+        "2026-11-09 2",
+    )
+    bad = ("2026-11-09", "2026-11-09-Swim", "Swim 2026-11-09", "26-11-09 Swim")
     for name in (*good, *bad):
         (sessions / f"{name}.md").write_text(_SESSION, encoding="utf-8")
     assert keys(validate_structure.check(load_vault(root))) == {

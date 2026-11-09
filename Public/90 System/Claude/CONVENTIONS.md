@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.35"
+version: "0.36"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.35**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.36**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -175,6 +175,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-08 · v0.36 · A session note's name is its date, a space, then anything (e.g., `2026-11-08 Pick-up Game with Friends`), not just one word.
 - 2026-11-08 · v0.35 · A session note's name is its date and any one word (e.g., `2026-11-06 Basketball` or `2026-11-07 Swim`), not only Workout, Run, or Mobility. The Start Session button still picks one of those three.
 - 2026-11-08 · v0.34 · Undoes two parts of v0.33: a session's `routine` is optional again, and type templates offer optional properties again. The Run, Mobility, and Workout session names stay, and only a routine's Start Session button uses them. It asks nothing and leaves optional properties for [[Add Properties]].
 - 2026-11-08 · v0.33 · Session notes are named for what kind of workout they were: `YYYY-MM-DD Run` for running, `YYYY-MM-DD Mobility` for mobility, and `YYYY-MM-DD Workout` otherwise (e.g., calisthenics or weights), so one day can hold several. A session's `routine` is required. Type templates ask only for required properties, and [[Add Properties]] offers the optional ones.
