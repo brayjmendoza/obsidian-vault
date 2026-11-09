@@ -7,7 +7,7 @@ muscle_groups:
   - shoulders
   - triceps
 equipment:
-  - paralletes
+  - parallettes
 ---
 # Last Time
 

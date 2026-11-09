@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 version: "0.6"
 ---
 # Everyday Lists
@@ -18,9 +18,9 @@ The skills named here are described in [[Claude Skills]].
 
 - **Planning domain:** band folders hold only domains, so Schedule and To-dos live in `30 Life Admin/Planning/`, with hub `Planning.md`.
 - **Type:** all three use the `plan` type (see [[Note Types and Properties]]).
-- **Naming:** it is Schedule, not Routine. `routine` is a workout you do; Schedule.md links to the current fitness routine rather than repeating it.
+- **Naming:** it is Schedule, not Routine. `routine` is a workout you do; Schedule.md links to [[Weekly Rotation]], which says which routine goes on which day, rather than repeating it.
 - **Not on the wishlist:** pieces you want to learn stay as `piece` notes with `status: wishlist`. `Wishlist.md` is for things to buy.
 - **To-dos with a home:** a task tied to a domain or project (fix the faucet → Home) can live in that note instead; the Tasks query finds it anywhere. To-dos.md is the catch-all, and Claude never ticks a task off for you (see [[Claude Guardrails]]).
 
 ---
-← [[Tags]] · Next: [[Schemas and Validation]] →
+← [[Tags]] · Next: [[Fitness Tracking]] →

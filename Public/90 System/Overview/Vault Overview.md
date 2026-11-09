@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 version: "0.12"
 aliases:
   - Overview
@@ -38,22 +38,23 @@ Read in this order the first time; each note links to the next.
 7. [[Note Properties]]: what each property means and the values it accepts
 8. [[Tags]]: the four reserved tags and why everything else is a property
 9. [[Everyday Lists]]: Schedule, Wishlist, and To-dos
+10. [[Fitness Tracking]]: routines, sessions, and exercise notes, and how they feed each other
 
 **Enforcement**
-10. [[Schemas and Validation]]: what the schemas check and where validation runs
-11. [[CI Workflows]]: GitHub Actions used for maintenance
-12. [[Claude Guardrails]]: hard and soft limits on what Claude may do
+11. [[Schemas and Validation]]: what the schemas check and where validation runs
+12. [[CI Workflows]]: GitHub Actions used for maintenance
+13. [[Claude Guardrails]]: hard and soft limits on what Claude may do
 
 **Tools and Sync**
-13. [[Vault Plugins]]: a list of Obsidian plugins used in this vault
-14. [[Vault Templates]]: type templates, automations, and the includes they share
-15. [[Sync and Backup]]: iCloud, Git, and git-crypt across devices
-16. [[Claude Skills]]: the AI skills that maintain the vault and help you get the most out of it
+14. [[Vault Plugins]]: a list of Obsidian plugins used in this vault
+15. [[Vault Templates]]: type templates, automations, and the includes they share
+16. [[Sync and Backup]]: iCloud, Git, and git-crypt across devices
+17. [[Claude Skills]]: the AI skills that maintain the vault and help you get the most out of it
 
 **Roadmap**
-17. [[Vault Rollout]]: the five build phases
-18. [[Vault Open Questions]]: decisions still to make
-19. [[Vault TODOs]]: action items to improve or extend the vault
+18. [[Vault Rollout]]: the five build phases
+19. [[Vault Open Questions]]: decisions still to make
+20. [[Vault TODOs]]: action items to improve or extend the vault
 
 ---
 Start: [[Vault Principles]] →

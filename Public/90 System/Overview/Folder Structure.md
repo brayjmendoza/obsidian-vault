@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-25
-updated: 2026-11-07
+updated: 2026-11-08
 version: "0.12"
 ---
 # Folder Structure
@@ -15,7 +15,7 @@ Public/
 ├── 10 Projects/         finite goals with an end date
 ├── 20 Hobbies/          one domain per hobby (see Domain Skeleton)
 │   ├── Music/           Composers/, Piano/, Violin/ (instruments are subdomains)
-│   ├── Fitness/
+│   ├── Fitness/         Exercises/, Routines/, Sessions/, Weekly Rotation (see Fitness Tracking)
 │   └── Travel/
 ├── 30 Life Admin/       one domain per responsibility (see Domain Skeleton)
 │   ├── Finance/
@@ -30,7 +30,7 @@ Public/
 ├── 50 References/       look-up info and how-tos; at most one level of topic 
 subfolders
 |   └── Bookmarks/       links to interesting online tools and visualizations
-├── 90 System/           Templates/ (with Automations/ and Includes/), Bases/, Claude/ (CONVENTIONS.md, style guides, changelog), Overview/ (these notes)
+├── 90 System/           Templates/ (with Automations/ and Includes/), Bases/, Scripts/ (Dataview scripts), Claude/ (CONVENTIONS.md, style guides, changelog), Overview/ (these notes)
 ├── 91 Tooling/          schemas and the vault-tools Python package: validators and their tests
 ├── 98 Attachments/      images, PDFs, and files embedded in notes
 └── 99 Archive/          retired notes; mirrors the original path

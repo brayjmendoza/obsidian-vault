@@ -4,7 +4,8 @@ created: 2026-11-08
 updated: 2026-11-08
 muscle_groups:
   - back
-  - core
+  - lower-back
+  - obliques
 ---
 # Last Time
 

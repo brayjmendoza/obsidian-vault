@@ -42,12 +42,7 @@ As an example:
 
 - **[[Add Properties]]:** adds a note's missing required properties, then offers the optional ones it doesn't have yet. It's [[Frontmatter]] in its adding mode.
 - **[[Sync Last Practiced]]:** used for piece note types. It sets each piece's `last_practiced` to the latest practice note that lists it. Dates only move forward, so a later date set by hand is kept. The [[Practice Template]] runs it for one new note. Run it alone to sync every practice note (e.g., after adding pieces to an old one), since Templater can't react to property edits.
-- **[[Sync Last Performed]]:** used for exercise notes. It sets each exercise's `last_performed` to the latest session note that logs it, meaning its row's Reps cell is filled. Dates only move forward. Run it after logging a workout, with the button at the end of the session note or on its own: a new session note's table is still empty, so no template runs it.
-
-# Includes
-
-- **[[Frontmatter]]:** the property engine (see [[#The Frontmatter Engine]]).
-- **[[Session Table]]:** the [[Session Template]] includes it to write the sets table from the Core Workout of the session's `routine`, with Exercise, Target, and Sets filled in. In a progression, only the highlighted tier goes in. A Meta Bind button after the table runs [[Sync Last Performed]] (see [[CONVENTIONS]], section 5).
+- **[[Sync Last Performed]]:** used for exercise notes. It sets each exercise's `last_performed` to the latest session note that logs it, meaning its row's Reps/Time/Distance cell is filled. Dates only move forward. Run it after logging a workout, with the button at the end of the session note or on its own: a new session note's table is still empty, so no template runs it.
 
 # Hotkeys
 

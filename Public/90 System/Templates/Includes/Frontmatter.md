@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.28"
+version: "0.29"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads

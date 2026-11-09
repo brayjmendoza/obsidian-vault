@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.28"
+version: "0.29"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -171,11 +171,11 @@ vocabularies:
   session_kind: [strength, cardio, mobility, sport]
   exercise_modality: [calisthenics, running, weights, mobility]
   routine_goal: [strength, hypertrophy, endurance, mobility, maintenance, recovery]
-  muscle_group: [chest, back, shoulders, biceps, triceps, forearms, core,
-                 glutes, quads, hamstrings, calves, upper-body, lower-body, 
-                 full-body]
+  muscle_group: [chest, back, lats, traps, lower-back, shoulders, biceps, triceps,
+                 forearms, core, obliques, hip-flexors, glutes, adductors, quads,
+                 hamstrings, calves, upper-body, lower-body, full-body]
   equipment: [barbell, dumbbell, kettlebell, cable, machine, bands, bench,
-              pull-up-bar, paralletes, rings, dip-bars, plyo-box, jump-rope,
+              pull-up-bar, parallettes, rings, dip-bars, plyo-box, jump-rope,
               foam-roller]
   spending_category: [housing, utilities, groceries, dining, transport, health,
                       fitness, travel, hobbies, subscriptions, shopping, gifts,

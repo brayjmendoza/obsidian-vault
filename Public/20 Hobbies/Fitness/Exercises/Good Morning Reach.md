@@ -4,7 +4,7 @@ created: 2026-11-08
 updated: 2026-11-08
 muscle_groups:
   - hamstrings
-  - back
+  - lower-back
 ---
 # Last Time
 

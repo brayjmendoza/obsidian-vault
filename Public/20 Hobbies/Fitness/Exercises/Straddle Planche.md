@@ -6,7 +6,7 @@ muscle_groups:
   - shoulders
   - core
 equipment:
-  - paralletes
+  - parallettes
 ---
 # Last Time
 

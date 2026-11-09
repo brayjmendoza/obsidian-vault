@@ -5,6 +5,7 @@ updated: 2026-11-08
 muscle_groups:
   - quads
   - glutes
+  - adductors
 ---
 # Last Time
 

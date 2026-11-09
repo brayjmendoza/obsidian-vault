@@ -62,7 +62,7 @@ The views live in `90 System/Bases/`, and each hub embeds them: `Hub.base` for C
 | ------------------------- | -------------------------- | ---------------- | ---------------------- |
 | Music                     | Composers/                 |                  |                        |
 | Music/Piano, Music/Violin | Pieces/, Technique/        | Practice/        | Practice Rotation      |
-| Fitness                   | Exercises/                 | Sessions/        | Routines/              |
+| Fitness                   | Exercises/                 | Sessions/        | Routines/, Weekly Rotation |
 | Travel                    | Trips/, Places/            |                  |                        |
 | Finance                   | Accounts/ (no numbers)     | Spending/        | Budget.md, Wishlist.md |
 | Health                    |                            | Health Log/      | Eating Plan            |
@@ -77,7 +77,8 @@ The note types for each of these folders are in [[Note Types and Properties]]. P
 Using the above rules, here are a few examples of where certain folders/notes would be placed:
 
 - **Technique/** holds only drills you track (e.g., a scale and its current tempo). Technique explanations live in `40 Knowledge/` or `50 References/`.
-- **Exercises/** holds your working weights and notes per exercise. Form how-tos live in `50 References/`.
+- **Exercises/** holds one note per movement: your last sets, the sessions that logged it, and your notes. Form videos live in `50 References/` and are linked from the exercise's References section (see [[Fitness Tracking]]).
+- **Routines/** holds workouts named for what they are, not the day (e.g., Normal Run). Which day gets which routine is the Weekly Rotation plan note.
 - **Nutrition** guidance lives in `50 References/`; your own eating plan is a Health plan note.
 - **Travel ideas** are trip notes with `status: idea`; there is no Ideas/ folder.
 - **Trips are items** even though they end: one trip note is both the plan and the record, so no project duplicates it.

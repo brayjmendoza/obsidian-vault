@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.28"
+version: "0.29"
 ---
 <%*
 // Session Table: writes a new session note's sets table (CONVENTIONS.md section 5)

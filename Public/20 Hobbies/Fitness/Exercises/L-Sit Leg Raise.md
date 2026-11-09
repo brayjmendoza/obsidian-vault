@@ -4,8 +4,9 @@ created: 2026-11-08
 updated: 2026-11-08
 muscle_groups:
   - core
+  - hip-flexors
 equipment:
-  - paralletes
+  - parallettes
 ---
 # Last Time
 

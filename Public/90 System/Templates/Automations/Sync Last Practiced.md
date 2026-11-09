@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.28"
+version: "0.29"
 ---
 <%*
 // Sync Last Practiced: keeps each piece's `last_practiced` at the latest date of
