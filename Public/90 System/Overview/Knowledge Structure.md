@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-25
 updated: 2026-11-08
-version: "0.6"
 aliases:
   - Knowledge layer
   - How 40 Knowledge works

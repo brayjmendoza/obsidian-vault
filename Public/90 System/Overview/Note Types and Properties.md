@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-25
 updated: 2026-11-08
-version: "0.6"
 ---
 # Note Types and Properties
 
@@ -38,6 +37,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type` property, whic
 | log               | Health/Log, Home/Maintenance Log                 | date                                    |                                                                                      |
 | reference         | 50 References                                    | topic                                   | url, review_by                                                                       |
 | system / template | 90 System, 91 Tooling                            | version                                 |                                                                                      |
+| documentation     | 90 System/Overview                               |                                         |                                                                                      |
 | scratch           | Any declared folder, under any name              | type only                               | the common properties; never validated (see [[#Scratch Notes]])                      |
 
 ## Schema Rules that Shape Every Note

@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.29"
+version: "0.30"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -397,6 +397,7 @@ if (!adding) {
     benefit: "What's the benefit? (e.g., Dental Plan)",
     reference: "What's the reference called?",
     system: "What's the note called?",
+    documentation: "What's the documentation note called?",
     routine: "What's the routine called? (e.g., Full-Body Strength)",
     piece: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
   };

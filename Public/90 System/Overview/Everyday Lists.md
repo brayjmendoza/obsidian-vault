@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-25
 updated: 2026-11-08
-version: "0.6"
 ---
 # Everyday Lists
 
@@ -23,4 +22,4 @@ The skills named here are described in [[Claude Skills]].
 - **To-dos with a home:** a task tied to a domain or project (fix the faucet → Home) can live in that note instead; the Tasks query finds it anywhere. To-dos.md is the catch-all, and Claude never ticks a task off for you (see [[Claude Guardrails]]).
 
 ---
-← [[Tags]] · Next: [[Fitness Tracking]] →
+← [[Tags]] · Next: [[Schemas and Validation]] →

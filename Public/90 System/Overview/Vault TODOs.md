@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-31
-updated: 2026-11-07
-version: "0.12"
+updated: 2026-11-08
 claude: read-only
 ---
 # TODOs

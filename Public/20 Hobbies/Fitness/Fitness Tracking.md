@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-11-08
 updated: 2026-11-08
-version: "0.29"
 aliases:
   - Workout Tracking
 ---
@@ -68,5 +67,3 @@ The scripts in `90 System/Scripts/` run through Dataview, the button through Met
 - **Sync is a button, not a trigger.** Templater can't react to edits, so `last_performed` only moves when you press the button or run [[Sync Last Performed]].
 - **Routines with nothing linked give an empty table.** An unlinked item (e.g., plain text with no `[[…]]`) isn't picked up, so keep to the [[Routine Template]] format.
 
----
-← [[Everyday Lists]] · Next: [[Schemas and Validation]] →

@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-25
 updated: 2026-11-08
-version: "0.12"
 ---
 # Schemas and Validation
 
@@ -57,4 +56,4 @@ Which of the planned schemas to build, and when, is still open: see [[Vault Open
 The private-link check is complete only where `Private/`'s file names are visible: GitHub Actions and your Mac. Claude can't see `Private/` (see [[Privacy Boundary]]), so its runs catch only links written as a `Private/…` path and list the rest under `skipped`.
 
 ---
-← [[Fitness Tracking]] · Next: [[CI Workflows]] →
+← [[Everyday Lists]] · Next: [[CI Workflows]] →

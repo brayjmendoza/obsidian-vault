@@ -49,7 +49,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.29"
+version: "0.30"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -156,7 +156,7 @@ root:
       Bases:     {types: [], flat: true, files: [base]}
       Scripts:   {types: [], flat: true, files: [js]}     # Dataview scripts notes run with dv.view, e.g., last-time.js
       Claude:    {types: [system], flat: true}
-      Overview:  {types: [system], flat: true}   # vault documentation for people
+      Overview:  {types: [documentation], flat: true}   # vault-wide documentation for people
 
   "91 Tooling":
     types: [system]         # README.md

@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-11-07
 updated: 2026-11-08
-version: "0.22"
 aliases:
   - Templates
 ---
@@ -28,11 +27,11 @@ As an example:
 
 ## Three Kinds
 
-| Kind | Where | Run on | Examples |
-|---|---|---|---|
-| Type template | Root of `Templates/`, named `<Type> Template` | A new note | [[Piece Template]], [[Hub Template]] |
-| Automation | `Automations/` | Any existing note (Templater: Insert template) | [[Add Properties]], [[Sync Last Practiced]], [[Sync Last Performed]] |
-| Include | `Includes/` | Nothing: other templates pull it in with `tp.file.include` | [[Frontmatter]], [[Session Table]] |
+| Kind          | Where                                         | Run on                                                     | Examples                                                             |
+| ------------- | --------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------------- |
+| Type template | Root of `Templates/`, named `<Type> Template` | A new note                                                 | [[Piece Template]], [[Hub Template]]                                 |
+| Automation    | `Automations/`                                | Any existing note (Templater: Insert template)             | [[Add Properties]], [[Sync Last Practiced]], [[Sync Last Performed]] |
+| Include       | `Includes/`                                   | Nothing: other templates pull it in with `tp.file.include` | [[Frontmatter]], [[Session Table]]                                   |
 
 - **Type templates stay thin.** Most are a single line that includes [[Frontmatter]], so a schema change reaches every template without editing them.
 - **Automations act more like scripts than templates.** They insert nothing into the note they run on, and they change other notes' properties instead.

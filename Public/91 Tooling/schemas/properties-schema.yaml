@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.29"
+version: "0.30"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -155,8 +155,8 @@ vocabularies:
   note_type: [daily, weekly, monthly, project, hub, plan, piece, practice,
               technique, composer, routine, session, exercise, trip, place,
               paper, book, course, article, concept, map, spending, account,
-              asset, contractor, benefit, log, reference, system, template,
-              scratch]
+              asset, contractor, benefit, log, reference, system, documentation,
+              template, scratch]
   field: [computer-science, math, physics, music-theory, philosophy]
   project_status: [idea, active, paused, done, dropped]
   piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
@@ -395,6 +395,10 @@ types:
   # --- System --------------------------------------------------------------
   system:
     required: [version]
+    optional: []
+
+  documentation:    # a note documenting how the vault works, for people
+    required: []
     optional: []
 
   template:

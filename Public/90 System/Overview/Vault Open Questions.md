@@ -1,8 +1,7 @@
 ---
-type: system
+type: documentation
 created: 2026-10-25
 updated: 2026-11-08
-version: "0.12"
 ---
 # Vault Open Questions
 
@@ -15,6 +14,7 @@ Decisions still to make about the vault's design.
 + Extra schemas: which of the body schema, access schema, and template check to build, and in which rollout phase? (see [[Schemas and Validation#The Schemas|The Schemas]] and [[Vault Rollout]])
 + Should I have notes on people in my life? If so, change relevant properties to links (e.g., travel companions)
 + How will weekly notes calculate spending if spending notes are by month?
++ Is [[Everyday Lists]] too specific for overview docs?
 
 ---
 ← [[Vault Rollout]] · Next: [[Vault TODOs]] →

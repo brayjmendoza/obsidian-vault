@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-01
+updated: 2026-11-08
 version: "1.0"
 ---
 # Writing Style
@@ -20,10 +20,20 @@ These rules come from the notes in `90 System/Overview/`, which you've edited in
 
 ## Voice by Note Type
 
-The voice above is the default: system notes, hubs, plans, items, projects, and references use it. Two kinds of note differ.
+The voice above is the default: system and documentation notes, hubs, plans, items, projects, and references use it. Two kinds of note differ.
 
 - **Concepts and sources read like a textbook.** Full paragraphs over bullets, precise definitions, and a neutral, impersonal voice — no "you." Define a term before using it, and build from the simple case to the general one. Source notes describe the source in the third person (e.g., "Boas derives the transform from Fourier series").
 - **Logs are looser and more direct.** Daily, weekly, and monthly notes, practice and session logs, spending notes, and health and maintenance logs record what happened. Fragments are fine, numbers come first, and there's no opening paragraph (e.g., "45 min, mostly the Chopin coda. Left hand still rushes in bar 112.").
+
+## Documentation
+
+Documentation notes (i.e., the `documentation` type) are concise, high-level overviews. Their reader cares about what the vault does, not how it works.
+
+- **Features, not implementation.** Say what something does and why it exists, then stop. Don't explain how code works, how a file is laid out, or what a template's body holds (e.g., [[Schemas and Validation]] says what the schemas check and that scripts enforce them, not how the YAML is structured).
+- **Name things, don't inventory them.** Say that templates, scripts, or automations exist and what they're for. Skip sections that list their contents (e.g., an "Includes" section or a template's note body).
+- **A few examples, not every item.** When an example makes a point, one to three are enough. Leave the full list to the schema or folder that holds it.
+- **Link to the details.** When someone needs the specifics, point to [[CONVENTIONS]], the schemas, or the template rather than restating them.
+- **Vault-wide only in `90 System/Overview/`.** Documentation about one domain (e.g., [[Fitness Tracking]]) lives in that domain's folder.
 
 ## Punctuation
 
@@ -56,7 +66,7 @@ The voice above is the default: system notes, hubs, plans, items, projects, and 
 - **Tables** for anything compared across the same attributes (e.g., note types, properties, roles). Cells are fragments with no final period. A cell with two sentences gets a period between them but none at the end.
 - **Bullet endings:** a full sentence ends with a period, a fragment doesn't.
 - **Bold** marks a key term where it's defined (e.g., "is a **domain**") or the main rule of a paragraph. *Italics* are only for contrast (e.g., "*understand* it or just *look it up*").
-- **Overview footer:** notes in `90 System/Overview/` end with `---`, then `← [[Previous]] · Next: [[Next]] →`.
+- **Overview footer:** documentation notes in `90 System/Overview/` end with `---`, then `← [[Previous]] · Next: [[Next]] →`.
 
 ## Names and Code
 
@@ -89,6 +99,7 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-08 · Added the Documentation section: concise, high-level overviews of what the vault does, not how it works, with a few examples instead of full lists.
 - 2026-11-01 · No URLs in the body: link to the note whose `url` holds the page.
 - 2026-11-01 · Title case defined: prepositions, articles, conjunctions, and small verbs lowercase. Em dashes and commas preferred over semicolons. "&" only in titles, names, abbreviations, and citations. Added voice by note type, `-` bullets, and the same-note header link exception.
 - 2026-11-01 · First draft, from the notes in `90 System/Overview/` and your rules for the Oxford comma, e.g. and i.e., title-case headers, "see" links, and header link aliases.
