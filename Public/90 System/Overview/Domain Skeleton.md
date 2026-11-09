@@ -7,11 +7,12 @@ aliases:
 ---
 # Domain Skeleton
 
-Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, and every domain has the same shape: a hub note, plus optional folders for the things you track, the things you log, and the plans you follow. A domain holds only what is about your own doing or owning, and links to everything else. The binding rules are in [[CONVENTIONS]] (section 2). As an example:
+Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, and every domain has the same shape: a hub note, an optional About page, and optional folders for the things you track, the things you log, and the plans you follow. A domain holds only what is about your own doing or owning, and links to everything else. The binding rules are in [[CONVENTIONS]] (section 2). As an example:
 
 ```
 <Domain>/
 ├── <Domain>.md     the hub
+├── About.md        how the domain works (optional)
 ├── <Plan>.md       standing plans (e.g., Budget)
 ├── <Items>/        things you track or own
 ├── <Logs>/         dated records of what you did
@@ -33,6 +34,10 @@ Each folder in a domain has a role, and is named for what it holds (e.g., Piano'
 ## Hub Body
 
 A hub is the domain's front page. It holds only links and live views, so nothing is copied into it: what's active, open tasks and projects, the domain's plans, recent logs, and links to related maps and references. Every hub starts from the [[Hub Template]], and may add sections of its own (e.g., a repertoire view in Piano).
+
+## About Page
+
+A domain may have an About page explaining how its notes feed each other and which vault features serve it (e.g., [[Sync Last Practiced]] for Music). It's documentation, so it reads like these notes (see [[STYLE]]). For an example, see [[20 Hobbies/Fitness/About|About Fitness]].
 
 ## What Stays Out of a Domain
 

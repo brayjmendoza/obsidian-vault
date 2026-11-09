@@ -57,6 +57,8 @@ class IssueCode(StrEnum):
     MISSING_HUB = "missing-hub"
     HUB_WRONG_TYPE = "hub-wrong-type"
     HUB_MISNAMED = "hub-misnamed"
+    ABOUT_WRONG_TYPE = "about-wrong-type"
+    ABOUT_MISNAMED = "about-misnamed"
     FILENAME_MISMATCH = "filename-mismatch"
     # Links and URLs
     PRIVATE_LINK = "private-link"

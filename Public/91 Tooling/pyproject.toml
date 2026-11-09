@@ -31,10 +31,13 @@ include = ["vault_tools*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# Caches live outside the vault, where iCloud can't corrupt or sync them.
+cache_dir = "~/.cache/pytest/vault-tools"
 
 [tool.ruff]
 line-length = 100
 target-version = "py314"
+cache-dir = "~/.cache/ruff/vault-tools"
 # Python only: never markdown, notebooks, or anything else in the vault.
 include = ["*.py"]
 # Fixture vaults are sample data, not code. force-exclude makes the exclusion
@@ -54,6 +57,8 @@ files = ["vault_tools", "tests"]
 exclude = ["^tests/fixtures/"]
 strict = true
 plugins = ["pydantic.mypy"]
+# mypy's SQLite cache gives disk I/O errors under iCloud.
+cache_dir = "~/.cache/mypy/vault-tools"
 
 # Checks pydantic models' constructors and fields, not just their methods.
 [tool.pydantic-mypy]

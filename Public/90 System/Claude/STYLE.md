@@ -33,7 +33,8 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Name things, don't inventory them.** Say that templates, scripts, or automations exist and what they're for. Skip sections that list their contents (e.g., an "Includes" section or a template's note body).
 - **A few examples, not every item.** When an example makes a point, one to three are enough. Leave the full list to the schema or folder that holds it.
 - **Link to the details.** When someone needs the specifics, point to [[CONVENTIONS]], the schemas, or the template rather than restating them.
-- **Vault-wide only in `90 System/Overview/`.** Documentation about one domain (e.g., [[Fitness Tracking]]) lives in that domain's folder.
+- **Vault-wide only in `90 System/Overview/`.** Documentation about one domain goes in that domain's About page (e.g., [[20 Hobbies/Fitness/About|About Fitness]]). It says how the domain's notes feed each other and which features serve it (e.g., [[Sync Last Practiced]] for Music), without explaining how those features work.
+- **About pages are titled for their domain:** the H1 reads "About <Domain>" (e.g., "About Fitness"), since every About page shares one filename.
 
 ## Punctuation
 
@@ -99,6 +100,7 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-08 · Domain documentation goes in the domain's About page, titled "About <Domain>."
 - 2026-11-08 · Added the Documentation section: concise, high-level overviews of what the vault does, not how it works, with a few examples instead of full lists.
 - 2026-11-01 · No URLs in the body: link to the note whose `url` holds the page.
 - 2026-11-01 · Title case defined: prepositions, articles, conjunctions, and small verbs lowercase. Em dashes and commas preferred over semicolons. "&" only in titles, names, abbreviations, and citations. Added voice by note type, `-` bullets, and the same-note header link exception.

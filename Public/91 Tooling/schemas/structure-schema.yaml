@@ -16,7 +16,9 @@
 #   2. Every note (.md file) carries a `type` allowed in the folder it sits in.
 #   3. If its type has a pattern in `filenames`, the filename (without .md)
 #      must match it.
-#   4. Every domain has a hub: <Domain>/<Domain>.md with type: hub.
+#   4. Every domain has a hub: <Domain>/<Domain>.md with type: hub. It may
+#      also have an About page: <Domain>/About.md with type: documentation,
+#      the only documentation note a domain may hold.
 #   5. Non-note files are allowed only where a folder lists their extension
 #      in `files`.
 #   6. Names in `ignore` (exact names or glob patterns, e.g. *.egg-info) are
@@ -24,8 +26,8 @@
 #   7. Under a folder with `max_depth: N`, no folder may sit more than N
 #      levels below it.
 #   8. A scratch note (type: scratch) may sit in any folder under any name,
-#      so rules 2 and 3 skip it; only a domain's hub name is reserved for the
-#      hub. Its folder must still be declared (rule 1). See
+#      so rules 2 and 3 skip it; only the names of a domain's hub and About
+#      page are reserved. Its folder must still be declared (rule 1). See
 #      properties-schema.yaml types.scratch.
 #
 # Folder keys
@@ -49,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.30"
+version: "0.31"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -69,6 +71,7 @@ exempt:
 # ---------------------------------------------------------------------------
 domain:
   hub: required             # <Domain>/<Domain>.md, type: hub
+  about: optional           # <Domain>/About.md, type: documentation
   root_types: [plan]        # loose notes allowed at a domain root, beside the hub
   roles: [items, logs, plans, domains]
   role_folders_flat: true

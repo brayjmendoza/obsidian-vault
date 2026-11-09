@@ -139,3 +139,39 @@ def test_domain_root_allows_plan_notes_only(
     assert keys(validate_structure.check(load_vault(root))) == {
         (E, "type-not-allowed", "20 Hobbies/Fitness/Squat Form.md", None)
     }
+
+
+_DOCUMENTATION: Final = "---\ntype: documentation\ncreated: 2026-11-08\nupdated: 2026-11-08\n---\n"
+_PLAN: Final = "---\ntype: plan\ncreated: 2026-11-08\nupdated: 2026-11-08\n---\n"
+
+
+def test_domain_may_have_an_about_page(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
+    """A domain, or a subdomain, may hold one documentation note: About.md."""
+    root = copy_fixture("valid")
+    (root / "20 Hobbies/Fitness/About.md").write_text(_DOCUMENTATION, encoding="utf-8")
+    (root / "20 Hobbies/Music/Piano/About.md").write_text(_DOCUMENTATION, encoding="utf-8")
+    assert validate_structure.check(load_vault(root)) == []
+
+
+def test_about_page_must_be_documentation(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
+    """About.md at a domain root is reserved for documentation, even for scratch notes."""
+    root = copy_fixture("valid")
+    (root / "20 Hobbies/Fitness/About.md").write_text(_PLAN, encoding="utf-8")
+    (root / "20 Hobbies/Music/About.md").write_text("---\ntype: scratch\n---\n", encoding="utf-8")
+    assert keys(validate_structure.check(load_vault(root))) == {
+        (E, "about-wrong-type", "20 Hobbies/Fitness/About.md", None),
+        (E, "about-wrong-type", "20 Hobbies/Music/About.md", None),
+    }
+
+
+def test_domain_documentation_must_be_named_about(
+    copy_fixture: CopyFixture, load_vault: LoadVault
+) -> None:
+    """A documentation note at a domain root under any other name is misnamed."""
+    root = copy_fixture("valid")
+    (root / "20 Hobbies/Fitness/Fitness Tracking.md").write_text(_DOCUMENTATION, encoding="utf-8")
+    (root / "20 Hobbies/Fitness/Routines/About.md").write_text(_DOCUMENTATION, encoding="utf-8")
+    assert keys(validate_structure.check(load_vault(root))) == {
+        (E, "about-misnamed", "20 Hobbies/Fitness/Fitness Tracking.md", None),
+        (E, "type-not-allowed", "20 Hobbies/Fitness/Routines/About.md", None),
+    }

@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-08
-version: "0.30"
+version: "0.31"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.30**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.31**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -50,6 +50,7 @@ If none of these fits clearly, leave the note in `00 Inbox/` and ask with a `#qu
 Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, and these band folders hold nothing but domains. Every domain follows the same skeleton:
 
 - **Hub (required):** `<Domain>/<Domain>.md`, with type `hub`
+- **About page (optional):** `<Domain>/About.md`, with type `documentation`. It explains how the domain's notes work together and which vault features (e.g., templates, scripts, and automations) serve it. It's the only documentation a domain holds, and it follows the same rules as the docs in `90 System/Overview/` (see [[STYLE]]). Since every About page shares one name, links to one use its path (e.g., `[[20 Hobbies/Fitness/About|About Fitness]]`)
 - **Plan notes (optional):** standing plans at the domain root, with type `plan` (e.g., Budget, Schedule, Wishlist, To-dos, and a practice rotation)
 - **Items (optional role folders):** one note per thing you track or own, each with its own status or history (e.g., `Pieces/`, `Trips/`, and `Assets/`)
 - **Logs (optional role folders):** one note per date or period (e.g., `Practice/`, `Sessions/`, and `Spending/`)
@@ -173,8 +174,9 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
-- 2026-11-08 · v0.30 · Added the `documentation` note type, for notes that explain the vault to people. It has no `version`, and it's the only type `90 System/Overview/` holds. Section 5 points to each type's template for note bodies instead of describing them. [[Fitness Tracking]] moved to the Fitness domain, and `90 System/Overview/` holds only vault-wide documentation.
-- 2026-11-08 · v0.29 · The `muscle_group` vocabulary adds `lats`, `traps`, `lower-back`, `obliques`, `hip-flexors`, and `adductors`, and the `equipment` value `paralletes` is spelled `parallettes`. Added [[Fitness Tracking]].
+- 2026-11-08 · v0.31 · Every domain may have an About page, `<Domain>/About.md` with type `documentation`, explaining how its notes work together and which features serve it (see section 2). `structure-schema.yaml` adds `about: optional` to the domain skeleton, and `vault-validate` reports `about-wrong-type` and `about-misnamed`. [[20 Hobbies/Fitness/About|Fitness Tracking]] is now Fitness's About page.
+- 2026-11-08 · v0.30 · Added the `documentation` note type, for notes that explain the vault to people. It has no `version`, and it's the only type `90 System/Overview/` holds. Section 5 points to each type's template for note bodies instead of describing them. [[20 Hobbies/Fitness/About|Fitness Tracking]] moved to the Fitness domain, and `90 System/Overview/` holds only vault-wide documentation.
+- 2026-11-08 · v0.29 · The `muscle_group` vocabulary adds `lats`, `traps`, `lower-back`, `obliques`, `hip-flexors`, and `adductors`, and the `equipment` value `paralletes` is spelled `parallettes`. Added [[20 Hobbies/Fitness/About|Fitness Tracking]].
 - 2026-11-08 · v0.28 · Exercise notes may take `pr`, your personal record as text (e.g., `3x25`). The `equipment` vocabulary adds `rings`, `dip-bars`, `plyo-box`, `jump-rope`, and `foam-roller`.
 - 2026-11-08 · v0.27 · Routine `goal` is now `goals`, a list, and the `routine_goal` vocabulary adds `recovery`. Routines are named for the workout and follow the [[Routine Template]]: every exercise a linked list item with its target after ` — `, and every Core Workout block an H2 with a `Sets:` line. Session tables use `Reps/Time/Distance` and `Weight/Pace` columns, with units in the cells, so they fit runs, holds, and stretches as well as lifts (see section 5).
 - 2026-11-08 · v0.26 · Routine notes have Warm-Up, Core Workout, and Cool-Down H1 sections, and session tables hold only the Core Workout, with a Target column, Sets filled from the routine, and a Sync Last Performed button (Meta Bind) after the table. Exercise notes end with a References section instead of the `form` property, which is gone from `properties-schema.yaml`. See section 5.

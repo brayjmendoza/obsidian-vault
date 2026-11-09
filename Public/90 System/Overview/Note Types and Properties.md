@@ -26,7 +26,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 | log | Health and Home | A dated record (e.g., a checkup or a repair) |
 | reference | `50 References/` | A how-to or look-up |
 | system, template | `90 System/` and `91 Tooling/` | The vault's rules and templates |
-| documentation | `90 System/Overview/` | Notes like this one |
+| documentation | `90 System/Overview/`, and a domain's About page | Notes like this one, and a domain's own documentation |
 | scratch | Anywhere | Scratch work that validation skips |
 
 ## Schema Rules that Shape Every Note

@@ -2,9 +2,11 @@
 
 Checks: every folder is declared (or sits under an open folder, within its
 max_depth); flat folders have no subfolders; every note's type is allowed in
-its folder; filenames match their type's pattern; every domain has a hub;
+its folder; filenames match their type's pattern; every domain has a hub,
+and its only documentation note is its About page;
 non-note files appear only where their extension is allowed. Scratch notes
-may sit in any folder under any name; only a domain's hub name is reserved.
+may sit in any folder under any name; only a domain's hub and About names
+are reserved.
 
     vault-validate-structure [PUBLIC_DIR] [--json]
     python -m vault_tools.validate_structure
@@ -33,6 +35,8 @@ from vault_tools.vault import Vault, is_scratch, load_note, nfc
 DESCRIPTION: Final = "Enforce structure-schema.yaml on the layout of Public/."
 CHECK: Final = CheckName.STRUCTURE
 HUB_TYPE: Final = "hub"
+ABOUT_NAME: Final = "About"
+ABOUT_TYPE: Final = "documentation"
 
 
 class FolderSpec(BaseModel):
@@ -178,6 +182,7 @@ class StructureChecker:
         self.root = build_tree(vault.structure_schema)
         self.patterns = vault.structure_schema.filenames
         self.hub_required = vault.structure_schema.domain.hub == "required"
+        self.about_allowed = vault.structure_schema.domain.about == "optional"
 
     def run(self) -> list[Issue]:
         """Check the whole vault.
@@ -270,7 +275,7 @@ class StructureChecker:
 
         A note with a missing or malformed type is left to the properties
         validator, except where no notes may sit at all. A scratch note is
-        never checked, unless it takes the name of its domain's hub.
+        never checked, unless it takes the name of its domain's hub or About page.
 
         Args:
             path: The note on disk.
@@ -288,6 +293,12 @@ class StructureChecker:
                 message = f"the domain hub must have type 'hub', not {got}"
                 yield _error(IssueCode.HUB_WRONG_TYPE, rel, message)
             return
+        if spec.domain and self.about_allowed and note.stem == ABOUT_NAME:
+            if note_type != ABOUT_TYPE:
+                got = f"type {note_type!r}" if note_type else "no type"
+                message = f"a domain's About page must have type {ABOUT_TYPE!r}, not {got}"
+                yield _error(IssueCode.ABOUT_WRONG_TYPE, rel, message)
+            return
         if is_scratch(note):
             return
         if not isinstance(note_type, str):
@@ -299,6 +310,10 @@ class StructureChecker:
             if note_type == HUB_TYPE and spec.domain:
                 message = f"a hub must be named after its domain: {spec.name}{NOTE_SUFFIX}"
                 yield _error(IssueCode.HUB_MISNAMED, rel, message)
+                return
+            if note_type == ABOUT_TYPE and spec.domain and self.about_allowed:
+                message = f"a domain's documentation note must be named {ABOUT_NAME}{NOTE_SUFFIX}"
+                yield _error(IssueCode.ABOUT_MISNAMED, rel, message)
                 return
             if note_type not in spec.types:
                 yield _error(IssueCode.TYPE_NOT_ALLOWED, rel, _not_allowed_message(note_type, spec))

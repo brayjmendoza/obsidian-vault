@@ -259,12 +259,14 @@ class DomainSkeleton(SchemaModel):
 
     Attributes:
         hub: Whether every domain needs a hub note.
+        about: Whether a domain may hold an About page, its one documentation note.
         root_types: Note types allowed loose at a domain root, beside the hub.
         roles: The role keys a domain may use. Documentation only.
         role_folders_flat: Whether role folders forbid subfolders.
     """
 
     hub: Literal["required", "optional"] = "required"
+    about: Literal["optional", "none"] = "none"
     root_types: list[str] = Field(default_factory=list)
     roles: list[str] = Field(default_factory=list)
     role_folders_flat: bool = True

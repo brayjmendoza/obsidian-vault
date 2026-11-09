@@ -34,6 +34,7 @@ sort by priority
 
 # Resources
 
+[[Public/20 Hobbies/Fitness/About|About Page]]
 ## Maps
 
 %% Relevant maps in 40 Knowledge, each shown as \<Field> Map. %%
