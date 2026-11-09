@@ -8,6 +8,12 @@ version: "0.30"
 // Hub Template: the hub for the domain folder the new note sits in.
 // Create the note inside the domain folder (e.g., 20 Hobbies/Music/Piano/).
 // The note is renamed to the folder's name, as the domain rule requires.
+//
+// Hub format: only links and queries, with H1 headings and no title or opening
+// paragraph. The views come from 90 System/Bases/ (Hub.base, and Plan.base for
+// the plan notes in the hub's folder and its subfolders), so nothing is copied.
+// A hub may add its own sections after Resources (e.g., a repertoire view in
+// Piano). Claude keeps hub links current.
 
 // Drop this template's own properties (type: template) from the output.
 tR = "";
@@ -65,7 +71,7 @@ const referenceLinks = picked.filter((f) => !isMap(f)).map((f) => `- ${linkTo(f)
 ---
 type: hub
 created: <% today %>
-updated: 2026-11-08
+updated: <% today %>
 ---
 # Current
 

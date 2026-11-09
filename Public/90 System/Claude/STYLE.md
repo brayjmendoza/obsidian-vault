@@ -93,7 +93,7 @@ When in doubt, write like these:
 - [[Tags]]: an explanatory note that builds an argument with headers, tables, and short reasons
 - [[Sync and Backup]]: bold-label bullets, each with a one-clause reason
 - [[Domain Skeleton]]: a tree, comparison tables, and worked placement examples
-- [[Knowledge Structure]]: a longer note mixing prose, diagrams, and a worked example
+- [[Knowledge Structure]]: prose, a diagram, and bold-label bullets that build one argument
 
 There are no model concept, source, or log notes yet. Add some here once you've written them.
 

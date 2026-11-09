@@ -7,6 +7,12 @@ version: "0.30"
 <%*
 // Map Template: a field map, or a sub-map split off an existing map.
 // The note is named and moved into 40 Knowledge/Maps/ for you.
+//
+// Map format: a hand-curated table of contents for a field. One heading per
+// subtopic, with links to concept notes in learning order and a few words on
+// how the ideas connect. A concept can appear on several maps. When a section
+// grows large, split it into a sub-map (run this template again) and link the
+// sub-map from the parent in place of the section.
 
 // Drop this template's own properties (type: template) from the output.
 tR = "";
@@ -100,7 +106,7 @@ if (parent) {
 ---
 type: map
 created: <% today %>
-updated: 2026-11-08
+updated: <% today %>
 field: <% field %>
 <% needsTriage ? "tags: [inbox]\n" : "" %>---
 <% up %><% sections %>

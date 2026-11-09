@@ -7,28 +7,28 @@ aliases:
 ---
 # Vault Plugins
 
-Keep the plugin list short: every plugin with its own syntax is something Claude must also understand. Plugin settings live in `.obsidian/`, outside Claude's reach (see [[Privacy Boundary]]), so plugin changes are made by hand.
+Keep the plugin list short: every plugin with its own syntax is something Claude must also understand. Plugin settings are outside Claude's reach, so plugin changes are made by hand (see [[Privacy Boundary]]).
 
-| Plugin                                                | By                   | Why                                                                                                                                                                                                   |
-| ----------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Daily Notes, Properties, Backlinks, Canvas, Bookmarks | Obsidian (Core)      | Basics                                                                                                                                                                                                |
-| Bases                                                 | Obsidian (Core)      | Database views over properties (e.g., repertoire, reading list); plain YAML Claude can edit. Powers the hub and map views (see [[Domain Skeleton#Hub Body\|Hub Body]])                                |
-| Git                                                   | Vinzent              | Version history and sync between desktops (macOS, Windows, Linux); every Claude edit reviewable and reversible. Desktop only. Essential (see [[Sync and Backup]])                                     |
-| Templater                                             | silentvoid13         | Templates with dates, prompt, commands, and more (see [[Vault Templates]])                                                                                                                                                   |
-| Periodic Notes                                        | Community (TODO)     | Weekly and monthly notes                                                                                                                                                                              |
-| Calendar                                              | Liam Cain            | Calendar sidebar                                                                                                                                                                                      |
-| Tasks                                                 | obsidian-tasks-group | Queryable to-dos across the vault (see [[Everyday Lists]])                                                                                                                                            |
-| QuickAdd                                              | chhoumann (TODO)     | One-keystroke capture into Inbox or a note type                                                                                                                                                       |
-| Linter                                                | Community<br>(TODO)  | Consistent frontmatter and headings                                                                                                                                                                   |
-| Spaced Repetition                                     | Community<br>(TODO)  | Flashcards from concept notes                                                                                                                                                                         |
-| Zotero Integration                                    | Community<br>(TODO)  | Paper citations and highlights, if using Zotero (see [[Vault Open Questions]])                                                                                                                        |
-| Hide Folders                                          | jonasdoesthings      | Hide folders without real notes. Currently hides `98 Attachments/`.                                                                                                                                   |
-| Advanced Exclude                                      | Michael Naumov       | Treats files listed in `.obsidianignore` (at the vault root) as if they don't exist, so Obsidian never indexes them or rewrites their links. Keeps the test fixtures in `91 Tooling/tests/` untouched |
-| Update modified date                                  | Alan Grainger        | Update the `created` and `updated` properties when modifying a file                                                                                                                                   |
-| Meld Encrypt                                          | meld-cp              | Encrypt single notes in Private. Can also encrypt specific bits of text within a note                                                                                                                 |
-| Dataview                                              | blacksmithgu         | Runs the scripts in `90 System/Scripts/` that notes call with `dv.view`: an exercise's Last Time section and a form video's embed (see [[CONVENTIONS]], section 5). Needs Enable JavaScript Queries on |
-| Meta Bind                                             | Moritz Jung          | Buttons in notes. A session note's Sync Last Performed button runs that automation (see [[Vault Templates]])                                                                                          |
-| Excalidraw, Omnisearch, Homepage                      | Community (TODO)     | Only if a real need appears                                                                                                                                                                           |
+| Plugin | Why |
+|---|---|
+| Daily Notes, Properties, Backlinks, Canvas, Bookmarks | Core basics |
+| Bases | Database views over properties, like the hub views and a reading list (see [[Domain Skeleton#Hub Body\|Hub Body]]) |
+| Git | Version history and sync between desktops, so every Claude edit can be reviewed and undone (see [[Sync and Backup]]) |
+| Templater | Templates that ask questions and fill in new notes (see [[Vault Templates]]) |
+| Periodic Notes (TODO) | Weekly and monthly notes |
+| Calendar | A calendar sidebar |
+| Tasks | To-dos you can query across the vault (see [[Everyday Lists]]) |
+| QuickAdd (TODO) | One-keystroke capture into the Inbox or a note type |
+| Linter (TODO) | Consistent frontmatter and headings |
+| Spaced Repetition (TODO) | Flashcards from concept notes |
+| Zotero Integration (TODO) | Paper citations and highlights, if you use Zotero (see [[Vault Open Questions]]) |
+| Hide Folders | Hides folders without real notes (e.g., `98 Attachments/`) |
+| Advanced Exclude | Keeps Obsidian from indexing the tooling's test files |
+| Update modified date | Keeps `updated` current when you edit a note |
+| Meld Encrypt | Encrypts single notes, or parts of them |
+| Dataview | Runs the scripts behind live sections, like an exercise's Last Time. Needs JavaScript queries turned on |
+| Meta Bind | Buttons in notes, like a session's Sync Last Performed |
+| Excalidraw, Omnisearch, Homepage (TODO) | Only if a real need appears |
 
 ---
 ← [[Claude Guardrails]] · Next: [[Vault Templates]] →

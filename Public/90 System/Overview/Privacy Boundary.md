@@ -5,20 +5,20 @@ updated: 2026-11-08
 ---
 # Privacy Boundary
 
-Obsidian opens the whole vault; Claude is connected only to `Public/`, so it can't read anything in `Private/` because it is unreachable. This is the one hard guardrail (see [[Claude Guardrails]]).
+Obsidian opens the whole vault, but Claude is connected only to `Public/`, so it can never read `Private/`. This is the one hard guardrail (see [[Claude Guardrails]]). The binding rule is in [[CONVENTIONS]] (section 1).
 
 ```
-Vault/         ← Obsidian opens this (sees everything); lives in iCloud Drive, synced to GitHub
+Vault/         ← Obsidian opens this
 ├── Public/    ← the only folder connected to Claude
-└── Private/   ← never connected; encrypted on GitHub with git-crypt
+└── Private/   ← never connected, and encrypted on GitHub
 ```
 
-- Never connect the vault root itself. That would expose `Private/`.
-- Private notes may link to Public notes. **Public notes never link to Private notes.** `vault-validate` reports any that do, in bodies and properties alike (see [[Schemas and Validation]]). It reads only `Private/`'s file names, never its notes, and only where it can see them: on your Mac and in CI. Claude's runs can't, so they catch only links written as a `Private/…` path. CI runs it on every push (see [[CI Workflows]]).
-- Private holds: account numbers, salary and tax documents, health records, journal entries not for analysis, etc. Passwords belong in a password manager.
-- `Private/` syncs through iCloud and GitHub like the rest of the vault (see [[Sync and Backup]]). On GitHub its contents are encrypted with git-crypt; file names, folder names, and commit messages are not, so keep sensitive details out of them.
-- Meld Encrypt (see [[Vault Plugins]]) encrypts a whole note or parts of a note within Obsidian. Use it for single notes that should also be encrypted on your Apple devices.
-- `.obsidian/` (settings, plugins) sits at the vault root, outside Claude's reach. Plugin changes are done by hand.
+- **Never connect the vault root:** that would expose `Private/`.
+- **Public notes never link to Private ones.** Private notes may link to Public notes, and validation reports any link the other way (see [[Schemas and Validation]]).
+- **What goes in Private:** account numbers, salary and tax documents, health records, and journal entries not meant for analysis. Passwords belong in a password manager.
+- **Encrypted on GitHub:** `Private/` syncs like the rest of the vault, but its contents are encrypted on GitHub. File names and commit messages aren't, so keep sensitive details out of them (see [[Sync and Backup]]).
+- **Single encrypted notes:** Meld Encrypt can also encrypt a note, or part of one, on your own devices (see [[Vault Plugins]]).
+- **Plugin settings are out of reach too,** so plugin changes are made by hand.
 
 ---
 ← [[Vault Principles]] · Next: [[Folder Structure]] →

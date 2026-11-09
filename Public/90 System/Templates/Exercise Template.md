@@ -18,7 +18,10 @@ await dv.view("Public/90 System/Scripts/last-time")
 
 # Notes
 
-%% Extra personal notes/thoughts on the exercise %%
+%% Your own thoughts on the exercise. Claude doesn't write here. %%
 
 # References
+
+%% Bulleted links to reference notes, e.g., a form video. %%
+- 
 

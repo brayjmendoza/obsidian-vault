@@ -13,6 +13,15 @@ version: "0.30"
 //   - Target:   the item's text after " — " (e.g., "3x20"), or after its link
 //               if it has no " — "
 //   - Sets:     the number at the start of the section's `Sets:` line
+// Filling in the table, one row per exercise:
+//   - Reps/Time/Distance: how much you did: reps (e.g., 20), a time (e.g., 45s
+//     or 46:30), or a distance with its unit (e.g., 10 km)
+//   - Weight/Pace: how hard: a weight with its unit (e.g., 185 lb) or a pace
+//     (e.g., 7:28/mi). Blank for bodyweight
+//   - Per set: one value for every set, or one per set separated by commas
+//     (e.g., 20, 18, 15)
+//   - A row counts once Reps/Time/Distance is filled. That's what an exercise's
+//     Last Time and Sync Last Performed read, so a skipped row can stay empty.
 // The Session Template includes it after Frontmatter, so it runs once the
 // note's properties are written. Never run it alone.
 tR = "";

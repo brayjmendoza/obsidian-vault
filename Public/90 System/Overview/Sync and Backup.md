@@ -5,34 +5,27 @@ updated: 2026-11-08
 ---
 # Sync and Backup
 
-iCloud syncs the Apple devices, Git syncs the desktops, and the Mac connects the two. Obsidian Git (see [[Vault Plugins]]) works poorly on mobile, so phones and tablets rely on iCloud alone.
+iCloud syncs the Apple devices, Git syncs the desktops, and the Mac connects the two. Obsidian Git works poorly on mobile, so phones and tablets rely on iCloud alone (see [[Vault Plugins]]).
 
 ```
 iPhone / iPad ── iCloud ──▶ Mac ◀── Git remote ──▶ Windows / Linux desktops
 ```
 
-| Device                  | Syncs through  | Obsidian Git                                  |
-| ----------------------- | -------------- | --------------------------------------------- |
-| iPhone, iPad            | iCloud         | Off                                           |
-| Mac                     | iCloud and Git | On: auto-commit, pull, and push on an interval |
-| Windows, Linux desktops | Git            | On: auto-commit, pull, and push on an interval |
-
 ## Setup
 
-- **Vault location:** the vault lives in iCloud Drive's Obsidian folder so Obsidian on iOS can open it. On the Mac, set that folder to "Keep Downloaded" so iCloud never offloads files Git or Claude need.
-- **The Mac is the bridge:** phone edits reach the other desktops only after the Mac commits and pushes them. Keep Obsidian Git's auto-commit and auto-pull on there. This is also why CI reports instead of blocking (see [[CI Workflows#Shared Properties|Shared Properties]]).
-- **Keep `.git` out of iCloud:** iCloud can corrupt Git's many small object files and would copy them to the phone. Either keep the Git directory outside the vault (`git init --separate-git-dir`) or rename it `.git.nosync` (iCloud skips `.nosync`) and point a `.git` file at it.
-- **`.gitignore`:** `.obsidian/workspace*.json`, `.trash/`, and `.DS_Store`, which change constantly and cause needless conflicts, plus the tooling's generated folders (`__pycache__/`, `.pytest_cache/`, `.mypy_cache/`, `.ruff_cache/`, and `*.egg-info/`).
-- **Remote:** a private GitHub repository holding the whole vault, `Private/` included.
-- **Tooling on each desktop:** a desktop that runs the validators or edits `91 Tooling/` needs uv, direnv, and the pre-commit hooks, set up once from the tooling's [[Public/91 Tooling/README|README]]. The Python environment lives in `~/.venvs/vault-tools`, outside iCloud (see [[README#The Python Environment|Python Environment]]).
+- **Vault location:** the vault lives in iCloud Drive so Obsidian on iOS can open it. On the Mac, keep it downloaded so iCloud never offloads files Git or Claude need.
+- **The Mac is the bridge:** phone edits reach the other desktops only after the Mac commits and pushes them, so keep its auto-commit and auto-pull on. This is also why CI reports instead of blocking (see [[CI Workflows]]).
+- **Keep Git out of iCloud:** iCloud can corrupt Git's many small files, and would copy them to the phone.
+- **Remote:** a private GitHub repository holds the whole vault, `Private/` included.
+- **Tooling:** a desktop that runs the validators needs a one-time setup (see the tooling's [[Public/91 Tooling/README|README]]).
 
 ## git-crypt
 
-`.gitattributes` marks `Private/**` for encryption (see [[Privacy Boundary]]). Every desktop needs git-crypt installed and the repository unlocked; a locked clone shows `Private/` as unreadable binary files. Keep the key in your password manager, never in the vault.
+`Private/` is encrypted on GitHub with git-crypt (see [[Privacy Boundary]]). Every desktop needs the key to read it, and the key lives in your password manager, never in the vault.
 
 ## Conflicts and Backup
 
-- **Conflicts:** avoid editing the same note on the phone and a non-Apple desktop between Mac syncs. Git flags conflicts; iCloud quietly makes duplicate copies (`Note 2.md`), which vault-health reports (see [[Claude Skills]]).
+- **Conflicts:** avoid editing the same note on the phone and a non-Apple desktop between Mac syncs. Git flags conflicts, but iCloud quietly makes duplicate copies, which vault-health reports (see [[Claude Skills]]).
 - **Backup:** Git history is the real backup. iCloud is sync, not backup: a deletion syncs everywhere.
 
 ---

@@ -53,4 +53,4 @@ This is a list of improvements or extensions that need to be made to the vault.
 	2. hotkeys
 
 ---
-← [[Vault Rollout]] · Back to [[Vault Overview]]
+← [[Vault Open Questions]] · Back to [[Vault Overview]]

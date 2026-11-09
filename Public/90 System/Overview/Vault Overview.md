@@ -7,23 +7,21 @@ aliases:
 ---
 # Vault Overview
 
-This is the entry point to the documentation for how the vault is structured and maintained: the folder layout, note types, schemas and CI, sync, and the skills that keep it tidy. The rules themselves live in [[CONVENTIONS]] and the note schemas in `91 Tooling/schemas/`. These notes explain the rules and how they fit together. They are background for people. Skills don't need to read them on every run.
+This is the entry point to the vault's documentation: how it's laid out, what kinds of notes it holds, how it stays valid, and the skills that maintain it. The rules themselves live in [[CONVENTIONS]] and the schemas in `91 Tooling/schemas/`. These notes are background for people, so skills don't read them on every run.
 
 ## The Contract
 
-Three files make up the contract between you and every Claude skill. These overview notes are not part of it.
+Three files make up the contract between you and every Claude skill:
 
-| File                                        | Holds                                                                                                        |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `90 System/Claude/CONVENTIONS.md`           | Rules that need judgment: placement, linking, note bodies, what Claude may and may not do                    |
-| `91 Tooling/schemas/properties-schema.yaml` | Defines every note type's properties, value types, and allowed values (i.e., constraints on YAML frontmatter) |
-| `91 Tooling/schemas/structure-schema.yaml`  | Defines every allowed folder, the note types each holds, the domain skeleton, filename patterns              |
+- **[[CONVENTIONS]]:** the rules that need judgment, like where notes go, how they link, and what Claude may do
+- **The properties schema:** which properties each note type has
+- **The structure schema:** which folders exist and which note types each one holds
 
-Two style guides sit beside the contract: [[STYLE]] for how note bodies read, and [[CODE_STYLE]] for the Python scripts in `91 Tooling/`. See [[Vault Principles]] for why it's split this way, and [[Schemas and Validation]] for how the schemas are enforced.
+Two style guides sit beside it: [[STYLE]] for writing notes and [[CODE_STYLE]] for the vault's Python. See [[Vault Principles]] for why it's split this way.
 
 ## Contents
 
-Read in this order the first time; each note links to the next.
+Read in this order the first time. Each note links to the next.
 
 **Design**
 1. [[Vault Principles]]: the ideas everything else follows from
@@ -31,23 +29,23 @@ Read in this order the first time; each note links to the next.
 
 **Structure**
 3. [[Folder Structure]]: the numbered top-level layout, the bands, and the placement rules
-4. [[Domain Skeleton]]: the shape shared by every `Hobbies/` and `Life Admin/` domain
-5. [[Knowledge Structure]]: how sources, concepts, and maps organize `Knowledge/` by links
-6. [[Note Types and Properties]]: every note type, where it lives, and its properties
-7. [[Note Properties]]: what each property means and the values it accepts
+4. [[Domain Skeleton]]: the shape shared by every Hobbies and Life Admin domain
+5. [[Knowledge Structure]]: how sources, concepts, and maps organize Knowledge by links
+6. [[Note Types and Properties]]: every note type and where it lives
+7. [[Note Properties]]: what each property means
 8. [[Tags]]: the four reserved tags and why everything else is a property
 9. [[Everyday Lists]]: Schedule, Wishlist, and To-dos
 
 **Enforcement**
 10. [[Schemas and Validation]]: what the schemas check and where validation runs
-11. [[CI Workflows]]: GitHub Actions used for maintenance
-12. [[Claude Guardrails]]: hard and soft limits on what Claude may do
+11. [[CI Workflows]]: the checks GitHub runs on every push
+12. [[Claude Guardrails]]: what Claude may and may not do
 
 **Tools and Sync**
-13. [[Vault Plugins]]: a list of Obsidian plugins used in this vault
-14. [[Vault Templates]]: type templates, automations, and the includes they share
-15. [[Sync and Backup]]: iCloud, Git, and git-crypt across devices
-16. [[Claude Skills]]: the AI skills that maintain the vault and help you get the most out of it
+13. [[Vault Plugins]]: the Obsidian plugins the vault uses
+14. [[Vault Templates]]: templates for new notes and automations for existing ones
+15. [[Sync and Backup]]: iCloud, Git, and encryption across devices
+16. [[Claude Skills]]: the skills that maintain the vault and help you use it
 
 **Roadmap**
 17. [[Vault Rollout]]: the five build phases
