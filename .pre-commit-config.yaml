@@ -7,7 +7,7 @@
 # ruff reads its settings from Public/91 Tooling/pyproject.toml.
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.17.3
+    rev: v0.17.4
     hooks:
       # Lint first and apply safe fixes (e.g. import order), then format.
       - id: ruff-check
