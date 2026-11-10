@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-09
 aliases:
   - Fitness Tracking
 ---
@@ -24,7 +24,7 @@ Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶
 
 - **One note per movement:** the same exercise in several routines links to one note, so its history stays in one place.
 - **Nothing is typed twice:** an exercise's latest sets and its list of sessions are live views of your session notes.
-- **Progressions:** a routine can hold tiers of an exercise, with the one you're on highlighted. To move up a tier, move the highlight.
+- **Progressions:** a routine can hold ladders of an exercise below its workout, with the tier you're on highlighted and linked from the Core Workout. To move up a tier, move the highlight and update the Core Workout.
 
 ## Logging a Workout
 

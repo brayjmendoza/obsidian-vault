@@ -1,7 +1,7 @@
 ---
 type: routine
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-09
 modality: running
 goals:
   - endurance
@@ -18,32 +18,28 @@ actions:
 
 # Warm-Up
 
-- [[Leg Swing|Leg swings]] (front-back, then side-side) — 10 swings each position & leg
-- [[High Knees|Walking high knees]] — 20 yards
-- [[Butt Kicks|Walking butt kicks]] — 20 yards
-- [[Calf Scoop|Calf scoops]] — 20 yards
-- [[Walking Lunge with Twist|Walking lunges w/ torso twist towards front leg]] — 8 each side
-- [[Ankle Bounce|Ankle bounces]] — 20 reps
+- [[Leg Swing|Leg swings]] — Reps: 10/leg each position, Cue: front-back, then side-side
+- [[High Knees|Walking high knees]] — Distance: 20 yd
+- [[Butt Kicks|Walking butt kicks]] — Distance: 20 yd
+- [[Calf Scoop|Calf scoops]] — Distance: 20 yd
+- [[Walking Lunge with Twist|Walking lunges w/ torso twist towards front leg]] — Reps: 8/side
+- [[Ankle Bounce|Ankle bounces]] — Reps: 20
 
 # Core Workout
 
-## Run
-
-- [[Run]] — 8 miles @ ~7:30/mi pace
-
-Sets: 1
+- [[Run]] — Distance: 8 mi, Pace: ~7:30/mi
 
 # Cool-Down
 
-- [[Reclined Quad Stretch|Reclined quad stretch]] — 45s / side
-- [[Kneeling Hip Flexor Stretch|Kneeling hip flexor stretch]] — 45s / side
-- [[Butterfly Stretch|Butterfly]] — 30s / side
-- [[One-Legged V-Sit Stretch|One-legged V-Sit stretch]] — 30s / side
-- [[Seated Straight-Leg Stretch|Seated straight leg stretch]] — 30s
-- [[Figure-4 Glute Stretch|Figure-4 glute stretch]] — 45s / side
-- [[Standing Calf Stretch|Calf stretch against wall]] — 30s each position & side
+- [[Reclined Quad Stretch|Reclined quad stretch]] — Time: 45s/side
+- [[Kneeling Hip Flexor Stretch|Kneeling hip flexor stretch]] — Time: 45s/side
+- [[Butterfly Stretch|Butterfly]] — Time: 30s/side
+- [[One-Legged V-Sit Stretch|One-legged V-sit stretch]] — Time: 30s/side
+- [[Seated Straight-Leg Stretch|Seated straight leg stretch]] — Time: 30s
+- [[Figure-4 Glute Stretch|Figure-4 glute stretch]] — Time: 45s/side
+- [[Standing Calf Stretch|Calf stretch against wall]] — Time: 30s each position and side
 	- Bent-knee (soleus)
 	- Straight-knee (gastroc)
-- [[90-90 Hip Rotation|90/90 hip rotations]] — 2-3 slow reps / side
-- [[Thoracic Extension|Thoracic extension over a foam roller]] — 6-8 reps
-- [[Doorway Pec Stretch|Doorway pec stretch]] — 30s
+- [[90-90 Hip Rotation|90/90 hip rotations]] — Reps: 2-3/side, Cue: slow
+- [[Thoracic Extension|Thoracic extension over a foam roller]] — Reps: 6-8
+- [[Doorway Pec Stretch|Doorway pec stretch]] — Time: 30s

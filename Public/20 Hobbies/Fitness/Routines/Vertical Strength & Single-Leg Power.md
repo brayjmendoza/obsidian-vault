@@ -20,9 +20,7 @@ actions:
 
 ## General Pulse Raiser
 
-1. [[Jump Rope|Jump rope]] — ```dataview 
-
-   ```
+1. [[Jump Rope|Jump rope]] — Time: 60s
 2. [[Arm Circle|Arm circles]] — Time: 15s each direction, Cue: forward, then backward
 3. [[Leg Swing|Leg swings]] — Reps: 10/leg, Cue: front-back, then lateral
 
@@ -74,7 +72,10 @@ actions:
 
 ## Handstand Push-Up (HSPU) Progression
 
-1. ==[[Push-up|Push-ups]] — Sets: 3, Reps: 20, Rest: 3 min==
+Sets: 3
+Rest: 3 mins
+
+1. ==[[Push-up|Push-ups]] — Sets: 3, Reps: 20 ==
 2. [[Pike Push-up|Pike push-ups]] — Sets: 3, Reps: 12, Rest: 3 min
 3. [[Feet-Elevated Pike Push-up|Feet-elevated pike push-ups]] — Sets: 3, Reps: 10, Rest: 3 min
 4. [[Chest-to-Wall Handstand Hold|Chest-to-wall handstand hold]] — Sets: 3, Time: 45s, Rest: 3 min, Cue: solid hold
