@@ -18,37 +18,30 @@ actions:
 
 # Warm-Up
 
-- General pulse-raiser
-	1. [[Jump Rope|Jump rope]] — 60s
-	2. [[Arm Circle|Arm circles]] (forward/backward) — 15s each direction
-	3. [[Leg Swing|Leg swings]] (front-back, then lateral) — 10 each leg, each direction
-- Joint prep
-	1. [[Wrist Rock|Wrist rocks]] (both directions) — 2x15
-	2. [[Knee-to-Wall Ankle Dorsiflexion Drill|Knee-to-wall ankle dorsiflexion drill]] — 2x8/side
-	3. [[Scapular Pull-up|Scapular pull-ups]] — 2x10
-	4. [[Deep Squat Hold with Thoracic Rotation|Deep squat hold w/ thoracic rotation]] — 6 reaches/side
-	5. [[Hollow Hold|Hollow hold]] — 2x20s
-
-Rest: None  
 Total time: ~10 mins
+## General Pulse Raiser
+
+1. [[Jump Rope|Jump rope]] — 60s
+2. [[Arm Circle|Arm circles]] (forward/backward) — 15s each direction
+3. [[Leg Swing|Leg swings]] (front-back, then lateral) — 10 each leg, each direction
+
+## Joint Prep
+
+1. [[Wrist Rock|Wrist rocks]] (both directions) — 2x15
+2. [[Knee-to-Wall Ankle Dorsiflexion Drill|Knee-to-wall ankle dorsiflexion drill]] — 2x8/side
+3. [[Scapular Pull-up|Scapular pull-ups]] — 2x10
+4. [[Deep Squat Hold with Thoracic Rotation|Deep squat hold w/ thoracic rotation]] — 6 reaches/side
+5. [[Hollow Hold|Hollow hold]] — 2x20s
+
 
 # Core Workout
 
-## Handstand Push-Up (HSPU) Progression
+1. [[Push-up|Push-ups]] 
+	+ Target: 3x20
+	+ Rest: 3 mins
 
-1. ==[[Push-up|Push-ups]] — 3x20==
-2. [[Pike Push-up|Pike push-ups]] — 3x12
-3. [[Feet-Elevated Pike Push-up|Feet-elevated pike push-ups]] — 3x10
-4. [[Chest-to-Wall Handstand Hold|Chest-to-wall Wall handstand hold]] — 3x45s solid
-5. [[Wall Negative Handstand Push-up|Wall negative HSPU]] — 3x3 w/ 5-8s descent
-6. [[Partial Wall Handstand Push-up|Wall HSPU partial ROM]] — 4x5
-7. [[Wall Handstand Push-up|Full wall HSPU]] — 4x8
-8. [[Deficit Wall Handstand Push-up|Deficit wall HSPU]] — 4x6
-9. [[Freestanding Handstand Push-up|Freestanding HSPU]]
+2. 
 
-Rest: 2-3 mins  
-Sets: 3  
-Total time: ~16 mins
 
 ## One Arm Pull-Up Progression
 
@@ -107,3 +100,17 @@ Total time: ~10-12 mins
 
 Rest: None  
 Total time: 7-8 mins
+
+# Progressions
+
+## Handstand Push-Up (HSPU) Progression
+
+1. ==[[Push-up|Push-ups]] — 3x20==
+2. [[Pike Push-up|Pike push-ups]] — 3x12
+3. [[Feet-Elevated Pike Push-up|Feet-elevated pike push-ups]] — 3x10
+4. [[Chest-to-Wall Handstand Hold|Chest-to-wall Wall handstand hold]] — 3x45s solid
+5. [[Wall Negative Handstand Push-up|Wall negative HSPU]] — 3x3 w/ 5-8s descent
+6. [[Partial Wall Handstand Push-up|Wall HSPU partial ROM]] — 4x5
+7. [[Wall Handstand Push-up|Full wall HSPU]] — 4x8
+8. [[Deficit Wall Handstand Push-up|Deficit wall HSPU]] — 4x6
+9. [[Freestanding Handstand Push-up|Freestanding HSPU]]
