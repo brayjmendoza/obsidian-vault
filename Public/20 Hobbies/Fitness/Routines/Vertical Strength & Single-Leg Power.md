@@ -1,7 +1,7 @@
 ---
 type: routine
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-09
 modality: calisthenics
 goals:
   - strength
@@ -68,7 +68,7 @@ Total time: ~10 mins
 ## Hanging Compression
 
 1. [[Hanging Knee Raise|Hanging knee raises]] — 3x12 (benchmark: 3x15, no swing)
-2. ==[[Hanging Leg Raise|Hanging leg raises]] — 3x10 (3x12, no kip)==
+2. ==[[Hanging Leg Raise|Hanging leg raises]] — 3x12, no kip==
 3. [[Toes-to-Bar|Toes-to-bar]] — 3x8 (3x10, controlled descent)
 4. [[Tuck L-Sit Hold|L-sit tuck hold]] — 3x20-30s (3x30s, hips at/above parallel)
 5. [[L-Sit Hold|L-sit full hold]] — 3x10-15s (3x20s)
