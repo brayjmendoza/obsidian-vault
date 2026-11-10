@@ -1,13 +1,14 @@
 ---
 type: exercise
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-09
 muscle_groups:
   - lats
   - biceps
 equipment:
   - pull-up-bar
   - bands
+last_performed: 2026-11-09
 ---
 # Last Time
 

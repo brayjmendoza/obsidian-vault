@@ -1,10 +1,11 @@
 ---
 type: exercise
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-09
 muscle_groups:
   - quads
   - glutes
+last_performed: 2026-11-09
 ---
 # Last Time
 
