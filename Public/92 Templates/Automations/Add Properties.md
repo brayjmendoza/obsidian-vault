@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-07
-updated: 2026-11-08
-version: "0.36"
+updated: 2026-11-11
+version: "0.37"
 ---
 <%*
 // Add Properties: run on an existing note (Templater: Insert template) to add

@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-08
+updated: 2026-11-11
 version: "1.0"
 ---
 # Writing Style
@@ -41,7 +41,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Oxford comma, always:** "sources, concepts, and maps," not "sources, concepts and maps."
 - **e.g., and i.e., for examples and restatements in parentheses,** each followed by a comma: "(e.g., `Physics`)" and "(i.e., the kind of folder it is)," never a bare "(`Physics`)." Use e.g. when giving one example among others, and i.e. when restating the only meaning.
 - **Em dashes and commas over semicolons.** An em dash, spaced on both sides, sets off an aside or a sharp turn (e.g., "Three living lists — a schedule, a wishlist, and small to-dos — are plan notes"). Semicolons aren't banned, but reach for a comma, an em dash, or a new sentence first.
-- **Colons** introduce a list, an explanation, or an example: "Three living lists: Schedule, Wishlist, and To-dos."
+- **Colons** introduce a list, an explanation, or an example: "Three living lists: Schedule, Wishlist, and To-Do's."
 - **En dashes for ranges:** 1–5, 1–600, bands 6–8.
 - **Arrows for mappings and next steps:** "Has a finish line → `10 Projects/`" and "Bank CSV → categorized monthly spending note."
 - **"And" in prose, "&" in names.** Write "and" in sentences. "&" is for titles, names, abbreviations, and citations (e.g., Q&A, R&D, Smith & Jones 2020).
@@ -100,6 +100,7 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-11 · The to-do list's note is named To-Do's in examples.
 - 2026-11-08 · Domain documentation goes in the domain's About page, titled "About <Domain>."
 - 2026-11-08 · Added the Documentation section: concise, high-level overviews of what the vault does, not how it works, with a few examples instead of full lists.
 - 2026-11-01 · No URLs in the body: link to the note whose `url` holds the page.

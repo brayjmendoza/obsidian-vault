@@ -1,14 +1,14 @@
 ---
 type: template
 created: 2026-11-08
-updated: 2026-11-08
-version: "0.36"
+updated: 2026-11-11
+version: "0.37"
 ---
 <%*
 // Sync Last Performed: keeps each exercise's `last_performed` at the latest date
 // of the session notes that log it. A session logs an exercise when the
-// exercise's row in its table has Reps/Time/Distance filled (CONVENTIONS.md section 5), so a
-// new session note, whose table is still empty, changes nothing. Dates only move
+// exercise's row in its table has its volume cell filled (e.g., Reps, Time, or
+// Distance), so a new session note, whose tables are still empty, changes nothing. Dates only move
 // forward, so a later date you set by hand is kept. Run it on its own
 // (Templater: Insert template, on any note) after logging a workout. It checks
 // every session note in the vault. Session notes in 91 Tooling/ (test vaults)
@@ -32,10 +32,20 @@ const isoDate = (value) => {
 // The cells of a table row. A `\|` inside a link (i.e., an alias) isn't a column break.
 const cellsOf = (line) => line.trim().replace(/^\||\|$/g, "").split(/(?<!\\)\|/).map((cell) => cell.trim());
 
-// The exercise notes a session note's tables log, i.e., rows with Reps/Time/Distance filled.
+// The volume and intensity columns of a session table: the first and second
+// columns that aren't Exercise, Target, Sets, Rest, or Notes (e.g., "Reps" and
+// "Assistance", or "Distance" and "Pace"). Session Table writes them in that order.
+const FIXED = ["exercise", "target", "sets", "rest", "notes"];
+const rolesOf = (columns) => {
+  const free = columns.map((_, i) => i).filter((i) => !FIXED.includes(columns[i]));
+  return { volume: free[0] ?? -1, intensity: free[1] ?? -1 };
+};
+
+// The exercise notes a session note's tables log, i.e., rows with their volume cell filled.
 const loggedExercises = (text, source) => {
   const exercises = [];
   let columns = null;
+  let roles = null;
   for (const line of text.split("\n")) {
     if (!line.trim().startsWith("|")) {
       columns = null;
@@ -44,11 +54,12 @@ const loggedExercises = (text, source) => {
     const cells = cellsOf(line);
     if (!columns) {
       columns = cells.map((cell) => cell.toLowerCase());
+      roles = rolesOf(columns);
       continue;
     }
     if (cells.every((cell) => /^:?-+:?$/.test(cell))) continue;
     const cell = (name) => cells[columns.findIndex((column) => column.startsWith(name))] ?? "";
-    if (!columns.includes("exercise") || !cell("reps")) continue;
+    if (!columns.includes("exercise") || !cells[roles.volume]) continue;
     const linkpath = cell("exercise").match(/\[\[([^\]]+?)\]\]/)?.[1].split(/\\?\|/)[0].split("#")[0].trim();
     const file = linkpath && app.metadataCache.getFirstLinkpathDest(linkpath, source.path);
     if (file && !inTooling(file) && frontmatter(file).type === "exercise") exercises.push(file);

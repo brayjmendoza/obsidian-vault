@@ -34,6 +34,7 @@ class CliArgs(BaseModel):
         private: The Private/ folder, when given explicitly.
         as_json: Whether to print a JSON report instead of text.
         output: A file to also write the JSON report to.
+        skip_urls: Whether to leave out the URL check (i.e., `--skip-urls`).
     """
 
     model_config = ConfigDict(frozen=True, extra="forbid")
@@ -43,6 +44,7 @@ class CliArgs(BaseModel):
     private: Path | None
     as_json: bool
     output: Path | None
+    skip_urls: bool = False
 
 
 class Summary(BaseModel):
@@ -83,11 +85,13 @@ class Report(BaseModel):
     issues: list[Issue]
 
 
-def build_parser(description: str) -> argparse.ArgumentParser:
+def build_parser(description: str, *, offers_skip_urls: bool = False) -> argparse.ArgumentParser:
     """Build the argument parser every validator shares.
 
     Args:
         description: What the validator checks, for `--help`.
+        offers_skip_urls: Whether to add `--skip-urls`, for a command whose
+            checks include fetching every `url`.
 
     Returns:
         The parser.
@@ -119,6 +123,12 @@ def build_parser(description: str) -> argparse.ArgumentParser:
     parser.add_argument(
         "--output", type=Path, metavar="FILE", help="also write the JSON report to FILE"
     )
+    if offers_skip_urls:
+        parser.add_argument(
+            "--skip-urls",
+            action="store_true",
+            help="don't fetch any `url` (default: fetch every one over the network)",
+        )
     return parser
 
 
@@ -206,17 +216,20 @@ def format_json(report: Report) -> str:
     return report.model_dump_json(indent=2, exclude_none=True)
 
 
-def skipped_checks(vault: Vault, *, checks_private_links: bool) -> list[str]:
+def skipped_checks(vault: Vault, *, checks_private_links: bool, skip_urls: bool) -> list[str]:
     """List the checks a run leaves out, so a clean report isn't mistaken for a full one.
 
     Args:
         vault: The loaded vault.
         checks_private_links: Whether the command checks links into Private/.
+        skip_urls: Whether `--skip-urls` left out the URL check.
 
     Returns:
         One sentence per skipped check.
     """
     skipped = []
+    if skip_urls:
+        skipped.append("urls: --skip-urls was given, so no `url` was fetched")
     if checks_private_links and vault.private_dir is None:
         skipped.append(
             "private links by name: no Private/ folder beside Public/ (only links with "
@@ -247,7 +260,9 @@ def run_checks(args: CliArgs, check: Check, *, checks_private_links: bool) -> Re
     except SchemaError as exc:
         return build_report(args.vault.resolve(), None, 0, exc.issues)
     issues = check(vault)
-    skipped = skipped_checks(vault, checks_private_links=checks_private_links)
+    skipped = skipped_checks(
+        vault, checks_private_links=checks_private_links, skip_urls=args.skip_urls
+    )
     return build_report(
         vault.root, vault.properties_schema.version, len(vault.notes), issues, skipped
     )
@@ -259,6 +274,7 @@ def run_cli(
     argv: Sequence[str] | None = None,
     *,
     checks_private_links: bool = False,
+    check_without_urls: Check | None = None,
 ) -> int:
     """Run a validator from the command line.
 
@@ -268,13 +284,17 @@ def run_cli(
         argv: The arguments, without the program name; `sys.argv[1:]` when None.
         checks_private_links: Whether `check` covers links into Private/, so the
             report says when Private/ couldn't be seen.
+        check_without_urls: The same checks without fetching any `url`. Giving
+            it adds `--skip-urls`, which runs it instead of `check`.
 
     Returns:
         The exit code: see `ExitCode`.
     """
-    args = CliArgs.model_validate(vars(build_parser(description).parse_args(argv)))
+    parser = build_parser(description, offers_skip_urls=check_without_urls is not None)
+    args = CliArgs.model_validate(vars(parser.parse_args(argv)))
+    chosen = check_without_urls if args.skip_urls and check_without_urls is not None else check
     try:
-        report = run_checks(args, check, checks_private_links=checks_private_links)
+        report = run_checks(args, chosen, checks_private_links=checks_private_links)
     except (OSError, yaml.YAMLError) as exc:
         print(f"could not load the vault or schemas: {exc}", file=sys.stderr)
         return ExitCode.LOAD_FAILED

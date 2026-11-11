@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 aliases:
   - Hobby and Life Admin skeleton
 ---
@@ -14,6 +14,7 @@ Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, a
 ├── <Domain>.md     the hub
 ├── About.md        how the domain works (optional)
 ├── <Plan>.md       standing plans (e.g., Budget)
+├── To-Do's.md      the domain's to-dos (optional)
 ├── <Items>/        things you track or own
 ├── <Logs>/         dated records of what you did
 ├── <Plans>/        a series of plans (e.g., Routines/)
@@ -30,6 +31,7 @@ Each folder in a domain has a role, and is named for what it holds (e.g., Piano'
 | Items | One note per thing | Do I track the state of this thing? | Pieces/, Trips/, Assets/ |
 | Logs | One note per date or period | Did this happen on a specific date? | Practice/, Sessions/, Spending/ |
 | Plans | What you follow until you change it | Does it repeat with no end date? | Routines/, Budget, Schedule |
+| Tasks | Small things to tick off | Is it done once I check it? | To-Do's |
 
 ## Hub Body
 

@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-07
-updated: 2026-11-08
-version: "0.36"
+updated: 2026-11-11
+version: "0.37"
 ---
 <%* tR = "" -%>
 <% await tp.file.include("[[Frontmatter]]") -%>
@@ -18,7 +18,7 @@ await dv.view("Public/93 Views/Scripts/last-time")
 
 # Notes
 
-%% Your own thoughts on the exercise. Claude doesn't write here. %%
+%% Extra personal notes/thoughts on the exercise %%
 
 # References
 

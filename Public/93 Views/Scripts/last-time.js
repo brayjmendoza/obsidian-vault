@@ -3,9 +3,10 @@
 //   ```dataviewjs
 //   await dv.view("Public/93 Views/Scripts/last-time")
 //   ```
-// A session row counts once its Reps/Time/Distance cell is filled (CONVENTIONS.md
-// section 5). Columns are found by the start of their header (e.g., "reps" or
-// "weight"), so older tables with Reps and Weight (lb) headers still read.
+// A session row counts once its volume cell is filled (e.g., Reps, Time, or
+// Distance). The volume and intensity columns are found by position, not name,
+// so every table reads the same way, older ones with Reps/Time/Distance and
+// Weight/Pace headers included.
 // Sync Last Performed reads session tables the same way: keep the two in step.
 
 const here = dv.current().file.path;
@@ -21,11 +22,21 @@ const linkedPath = (cell, from) => {
   return app.metadataCache.getFirstLinkpathDest(linkpath, from)?.path ?? null;
 };
 
+// The volume and intensity columns of a session table: the first and second
+// columns that aren't Exercise, Target, Sets, Rest, or Notes (e.g., "Reps" and
+// "Assistance", or "Distance" and "Pace"). Session Table writes them in that order.
+const FIXED = ["exercise", "target", "sets", "rest", "notes"];
+const rolesOf = (columns) => {
+  const free = columns.map((_, i) => i).filter((i) => !FIXED.includes(columns[i]));
+  return { volume: free[0] ?? -1, intensity: free[1] ?? -1 };
+};
+
 // This exercise's logged rows in a session note's tables.
 const loggedRows = (text, from) => {
   const rows = [];
   let columns = null;
   let labels = null;
+  let roles = null;
   for (const line of text.split("\n")) {
     if (!line.trim().startsWith("|")) {
       columns = null;
@@ -35,16 +46,17 @@ const loggedRows = (text, from) => {
     if (!columns) {
       labels = cells;
       columns = cells.map((cell) => cell.toLowerCase());
+      roles = rolesOf(columns);
       continue;
     }
     if (cells.every((cell) => /^:?-+:?$/.test(cell))) continue;
     const cell = (name) => cells[columns.findIndex((column) => column.startsWith(name))] ?? "";
-    if (!columns.includes("exercise") || !cell("reps")) continue;
+    const volume = cells[roles.volume] ?? "";
+    if (!columns.includes("exercise") || !volume) continue;
     if (linkedPath(cell("exercise"), from) !== here) continue;
-    const label = (name) => labels[columns.findIndex((column) => column.startsWith(name))] ?? name;
     rows.push({
-      sets: cell("sets"), reps: cell("reps"), weight: cell("weight"), notes: cell("notes"),
-      repsLabel: label("reps"), weightLabel: label("weight"),
+      sets: cell("sets"), reps: volume, weight: cells[roles.intensity] ?? "", notes: cell("notes"),
+      repsLabel: labels[roles.volume], weightLabel: labels[roles.intensity] ?? "",
     });
   }
   return rows;

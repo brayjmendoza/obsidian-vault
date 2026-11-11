@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 ---
 # Note Types and Properties
 
@@ -13,6 +13,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 | project | `10 Projects/` | A goal with a finish line, linked to the domain it serves |
 | hub | Every domain | A domain's front page |
 | plan | A domain's root | A standing plan you follow (e.g., a budget or schedule) |
+| task | A domain's root | The domain's to-dos, one task per line, always named To-Do's |
 | piece, technique, composer | Music | What you play, the drills you track, and who wrote it |
 | practice | Music | One practice session |
 | routine, exercise | Fitness | A workout, and one movement in it |

@@ -93,3 +93,25 @@ def test_runs_from_another_folder(tmp_path: Path, served_copy: CopyFixture) -> N
     result = run_module("validate", str(served_copy("valid")), cwd=tmp_path)
     assert result.returncode == ExitCode.OK, result.stdout + result.stderr
     assert "0 errors, 0 warnings" in result.stdout
+
+
+def test_skip_urls_fetches_nothing() -> None:
+    """--skip-urls passes the valid fixture without reaching its real URLs, and says so."""
+    result = run_module("validate", str(FIXTURES_DIR / "valid"), "--json", "--skip-urls")
+    assert result.returncode == ExitCode.OK, result.stdout + result.stderr
+    data = json.loads(result.stdout)
+    assert data["summary"] == {"errors": 0, "warnings": 0, "ok": True}
+    assert any(reason.startswith("urls:") for reason in data["skipped"])
+
+
+def test_urls_are_fetched_by_default(served_copy: CopyFixture) -> None:
+    """Without --skip-urls, the report lists no skipped URL check."""
+    result = run_module("validate", str(served_copy("valid")), "--json")
+    assert result.returncode == ExitCode.OK, result.stdout + result.stderr
+    assert not any(reason.startswith("urls:") for reason in json.loads(result.stdout)["skipped"])
+
+
+def test_only_vault_validate_offers_skip_urls() -> None:
+    """The single validators don't take --skip-urls."""
+    result = run_module("validate_urls", str(FIXTURES_DIR / "valid"), "--skip-urls")
+    assert result.returncode == 2  # argparse's usage error

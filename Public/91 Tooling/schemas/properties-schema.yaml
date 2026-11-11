@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.36"
+version: "0.37"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -156,7 +156,7 @@ vocabularies:
               technique, composer, routine, session, exercise, trip, place,
               paper, book, course, article, concept, map, spending, account,
               asset, contractor, benefit, log, reference, system, documentation,
-              template, scratch]
+              template, scratch, task]
   field: [computer-science, math, physics, music-theory, philosophy]
   project_status: [idea, active, paused, done, dropped]
   piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
@@ -233,7 +233,9 @@ types:
   # --- Domain notes (any domain in Hobbies or Life Admin) ------------
   # hub: the landing note for a domain, named after its folder.
   # plan: a standing plan at a domain root (Budget, Schedule, Wishlist,
-  #       To-dos, a practice rotation, an eating plan).
+  #       a practice rotation, an eating plan).
+  # task: a domain's To-Do's, one Tasks-plugin task per line. Priority, due
+  #       dates, and the rest live in the tasks themselves, not in properties.
   hub:
     required: []
     optional: []
@@ -241,6 +243,10 @@ types:
   plan:
     required: []
     optional: [review_by]
+
+  task:
+    required: []
+    optional: []
 
   # --- Music ---------------------------------------------------------------
   # Instrument is implied by folder (Music/<Instrument>/Pieces etc.).

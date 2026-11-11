@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-02
-updated: 2026-11-08
-version: "0.36"
+updated: 2026-11-11
+version: "0.37"
 ---
 <%*
 // Hub Template: the hub for the domain folder the new note sits in.
@@ -12,6 +12,8 @@ version: "0.36"
 // Hub format: only links and queries, with H1 headings and no title or opening
 // paragraph. The views come from 93 Views/Bases/ (Hub.base, and Plan.base for
 // the plan notes in the hub's folder and its subfolders), so nothing is copied.
+// The Add Task button above the Tasks view adds a task to the domain's
+// To-Do's note (see Add Task), so tasks never sit in the hub itself.
 // A hub may add its own sections after Resources (e.g., a repertoire view in
 // Piano). Claude keeps hub links current.
 
@@ -79,6 +81,14 @@ updated: <% today %>
 
 
 # Tasks
+
+```meta-bind-button
+label: Add Task
+style: primary
+actions:
+  - type: runTemplaterFile
+    templateFile: "<% root %>92 Templates/Automations/Add Task.md"
+```
 
 ```tasks
 not done

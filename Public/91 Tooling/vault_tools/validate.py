@@ -5,7 +5,8 @@ errors, 2 when the vault or a schema file can't be read. From anywhere in the
 repository, with the environment active:
 
     vault-validate                           # text report
-    vault-validate --json                    # JSON report, for Claude
+    vault-validate --json                    # JSON report
+    vault-validate --json --skip-urls        # without fetching any `url`, for Claude
     vault-validate Public --output report.json
     python -m vault_tools.validate
 """
@@ -53,8 +54,8 @@ def version_issues(vault: Vault) -> list[Issue]:
     return [error_issue(CheckName.SCHEMA, IssueCode.VERSION_MISMATCH, PROPERTIES_SCHEMA, message)]
 
 
-def check(vault: Vault) -> list[Issue]:
-    """Run every check over a vault, fetching every `url` over the network.
+def check_without_urls(vault: Vault) -> list[Issue]:
+    """Run every check over a vault except the network one, so no `url` is fetched.
 
     Args:
         vault: The vault to check.
@@ -68,8 +69,19 @@ def check(vault: Vault) -> list[Issue]:
         + validate_properties.check(vault)
         + validate_links.check(vault)
         + validate_tags.check(vault)
-        + validate_urls.check(vault)
     )
+
+
+def check(vault: Vault) -> list[Issue]:
+    """Run every check over a vault, fetching every `url` over the network.
+
+    Args:
+        vault: The vault to check.
+
+    Returns:
+        Every issue found.
+    """
+    return check_without_urls(vault) + validate_urls.check(vault)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -81,7 +93,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     Returns:
         The exit code.
     """
-    return run_cli(DESCRIPTION, check, argv, checks_private_links=True)
+    return run_cli(
+        DESCRIPTION, check, argv, checks_private_links=True, check_without_urls=check_without_urls
+    )
 
 
 if __name__ == "__main__":

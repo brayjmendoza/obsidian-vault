@@ -93,7 +93,9 @@ All of them take these options:
 
 The exit code is 0 when there are no errors (warnings are allowed), 1 when there are errors, and 2 when the vault or a schema file can't be read. A schema that reads fine but breaks its own rules counts as errors: its problems become the whole report, each naming the key at fault.
 
-The report's `skipped` list names checks a run couldn't or didn't do: links into `Private/` by name when there's no `Private/` folder to see.
+The report's `skipped` list names checks a run couldn't or didn't do: links into `Private/` by name when there's no `Private/` folder to see, and the URL check when `--skip-urls` was given.
+
+`vault-validate` fetches every `url` by default. `--skip-urls` leaves that check out, for runs on a network that can't reach most sites (e.g., Claude's).
 
 A URL that's gone (HTTP 404 or 410), or whose host doesn't exist, refuses connections, or fails TLS, is an error. Anything that might be temporary or a bot block (other 4xx, 5xx, timeouts, proxy refusals) is a warning: open the page by hand to confirm.
 
@@ -102,6 +104,7 @@ With direnv active, run them from anywhere in the repository:
 ```bash
 vault-validate
 vault-validate --json --output report.json
+vault-validate --skip-urls
 vault-validate-structure
 ```
 

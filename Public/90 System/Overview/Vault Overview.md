@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 aliases:
   - Overview
 ---
@@ -34,7 +34,7 @@ Read in this order the first time. Each note links to the next.
 6. [[Note Types and Properties]]: every note type and where it lives
 7. [[Note Properties]]: what each property means
 8. [[Tags]]: the four reserved tags and why everything else is a property
-9. [[Everyday Lists]]: Schedule, Wishlist, and To-dos
+9. [[Everyday Lists]]: Schedule, Wishlist, and To-Do's
 
 **Enforcement**
 10. [[Schemas and Validation]]: what the schemas check and where validation runs

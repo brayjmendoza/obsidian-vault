@@ -1,7 +1,7 @@
 ---
 type: exercise
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-11
 muscle_groups:
   - chest
   - triceps
@@ -25,4 +25,5 @@ await dv.view("Public/93 Views/Scripts/last-time")
 
 # References
 
+%% Bulleted links to reference notes, e.g., a form video. %%
 - [[Push-up Form]]

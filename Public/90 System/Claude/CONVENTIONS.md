@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-10-10
-updated: 2026-11-08
-version: "0.36"
+updated: 2026-11-11
+version: "0.37"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.36**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.37**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -51,7 +51,8 @@ Every folder directly under `20 Hobbies/` or `30 Life Admin/` is a **domain**, a
 
 - **Hub (required):** `<Domain>/<Domain>.md`, with type `hub`
 - **About page (optional):** `<Domain>/About.md`, with type `documentation`. It explains how the domain's notes work together and which vault features (e.g., templates, scripts, and automations) serve it. It's the only documentation a domain holds, and it follows the same rules as the docs in `90 System/Overview/` (see [[STYLE]]). Since every About page shares one name, links to one use its path (e.g., `[[20 Hobbies/Fitness/About|About Fitness]]`)
-- **Plan notes (optional):** standing plans at the domain root, with type `plan` (e.g., Budget, Schedule, Wishlist, To-dos, and a practice rotation)
+- **Plan notes (optional):** standing plans at the domain root, with type `plan` (e.g., Budget, Schedule, Wishlist, and a practice rotation)
+- **Task note (optional):** `<Domain>/To-Do's.md`, with type `task`: the domain's to-dos, one Tasks-plugin task per line. Priority, due dates, and the rest live in the tasks themselves, so it has no properties of its own. The hub's Tasks view lists its open tasks, and the hub's Add Task button adds to it
 - **Items (optional role folders):** one note per thing you track or own, each with its own status or history (e.g., `Pieces/`, `Trips/`, and `Assets/`)
 - **Logs (optional role folders):** one note per date or period (e.g., `Practice/`, `Sessions/`, and `Spending/`)
 - **Plans (optional role folder):** a series of standing plans (e.g., workout routines in `Routines/`)
@@ -151,10 +152,9 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 - Skills and runs that write or edit code also read [[CODE_STYLE]] and don't finish until the checks in its first section pass.
 - Write notes that pass both schemas: allowed folder and filename, required properties present, correct value types, and exact vocabulary values.
 - At the end of every run, run the validators from `Public/`:
-  `UV_PROJECT_ENVIRONMENT=$HOME/.venvs/vault-tools uv run --project "91 Tooling" vault-validate --json`.
+  `UV_PROJECT_ENVIRONMENT=$HOME/.venvs/vault-tools uv run --project "91 Tooling" vault-validate --json --skip-urls`.
   Fix anything the run broke and report the rest. Always set `UV_PROJECT_ENVIRONMENT` so uv never builds a virtual environment inside the vault, where iCloud would sync it.
-- The validator fetches every `url` on every run. An error (`url-broken`) means the page is gone or the host doesn't exist: fix it. A warning (`url-unverified`) often means Claude's network can't reach the site: report it rather than changing the URL.
-- Read the report's `skipped` list and repeat it in the run's report, so a clean run without `Private/` isn't mistaken for a full one.
+- **Leave URL and private-link checks to your Mac and CI.** Claude's network can't reach most sites, and Claude can't see `Private/`. So Claude runs the validator with `--skip-urls`, ignores its `private-link` results and the `skipped` list, and leaves them all out of the run's report.
 - Set `updated` on every note the run edits.
 - Append one line per run to `90 System/Claude/changelog.md`:
   `- 2026-10-10 21:40 · inbox-triage · moved 4 notes from Inbox; created [[Fourier Transform]]`
@@ -175,6 +175,10 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-11 · v0.37 · Added the `task` note type, for a domain's to-dos: `<Domain>/To-Do's.md` at the domain root, one Tasks-plugin task per line, with no properties of its own (see section 2). To-Do's is no longer a plan note. `structure-schema.yaml` allows `task` at domain roots and names it `To-Do's`. Added [[Task Template]].
+- 2026-11-11 · v0.36 · Section 2: the to-do plan note is named To-Do's. No version bump: no rule or schema changed.
+- 2026-11-11 · v0.36 · Section 7: Claude runs `vault-validate` with the new `--skip-urls` option, which leaves out the URL check. Without it, every `url` is still fetched (e.g., on your Mac and in CI). No version bump: no schema changed.
+- 2026-11-11 · v0.36 · Section 7: Claude ignores the validator's URL and private-link results and leaves them out of its reports, since its network can't reach most sites and it can't see `Private/`. These checks are left to your Mac and CI. No version bump: no schema changed.
 - 2026-11-08 · v0.36 · A session note's name is its date, a space, then anything (e.g., `2026-11-08 Pick-up Game with Friends`), not just one word.
 - 2026-11-08 · v0.35 · A session note's name is its date and any one word (e.g., `2026-11-06 Basketball` or `2026-11-07 Swim`), not only Workout, Run, or Mobility. The Start Session button still picks one of those three.
 - 2026-11-08 · v0.34 · Undoes two parts of v0.33: a session's `routine` is optional again, and type templates offer optional properties again. The Run, Mobility, and Workout session names stay, and only a routine's Start Session button uses them. It asks nothing and leaves optional properties for [[Add Properties]].
