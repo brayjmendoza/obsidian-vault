@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-08
 updated: 2026-11-11
-version: "0.37"
+version: "0.38"
 ---
 <%*
 // Session Table: writes a new session note's body from the routine in its

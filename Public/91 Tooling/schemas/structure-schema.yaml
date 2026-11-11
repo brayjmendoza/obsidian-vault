@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.37"
+version: "0.38"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -114,6 +114,8 @@ root:
         plans: {Routines: [routine]}
       Travel:
         items: {Trips: [trip], Places: [place]}
+      Cooking:
+        items: {Recipes: [recipe]}
 
   "30 Life Admin":
     types: []

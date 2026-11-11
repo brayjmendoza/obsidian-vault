@@ -17,9 +17,7 @@ type: scratch
 	</ul>
 </div>
 
-- [ ] 🔺 migrate and delete
-
-# Extra Info
+- [ ] migrate and delete 🔺 
 
 deload every 4th week
 ## De-Loading

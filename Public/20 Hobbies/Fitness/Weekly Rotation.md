@@ -1,10 +1,10 @@
 ---
 type: plan
 created: 2026-11-08
-updated: 2026-11-08
+updated: 2026-11-11
 ---
-- [ ] 🔺 Review calisthenics workouts
-- [ ] 🔺 Create daily calisthenics
+- [ ] Review calisthenics workouts 🔺 
+- [ ] Create daily calisthenics 🔺 
 # Monday
 
 + [[Vertical Strength & Single-Leg Power]] – full body calisthenics

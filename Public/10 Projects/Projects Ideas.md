@@ -1,3 +1,8 @@
+---
+type: scratch
+created: 2026-11-11
+updated: 2026-11-11
+---
 + Homelabbing
 	+ Start with mini pc, move to NAS/DAS
 	+ Learn docker & networking

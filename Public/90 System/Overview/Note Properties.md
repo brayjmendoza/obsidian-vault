@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 aliases:
   - Property Reference
   - Properties
@@ -90,6 +90,12 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `country`, `city` | place | Where the place is |
 | `visited`, `first_visit` | place | Whether you've been, and when you first went |
 | `rating` | place | How much you liked it |
+
+## Cooking
+
+| Property | Used by | Meaning |
+|---|---|---|
+| `last_cooked` | recipe | The latest day you made it |
 
 ## Knowledge
 

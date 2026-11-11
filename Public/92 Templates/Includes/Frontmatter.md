@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-11
-version: "0.37"
+version: "0.38"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -124,6 +124,7 @@ const questions = {
   visited: "Have you been there?",
   first_visit: "When did you first visit?",
   rating: "How would you rate it?",
+  last_cooked: "When did you last cook it?",
   authors: "Who wrote it?",
   year: "What year was it published?",
   fields: "Which fields does it belong to?",
@@ -382,7 +383,7 @@ if (!adding) {
     place: "Kyoto, Japan", paper: "Vaswani 2017 - Attention Is All You Need",
     book: "Mathematical Methods in the Physical Sciences (Boas)",
     course: "Linear Algebra (MIT OpenCourseWare)", spending: "2026-11 Spending",
-    log: "2026-11-07 Annual Checkup",
+    log: "2026-11-07 Annual Checkup", task: "To-Do's",
   };
   const titleQuestions = {
     project: "What's the project called?",
@@ -401,6 +402,7 @@ if (!adding) {
     documentation: "What's the documentation note called?",
     routine: "What's the routine called? (e.g., Full-Body Strength)",
     piece: "What's the piece called? (e.g., Ballade No. 1 in G Minor)",
+    recipe: "What's the recipe called? (e.g., Overnight Oats)",
   };
 
   // How each type is named: `auto` is the whole name, or `ask` and `build`

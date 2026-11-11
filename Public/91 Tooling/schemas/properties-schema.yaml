@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.37"
+version: "0.38"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -124,6 +124,9 @@ property_types:
   first_visit: date
   rating: number
 
+  # cooking
+  last_cooked: date      # the latest day you made the recipe
+
   # knowledge
   authors: list
   year: number
@@ -156,7 +159,7 @@ vocabularies:
               technique, composer, routine, session, exercise, trip, place,
               paper, book, course, article, concept, map, spending, account,
               asset, contractor, benefit, log, reference, system, documentation,
-              template, scratch, task]
+              template, scratch, task, recipe]
   field: [computer-science, math, physics, music-theory, philosophy]
   project_status: [idea, active, paused, done, dropped]
   piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
@@ -318,6 +321,11 @@ types:
     optional: [city, first_visit, rating]
     constraints:
       rating: {range: [1, 5]}
+
+  # --- Cooking -------------------------------------------------------------
+  recipe:           # one dish you make; ingredients and steps live in the body
+    required: []
+    optional: [last_cooked]
 
   # --- Knowledge -----------------------------------------------------------
   paper:

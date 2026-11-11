@@ -2,7 +2,7 @@
 type: system
 created: 2026-10-10
 updated: 2026-11-11
-version: "0.37"
+version: "0.38"
 ---
 # Vault Conventions
 
@@ -19,7 +19,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.37**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.38**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -175,6 +175,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-11 · v0.38 · Added the Cooking domain under `20 Hobbies/`, with one items folder, `Recipes/`, and the `recipe` note type. A recipe has one optional property, `last_cooked` (a date). Added [[Recipe Template]].
 - 2026-11-11 · v0.37 · Added the `task` note type, for a domain's to-dos: `<Domain>/To-Do's.md` at the domain root, one Tasks-plugin task per line, with no properties of its own (see section 2). To-Do's is no longer a plan note. `structure-schema.yaml` allows `task` at domain roots and names it `To-Do's`. Added [[Task Template]].
 - 2026-11-11 · v0.36 · Section 2: the to-do plan note is named To-Do's. No version bump: no rule or schema changed.
 - 2026-11-11 · v0.36 · Section 7: Claude runs `vault-validate` with the new `--skip-urls` option, which leaves out the URL check. Without it, every `url` is still fetched (e.g., on your Mac and in CI). No version bump: no schema changed.
