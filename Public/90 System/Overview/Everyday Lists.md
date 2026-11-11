@@ -15,7 +15,7 @@ Three living lists never finish. A schedule and a wishlist are plan notes, which
 
 The skills are described in [[Claude Skills]].
 
-- **Schedule, not Routine:** a routine is a workout, so the schedule links to [[Weekly Rotation]] rather than repeating it.
+- **Schedule, not Routine:** a routine is a workout, so the schedule links to [[Weekly Exercise Rotation]] rather than repeating it.
 - **Pieces stay pieces:** a piece you want to learn is a piece note with `status: wishlist`, so the Wishlist is only for things to buy.
 - **One To-Do's per domain:** a `task` note at the domain's root, beside the hub. The hub's Add Task button adds to it, and the hub's Tasks view lists its open tasks.
 - **Priority and dates live in the task:** the Tasks plugin keeps them on each task's line, so a task note has no properties of its own.

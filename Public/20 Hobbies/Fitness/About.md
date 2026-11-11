@@ -5,7 +5,7 @@ updated: 2026-11-09
 aliases:
   - Fitness Tracking
 ---
-The Fitness domain tracks your workouts: routines say what to do, [[Weekly Rotation]] says when, session notes log what you did, and exercise notes show your progress on each movement. 
+The Fitness domain tracks your workouts: routines say what to do, [[Weekly Exercise Rotation]] says when, session notes log what you did, and exercise notes show your progress on each movement. 
 
 ```
 Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶ Form video

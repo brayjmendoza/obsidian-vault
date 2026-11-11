@@ -4,6 +4,7 @@ views:
     filters:
       and:
         - type == "plan"
+        - file.inFolder(this.file.folder)
     order:
       - file.name
       - review_by

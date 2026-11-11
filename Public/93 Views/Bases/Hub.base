@@ -52,11 +52,11 @@ views:
     order:
       - file.name
       - type
-      - note.date
-      - note.duration_mins
-      - note.focus
+      - date
+      - duration_mins
+      - focus
     sort:
-      - property: note.date
+      - property: date
         direction: DESC
       - property: file.name
         direction: DESC

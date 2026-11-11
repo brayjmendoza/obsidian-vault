@@ -1,3 +1,8 @@
+---
+type: scratch
+created: 2026-11-11
+updated: 2026-11-11
+---
 ### Ingredients
 - ¾ cup old-fashioned rolled oats
 - 1 scoop whey protein powder 
