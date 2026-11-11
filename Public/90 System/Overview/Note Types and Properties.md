@@ -20,6 +20,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 | session | Fitness | One workout you did |
 | trip, place | Travel | A trip from idea to record, and a place you've been or want to go |
 | recipe | Cooking | One dish you make, with its ingredients and steps |
+| meal | Cooking | One time you cooked, and which recipes you made |
 | paper, book, course, article | `40 Knowledge/` | Something you read or watched |
 | concept | `40 Knowledge/` | One idea |
 | map | `40 Knowledge/` | A field's table of contents |

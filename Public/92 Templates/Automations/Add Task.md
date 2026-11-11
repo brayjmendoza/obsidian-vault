@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-11
 updated: 2026-11-11
-version: "0.38"
+version: "0.39"
 ---
 <%*
 // Add Task: adds a task to the To-Do's note (type `task`) of the hub you're on, so it

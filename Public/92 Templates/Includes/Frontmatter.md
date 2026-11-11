@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-07
 updated: 2026-11-11
-version: "0.38"
+version: "0.39"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -101,7 +101,6 @@ const questions = {
   finished: "When did you finish it?",
   last_practiced: "When did you last practice it?",
   memorized: "Have you memorized it?",
-  minutes: "How many minutes did you practice?",
   pieces: "Which pieces did you practice?",
   focus: "What did you focus on?",
   category: "What kind of technique is it?",
@@ -110,7 +109,7 @@ const questions = {
   goals: "What does the routine train for?",
   routine: "Which routine did you follow?",
   kind: "What kind of workout was it?",
-  duration_min: "How many minutes did the workout take?",
+  duration_mins: "How many minutes did it take?",
   muscle_groups: "Which muscle groups does it work?",
   equipment: "What equipment does it need?",
   last_performed: "When did you last do it?",
@@ -125,6 +124,8 @@ const questions = {
   first_visit: "When did you first visit?",
   rating: "How would you rate it?",
   last_cooked: "When did you last cook it?",
+  servings: "How many servings does it make?",
+  recipes: "Which recipes did you make?",
   authors: "Who wrote it?",
   year: "What year was it published?",
   fields: "Which fields does it belong to?",
@@ -147,8 +148,11 @@ const questionsByType = {
   daily: { date: "Which day is this note for?" },
   project: { status: "Where does the project stand?", start: "When did the project start?" },
   piece: { status: "Where are you with this piece?", started: "When did you start learning it?" },
-  practice: { date: "When did you practice?" },
-  session: { date: "When did you work out?" },
+  practice: { date: "When did you practice?", duration_mins: "How many minutes did you practice?" },
+  session: { date: "When did you work out?", duration_mins: "How many minutes did the workout take?" },
+  recipe: { status: "Where is this recipe for you?", duration_mins: "How many minutes does it take, start to finish?",
+            url: "Which web page is the recipe from?" },
+  meal: { date: "When did you cook?", duration_mins: "How many minutes did you spend cooking?" },
   exercise: { difficulty: "How hard is it for you right now?" },
   trip: { status: "Where is the trip in planning?", start: "When does the trip start?",
           end: "When does the trip end?", budget: "What's the trip's budget, in USD?" },
@@ -383,7 +387,7 @@ if (!adding) {
     place: "Kyoto, Japan", paper: "Vaswani 2017 - Attention Is All You Need",
     book: "Mathematical Methods in the Physical Sciences (Boas)",
     course: "Linear Algebra (MIT OpenCourseWare)", spending: "2026-11 Spending",
-    log: "2026-11-07 Annual Checkup", task: "To-Do's",
+    log: "2026-11-07 Annual Checkup", task: "To-Do's", meal: "2026-11-11 Dinner",
   };
   const titleQuestions = {
     project: "What's the project called?",
@@ -415,6 +419,10 @@ if (!adding) {
     practice: { auto: values.date && `${values.date} Practice` },
     session: { auto: values.date && `${values.date} Workout` },
     spending: { auto: values.month && `${values.month} Spending` },
+    meal: {
+      ask: "Which meal was it? (e.g., Dinner)",
+      build: async (what) => `${values.date ?? today} ${what}`,
+    },
     log: {
       ask: "What happened, in a few words? (e.g., Annual Checkup)",
       build: async (what) => `${values.date ?? today} ${what}`,

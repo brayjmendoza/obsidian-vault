@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.38"
+version: "0.39"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -79,6 +79,8 @@ property_types:
   workouts: number
   spending_total: number
 
+  duration_mins: number   # how long it took, in minutes: a practice, a workout, a recipe, or a meal
+
   # projects
   status: text
   area: text
@@ -95,7 +97,6 @@ property_types:
   finished: date
   last_practiced: date
   memorized: checkbox
-  minutes: number
   pieces: list
   focus: list
   category: text
@@ -106,7 +107,6 @@ property_types:
   goals: list             # what a routine trains for; one routine may have several
   routine: text
   kind: text
-  duration_min: number
   muscle_groups: list
   equipment: list
   last_performed: date    # set from session notes by Sync Last Performed
@@ -125,7 +125,9 @@ property_types:
   rating: number
 
   # cooking
-  last_cooked: date      # the latest day you made the recipe
+  servings: number
+  last_cooked: date      # set from meal notes by Sync Last Cooked
+  recipes: list          # links to recipe notes
 
   # knowledge
   authors: list
@@ -159,11 +161,12 @@ vocabularies:
               technique, composer, routine, session, exercise, trip, place,
               paper, book, course, article, concept, map, spending, account,
               asset, contractor, benefit, log, reference, system, documentation,
-              template, scratch, task, recipe]
+              template, scratch, task, recipe, meal]
   field: [computer-science, math, physics, music-theory, philosophy]
   project_status: [idea, active, paused, done, dropped]
   piece_status: [wishlist, learning, polishing, repertoire, retired, relearning]
   trip_status: [idea, planning, booked, done]
+  recipe_status: [to-try, tried, staple, retired]
   source_status: [to-read, reading, read, abandoned]
   practice_focus: [technique, sight-reading, learning, memorization, performance, theory]
   technique_category: [scales, arpeggios, etudes, voicing, pedaling, bowing,
@@ -263,10 +266,10 @@ types:
       difficulty: {range: [1, 10]}
 
   practice:
-    required: [date, minutes, focus]
+    required: [date, duration_mins, focus]
     optional: [pieces]
     constraints:
-      minutes: {range: [1, 600]}
+      duration_mins: {range: [1, 600]}
       pieces: {link: piece}
       focus: {vocab: practice_focus}
 
@@ -294,11 +297,11 @@ types:
 
   session:
     required: [date, kind]
-    optional: [routine, duration_min]
+    optional: [routine, duration_mins]
     constraints:
       kind: {vocab: session_kind}
       routine: {link: routine}
-      duration_min: {range: [1, 600]}
+      duration_mins: {range: [1, 600]}
 
   exercise:
     required: [muscle_groups]
@@ -324,8 +327,19 @@ types:
 
   # --- Cooking -------------------------------------------------------------
   recipe:           # one dish you make; ingredients and steps live in the body
-    required: []
-    optional: [last_cooked]
+    required: [status]
+    optional: [servings, duration_mins, url, last_cooked]
+    constraints:
+      status: {vocab: recipe_status}
+      servings: {range: [1, 100]}
+      duration_mins: {range: [1, 2880]}   # start to finish, so an overnight recipe fits
+
+  meal:             # one time you cooked, logged against its recipes
+    required: [date, recipes]
+    optional: [duration_mins]
+    constraints:
+      recipes: {link: recipe}
+      duration_mins: {range: [1, 1440]}
 
   # --- Knowledge -----------------------------------------------------------
   paper:

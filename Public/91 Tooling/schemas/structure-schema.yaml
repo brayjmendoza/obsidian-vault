@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.38"
+version: "0.39"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -116,6 +116,7 @@ root:
         items: {Trips: [trip], Places: [place]}
       Cooking:
         items: {Recipes: [recipe]}
+        logs:  {Meals: [meal]}
 
   "30 Life Admin":
     types: []
@@ -195,6 +196,7 @@ filenames:
   monthly:  '^\d{4}-\d{2}$'
   practice: '^\d{4}-\d{2}-\d{2} Practice$'
   session:  '^\d{4}-\d{2}-\d{2} .+$'   # the date, a space, then anything, e.g., 2026-11-06 Basketball
+  meal:     '^\d{4}-\d{2}-\d{2} .+$'   # the date, a space, then the meal, e.g., 2026-11-11 Dinner
   trip:     '^\d{4}-\d{2} .+$'
   place:    '^.+, .+$'
   task:     "^To-Do's$"             # one per domain, at its root

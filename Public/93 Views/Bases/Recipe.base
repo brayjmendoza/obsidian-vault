@@ -1,0 +1,17 @@
+views:
+  - type: table
+    name: Meals
+    filters:
+      and:
+        - type == "meal"
+        - file.hasLink(this.file)
+        - '!file.path.contains("99 Archive")'
+    order:
+      - file.name
+      - recipes
+      - duration_mins
+    sort:
+      - property: note.date
+        direction: DESC
+      - property: file.name
+        direction: DESC

@@ -48,11 +48,12 @@ views:
             - type == "session"
             - type == "spending"
             - type == "log"
+            - type == "meal"
     order:
       - file.name
       - type
       - note.date
-      - note.minutes
+      - note.duration_mins
       - note.focus
     sort:
       - property: note.date

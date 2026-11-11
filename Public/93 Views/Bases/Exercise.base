@@ -10,7 +10,7 @@ views:
       - file.name
       - routine
       - kind
-      - duration_min
+      - duration_mins
     sort:
       - property: note.date
         direction: DESC

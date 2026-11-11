@@ -27,7 +27,8 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 
 | Property | Used by | Meaning |
 |---|---|---|
-| `date` | daily, practice, session, log | The day the note records |
+| `date` | daily, practice, session, meal, log | The day the note records |
+| `duration_mins` | practice, session, meal, recipe | How long it took, in minutes |
 | `week` | weekly | The week the note covers |
 | `month` | monthly, spending | The month the note covers |
 | `energy` | daily | How energetic you felt, 1–5 |
@@ -43,7 +44,7 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `start`, `due` | project | When work began, and the target finish date |
 | `outcome` | project | One line on how it ended |
 
-`status` means something different on pieces, trips, and sources, and each has its own values.
+`status` means something different on pieces, trips, recipes, and sources, and each has its own values.
 
 ## Music
 
@@ -56,7 +57,6 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `started` | piece, book, course | When you started it |
 | `last_practiced` | piece | The latest day you practiced it, set from your practice notes |
 | `memorized` | piece | Whether you can play it from memory |
-| `minutes` | practice | How long you practiced |
 | `pieces` | practice | The pieces you worked on |
 | `focus` | practice | What the session concentrated on (e.g., `technique`) |
 | `category` | technique | What kind of drill it is (e.g., `scales`) |
@@ -72,7 +72,6 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `goals` | routine | What the routine trains for (e.g., `strength`) |
 | `kind` | session | What sort of workout it was |
 | `routine` | session | The routine the session followed |
-| `duration_min` | session | How long the session took |
 | `muscle_groups` | exercise, routine | The muscles it works |
 | `equipment` | exercise | What the exercise needs |
 | `last_performed` | exercise | The latest day a session logged it, set from your session notes |
@@ -95,7 +94,11 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 
 | Property | Used by | Meaning |
 |---|---|---|
-| `last_cooked` | recipe | The latest day you made it |
+| `status` | recipe | Where the recipe stands for you, from `to-try` to `staple` or `retired` |
+| `servings` | recipe | How many servings it makes |
+| `url` | recipe | The web page the recipe came from |
+| `last_cooked` | recipe | The latest day a meal note logged it, set from your meal notes |
+| `recipes` | meal | The recipes you made |
 
 ## Knowledge
 

@@ -2,7 +2,7 @@
 type: template
 created: 2026-11-11
 updated: 2026-11-11
-version: "0.38"
+version: "0.39"
 ---
 <%* tR = "" -%>
 <% await tp.file.include("[[Frontmatter]]") -%>
@@ -14,6 +14,10 @@ version: "0.38"
 # Steps
 
 1. 
+
+# Meals
+
+![[Recipe.base#Meals]]
 
 # Notes
 
