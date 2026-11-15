@@ -3,9 +3,10 @@
 Checks, per note: no link into Private/ (wikilinks, embeds, and Markdown links,
 in the body and in any property); every link, in the body or a property,
 reaches a note or file in Public/ and, when it names one, a heading or block
-in that note (warnings otherwise); URLs appear only in the `url` property; and
-every `url` is a single well-formed http or https URL. Code blocks and inline
-code are ignored. Whether each URL actually loads is validate_urls's job.
+in that note (warnings otherwise); no property but `url` holds a URL; and
+every `url` is a single well-formed http or https URL. URLs in note bodies are
+allowed. Code blocks and inline code are ignored. Whether each URL actually
+loads is validate_urls's job.
 Scratch notes are checked only for links into Private/.
 
     vault-validate-links [PUBLIC_DIR] [--private DIR] [--json]
@@ -31,7 +32,7 @@ from vault_tools.markup import (
 from vault_tools.vault import TEMPLATE_TYPE, Note, PrivateMatch, Vault, YamlValue
 
 DESCRIPTION: Final = (
-    "Enforce the link rules: no broken links or links into Private/, URLs only in `url`."
+    "Enforce the link rules: no broken links or links into Private/, no URLs in other properties."
 )
 CHECK: Final = CheckName.LINKS
 URL_PROPERTY: Final = "url"
@@ -101,7 +102,6 @@ class LinkChecker:
             return []
         return [
             *self._property_issues(note),
-            *self._body_issues(note),
             *(
                 issue
                 for link, targets, prop in self._links(note)
@@ -164,22 +164,6 @@ class LinkChecker:
             elif any(urls(text) for text in texts):
                 message = f"URLs belong in the `{URL_PROPERTY}` property, not `{prop}`"
                 yield self._error(note, IssueCode.URL_MISPLACED, message, prop=prop)
-
-    def _body_issues(self, note: Note) -> Iterator[Issue]:
-        """Check that the body, outside code, holds no URLs.
-
-        Args:
-            note: The note.
-
-        Yields:
-            Each issue found, its message starting with the line number.
-        """
-        for url in urls(blank_code(note.body)):
-            message = (
-                f"line {note.file_line(url.line)}: URLs belong in the `{URL_PROPERTY}` property, "
-                f"not the note body ({url.text})"
-            )
-            yield self._error(note, IssueCode.URL_MISPLACED, message)
 
     @staticmethod
     def _on_line(note: Note, link: Link) -> Link:

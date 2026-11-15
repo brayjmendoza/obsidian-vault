@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-07
-updated: 2026-11-11
-version: "0.39"
+updated: 2026-11-15
+version: "0.44"
 ---
 <%*
 // Frontmatter: the property engine every type template includes. It reads
@@ -91,7 +91,6 @@ const questions = {
   area: "Which domain hub does this project serve?",
   start: "When does it start?",
   due: "When is it due?",
-  outcome: "What does done look like?",
   composers: "Who composed it, and who arranged it? (original composer first)",
   styles: "Which styles does this composer write in? (pick all that fit, e.g., classical and romantic)",
   lived: "When did this composer live?",

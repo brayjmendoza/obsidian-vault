@@ -6,7 +6,7 @@ repository, with the environment active:
 
     vault-validate                           # text report
     vault-validate --json                    # JSON report
-    vault-validate --json --skip-urls        # without fetching any `url`, for Claude
+    vault-validate --json --skip-urls        # without fetching any URL, for Claude
     vault-validate Public --output report.json
     python -m vault_tools.validate
 """
@@ -73,7 +73,7 @@ def check_without_urls(vault: Vault) -> list[Issue]:
 
 
 def check(vault: Vault) -> list[Issue]:
-    """Run every check over a vault, fetching every `url` over the network.
+    """Run every check over a vault, fetching every URL over the network.
 
     Args:
         vault: The vault to check.

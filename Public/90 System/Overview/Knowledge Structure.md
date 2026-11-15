@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-11
 aliases:
   - Knowledge layer
   - How 40 Knowledge works
@@ -29,8 +29,32 @@ Every concept appears on at least one map, so nothing is unreachable. Fields are
 ## How Knowledge Connects to the Rest of the Vault
 
 - **From domains:** a hub links to the maps behind it, so the Music hub reaches music theory without copying it (see [[Domain Skeleton#What Stays Out of a Domain|What Stays Out of a Domain]]).
-- **Knowledge or References:** ask whether you want to *understand* it or just *look it up*. Understanding goes in a concept, and a how-to or cheat sheet goes in `50 References/`.
+- **Knowledge or References:** ask whether you want to *understand* it or just *look it up*. Understanding goes in a concept, by way of a source, and a how-to or cheat sheet goes in `50 References/` (see [[#Sources or References]]).
 - **Learning goals with a deadline:** "finish this course by June" is a project that links to the course note.
+
+## Sources or References
+
+A source and a reference can both come from a book or a web page, so the test is what the note is for. A **source** records something you read or watched, so its ideas can be pulled out into concepts. A **reference** is what you come back to look up, and the answer is in the note itself.
+
+| | Source | Reference |
+|---|---|---|
+| Holds | What a paper, book, course, or article says | A how-to, cheat sheet, table, or bookmarked tool |
+| Lives in | `40 Knowledge/Sources/`, sorted by kind | `50 References/`, sorted by topic |
+| Tracks | Your reading, with `status` | When to check it again, with `review_by` |
+| Leads to | A concept for each key idea | Nothing further, though it can link to the concept that explains it |
+
+As an example:
+
+| Note | Goes in | Why |
+|---|---|---|
+| Attention Is All You Need (Vaswani 2017) | Sources | Read to understand, and its key ideas become concepts (e.g., self-attention) |
+| Gödel, Escher, Bach with `status: to-read` | Sources | On your reading list, with nothing to look up yet |
+| [[uv Documentation\|The uv docs]] | Sources | Read to learn how uv works, and it feeds the [[uv]] concept |
+| A git command cheat sheet | References | Opened for one command, then closed |
+| Deadlift form cues | References | A how-to. Your working weights stay in the exercise note |
+| A key signature chart | References | A look-up. Why the circle of fifths works belongs in a music theory concept |
+
+One topic often lands in all three places. Reading Boas's Mathematical Methods gives a book source, the Fourier transform becomes a concept, and a table of transform pairs you keep checking goes in `50 References/`, linked to the concept. A web page can go either way: read it to learn and it's an article source, or bookmark it to look something up and it's a reference with the page in `url`.
 
 ## The Learning Loop
 

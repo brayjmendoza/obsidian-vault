@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.39"
+version: "0.44"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -134,7 +134,7 @@ root:
         items: {Benefits: [benefit]}
 
   "40 Knowledge":
-    types: []
+    types: [plan]
     subfolders:
       Sources:
         types: []
@@ -154,7 +154,10 @@ root:
   "90 System":
     types: [system]
     subfolders:
-      Claude:    {types: [system], flat: true}
+      Claude:
+        types: [system]
+        subfolders:
+          Skills: {skip: true}   # local copies of Claude's skills: <skill>/SKILL.md, whose frontmatter isn't a note's
       Overview:  {types: [documentation], flat: true}   # vault-wide documentation for people
 
   "91 Tooling":

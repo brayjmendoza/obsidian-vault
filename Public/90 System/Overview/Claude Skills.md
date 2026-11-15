@@ -1,11 +1,11 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-15
 ---
 # Claude Skills
 
-Ten skills, built in priority order (see [[Vault Rollout]]). All of them read [[CONVENTIONS]] and the schemas first, follow the [[Claude Guardrails]], and log to the [[changelog]].
+Ten skills, built in priority order (see [[Vault Rollout]]). All of them start with vault-conventions, which loads [[CONVENTIONS]] and the schemas, follow the [[Claude Guardrails]], and log to the [[changelog]]. A copy of each finished skill is kept in `90 System/Claude/Skills/`.
 
 | # | Skill | What it does | Cadence |
 |---|---|---|---|

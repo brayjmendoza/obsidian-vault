@@ -1,7 +1,6 @@
 + [ ] Laptop case
 - [ ] iPad Case
 - [ ] Page turner pedal — $60
-- [ ] Box jump thingy
 - [ ] Single wire holder thingys
 - [ ] Intermediate level violin — ~$2,000
 - [ ] NVIDIA RTX 5070 Ti — ~$750

@@ -3,9 +3,9 @@ type: hub
 created: 2026-11-11
 updated: 2026-11-11
 ---
-# Current
+# Recipes
 
-![[Hub.base#Current]]
+![[Recipe.base#Recipe]]
 
 
 # Tasks

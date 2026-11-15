@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-07
+updated: 2026-11-11
 version: "0.12"
 ---
 # Vault Tools
@@ -29,8 +29,8 @@ The folder is laid out as follows:
 │   ├── cli.py                   arguments, reports, and exit codes every validator shares
 │   ├── validate_properties.py   enforces properties-schema.yaml
 │   ├── validate_structure.py    enforces structure-schema.yaml
-│   ├── validate_links.py        no links into Private/, URLs only in `url`
-│   ├── validate_urls.py         fetches every `url` (network; only on request)
+│   ├── validate_links.py        no links into Private/, no URLs in other properties
+│   ├── validate_urls.py         fetches every `url` and body URL (network)
 │   ├── validate_tags.py         every inline #tag is one of the four allowed tags
 │   └── validate.py              runs every offline check: versions, structure, properties, links, and tags
 └── tests/
@@ -74,12 +74,12 @@ Installing the package creates six console scripts:
 
 | Command                     | Checks                                                                                                                                                                             |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `vault-validate`            | Everything: the shared version of [[CONVENTIONS]] and all schemas, then structure, properties, links, tags, and a fetch of every `url`                                             |
+| `vault-validate`            | Everything: the shared version of [[CONVENTIONS]] and all schemas, then structure, properties, links, tags, and a fetch of every URL                                             |
 | `vault-validate-structure`  | Only `structure-schema.yaml`: folders, note types per folder, filenames, hubs, and non-note files                                                                                  |
 | `vault-validate-properties` | Only `properties-schema.yaml`: types, required properties, value types, vocabularies, and typed links                                                                              |
-| `vault-validate-links`      | Only the link rules: no links into `Private/`, no broken links or missing headings and blocks, in bodies or properties (warnings), URLs only in `url`, and every `url` well formed |
+| `vault-validate-links`      | Only the link rules: no links into `Private/`, no broken links or missing headings and blocks, in bodies or properties (warnings), no URLs in properties other than `url`, and every `url` well formed. URLs in note bodies are allowed |
 | `vault-validate-tags`       | Only inline `#tags` in note bodies: each must be one of the four allowed tags (the `tags` property is checked with the properties)                                                 |
-| `vault-validate-urls`       | Only the network check: fetches every `url` and reports pages that are gone or unreachable                                                                                         |
+| `vault-validate-urls`       | Only the network check: fetches every `url` and every URL in a note body (outside code), and reports pages that are gone or unreachable                                                                                         |
 
 All of them take these options:
 
@@ -95,7 +95,7 @@ The exit code is 0 when there are no errors (warnings are allowed), 1 when there
 
 The report's `skipped` list names checks a run couldn't or didn't do: links into `Private/` by name when there's no `Private/` folder to see, and the URL check when `--skip-urls` was given.
 
-`vault-validate` fetches every `url` by default. `--skip-urls` leaves that check out, for runs on a network that can't reach most sites (e.g., Claude's).
+`vault-validate` fetches every URL by default (i.e., each `url` property and each URL in a note body). `--skip-urls` leaves that check out, for runs on a network that can't reach most sites (e.g., Claude's).
 
 A URL that's gone (HTTP 404 or 410), or whose host doesn't exist, refuses connections, or fails TLS, is an error. Anything that might be temporary or a bot block (other 4xx, 5xx, timeouts, proxy refusals) is a warning: open the page by hand to confirm.
 

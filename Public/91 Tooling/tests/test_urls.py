@@ -10,7 +10,16 @@ import pytest
 from tests.conftest import CopyFixture, LoadVault, keys, run_module
 from vault_tools.cli import ExitCode
 from vault_tools.issues import IssueCode, Severity
-from vault_tools.validate_urls import FetchFailure, FetchResult, UrlFetcher, check, url_issue
+from vault_tools.markup import urls
+from vault_tools.validate_urls import (
+    FetchFailure,
+    FetchResult,
+    UrlFetcher,
+    UrlUse,
+    check,
+    url_issue,
+    url_uses,
+)
 from vault_tools.vault import Note
 
 E: Final = Severity.ERROR
@@ -47,6 +56,64 @@ def test_url_issue(result: FetchResult, expected: tuple[Severity, IssueCode] | N
     """Gone pages and unreachable hosts are errors; anything possibly temporary warns."""
     issue = url_issue(NOTE, "https://example.com", result)
     assert (None if issue is None else (issue.severity, issue.code)) == expected
+
+
+BODY: Final = """Read [the guide](https://docs.example.com/guide) or https://docs.example.com/gone.
+
+Run `curl https://code.example.com/inline`, or:
+
+```bash
+curl https://code.example.com/block
+```
+"""
+
+
+def test_url_uses() -> None:
+    """A note uses its `url` and each body URL outside code, and a template's body is skipped."""
+    note = Note(
+        path=Path("/vault/50 References/Docs.md"),
+        rel="50 References/Docs.md",
+        properties={"type": "reference", "url": "https://docs.example.com"},
+        body=BODY,
+        body_line=7,
+    )
+    assert url_uses(note) == [
+        UrlUse(note=note, url="https://docs.example.com"),
+        UrlUse(note=note, url="https://docs.example.com/guide", line=7),
+        UrlUse(note=note, url="https://docs.example.com/gone", line=7),
+    ]
+    template = note.model_copy(update={"properties": {"type": "template"}})
+    assert url_uses(template) == []
+
+
+def test_sentence_punctuation_is_not_part_of_a_url() -> None:
+    """A bare URL that ends a sentence leaves the period out."""
+    assert [
+        found.text for found in urls("See https://example.com/docs. Or https://a.example.com, too!")
+    ] == [
+        "https://example.com/docs",
+        "https://a.example.com",
+    ]
+
+
+def test_body_urls_are_fetched(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
+    """Body URLs are fetched like `url`, and a broken one is reported with its line."""
+    root = copy_fixture("valid")
+    frontmatter = (
+        "---\ntype: reference\ncreated: 2026-11-11\nupdated: 2026-11-11\ntopic: tools\n---\n"
+    )
+    (root / "50 References/Docs.md").write_text(frontmatter + BODY, encoding="utf-8")
+    fetched: list[str] = []
+
+    def fake(url: str) -> FetchResult:
+        fetched.append(url)
+        return FetchResult(status=404 if url.endswith("/gone") else 200)
+
+    issues = check(load_vault(root), fetch=fake)
+    assert "https://docs.example.com/guide" in fetched
+    assert not [url for url in fetched if "code.example.com" in url]
+    assert keys(issues) == {(E, "url-broken", "50 References/Docs.md", None)}
+    assert issues[0].message == "line 7: https://docs.example.com/gone is gone (HTTP 404)"
 
 
 def test_sessions_are_reused_per_thread(server: str) -> None:

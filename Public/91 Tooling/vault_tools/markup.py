@@ -23,6 +23,8 @@ MARKDOWN_LINK_RE: Final = re.compile(
     r"!?\[[^\]\n]*\]\(\s*(<[^>\n]+>|[^)\s]+)(?:\s+\"[^\"\n]*\")?\s*\)"
 )
 URL_RE: Final = re.compile(r"https?://[^\s<>\"'`()\[\]]+", re.IGNORECASE)
+# Punctuation that ends a sentence after a bare URL, not part of the URL.
+URL_TRAILING: Final = ".,;:!?"
 SCHEME_RE: Final = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
 # Obsidian: `#` at the start of a line or after whitespace, then letters, digits,
 # `_`, `-`, or `/`. So `C#`, `[[Note#Heading]]`, `url/#anchor`, and `# Heading` aren't tags.
@@ -331,6 +333,9 @@ def has_heading_chain(found: list[Heading], chain: list[str]) -> bool:
 def urls(text: str) -> list[Found]:
     """Find every http or https URL in text.
 
+    A bare URL ending a sentence (e.g., `see https://example.com.`) keeps its
+    final punctuation out of the URL.
+
     Args:
         text: Text with code already blanked out.
 
@@ -338,7 +343,7 @@ def urls(text: str) -> list[Found]:
         Each URL and its line.
     """
     return [
-        Found(text=match.group(0), line=_line_of(text, match.start()))
+        Found(text=match.group(0).rstrip(URL_TRAILING), line=_line_of(text, match.start()))
         for match in URL_RE.finditer(text)
     ]
 

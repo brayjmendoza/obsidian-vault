@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-11
+updated: 2026-11-15
 version: "1.0"
 ---
 # Writing Style
@@ -23,6 +23,7 @@ These rules come from the notes in `90 System/Overview/`, which you've edited in
 The voice above is the default: system and documentation notes, hubs, plans, items, projects, and references use it. Two kinds of note differ.
 
 - **Concepts and sources read like a textbook.** Full paragraphs over bullets, precise definitions, and a neutral, impersonal voice — no "you." Define a term before using it, and build from the simple case to the general one. Source notes describe the source in the third person (e.g., "Boas derives the transform from Fourier series").
+- **A concept says where its content comes from.** A concept is titled with the field's standard term, and the terms its sources use go in `aliases` (e.g., Algebraic Data Type, with the alias Data Type). After the opening definition, the body holds what the listed sources teach. Anything else, such as standard terms the sources don't use, history, or comparisons with other languages, goes in a paragraph that starts "More generally," after the source material. An added example from outside the sources says so (e.g., "For comparison, in Python:").
 - **Logs are looser and more direct.** Daily, weekly, and monthly notes, practice and session logs, spending notes, and health and maintenance logs record what happened. Fragments are fine, numbers come first, and there's no opening paragraph (e.g., "45 min, mostly the Chopin coda. Left hand still rushes in bar 112.").
 
 ## Documentation
@@ -67,6 +68,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Tables** for anything compared across the same attributes (e.g., note types, properties, roles). Cells are fragments with no final period. A cell with two sentences gets a period between them but none at the end.
 - **Bullet endings:** a full sentence ends with a period, a fragment doesn't.
 - **Bold** marks a key term where it's defined (e.g., "is a **domain**") or the main rule of a paragraph. *Italics* are only for contrast (e.g., "*understand* it or just *look it up*").
+- **Source sections earn their place.** In a source note, Open Questions and Quotes stay empty unless something relevant adds value. Leave the heading with nothing under it rather than filling it.
 - **Overview footer:** documentation notes in `90 System/Overview/` end with `---`, then `← [[Previous]] · Next: [[Next]] →`.
 
 ## Names and Code
@@ -85,7 +87,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Header aliases are display text only.** Never add them to the target note's `aliases` property, which names the whole note, not its headers.
 - **Links inside a sentence** read as part of it, with display text when grammar needs it (e.g., "which breaks [[Vault Principles|link, don't duplicate]]").
 - **Link the first mention per section only** (see [[CONVENTIONS]], section 5).
-- **No URLs in the body.** Link to the note whose `url` holds the page instead (see [[CONVENTIONS]], section 4). A URL inside code is fine.
+- **Web links read as text.** When a body holds a URL, write it as a Markdown link with the page's title (e.g., `[Locking and Syncing](https://…)`), not a bare URL.
 
 ## Model Notes
 
@@ -100,6 +102,8 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-15 · Concepts separate what their sources teach from general knowledge: standard terms as titles, source terms as aliases, and outside material in a "More generally," paragraph.
+- 2026-11-11 · URLs in bodies are allowed, so the no-URLs rule is gone: a body URL is a Markdown link with the page's title. A source note's Open Questions and Quotes stay empty unless something there adds value.
 - 2026-11-11 · The to-do list's note is named To-Do's in examples.
 - 2026-11-08 · Domain documentation goes in the domain's About page, titled "About <Domain>."
 - 2026-11-08 · Added the Documentation section: concise, high-level overviews of what the vault does, not how it works, with a few examples instead of full lists.

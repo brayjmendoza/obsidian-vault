@@ -42,9 +42,8 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `status` | project | Where the project stands (e.g., `active` or `done`) |
 | `area` | project | The domain the project serves, so it shows up on that hub |
 | `start`, `due` | project | When work began, and the target finish date |
-| `outcome` | project | One line on how it ended |
 
-`status` means something different on pieces, trips, recipes, and sources, and each has its own values.
+How a project ended goes in its Outcome section, not in a property. `status` means something different on pieces, trips, recipes, and sources, and each has its own values.
 
 ## Music
 
@@ -109,7 +108,7 @@ Every note has `type`, `created`, and `updated`, and any note may have the rest.
 | `fields` | sources, concept | Which fields it belongs to, and so which maps it goes on |
 | `field` | map | The one field a map covers |
 | `status` | sources | Your reading progress (e.g., `to-read` or `read`) |
-| `url` | sources and several other types | The note's web page, and the only place a URL may go |
+| `url` | sources and several other types | The note's web page |
 | `venue` | paper | Where the paper was published |
 | `progress`, `finished` | book, course | How far through you are, and when you finished |
 | `sources` | concept | The sources you learned the concept from |

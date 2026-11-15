@@ -18,7 +18,7 @@ from typing import Final, Protocol
 import pytest
 
 from vault_tools.issues import CheckName, Issue, IssueCode, Severity
-from vault_tools.markup import is_web_url
+from vault_tools.markup import URL_RE, is_web_url
 from vault_tools.vault import DEFAULT_SCHEMA_DIR, TOOLING_DIR, Vault
 
 FIXTURES_DIR: Final = TOOLING_DIR / "tests" / "fixtures"
@@ -150,10 +150,11 @@ def server(monkeypatch: pytest.MonkeyPatch) -> Iterator[str]:
 
 @pytest.fixture
 def served_copy(copy_fixture: CopyFixture, server: str) -> CopyFixture:
-    """Copy a fixture vault with every well-formed `url` pointed at the local server's /ok.
+    """Copy a fixture vault with every well-formed URL pointed at the local server's /ok.
 
-    vault-validate fetches every `url`, so tests that run it use these copies
-    instead of the fixtures themselves.
+    vault-validate fetches every `url` and every URL in a note body, so tests
+    that run it use these copies instead of the fixtures themselves. A malformed
+    `url` is left as is, so validate_links still reports it.
     """
 
     def copy(name: str) -> Path:
@@ -164,6 +165,7 @@ def served_copy(copy_fixture: CopyFixture, server: str) -> CopyFixture:
                 lambda match: f"url: {server}/ok" if is_web_url(match.group(1)) else match.group(0),
                 text,
             )
+            served = URL_RE.sub(f"{server}/ok", served)
             if served != text:
                 note.write_text(served, encoding="utf-8")
         return root

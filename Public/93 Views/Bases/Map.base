@@ -1,16 +1,13 @@
 views:
   - type: table
-    name: Unmapped Concepts
+    name: Maps
     filters:
       and:
-        - type == "concept"
-        - fields.contains(this.field)
-        - "!this.file.hasLink(file)"
+        - type == "map"
+        - file.hasLink(this.file)
     order:
       - file.name
-      - fields
-      - confidence
-      - last_reviewed
+      - field
     sort:
       - property: file.name
         direction: ASC

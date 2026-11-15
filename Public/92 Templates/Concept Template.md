@@ -1,21 +1,27 @@
 ---
 type: template
 created: 2026-11-07
-updated: 2026-11-11
-version: "0.39"
+updated: 2026-11-15
+version: "0.44"
 ---
 <%* tR = "" -%>
 <% await tp.file.include("[[Frontmatter]]") -%>
-%% Concept format: one idea per note, written like a textbook (see [[STYLE]]). Open with a one-sentence definition, then explain it and give an example. Every concept is linked from at least one map. Delete this comment once the concept is written. %%
+%% Concept format: one idea per note, written like a textbook (see [[STYLE]]). Open with a one-sentence definition, then explain it and give an example. Every concept is linked from at least one map, and its `fields` list those maps' fields. Delete this comment once the concept is written. %%
 
+# Example
 
+%% Example to help better understand the concept %%
 
-## Connections
+# Connections
 
 %% Links to related concepts, each with a few words on how they relate. %%
 - 
 
-## Sources
+# Sources
 
 %% Links to the source notes this concept comes from. %%
 - 
+
+# Maps
+
+![[Map.base#Maps]]

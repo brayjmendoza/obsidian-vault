@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-08
-updated: 2026-11-11
-version: "0.39"
+updated: 2026-11-15
+version: "0.44"
 ---
 <%*
 // Sync Last Performed: keeps each exercise's `last_performed` at the latest date

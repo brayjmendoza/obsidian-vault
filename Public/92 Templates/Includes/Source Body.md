@@ -1,24 +1,24 @@
 ---
 type: template
 created: 2026-11-08
-updated: 2026-11-11
-version: "0.39"
+updated: 2026-11-15
+version: "0.44"
 ---
 <%* tR = "" -%>
-%% Source format, shared by papers, books, courses, and articles: a summary, the key ideas, open questions, and short quotes. Written in the third person (see [[STYLE]]). Delete this comment once the source is written. %%
-## Summary
+%% Source format, shared by papers, books, courses, and articles: a summary, the key ideas, open questions, and short quotes. Written in the third person (see [[STYLE]]). Open Questions and Quotes may stay empty. Delete this comment once the source is written. %%
+# Summary
 
 
 
-## Key Ideas
+# Key Ideas
 
 %% Each idea links to its concept note. %%
 - 
 
-## Open Questions
+# Open Questions
 
 - 
 
-## Quotes
+# Quotes
 
 %% Short quotes, each with a page or section, e.g., > "…" (p. 42) %%

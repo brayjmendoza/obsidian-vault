@@ -1,0 +1,22 @@
+views:
+  - type: table
+    name: Unmapped Concepts
+    filters:
+      and:
+        - type == "concept"
+        - fields.contains(this.field)
+        - "file.backlinks.filter(value.asFile().inFolder(\"Public/40 Knowledge/Maps\") && value.asFile().properties.field == this.field).length == 0"
+    order:
+      - file.name
+      - fields
+      - confidence
+      - last_reviewed
+    sort:
+      - property: file.name
+        direction: ASC
+  - type: table
+    name: Concepts
+    filters:
+      and:
+        - type == "concept"
+        - fields.contains(this.field)

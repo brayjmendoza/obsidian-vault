@@ -91,7 +91,7 @@ def build_parser(description: str, *, offers_skip_urls: bool = False) -> argpars
     Args:
         description: What the validator checks, for `--help`.
         offers_skip_urls: Whether to add `--skip-urls`, for a command whose
-            checks include fetching every `url`.
+            checks include fetching every URL.
 
     Returns:
         The parser.
@@ -229,7 +229,7 @@ def skipped_checks(vault: Vault, *, checks_private_links: bool, skip_urls: bool)
     """
     skipped = []
     if skip_urls:
-        skipped.append("urls: --skip-urls was given, so no `url` was fetched")
+        skipped.append("urls: --skip-urls was given, so no URL was fetched")
     if checks_private_links and vault.private_dir is None:
         skipped.append(
             "private links by name: no Private/ folder beside Public/ (only links with "
@@ -284,7 +284,7 @@ def run_cli(
         argv: The arguments, without the program name; `sys.argv[1:]` when None.
         checks_private_links: Whether `check` covers links into Private/, so the
             report says when Private/ couldn't be seen.
-        check_without_urls: The same checks without fetching any `url`. Giving
+        check_without_urls: The same checks without fetching any URL. Giving
             it adds `--skip-urls`, which runs it instead of `check`.
 
     Returns:

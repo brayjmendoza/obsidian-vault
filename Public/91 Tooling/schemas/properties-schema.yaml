@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.39"
+version: "0.44"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -85,7 +85,6 @@ property_types:
   status: text
   area: text
   due: date
-  outcome: text
 
   # music (piano, violin, composer)
   composers: list         # links to composer notes: the original composer first, then any arrangers
@@ -231,7 +230,7 @@ types:
   # --- Projects ------------------------------------------------------------
   project:
     required: [status, area]
-    optional: [start, due, outcome]
+    optional: [start, due]
     constraints:
       status: {vocab: project_status}
       area: {link: hub}           # the hub of the domain it serves

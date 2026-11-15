@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-10-10
-updated: 2026-11-11
-version: "0.39"
+updated: 2026-11-15
+version: "0.44"
 ---
 # Vault Conventions
 
@@ -15,11 +15,13 @@ This file is the contract between you and every Claude skill that maintains this
 | `91 Tooling/schemas/structure-schema.yaml` | Every allowed folder, the note types each holds, the domain skeleton, and filename patterns |
 | `90 System/Claude/STYLE.md` | How note bodies are written: voice, punctuation, headers, and links |
 | `90 System/Claude/CODE_STYLE.md` | How Python is written: the checks it must pass, pydantic models, typing, docstrings, errors, and tests |
+| `90 System/Claude/INGEST.md` | What the ingest-source skill does differently for each kind of source and each field |
+| `90 System/Claude/Skills/` | A local copy of each Claude skill, as `<skill>/SKILL.md` |
 | `90 System/Overview/` (start at [[Vault Overview]]) | Why the vault is built this way. Background for people, and skills don't need it on every run |
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.39**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.44**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -123,7 +125,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 - Links inside properties are quoted: `area: "[[Piano]]"`, and in a list, `composers: ["[[Johann Sebastian Bach]]", "[[Ferruccio Busoni]]"]`.
 - Don't invent new properties, types, or vocabulary values. Propose them instead, and once you approve them, add them to the schema first, then use them.
 - Prefer properties over tags. Tags are reserved for the short list in section 6.
-- **URLs live only in `url`.** A URL never appears in any other property or in a note body. `url` holds exactly one http or https URL, and a note type that may hold one lists `url` in the properties schema. A note that needs several web pages links to one `reference` note per page instead.
+- **URLs prefer `url`.** A note's web page goes in its `url` property, which holds exactly one http or https URL. A note type that may hold one lists `url` in the properties schema, and no other property holds a URL. A URL goes in the note body only when that's the sensible place (e.g., one source note gathering several pages of the same documentation, like [[uv Documentation]]).
 
 ## 5. Note Bodies and Linking
 
@@ -131,7 +133,7 @@ The full schema is `properties-schema.yaml`. These rules apply on top of it.
 - **Link, don't duplicate.** Each fact lives in exactly one note, and other notes link to it.
 - **Scripts** in `93 Views/Scripts/` are run by notes through Dataview (`dv.view`), so each behavior is written once. Paths in code are from the vault root, so they start with `Public/` (e.g., `dv.view("Public/93 Views/Scripts/last-time")`).
 - **Links:** Link the first mention of a note per section, not every mention. Use `[[Note|display text]]` when grammar needs it.
-- **No URLs in bodies.** To point at a web page, link to the note whose `url` holds it (see section 4). URLs inside code blocks and inline code are code, not links, and are allowed (e.g., a `curl` command in a how-to).
+- **URLs in bodies** are allowed but not preferred (see section 4).
 - **Attachments** go in `98 Attachments/`, named `YYYY-MM-DD description.ext`.
 - **Tasks** use Tasks-plugin syntax: `- [ ] Do the thing 📅 2026-10-15`. Claude never ticks off a task you haven't reported done.
 
@@ -148,6 +150,8 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 **Always**
 - Read this file and all schemas (currently `properties-schema.yaml` and `structure-schema.yaml`) first.
+- Start every skill by running vault-conventions, which loads this file, the schemas, and [[STYLE]], and closes the run.
+- Keep `90 System/Claude/Skills/` in step with the skills themselves. The skill saved in claude.ai is the one that runs, so every change is proposed for you to save, and the same change is written to the local copy in the same turn (see vault-conventions).
 - Skills that write or edit note bodies also read [[STYLE]].
 - Skills and runs that write or edit code also read [[CODE_STYLE]] and don't finish until the checks in its first section pass.
 - Write notes that pass both schemas: allowed folder and filename, required properties present, correct value types, and exact vocabulary values.
@@ -175,6 +179,11 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-15 · v0.44 · `90 System/Claude/` gains a `Skills/` subfolder holding a local copy of each Claude skill (`<skill>/SKILL.md`), which neither validator checks, and the file [[INGEST]] for the ingest-source skill. Every skill starts by running the vault-conventions skill (see section 7).
+- 2026-11-15 · v0.43 · Undoes the `programming-languages` field from v0.42. A sub-map keeps its parent's field (e.g., [[Programming Languages]] has `field: computer-science`), so `fields` lists only broad fields, and links alone record which maps hold a concept. A concept's Maps section is now a live view, `Map.base`, of the maps that link to it, instead of hand-kept links.
+- 2026-11-15 · v0.42 · The `field` vocabulary adds `programming-languages`, the field of the [[Programming Languages]] sub-map. A concept's `fields` lists the field of every map it appears on, sub-maps included (e.g., `computer-science` and `programming-languages`). Concept notes end with a Maps section linking each map that lists them, which [[Concept Template]] now has. The Unmapped Concepts view in `Concepts.base` counts a concept as mapped when any map links to it, sub-maps included.
+- 2026-11-11 · v0.41 · URLs may appear in note bodies where that's the sensible place (e.g., one source note for several pages of the same documentation). A note's web page still belongs in `url`, and no other property may hold a URL (see sections 4 and 5). `vault-validate` no longer reports body URLs.
+- 2026-11-11 · v0.40 · Projects no longer take `outcome`. How a project ends goes in an Outcome section of its body instead, which the [[Project Template]] now has.
 - 2026-11-11 · v0.39 · Practice `minutes` and session `duration_min` are now `duration_mins`, one property for how long something took, in minutes. Recipes require `status` (the new `recipe_status` vocabulary: `to-try`, `tried`, `staple`, and `retired`) and may take `servings`, `duration_mins`, and `url`. Added the `meal` log type in `Cooking/Meals/`, named `YYYY-MM-DD <Meal>` (e.g., `2026-11-11 Dinner`), with `date`, `recipes` (links to recipe notes), and optional `duration_mins`. [[Sync Last Cooked]] sets each recipe's `last_cooked` from meal notes. Added [[Meal Template]].
 - 2026-11-11 · v0.38 · Added the Cooking domain under `20 Hobbies/`, with one items folder, `Recipes/`, and the `recipe` note type. A recipe has one optional property, `last_cooked` (a date). Added [[Recipe Template]].
 - 2026-11-11 · v0.37 · Added the `task` note type, for a domain's to-dos: `<Domain>/To-Do's.md` at the domain root, one Tasks-plugin task per line, with no properties of its own (see section 2). To-Do's is no longer a plan note. `structure-schema.yaml` allows `task` at domain roots and names it `To-Do's`. Added [[Task Template]].

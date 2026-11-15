@@ -26,8 +26,6 @@ REFS: Final = "50 References"
 
 # Reported whether or not Private/ can be seen.
 ALWAYS: Final[set[IssueKey]] = {
-    (E, IssueCode.URL_MISPLACED, f"{REFS}/Body URL.md", None),
-    (E, IssueCode.URL_MISPLACED, f"{REFS}/Markdown URL.md", None),
     (E, IssueCode.URL_MISPLACED, f"{REFS}/Topic URL.md", "topic"),
     (E, IssueCode.URL_INVALID, f"{REFS}/Bad URL.md", "url"),
     (E, IssueCode.PRIVATE_LINK, f"{REFS}/Private Path.md", None),
@@ -61,6 +59,13 @@ def test_link_rules_with_private_visible(load_vault: LoadVault) -> None:
     assert keys(validate_links.check(vault)) == ALWAYS | BROKEN | BY_NAME
 
 
+def test_urls_in_bodies_are_allowed(load_vault: LoadVault) -> None:
+    """Bare and Markdown-link URLs in a body pass, though a URL in another property doesn't."""
+    issues = validate_links.check(load_vault("bad-link-rules", private_dir=PRIVATE_SAMPLE_DIR))
+    assert not [i for i in issues if i.path in {f"{REFS}/Body URL.md", f"{REFS}/Markdown URL.md"}]
+    assert (E, IssueCode.URL_MISPLACED, f"{REFS}/Topic URL.md", "topic") in ALWAYS
+
+
 def test_link_rules_without_private(load_vault: LoadVault) -> None:
     """Without Private/, links to its files by name look like broken links instead."""
     vault = load_vault("bad-link-rules")
@@ -76,7 +81,6 @@ def test_messages(load_vault: LoadVault) -> None:
     """Body issues give the line; private-link messages never name a Private/ file."""
     vault = load_vault("bad-link-rules", private_dir=PRIVATE_SAMPLE_DIR)
     messages = {(i.path, i.property): i.message for i in validate_links.check(vault)}
-    assert messages[(f"{REFS}/Body URL.md", None)].startswith("line 9: ")
     name = messages[(f"{REFS}/Private Name.md", None)]
     assert name == (
         "line 9: [[Salary#Raise]] links into Private/; Public notes never link to Private notes"

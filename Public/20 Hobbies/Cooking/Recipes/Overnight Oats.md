@@ -4,8 +4,8 @@ created: 2026-11-11
 updated: 2026-11-11
 status: staple
 servings: 1
+last_cooked: 2026-11-11
 ---
-
 # Ingredients
 
 - 3/4 cups old-fashioned rolled oats
@@ -18,7 +18,7 @@ servings: 1
 - 1 tsp honey
 - 1 tsp vanilla extract
 - 3/4 cups nonfat Greek yogurt
-- 1 cup of mixed berries, fresh or frozen
+- 1 cup of frozen mixed berries
 - 1.5 tbsp chopped walnuts (optional)
 
 # Steps
@@ -41,15 +41,15 @@ servings: 1
 
 5. **Shake:** Screw the lid on tightly and shake vigorously for 10–15 seconds.
 
-6. **Rest:** Let the jar sit on the counter so the chia and flax start to gel.
+6. **Rest:** Let the jar sit on the counter for 5 minutes so the chia and flax start to gel.
 
-7. Final stir: Open the jar and give it one more good stir, breaking up any chia clumps that formed while resting.
+7. **Final stir:** Open the jar and give it one more good stir, breaking up any chia clumps that formed while resting.
 
-8. Add frozen berries (optional): If using frozen berries, add 1 cups mixed berries, fresh or frozen on top now; they'll thaw overnight and release their juice. If using fresh berries, skip this and add them in the morning.
+8. **Add frozen berries**: Add 1 cup of mixed berries on top; they'll thaw overnight and release their juice.
 
-9. Refrigerate: Close the lid and refrigerate overnight, ideally 6–12 hours.
+9. **Refrigerate:** Close the lid and refrigerate overnight, ideally 6–12 hours.
 
-10. Top and serve: In the morning, give it a stir and loosen with a splash of oat milk if it's too thick. Top with fresh berries (if not added the night before) and 1.5 tablespoons chopped walnuts so they stay crunchy.
+10. **Top and serve:** In the morning, give it a stir and loosen with a splash of oat milk if it's too thick. Optionally add toppings like fresh fruit, chopped walnuts, coconut chips, dollop of peanut butter, etc.
 
 # Meals
 

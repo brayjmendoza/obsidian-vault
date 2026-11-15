@@ -1,4 +1,8 @@
-"""Check that every `url` property loads, over the network.
+"""Check that every URL in the vault loads, over the network.
+
+The URLs are every note's `url` property and every URL in a note body, outside
+code (code blocks and inline code hold commands, not links). Template bodies
+are skipped, since they hold placeholders.
 
 Every distinct URL is fetched once, many at a time, with `requests`: each
 worker thread keeps one session, so repeat hosts reuse their connections. A
@@ -31,11 +35,11 @@ from urllib3.exceptions import NameResolutionError
 
 from vault_tools.cli import run_cli
 from vault_tools.issues import CheckName, Issue, IssueCode, error_issue, warning_issue
-from vault_tools.markup import is_web_url
+from vault_tools.markup import blank_code, is_web_url, urls
 from vault_tools.validate_links import URL_PROPERTY
-from vault_tools.vault import Note, Vault
+from vault_tools.vault import TEMPLATE_TYPE, Note, Vault
 
-DESCRIPTION: Final = "Check that every `url` property loads."
+DESCRIPTION: Final = "Check that every URL loads: each `url` property and each URL in a note body."
 CHECK: Final = CheckName.URLS
 # (connect, read) seconds: an unreachable host fails fast, a slow page gets longer.
 TIMEOUT: Final = (5.0, 15.0)
@@ -238,37 +242,87 @@ class UrlFetcher:
         return self._request(url, "GET")
 
 
-def url_issue(note: Note, url: str, result: FetchResult) -> Issue | None:
+class UrlUse(BaseModel):
+    """One place a note uses a URL.
+
+    Attributes:
+        note: The note.
+        url: The URL.
+        line: The line in the note's file, for a URL in the body. None for the
+            `url` property.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    note: Note
+    url: str
+    line: int | None = None
+
+
+def url_uses(note: Note) -> list[UrlUse]:
+    """Find every URL a note uses: its `url` property, then each URL in its body.
+
+    Malformed `url` values are skipped, since validate_links reports them.
+
+    Args:
+        note: The note. Notes that failed to load have no URLs to check.
+
+    Returns:
+        Each use, body URLs with their line in the file.
+    """
+    if note.load_issues:
+        return []
+    value = (note.properties or {}).get(URL_PROPERTY)
+    in_property = (
+        [UrlUse(note=note, url=value)] if isinstance(value, str) and is_web_url(value) else []
+    )
+    if note.note_type == TEMPLATE_TYPE:
+        return in_property
+    in_body = [
+        UrlUse(note=note, url=found.text, line=note.file_line(found.line))
+        for found in urls(blank_code(note.body))
+        if is_web_url(found.text)
+    ]
+    return in_property + in_body
+
+
+def url_issue(
+    note: Note, url: str, result: FetchResult, *, line: int | None = None
+) -> Issue | None:
     """Judge one fetch: fine, broken (an error), or unverified (a warning).
 
     Args:
-        note: The note whose `url` it is.
+        note: The note that uses the URL.
         url: The URL.
         result: What fetching it produced.
+        line: The line in the file, for a URL in the body. None for the `url`
+            property, which the issue then names.
 
     Returns:
         The issue, or None when the URL loaded.
     """
     if result.loaded:
         return None
+    prop = URL_PROPERTY if line is None else None
+    where = "" if line is None else f"line {line}: "
     if result.status is not None:
         if result.status in GONE_STATUSES:
-            message = f"{url} is gone (HTTP {result.status})"
-            return error_issue(CHECK, IssueCode.URL_BROKEN, note.rel, message, prop=URL_PROPERTY)
-        message = f"{url} answered HTTP {result.status}; open it by hand to confirm it works"
-        return warning_issue(CHECK, IssueCode.URL_UNVERIFIED, note.rel, message, prop=URL_PROPERTY)
+            message = f"{where}{url} is gone (HTTP {result.status})"
+            return error_issue(CHECK, IssueCode.URL_BROKEN, note.rel, message, prop=prop)
+        message = f"{where}{url} answered HTTP {result.status}; open it by hand to confirm it works"
+        return warning_issue(CHECK, IssueCode.URL_UNVERIFIED, note.rel, message, prop=prop)
     failure = result.failure or FetchFailure.OTHER
     if failure in DEFINITE_FAILURES:
-        message = f"{url} can't be reached: {failure} ({result.detail})"
-        return error_issue(CHECK, IssueCode.URL_BROKEN, note.rel, message, prop=URL_PROPERTY)
-    message = f"{url} couldn't be checked: {failure} ({result.detail})"
-    return warning_issue(CHECK, IssueCode.URL_UNVERIFIED, note.rel, message, prop=URL_PROPERTY)
+        message = f"{where}{url} can't be reached: {failure} ({result.detail})"
+        return error_issue(CHECK, IssueCode.URL_BROKEN, note.rel, message, prop=prop)
+    message = f"{where}{url} couldn't be checked: {failure} ({result.detail})"
+    return warning_issue(CHECK, IssueCode.URL_UNVERIFIED, note.rel, message, prop=prop)
 
 
 def check(vault: Vault, *, fetch: Fetcher | None = None) -> list[Issue]:
-    """Fetch every note's `url` and report the ones that don't load.
+    """Fetch every URL the vault's notes use and report the ones that don't load.
 
-    Malformed URLs are skipped: validate_links reports them.
+    Each distinct URL is fetched once, and its result applies to every use.
 
     Args:
         vault: The vault to check.
@@ -277,17 +331,11 @@ def check(vault: Vault, *, fetch: Fetcher | None = None) -> list[Issue]:
     Returns:
         Every issue found.
     """
-    pairs = [
-        (note, value)
-        for note in vault.notes
-        if not note.load_issues
-        and isinstance(value := (note.properties or {}).get(URL_PROPERTY), str)
-        and is_web_url(value)
-    ]
-    unique = sorted({url for _, url in pairs})
+    uses = [use for note in vault.notes for use in url_uses(note)]
+    unique = sorted({use.url for use in uses})
     with UrlFetcher() as fetcher, ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
         results = dict(zip(unique, pool.map(fetch or fetcher.fetch, unique), strict=True))
-    issues = (url_issue(note, url, results[url]) for note, url in pairs)
+    issues = (url_issue(use.note, use.url, results[use.url], line=use.line) for use in uses)
     return [issue for issue in issues if issue is not None]
 
 

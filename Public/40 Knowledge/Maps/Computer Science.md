@@ -1,15 +1,22 @@
 ---
 type: map
 created: 2026-11-07
-updated: 2026-11-07
+updated: 2026-11-15
 field: computer-science
 ---
-# Computer Science
+# Subfields
 
-para
++ [[Programming Languages]] — how languages are designed and implemented: functional programming, names and scope, types, and functions as values
 
-%% One heading per subtopic. Concepts in learning order, as a numbered list of links, each with a few words on how it connects. %%
+# Python Packaging
 
-## Unmapped Concepts
+1. [[uv]] — a package and project manager that locks a project's dependencies and keeps its virtual environment in step with the lock
 
-![[Map.base#Unmapped Concepts]]
+# Unmapped Concepts
+
+![[Concepts.base#Unmapped Concepts]]
+
+
+# All Concepts
+
+![[Concepts.base#Concepts]]

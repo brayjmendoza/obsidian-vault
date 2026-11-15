@@ -7,5 +7,6 @@
   "obsidian-tasks-plugin",
   "calendar",
   "dataview",
-  "obsidian-meta-bind-plugin"
+  "obsidian-meta-bind-plugin",
+  "obsidian-git"
 ]

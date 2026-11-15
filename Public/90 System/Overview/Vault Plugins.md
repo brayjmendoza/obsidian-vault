@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-15
 aliases:
   - Obsidian plugins
 ---
@@ -26,7 +26,7 @@ Keep the plugin list short: every plugin with its own syntax is something Claude
 | Advanced Exclude                                      | Keeps Obsidian from indexing the tooling's test files                                                                |
 | Update modified date                                  | Keeps `updated` current when you edit a note                                                                         |
 | Meld Encrypt                                          | Encrypts single notes, or parts of them                                                                              |
-| Dataview                                              | Runs the scripts behind live sections, like an exercise's Last Time. Needs JavaScript queries turned on              |
+| Dataview | Runs the scripts behind live sections, like an exercise's Last Time. Needs JavaScript queries turned on, with the inline query prefixes set to "dv:" and "dvjs:" |
 | Meta Bind                                             | Buttons in notes: a routine's Start Session and a session's Sync Last Performed                                      |
 | Excalidraw, Omnisearch, Homepage (TODO)               | Only if a real need appears                                                                                          |
 

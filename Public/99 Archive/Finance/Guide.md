@@ -7,4 +7,4 @@ Budgeting
 
 ## General Info
 ---
-Income shown here: [[D-Wave Compensation & Benefits]]
+Income shown here: D-Wave Compensation & Benefits

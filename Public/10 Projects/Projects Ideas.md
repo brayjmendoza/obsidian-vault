@@ -11,4 +11,3 @@ updated: 2026-11-11
 	+ Could start with mini pc, but prob should use a stronger one
 	+ Ollama
 + Personal website perhaps
-+ Composing
