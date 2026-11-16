@@ -31,7 +31,7 @@ def test_bad_structure(load_vault: LoadVault) -> None:
         (E, "hub-wrong-type", "20 Hobbies/Fitness/Fitness.md", None),
         (E, "hub-misnamed", "20 Hobbies/Fitness/Overview.md", None),
         (E, "type-not-allowed", "20 Hobbies/Fitness/Notes.md", None),
-        (E, "type-not-allowed", "40 Knowledge/Stray.md", None),
+        (E, "type-not-allowed", "40 Knowledge/Sources/Stray.md", None),
         (E, "too-deep", "50 References/Topic/Deeper/", None),
         (E, "file-not-allowed", "50 References/notes.txt", None),
         (E, "file-not-allowed", "91 Tooling/vault_tools/helpers/notes.txt", None),
