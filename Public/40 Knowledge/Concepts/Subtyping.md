@@ -24,7 +24,7 @@ $$
 
 With it, `if x < 10 then 3 else 3.14` type-checks as a `double`, though its two branches have different types: `3` is an `int`, and so also a `double`. Without subtyping, the `if` rule would reject it, since it requires both branches to have the same type.
 
-Compound types get subtyping rules of their own. A pair is a subtype of another pair when each component is (e.g., `(int, pie)` ⊑ `(double, dessert)`), and a list type is a subtype when its element type is (e.g., `[int]` ⊑ `[double]`). Function types follow a different rule (see [[Covariance and Contravariance (Type Systems)|Covariance and Contravariance]]). The subtype relationships among a set of types can be drawn as a lattice (see [[Top and Bottom Types]]).
+Compound types get subtyping rules of their own. A pair is a subtype of another pair when each component is a subtype of the other pair's corresponding component (e.g., `(int, pie)` ⊑ `(double, dessert)`), and a list type is a subtype when its element type is a subtype (e.g., `[int]` ⊑ `[double]`). Function types follow a different rule (see [[Covariance and Contravariance (Type Systems)|Covariance and Contravariance]]). The subtype relationships among a set of types can be drawn as a lattice (see [[Top and Bottom Types]]).
 
 More generally, subtyping is central to object-oriented languages, where a subclass is a subtype of its superclass, and the substitutability test is known there as the **Liskov substitution principle**. Haskell has no subtyping: its numeric types are separate, and conversions between them are explicit (e.g., `fromIntegral`). Languages also differ in whether subtyping is declared by name (**nominal**, as in Java) or follows from a type's structure (**structural**, as in TypeScript).
 

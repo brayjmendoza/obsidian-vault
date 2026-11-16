@@ -24,7 +24,7 @@ Values belong to types, much as members belong to a set, and types in turn belon
 | `Num` | Integer operations | `(+)`, `(-)`, `(*)`, `abs`, `signum`, `fromInteger` |
 | `Fractional` | Fractional operations | `(/)`, and everything in `Num` |
 
-A type joins a class in one of two ways. A `deriving` clause on an [[Algebraic Data Type|data type]] generates the implementations (e.g., a derived `Ord` orders constructors as the declaration lists them). An `instance` declaration writes them by hand, which lets a type behave its own way (e.g., showing an expression tree in prefix notation instead of as constructors).
+A type joins a class in one of two ways. A `deriving` clause on a [[Algebraic Data Type|data type]] generates the implementations (e.g., a derived `Ord` orders constructors as the declaration lists them). An `instance` declaration writes them by hand, which lets a type behave its own way (e.g., showing an expression tree in prefix notation instead of as constructors).
 
 A **type constraint** limits a type variable to the members of a class. `(+) :: Num a => a -> a -> a` reads "with the requirement that `a` is a `Num`, `(+)` has type `a -> a -> a`." A function can have several constraints, written as a tuple (e.g., `(Functor f, Show a) => f a -> f String`). Constraints are how a function stays general while still using a class's operations. Since `read` turns a string into a value of some type, Haskell has to know which type: `read "4" + 2` works, because `+` needs a number, but `read "4"` alone doesn't say what to read it as.
 
