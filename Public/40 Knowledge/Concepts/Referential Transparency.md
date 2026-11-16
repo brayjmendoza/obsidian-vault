@@ -38,8 +38,9 @@ def next_id():
     count = count + 1
     return count
 
-next_id() + next_id()  # 1 + 2 = 3
-2 * next_id()          # 2 * 3 = 6, not the same
+next_id() + next_id()  # 1 + 2 = 3, 
+2 * next_id()          # 2 * 3 = 6, replacing next_id() with its result is not
+                       #            the same because count doesn't get updated
 ```
 
 # Connections

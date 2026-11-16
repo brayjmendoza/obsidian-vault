@@ -22,7 +22,7 @@ Where a name is bound decides its scope. In Haskell:
 
 A **let expression** binds names for one expression: `let` introduces the bindings, and `in` introduces the **body**. The result of the whole `let` expression is the result of its body (e.g., `let x = 21 in x + x` evaluates to `42`). A `where` clause does the same job at the end of a function definition. Choosing between them is mostly a matter of style.
 
-**Scopes nest.** A `let` inside another `let` has its own scope, and Haskell resolves a name from the innermost scope outward. An inner binding of a name **shadows** an outer one: inside the inner scope, the outer binding can't be referenced. Each scope can still bind a name only once (see [[Name Binding]]).
+**Scopes nest.** A `let` inside another `let` has its own scope, and Haskell resolves a name from the innermost scope outward. An inner binding of a name **shadows** an outer one: if inside the inner scope, the outer binding can't be referenced. Each scope can still bind a name only once (see [[Name Binding]]).
 
 Which binding a function's free variables refer to, the one where it's defined or the one where it's called, is a separate choice (see [[Static and Dynamic Scope]]).
 
