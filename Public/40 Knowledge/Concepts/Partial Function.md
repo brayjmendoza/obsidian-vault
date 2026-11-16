@@ -47,7 +47,7 @@ Adding a wildcard case (`_ -> "I don't know that number"`) makes `describe` tota
 # Connections
 
 - [[Pattern Matching]]: matches that miss a case are the most common source of partial functions
-- [[Cons List]]: `head` and `tail` are partial on lists
+- [[Recursive Data Type]]: `head` and `tail` are partial on lists, since an empty list has neither
 - [[Static and Dynamic Typing]]: a partial function fails at run time even in a type-safe program
 - [[Option Type]]: a result type that can say "no result" instead of failing
 

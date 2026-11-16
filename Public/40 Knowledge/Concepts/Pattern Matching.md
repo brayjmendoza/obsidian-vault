@@ -19,7 +19,7 @@ A **pattern** looks like the way a value is built, with names or wildcards in pl
 - **Variable:** a name (e.g., `n`), which matches anything and binds the name to it.
 - **Wildcard:** `_`, which matches anything without binding it. It says the code doesn't use that part.
 - **Constructor:** a constructor applied to patterns (e.g., `CoolTo t` or `Leaf _`), which matches a value built with that constructor, then matches its fields against the inner patterns (see [[Algebraic Data Type]]).
-- **List:** `[]` matches the empty list, and `x : xs` matches a non-empty one, binding its head and tail (see [[Cons List]]).
+- **List:** `[]` matches the empty list, and `x : xs` matches a non-empty one, binding its head and tail (see [[Recursive Data Type]]).
 - **Tuple:** `(a, b, c)` matches a tuple of that size and binds each component.
 
 Patterns nest, so one pattern can reach several levels into a value (e.g., `(x : y : rest)` matches a list with at least two elements).

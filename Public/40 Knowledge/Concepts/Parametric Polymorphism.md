@@ -45,7 +45,7 @@ data List a  = Empty | Cons a (List a)
 
 - [[Type Class]]: the other kind of polymorphism, where one name has a different implementation for each type
 - [[Type Inference]]: Haskell infers the most general polymorphic type a definition allows
-- [[Cons List]]: Haskell's lists are the standard parameterized type
+- [[Recursive Data Type]]: Haskell's lists, `[a]`, are the standard parameterized recursive type
 - [[Map (Higher-Order Function)]]: polymorphic in two type variables at once
 - [[Option Type]]: `Maybe a`, a parameterized type for values that might be missing
 - [[Parser Combinator]]: `Parser a`, a parser whose result can be any type

@@ -40,8 +40,7 @@ field: computer-science
 
 1. [[Algebraic Data Type]] — defining a type by its alternatives, each a constructor that may carry values
 2. [[Recursive Data Type]] — a type that contains smaller values of itself, like lists and trees
-3. [[Cons List]] — the functional list: empty, or an element in front of another list
-4. [[Expression Problem]] — organizing code by data or by operation, and what each makes easy to change
+3. [[Expression Problem]] — organizing code by data or by operation, and what each makes easy to change
 
 # Syntax and Semantics
 

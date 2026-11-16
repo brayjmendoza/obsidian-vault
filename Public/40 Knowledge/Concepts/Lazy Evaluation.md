@@ -56,7 +56,7 @@ ghci> y                  -- instant: the result was kept
 - [[Referential Transparency]]: what makes delaying evaluation safe
 - [[Name Binding]]: a lazy binding associates a name with an expression, not a value
 - [[Functional Programming]]: purity is what lets Haskell be lazy by default
-- [[Cons List]]: laziness lets a list be infinite, with only the elements a program uses ever built
+- [[Recursive Data Type]]: laziness lets a list be infinite, with only the elements a program uses ever built
 - [[Evaluation Strategy]]: lazy evaluation is call by need, call by name with each argument evaluated at most once
 - [[Beta Reduction]]: reducing the outermost application first is what lets a lazy language finish where an eager one loops
 

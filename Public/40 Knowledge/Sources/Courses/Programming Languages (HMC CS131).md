@@ -33,7 +33,7 @@ The course's running theme is [[Abstraction]]. It starts with functions as param
 
 - A data type (in general, an [[Algebraic Data Type|algebraic data type]]) is defined by its alternatives. Each constructor may carry associated values and is itself a function to the type.
 - A [[Recursive Data Type]] refers to itself, like lists and binary trees, and functions over it recur wherever the type does (see [[Recursion]]).
-- A list is empty, or an element consed onto another list (in general, a [[Cons List|cons list]]).
+- A list is empty, or an element consed onto another list, the standard example of a [[Recursive Data Type|recursive data type]].
 - [[Pattern Matching]] takes data apart by its shape, in function equations, `case` expressions, and bindings. A match that misses a case fails at run time (in general, it makes a [[Partial Function|partial function]]).
 - Type variables and parameterized types let one definition work for every type (in general, [[Parametric Polymorphism|parametric polymorphism]]), and [[Type Class|type classes]] group types that share operations like `(==)` and `show`.
 - Recurring patterns in list functions abstract into [[Map (Higher-Order Function)|map]] and [[Filter (Higher-Order Function)|filter]].
