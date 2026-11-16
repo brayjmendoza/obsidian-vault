@@ -17,20 +17,20 @@ sources:
 
 In Haskell, a type variable is a lowercase name like `a` or `b` in a type. Asking GHCi for the type of `(:)` shows one: `a -> [a] -> [a]`. Each use of the function fills `a` in with a real type, and within one type, the same variable must be filled in consistently: the element on the left of `:` and the elements of the list on the right must match. A list type is itself a **parameterized type**: `[a]`, "list of `a`," becomes a concrete type when `a` is filled in (e.g., `[Integer]` or `[Char]`). A data type can take a type parameter too (e.g., `data List a = Empty | Cons a (List a)`).
 
-More generally, a **polymorphic** definition is one that works with more than one type, and in parametric polymorphism it works with all of them the same way: the code never inspects which type it was given, so one definition serves every type. Many languages offer the same idea as **generics** (e.g., Java's `List<T>` and Rust's `Vec<T>`). It differs from the polymorphism a [[Type Class]] provides, where a function's behavior depends on the type.
+More generally, a **polymorphic** definition is one that works with more than one type, and in parametric polymorphism it works with all of them the same way: the code never inspects which type it was given, so one definition serves every type. As the name suggests, a parametric polymorphic definition is one where the type is a parameter. Many languages offer the same idea as **generics** (e.g., Java's `List<T>` and Rust's `Vec<T>`). It differs from the polymorphism a [[Type Class]] provides, where a function's behavior depends on the type.
 
 # Example
 
 The types of some list functions (newer versions of GHCi add constraints to a few, e.g., `HasCallStack` on `head`):
 
-| Function | Type | Reads as |
-|---|---|---|
-| `(:)` | `a -> [a] -> [a]` | An element and a list of the same type give a list of that type |
-| `(++)` | `[a] -> [a] -> [a]` | Two lists of the same type give a list of that type |
-| `head` | `[a] -> a` | A list of any type gives one of its elements |
-| `take` | `Int -> [a] -> [a]` | A count and a list give a list of the same type |
-| `map` | `(a -> b) -> [a] -> [b]` | A function from `a` to `b` turns a list of `a`s into a list of `b`s |
-| `filter` | `(a -> Bool) -> [a] -> [a]` | A predicate on `a`s selects from a list of `a`s |
+| Function | Type                        | Reads as                                                            |
+| -------- | --------------------------- | ------------------------------------------------------------------- |
+| `(:)`    | `a -> [a] -> [a]`           | An element and a list of the same type give a list of that type     |
+| `(++)`   | `[a] -> [a] -> [a]`         | Two lists of the same type give a list of that type                 |
+| `head`   | `[a] -> a`                  | A list of any type gives one of its elements                        |
+| `take`   | `Int -> [a] -> [a]`         | A count and a list give a list of the same type                     |
+| `map`    | `(a -> b) -> [a] -> [b]`    | A function from `a` to `b` turns a list of `a`s into a list of `b`s |
+| `filter` | `(a -> Bool) -> [a] -> [a]` | A predicate on `a`s selects from a list of `a`s                     |
 
 `3 : [17, 10, 5]` fills `a` with a number, and `'h' : "ello"` fills it with `Char`. `True : "ello"` is a type error, since `a` can't be both `Bool` and `Char`.
 
