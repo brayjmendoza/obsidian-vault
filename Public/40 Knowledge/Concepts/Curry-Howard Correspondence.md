@@ -36,6 +36,16 @@ modusPonens :: (a -> b) -> a -> b
 modusPonens f x = f x
 ```
 
+The type is the proposition, and the definition is its proof. Read each value as evidence:
+
+- **`f :: a -> b` is a proof that $a$ implies $b$.** A function of that type turns any value of type `a` into a value of type `b`, just as a proof of an implication turns any proof of $a$ into a proof of $b$.
+- **`x :: a` is a proof of $a$.** Having a value of a type counts as having proved the proposition the type stands for.
+- **`f x :: b` is the conclusion.** Applying `f` to `x` produces a value of type `b`, which is a proof of $b$. That one application is the modus ponens step.
+
+So writing a body that type-checks is building the proof, and the type checker accepting it is checking the proof. A proposition with no proof is a type with no program. Nothing of type `a -> b` can be written for arbitrary `a` and `b`, which matches the fact that "$a$ implies $b$" isn't true in general.
+
+One caution for Haskell: a definition that never finishes (e.g., `loop = loop`) can be given any type, so as a logic, Haskell can "prove" anything. Proof assistants built on the correspondence require every program to terminate, which rules this out.
+
 # Connections
 
 - [[Typing Rule]]: typing rules have the form of logical inference rules

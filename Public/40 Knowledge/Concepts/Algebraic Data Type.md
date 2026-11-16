@@ -36,7 +36,7 @@ More generally, a type built this way is called algebraic because of how it comb
 
 # Example
 
-A thermostat setting is off, cooling to a temperature, heating to one, or out of service with a message:
+A thermostat setting is off, cooling to a temperature, heating to a temperature, or out of service with a message:
 
 ```haskell
 data ThermostatSetting

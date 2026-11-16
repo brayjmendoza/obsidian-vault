@@ -16,7 +16,7 @@ sources:
 ---
 A compound type is **covariant** in a part when the subtyping of that part carries over in the same direction, and **contravariant** when it carries over reversed.
 
-Pairs and lists are covariant: if `int` ⊑ `double`, then `[int]` ⊑ `[double]`, and a pair is a subtype of another pair when each component is (see [[Subtyping]]). Function types are the interesting case. A function type $t_1 \to t_2$ is a subtype of $t_3 \to t_4$ when:
+Pairs and lists are covariant: if `int` ⊑ `double`, then `[int]` ⊑ `[double]`, and a pair is a subtype of another pair when each component is a subtype (see [[Subtyping]]). Function types are the interesting case. A function type $t_1 \to t_2$ is a subtype of $t_3 \to t_4$ when:
 
 - **The result is covariant:** $t_2 \sqsubseteq t_4$. The function may return something more specific than promised.
 - **The argument is contravariant:** $t_3 \sqsubseteq t_1$. The function must accept everything the caller might pass, so it may accept something more general, never less.
