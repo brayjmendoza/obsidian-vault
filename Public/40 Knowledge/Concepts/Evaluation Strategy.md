@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Call by Value
   - Call by Name
@@ -26,7 +26,7 @@ In most cases, the two give the same result, but they can cost different amounts
 | The argument is expensive, and the parameter appears many times | Evaluates it once per use: more work and space | Evaluates it once |
 | The argument is expensive, or never finishes, and the parameter is unused | Never evaluates it | Evaluates it anyway: wasted work, or no result at all |
 
-More generally, the strategies give different results when evaluating the argument fails or never finishes but the function doesn't use it: call by name returns a result, and call by value doesn't. With side effects, they can also differ in what happens and how often. Most languages use call by value (e.g., C, Java, and Python). Haskell uses **call by need**, which is [[Lazy Evaluation|lazy evaluation]]: call by name, plus remembering an argument's value once it's computed, so it's evaluated at most once.
+More generally, the strategies give different results for when evaluating the argument either fails or never finishes but the function itself doesn't actually use the problematic argument: call by name returns a result, and call by value doesn't. With side effects, they can also differ in what happens and how often. Most languages use call by value (e.g., C, Java, and Python). Haskell uses **call by need**, which is [[Lazy Evaluation|lazy evaluation]]: call by name, plus remembering an argument's value once it's computed, so it's evaluated at most once.
 
 # Example
 
