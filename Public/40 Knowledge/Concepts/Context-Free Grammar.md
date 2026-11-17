@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Grammar
   - BNF
@@ -19,7 +19,7 @@ A **context-free grammar** is a set of rules that specifies which sequences of s
 
 A grammar is a specification for a parser: a program is syntactically valid exactly when the grammar can produce it. It's written as **production rules**, each saying how to produce one kind of phrase:
 
-- **Non-terminal symbols** (e.g., `Expr`) name kinds of phrases, and each has a rule.
+- **Non-terminal symbols** (e.g., `Expr`, see the example) name kinds of phrases, and each has a rule.
 - **Terminal symbols** (e.g., `+`, `(`, and `number`) are the tokens that appear in the program itself (see [[Lexical Analysis]]).
 - **Alternatives,** separated by `|`, are the different ways to produce a non-terminal.
 - **The start symbol** is the non-terminal a whole program must be (e.g., `Expr`).

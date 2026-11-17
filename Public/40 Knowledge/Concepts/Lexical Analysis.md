@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Tokenization
   - Lexing
@@ -17,7 +17,7 @@ sources:
 ---
 **Lexical analysis** is splitting a program's text into **tokens**, its smallest meaningful pieces, as the first step of parsing.
 
-A **token** is an atomic piece of syntax: a reserved word (e.g., `for` or `return`), an identifier (e.g., `count`), a literal value (e.g., `0` or `"Hello"`), an operator (e.g., `<` or `++`), or punctuation (e.g., `{` or `;`). To **tokenize** or **lex** is to turn concrete syntax into a list of tokens, and a **tokenizer** or **lexer** is code that does it. Whitespace usually separates tokens but isn't one, so the lexer drops it.
+A **token** is an atomic piece of syntax: a reserved word (e.g., `for` or `return`), an identifier (e.g., `count`), a literal value (e.g., `0` or `"Hello"`), an operator (e.g., `<` or `++`), or punctuation (e.g., `{` or `;`). To **tokenize** or **lex** is to turn concrete syntax into a list of tokens, and a **tokenizer** or **lexer** is code that does it. Whitespace usually separates tokens but isn't a token itself, so the lexer drops it.
 
 Tokenizing is an intermediate step: the parser then works on tokens instead of characters, so it can ask "is the next thing a number?" rather than reading digits one at a time (see [[Parsing]]). A tokenizer is written in two steps:
 
