@@ -31,7 +31,7 @@ The parser's type evolves as the library grows:
 2. `String -> (Bool, String)`: success and the remaining input.
 3. `String -> (String, String)`: a result, but there's no obvious result for a failure.
 4. `String -> Maybe (String, String)`: failure is `Nothing`, success is `Just` a result and the rest (see [[Option Type]]).
-5. `Parser a = String -> Maybe (a, String)`: a result of any type, so a parser can return an `Exp` and build the AST (see [[Parametric Polymorphism]]).
+5. `Parser a = String -> Maybe (a, String)`: a result of any type, so a parser can return an `Exp` and build the AST (see [[Parametric Polymorphism]] and the [[#Example|example]]).
 
 Parser combinators are [[Abstraction|abstraction]] at work: they can be used without knowing how they work. That same abstraction is what makes them hard at first. Implementing a combinator feels like imperative programming, with sequential updates to the state, while using one feels like functional programming, trusting that it just works. Testing small pieces separately makes them easier to debug.
 
@@ -74,13 +74,27 @@ many p = (p <&&> many p) <||> psucceed
 some p = p <&&> many p
 ```
 
-With results, sequencing passes both results on, and two variants keep just one (e.g., to drop a parenthesis and keep the expression inside):
+Once parsers have the type `Parser a = String -> Maybe (a, String)`, a successful parse returns a **result**: a value of type `a` holding what the parser recognized, turned into data. A parser of type `String -> (Bool, String)` only says *whether* it matched. A `Parser Char` also hands back the character it matched, and a `Parser Exp` hands back an abstract syntax tree:
+
+```haskell
+digit :: Parser Char
+digit "7abc"   -- Just ('7', "abc"): the result is the character '7', and "abc" is left over
+digit "abc"    -- Nothing: no digit, so no result
+```
+
+Sequencing combinators then decide what to do with the results of the two parsers they run. `<+>` keeps both, as a pair, and two variants keep the result of the first parser or the second and drop the other:
 
 ```haskell
 (<+>)  :: Parser a -> Parser b -> Parser (a, b)   -- keep both results
-(<-+>) :: Parser a -> Parser b -> Parser b        -- keep the second
-(<+->) :: Parser a -> Parser b -> Parser a        -- keep the first
+(<-+>) :: Parser a -> Parser b -> Parser b        -- keep the second parser's result
+(<+->) :: Parser a -> Parser b -> Parser a        -- keep the first parser's result
+
+(digit <+> letter) "1a!"     -- Just (('1', 'a'), "!")
+(sym '(' <-+> digit) "(5)"   -- Just ('5', ")"): the parenthesis is parsed, then dropped
+(digit <+-> sym ')') "5)"    -- Just ('5', "")
 ```
+
+Combined, `sym '(' <-+> expr <+-> sym ')'` parses a parenthesized expression and returns only the `Exp` inside, with the parentheses checked but left out of the tree. That's how a combinator parser builds an AST instead of only answering yes or no.
 
 The same combinator, before and after bind:
 
