@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-15
-version: "1.0"
+updated: 2026-11-16
+version: "1.1"
 ---
 # Writing Style
 
@@ -25,6 +25,19 @@ The voice above is the default: system and documentation notes, hubs, plans, ite
 - **Concepts and sources read like a textbook.** Full paragraphs over bullets, precise definitions, and a neutral, impersonal voice — no "you." Define a term before using it, and build from the simple case to the general one. Source notes describe the source in the third person (e.g., "Boas derives the transform from Fourier series").
 - **A concept says where its content comes from.** A concept is titled with the field's standard term, and the terms its sources use go in `aliases` (e.g., Algebraic Data Type, with the alias Data Type). After the opening definition, the body holds what the listed sources teach. Anything else, such as standard terms the sources don't use, history, or comparisons with other languages, goes in a paragraph that starts "More generally," after the source material. An added example from outside the sources says so (e.g., "For comparison, in Python:").
 - **Logs are looser and more direct.** Daily, weekly, and monthly notes, practice and session logs, spending notes, and health and maintenance logs record what happened. Fragments are fine, numbers come first, and there's no opening paragraph (e.g., "45 min, mostly the Chopin coda. Left hand still rushes in bar 112.").
+
+## Clear Explanations
+
+These rules matter most in concepts and sources, where a reader is learning the idea, but they hold in every note.
+
+- **Say exactly when a claim holds.** Name the cases it covers, and don't present one approach's constraints as general (e.g., only recursive-descent parsers need a grammar without left recursion, not every parser).
+- **Make an abstract term concrete where it first appears,** with a small example (e.g., a parser's "result" is shown as `digit "7abc"` giving `Just ('7', "abc")`).
+- **Say why an example shows its point.** After an example, name the part of it that proves the claim (e.g., "the inner scope doesn't bind `x`, so `x` is the outer one").
+- **Spell out comparisons in full** (e.g., "a subtype of the other pair's corresponding component," not "a subtype of the other").
+- **Tie a term's name to its meaning** when the name explains it (e.g., a parametrically polymorphic definition takes types as parameters).
+- **Name the thing instead of writing "one."** Write "heating to a temperature," not "heating to one," and "keep the first parser's result or the second's," not "keep just one."
+- **Don't assume the reader has seen something.** Introduce a term or example before referring to it. A sentence that relies on an example elsewhere links to it, in the same note (e.g., `(see the [[#Example|example]])`) or another note (e.g., "the grammar in [[Context-Free Grammar#Example|Context-Free Grammar]]"). A running example used across notes (e.g., [[Arith]]) links to its reference note at its first mention in each note.
+- **A cross-reference leads to the explanation.** Point only to a note or section that actually covers the point it's attached to. If none does, explain the point in place.
 
 ## Documentation
 
@@ -77,6 +90,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Plain text** for skill names (e.g., inbox-triage, daily-note) and plugin names (e.g., Obsidian Git, Bases).
 - **Note types:** inline code when naming the value (e.g., "has the `plan` type"), plain text when used as a word (e.g., "a plan note").
 - **Notes are links, not code.** Write [[CONVENTIONS]], not `CONVENTIONS.md`, unless you're giving the path.
+- **Symbols are LaTeX in concepts and sources,** especially in STEM (e.g., $\beta$, $\varepsilon$, and $\to$ rather than β, ε, and →). Inside inline code and code blocks, symbols stay plain characters, since LaTeX doesn't render there, and so do properties (e.g., `aliases`). Arrows for mappings in other notes follow [[#Punctuation]].
 - **Vault vocabulary, used exactly:** domain, hub, band, item, log, plan, map, concept, source, Public, and Private. Don't swap in synonyms (e.g., "area" for domain).
 
 ## Links
@@ -86,6 +100,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Links to a header in the same note need no alias.** Obsidian already shows `[[#Placement Rules]]` as "Placement Rules."
 - **Header aliases are display text only.** Never add them to the target note's `aliases` property, which names the whole note, not its headers.
 - **Links inside a sentence** read as part of it, with display text when grammar needs it (e.g., "which breaks [[Vault Principles|link, don't duplicate]]").
+- **Grammar follows the displayed text.** Articles and agreement match the alias that shows, not the note's title (e.g., "a [[Algebraic Data Type|data type]]," not "an").
 - **Link the first mention per section only** (see [[CONVENTIONS]], section 5).
 - **Web links read as text.** When a body holds a URL, write it as a Markdown link with the page's title (e.g., `[Locking and Syncing](https://…)`), not a bare URL.
 
@@ -102,6 +117,7 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-16 · 1.1 · From the review of the CS 131 concepts: added Clear Explanations (exact claims, concrete terms, examples that show their point, full comparisons, names tied to meanings, no "one" for a noun, links to earlier examples, and cross-references that explain). Symbols are LaTeX in concepts and sources, except in code and properties. Link aliases set the grammar around them.
 - 2026-11-15 · Concepts separate what their sources teach from general knowledge: standard terms as titles, source terms as aliases, and outside material in a "More generally," paragraph.
 - 2026-11-11 · URLs in bodies are allowed, so the no-URLs rule is gone: a body URL is a Markdown link with the page's title. A source note's Open Questions and Quotes stay empty unless something there adds value.
 - 2026-11-11 · The to-do list's note is named To-Do's in examples.

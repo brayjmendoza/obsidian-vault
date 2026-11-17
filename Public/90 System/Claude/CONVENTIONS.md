@@ -1,7 +1,7 @@
 ---
 type: system
 created: 2026-10-10
-updated: 2026-11-15
+updated: 2026-11-16
 version: "0.44"
 ---
 # Vault Conventions
@@ -117,7 +117,7 @@ Filename patterns per type are in `structure-schema.yaml` under `filenames`. Typ
 The full schema is `properties-schema.yaml`. These rules apply on top of it.
 
 - Every note outside `00 Inbox/` and `98 Attachments/` has a `type` from the schema.
-- **Scratch notes aren't checked.** A note with `type: scratch` is scratch work. It may sit in any folder under any name, and it may carry the `common` properties (i.e., `created`, `updated`, `aliases`, `tags`, and `claude`). `vault-validate` checks nothing else about it, so its folder, filename, properties, links, tags, and URLs are never reported. Two rules still hold: it never links into `Private/` (see section 1), and it can't take a domain's hub name. Other notes can link to it, but a typed link to it (e.g., a piece's `composers`) is still the wrong type.
+- **Scratch notes aren't checked.** A note with `type: scratch` is scratch work. It may sit in any folder under any name, and it may carry the `common` properties (i.e., `created`, `updated`, `aliases`, `tags`, and `claude`). `vault-validate` checks nothing else about it, so its folder, filename, properties, links, tags, and URLs are never reported. It reports each scratch note once, as a `scratch-note` warning, so scratch work isn't forgotten. Two rules still hold: it never links into `Private/` (see section 1), and it can't take a domain's hub name. Other notes can link to it, but a typed link to it (e.g., a piece's `composers`) is still the wrong type.
 - **One property name, one value type, vault-wide.** Obsidian gives each property name a single type across the vault. A property never changes type between note types. If two meanings need different types, they get different names (e.g., `difficulty` is a number, and `grade` is text).
 - **No nested objects.** Obsidian's properties panel doesn't handle maps or objects. Structured data goes in a table in the note body (see section 5).
 - Property names are `snake_case`. Vocabulary values are lowercase and must match the schema exactly.
@@ -179,6 +179,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-16 · v0.44 · Section 4: `vault-validate` reports each scratch note as a `scratch-note` warning. It still checks nothing else about one. No version bump: no schema changed.
 - 2026-11-15 · v0.44 · `90 System/Claude/` gains a `Skills/` subfolder holding a local copy of each Claude skill (`<skill>/SKILL.md`), which neither validator checks, and the file [[INGEST]] for the ingest-source skill. Every skill starts by running the vault-conventions skill (see section 7).
 - 2026-11-15 · v0.43 · Undoes the `programming-languages` field from v0.42. A sub-map keeps its parent's field (e.g., [[Programming Languages]] has `field: computer-science`), so `fields` lists only broad fields, and links alone record which maps hold a concept. A concept's Maps section is now a live view, `Map.base`, of the maps that link to it, instead of hand-kept links.
 - 2026-11-15 · v0.42 · The `field` vocabulary adds `programming-languages`, the field of the [[Programming Languages]] sub-map. A concept's `fields` lists the field of every map it appears on, sub-maps included (e.g., `computer-science` and `programming-languages`). Concept notes end with a Maps section linking each map that lists them, which [[Concept Template]] now has. The Unmapped Concepts view in `Concepts.base` counts a concept as mapped when any map links to it, sub-maps included.

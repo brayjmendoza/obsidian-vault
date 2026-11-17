@@ -1,4 +1,4 @@
-"""Scratch notes: skipped by every validator except the Private/ boundary."""
+"""Scratch notes: unchecked except for the Private/ boundary, and each one a warning."""
 
 from pathlib import Path
 from typing import Final
@@ -14,6 +14,7 @@ from vault_tools.cli import ExitCode
 from vault_tools.issues import IssueCode, Severity
 
 E: Final = Severity.ERROR
+W: Final = Severity.WARNING
 
 # Breaks nearly every rule a checked note could: wrong folder for a typed note,
 # unknown and wrong-type properties, a bad tag, a malformed and unreachable
@@ -49,21 +50,24 @@ def add_scratch(root: Path, notes: dict[str, str] = SCRATCH_NOTES) -> None:
 
 
 def test_scratch_notes_are_not_checked(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:
-    """No offline validator reports anything about scratch notes."""
+    """No offline validator checks scratch notes, and structure reports each as a warning."""
     root = copy_fixture("valid")
     add_scratch(root)
     vault = load_vault(root)
-    for check in (validate_structure, validate_properties, validate_links, validate_tags):
+    for check in (validate_properties, validate_links, validate_tags):
         assert check.check(vault) == [], check.__name__
+    assert keys(validate_structure.check(vault)) == {
+        (W, IssueCode.SCRATCH_NOTE, rel, None) for rel in SCRATCH_NOTES
+    }
 
 
 def test_full_run_ignores_scratch(served_copy: CopyFixture) -> None:
-    """vault-validate passes, so a scratch note's unreachable `url` is never fetched."""
+    """vault-validate passes with a warning per scratch note, and never fetches their `url`."""
     root = served_copy("valid")
     add_scratch(root)
     result = run_module("validate", str(root))
     assert result.returncode == ExitCode.OK, result.stdout + result.stderr
-    assert "0 errors, 0 warnings" in result.stdout
+    assert f"0 errors, {len(SCRATCH_NOTES)} warnings" in result.stdout
 
 
 def test_scratch_notes_are_link_targets(copy_fixture: CopyFixture, load_vault: LoadVault) -> None:

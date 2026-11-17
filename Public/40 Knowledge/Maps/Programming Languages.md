@@ -6,7 +6,6 @@ field: computer-science
 ---
 ↑ [[Computer Science]]
 
-+ [ ] Go over all of the PL's notes and give feedback to Claude🔺 
 + [ ] Start `quiz-me` skill by having Claude quiz you on all these concepts and determine `confidence`
 # Functions
 

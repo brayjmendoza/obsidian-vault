@@ -38,7 +38,7 @@ TEMPLATE_TYPE: Final = "template"
 
 # Scratch notes are scratch work: no validator checks them, wherever they sit,
 # except that they still never link into Private/ (CONVENTIONS.md section 4).
-# They still count as link targets.
+# The structure check reports each one as a warning. They still count as link targets.
 SCRATCH_TYPE: Final = "scratch"
 
 # Folders where a note may have no `type` (CONVENTIONS.md section 4).

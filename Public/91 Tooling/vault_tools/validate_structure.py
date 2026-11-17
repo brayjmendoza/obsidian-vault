@@ -6,7 +6,8 @@ its folder; filenames match their type's pattern; every domain has a hub,
 and its only documentation note is its About page;
 non-note files appear only where their extension is allowed. Scratch notes
 may sit in any folder under any name; only a domain's hub and About names
-are reserved.
+are reserved. Each scratch note is reported as a warning, so scratch work
+isn't forgotten.
 
     vault-validate-structure [PUBLIC_DIR] [--json]
     python -m vault_tools.validate_structure
@@ -20,7 +21,7 @@ from typing import Final
 from pydantic import BaseModel, ConfigDict, Field
 
 from vault_tools.cli import run_cli
-from vault_tools.issues import CheckName, Issue, IssueCode, error_issue
+from vault_tools.issues import CheckName, Issue, IssueCode, error_issue, warning_issue
 from vault_tools.markup import NOTE_SUFFIX
 from vault_tools.schemas import (
     ANY,
@@ -275,7 +276,8 @@ class StructureChecker:
 
         A note with a missing or malformed type is left to the properties
         validator, except where no notes may sit at all. A scratch note is
-        never checked, unless it takes the name of its domain's hub or About page.
+        never checked, unless it takes the name of its domain's hub or About page,
+        but it is reported as a warning so scratch work isn't forgotten.
 
         Args:
             path: The note on disk.
@@ -300,6 +302,8 @@ class StructureChecker:
                 yield _error(IssueCode.ABOUT_WRONG_TYPE, rel, message)
             return
         if is_scratch(note):
+            message = "scratch note: unchecked until it becomes a typed note or is archived"
+            yield _warning(IssueCode.SCRATCH_NOTE, rel, message)
             return
         if not isinstance(note_type, str):
             if note_type is None and spec.types is not None and not spec.types:
@@ -351,6 +355,20 @@ def _error(code: IssueCode, path: str, message: str) -> Issue:
         The issue.
     """
     return error_issue(CHECK, code, path, message)
+
+
+def _warning(code: IssueCode, path: str, message: str) -> Issue:
+    """Build a structure warning.
+
+    Args:
+        code: What kind of problem it is.
+        path: Where, relative to Public/.
+        message: What's wrong.
+
+    Returns:
+        The issue.
+    """
+    return warning_issue(CHECK, code, path, message)
 
 
 def check(vault: Vault) -> list[Issue]:

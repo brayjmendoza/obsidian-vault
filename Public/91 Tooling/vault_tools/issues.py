@@ -60,6 +60,7 @@ class IssueCode(StrEnum):
     ABOUT_WRONG_TYPE = "about-wrong-type"
     ABOUT_MISNAMED = "about-misnamed"
     FILENAME_MISMATCH = "filename-mismatch"
+    SCRATCH_NOTE = "scratch-note"
     # Links and URLs
     PRIVATE_LINK = "private-link"
     ANCHOR_UNRESOLVED = "anchor-unresolved"

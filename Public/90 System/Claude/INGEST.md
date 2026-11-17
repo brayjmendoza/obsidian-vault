@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-11-15
-updated: 2026-11-15
-version: "1.6"
+updated: 2026-11-16
+version: "1.7"
 ---
 # Ingest Guide
 
@@ -22,7 +22,7 @@ Each field section below gives this test in its own terms.
 ## Names
 
 - **Concepts take the field's standard term,** even when the source uses another, and the source's terms go in `aliases` (e.g., Algebraic Data Type, with the alias Data Type).
-- **A term another subject also uses gets its area in parentheses** (e.g., `Closure (Programming Languages)`, since math has its own closures, and `Map (Higher-Order Function)`, since a map is also a data structure). The bare term goes in `aliases`. Check for a clash across every field, not just the one being ingested.
+- **A term another subject also uses gets its area in parentheses** (e.g., `Closure (Programming Languages)`, since math has its own closures, and `Monad (Functional Programming)`, since philosophy has its own monads). The bare term goes in `aliases`. Check for a clash across every field, not just the one being ingested.
 
 ## Kinds of Source
 
@@ -38,7 +38,8 @@ Tested on CS 131.
 - **Leave out:** logistics, homework instructions, and announcements.
 - **Units follow the lecture numbering,** not the folders. A folder can hold slides for more than one lecture (e.g., CS 131's Module 4 folder held 4.1 and 4.2, and its summaries put environments in 5.1, the next unit).
 - **Formulas on slides are often images,** with no text to extract. Render those pages at about 90 dpi, so subscripts and symbols are legible, and write the formulas in LaTeX (e.g., CS 131's typing rules).
-- **Concepts don't mention the course.** The course's running examples appear by name instead (e.g., Arith, the small language CS 131 builds an interpreter for), and a broken slide example is written correctly and reported.
+- **Concepts don't mention the course.** The course's running examples appear by name instead (e.g., [[Arith]], the small language CS 131 builds an interpreter for), and a broken slide example is written correctly and reported.
+- **Running examples get a reference** in `50 References/Examples/`, named for the example, that holds the whole example in one place: what it is, how it grows unit by unit, and its latest version. Each unit that extends the example updates the reference, and every concept that uses it links to the reference at its first mention.
 
 ### Books
 
@@ -130,6 +131,7 @@ Tested on CS 131 (i.e., programming languages).
 
 ## Changelog
 
+- 2026-11-16 · 1.7 · Courses: running examples get a reference in `50 References/Examples/` (e.g., [[Arith]]). The Names example for a shared term is now Monad, since Map and Filter merged into Higher-Order Function.
 - 2026-11-15 · 1.6 · Fields: a concept from another field also lists that field.
 - 2026-11-15 · 1.5 · Courses: formulas that are images on slides are rendered at about 90 dpi and rewritten in LaTeX.
 - 2026-11-15 · 1.4 · The rule for names shared with other subjects moved from Computer Science to a new general Names section, which also restates the standard-term rule.

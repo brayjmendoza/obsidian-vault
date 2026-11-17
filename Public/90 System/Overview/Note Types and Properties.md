@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-11
+updated: 2026-11-16
 ---
 # Note Types and Properties
 
@@ -31,7 +31,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 | system | `90 System/` and `91 Tooling/` | The vault's rules |
 | template | `92 Templates/` | A template for new notes, or an automation |
 | documentation | `90 System/Overview/`, and a domain's About page | Notes like this one, and a domain's own documentation |
-| scratch | Anywhere | Scratch work that validation skips |
+| scratch | Anywhere | Scratch work that validation skips, reported as a warning |
 
 ## Schema Rules that Shape Every Note
 
@@ -41,7 +41,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 
 ## Scratch Notes
 
-A `scratch` note is a place to think without the schemas getting in the way. It can sit anywhere under any name, and validation skips it, except that it still can't link into `Private/` (see [[Privacy Boundary]]). When the work is ready to keep, give the note its real type.
+A `scratch` note is a place to think without the schemas getting in the way. It can sit anywhere under any name, and validation skips it, except that it still can't link into `Private/` (see [[Privacy Boundary]]). Each scratch note is reported as a warning, so unfinished work stays visible. When the work is ready to keep, give the note its real type.
 
 ---
 ← [[Knowledge Structure]] · Next: [[Note Properties]] →

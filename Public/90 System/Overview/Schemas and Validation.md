@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-16
 ---
 # Schemas and Validation
 
@@ -16,7 +16,7 @@ Scripts also check what the schemas can't: links reach a note, and the right kin
 
 - **Approval enforces itself:** an undeclared folder, type, or property fails validation, so a new hobby or field means a schema change, which needs your approval.
 - **One version:** [[CONVENTIONS]] and the schemas share a version number and change together.
-- **Scratch notes are skipped** (see [[Note Types and Properties#Scratch Notes|Scratch Notes]]).
+- **Scratch notes are skipped,** but each one shows up as a warning so it isn't forgotten (see [[Note Types and Properties#Scratch Notes|Scratch Notes]]).
 
 ## Where Validation Runs
 
