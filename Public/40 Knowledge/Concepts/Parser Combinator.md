@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Parsing Library
 fields:
@@ -41,7 +41,7 @@ More generally, parser combinator libraries exist for many languages (e.g., Hask
 
 # Example
 
-The arithmetic grammar, and the parser written with combinators:
+The arithmetic grammar, and the parser written with combinators. Note the resemblance between the grammar and the parser:
 
 ```
 Expr   ::= Factor + Expr | Factor - Expr | Factor * Expr | Factor / Expr | Factor

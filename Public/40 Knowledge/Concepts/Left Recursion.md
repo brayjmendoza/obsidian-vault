@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Left-Recursive Grammar
 fields:
@@ -17,7 +17,7 @@ Left recursion breaks a [[Recursive-Descent Parser|recursive-descent parser]]. T
 
 The fix is to rewrite the grammar so every alternative starts with something that consumes input, while describing the same language. For arithmetic, the left operand becomes a new non-terminal (e.g., `Factor`) for the pieces that can't contain a bare operator: numbers and parenthesized expressions. There's a general algorithm for removing left recursion from any grammar.
 
-Rewriting changes how operators group. Replacing `Expr + Expr` with `Factor + Expr` makes the recursion go to the right, so `1 - 2 - 3` parses as `1 - (2 - 3)`: every operator becomes right-associative, which is wrong for subtraction and division. Getting left associativity back takes another rewrite, where a helper non-terminal handles a chain of operators that ends in ε (see [[Operator Precedence and Associativity]]).
+Rewriting changes how operators group. Replacing `Expr + Expr` with `Factor + Expr` makes the recursion go to the right, so `1 - 2 - 3` parses as `1 - (2 - 3)`: every operator becomes right-associative, which is wrong for subtraction and division. Getting left associativity back takes another rewrite, where a helper non-terminal handles a chain of operators that ends in ε (see the [[#Example|example]]).
 
 More generally, left recursion is only a problem for top-down parsers. Bottom-up parsers (e.g., LR parsers, which many parser generators build) handle left-recursive rules directly, and even prefer them. Hand-written parsers often avoid the grammar rewrite by parsing a chain of operators with a loop, or a fold over a list, that builds the tree from the left.
 
