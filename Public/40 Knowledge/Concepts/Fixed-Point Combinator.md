@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Y Combinator
   - Fixpoint Combinator
@@ -12,9 +12,9 @@ last_reviewed: 2026-11-15
 sources:
   - "[[Programming Languages (HMC CS131)]]"
 ---
-A **fixed-point combinator** is a function that, given a function $g$, produces a fixed point of $g$: a value $x$ with $x = g\,x$. Its standard example, the **Y combinator**, is how anonymous functions can be recursive.
+A **fixed-point combinator** is a function that, given a function $g$, produces a fixed point of $g$: a value $x$ with $x = g\,x$  (i.e., $x=g(x)$). Its standard example, the **Y combinator**, is how anonymous functions can be recursive.
 
-A recursive function refers to itself by name (e.g., `fact` calls `fact`). In the lambda calculus, functions have no names, so a function can't mention itself. The Y combinator gets around this by repeating a function as many times as needed.
+A recursive function refers to itself by name (e.g., `factorial` calls `factorial`). In the lambda calculus, functions have no names, so a function can't mention itself. The Y combinator gets around this by repeating a function as many times as needed.
 
 It comes from generalizing Russell's paradox (see [[Russell's Paradox]]). The expression `(R R)`, with `R = (λx . (Not (x x)))`, reduces to `(Not (R R))`, then `(Not (Not (R R)))`, and so on, applying `Not` forever. Nothing depends on `Not` in particular, so making it a parameter gives:
 
@@ -24,7 +24,7 @@ Y ≜ (λf . ((λx . (f (x x))) (λx . (f (x x)))))
 
 and `(Y g)` reduces to `(g (Y g))`, then `(g (g (Y g)))`: $g$ applied to $g$ applied to $g$, as many times as needed.
 
-That's exactly what a **fixed point** is. A fixed point of a function $g$ is a value $x$ with $x = g\,x$. For $g(x) = 20 - x^2$, 4 is a fixed point, since $20 - 4^2 = 4$, so $4 = g(4) = g(g(4)) = \cdots$. Recursion works the same way. Factor the recursive call out of a definition into a parameter:
+That's exactly what a **fixed point** is. A fixed point of a function $g$ is a value $x$ with $x = g\,x$. For $g(x) = 20 - x^2$, 4 is a fixed point, since $20 - 4^2 = 4$, so $4 = g(4) = g(g(4)) = \cdots$. Recursion works the same way. Factor the recursive call out of a definition into a parameter. For example, with factorial:
 
 ```haskell
 fact = (\f -> \n -> if n == 0 then 1 else n * f (n - 1)) fact
