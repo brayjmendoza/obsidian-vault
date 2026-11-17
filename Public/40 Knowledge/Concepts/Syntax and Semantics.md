@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Syntax
   - Semantics
@@ -18,7 +18,7 @@ Syntax answers "is this valid code?", and semantics answers "what does it do?" I
 
 Implementing a language means handling both. Syntax comes in two forms: the text the programmer writes, and the tree structure that text represents (see [[Concrete and Abstract Syntax]]). Semantics can be defined by an evaluator, a function that takes the tree and computes its meaning (see [[Interpreter]]).
 
-More generally, there are several formal ways to define semantics. Defining a language's meaning with an evaluation function, as an [[Interpreter|interpreter]] does (e.g., Arith's `eval`), is a kind of **operational semantics**, which defines meaning by how a program runs. Others define meaning mathematically (**denotational semantics**) or by what can be proved about a program (**axiomatic semantics**). The gap between symbol and meaning reaches beyond programming, into linguistics and the philosophy of mind.
+More generally, there are several formal ways to define semantics. Defining a language's meaning with an evaluation function, as an [[Interpreter|interpreter]] does (e.g., [[Arith]]'s `eval`), is a kind of **operational semantics**, which defines meaning by how a program runs. Others define meaning mathematically (**denotational semantics**) or by what can be proved about a program (**axiomatic semantics**). The gap between symbol and meaning reaches beyond programming, into linguistics and the philosophy of mind.
 
 # Example
 

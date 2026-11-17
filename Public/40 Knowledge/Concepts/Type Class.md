@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Typeclass
 fields:
@@ -45,7 +45,7 @@ Clubs < Hearts           -- True, from Ord: Clubs is declared first
 read "Clubs" :: CardSuit -- Clubs, from Read. Without the annotation, it's ambiguous
 ```
 
-Writing a `Show` instance by hand, so Arith expressions print in prefix notation instead of as constructors:
+Writing a `Show` instance by hand, so [[Arith]] expressions print in prefix notation instead of as constructors:
 
 ```haskell
 data Exp = Num Double | BinOp Exp Op Exp deriving (Eq)

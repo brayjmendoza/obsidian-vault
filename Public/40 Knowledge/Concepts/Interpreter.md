@@ -14,7 +14,7 @@ sources:
 ---
 An **interpreter** is a program that takes another program, represented as abstract syntax, and computes its value directly.
 
-An interpreter's core is an **evaluation function**, `eval`, that traverses the abstract syntax tree (see [[Concrete and Abstract Syntax]]). For example, with the grammar for expressions (see [[Context-Free Grammar#Example|Context-Free Grammar]]), the `eval` function would have one case per kind of expression, matched with [[Pattern Matching|pattern matching]]: a number evaluates to itself, and an operation evaluates its operands recursively and then combines the results. Writing `eval` defines a language's [[Syntax and Semantics|semantics]]: the function says what every expression means. Arith, a small language of arithmetic expressions, is built this way, with both its abstract syntax and its semantics written in Haskell.
+An interpreter's core is an **evaluation function**, `eval`, that traverses the abstract syntax tree (see [[Concrete and Abstract Syntax]]). For example, with the grammar for expressions (see [[Context-Free Grammar#Example|Context-Free Grammar]]), the `eval` function would have one case per kind of expression, matched with [[Pattern Matching|pattern matching]]: a number evaluates to itself, and an operation evaluates its operands recursively and then combines the results. Writing `eval` defines a language's [[Syntax and Semantics|semantics]]: the function says what every expression means. [[Arith]], a small language of arithmetic expressions, is built this way, with both its abstract syntax and its semantics written in Haskell.
 
 When developing the Arith language, we implement one feature at a time. Each feature requires a new constructor and a new case in `eval`:
 

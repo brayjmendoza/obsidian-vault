@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Parser
 fields:
@@ -33,7 +33,7 @@ More generally, parser generators are common in compilers (e.g., yacc, Bison, an
 
 # Example
 
-Parsing the text `1 + 2 * 3` into Arith's abstract syntax:
+Parsing the text `1 + 2 * 3` into [[Arith]]'s abstract syntax:
 
 ```haskell
 parse "1 + 2 * 3"

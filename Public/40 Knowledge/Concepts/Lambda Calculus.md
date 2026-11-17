@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - λ-Calculus
   - Lambda Abstraction
@@ -59,7 +59,7 @@ Some lambda expressions:
 - [[Fixed-Point Combinator]]: recursion without names
 - [[Currying]]: every lambda-calculus function takes one argument
 - [[Functional Programming]]: functional languages are lambda calculi with conveniences added
-- [[Interpreter]]: Arith's `FuncDef` and `Apply` are lambda abstraction and application
+- [[Interpreter]]: [[Arith]]'s `FuncDef` and `Apply` are lambda abstraction and application
 
 # Sources
 

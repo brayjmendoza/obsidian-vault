@@ -39,7 +39,7 @@ The smallest pieces of a line of C:
 | `;` | Punctuation |
 | `"Hello, World!"` | Literal string |
 
-A tokenizer for Arith:
+A tokenizer for [[Arith]]:
 
 ```haskell
 data Token

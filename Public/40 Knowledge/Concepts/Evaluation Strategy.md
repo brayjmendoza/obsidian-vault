@@ -30,7 +30,7 @@ More generally, the strategies give different results for when evaluating the ar
 
 # Example
 
-The two versions of `eval` for function application, from Arith's interpreter:
+The two versions of `eval` for function application, from [[Arith]]'s interpreter:
 
 ```haskell
 -- Call by name: substitute the unevaluated argument

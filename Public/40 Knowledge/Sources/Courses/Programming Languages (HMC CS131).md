@@ -1,7 +1,7 @@
 ---
 type: course
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-16
 authors:
   - Ben Wiedermann
 year: 2024
@@ -45,7 +45,7 @@ The course's running theme is [[Abstraction]]. It starts with functions as param
 - An expression computes a value, and a statement is performed for its effect (see [[Expressions and Statements]]).
 - [[Syntax and Semantics|Syntax]] is what the programmer writes, and semantics is what it means.
 - Concrete syntax is the text, and abstract syntax is the tree it stands for, with parsing and pretty printing between them (see [[Concrete and Abstract Syntax]]). Precedence and parentheses belong to concrete syntax.
-- An `eval` function over abstract syntax defines the semantics of Arith, a language of arithmetic expressions, which grows variables and then functions (in general, an [[Interpreter|interpreter]]).
+- An `eval` function over abstract syntax defines the semantics of [[Arith]], a language of arithmetic expressions, which grows variables and then functions (in general, an [[Interpreter|interpreter]]).
 - Applying a function substitutes the argument for the parameter in the body, written $e[x \mapsto e']$ (see [[Substitution]]).
 - Evaluating the argument before substituting it is call by value, and substituting it unevaluated is call by name (in general, an [[Evaluation Strategy|evaluation strategy]]).
 

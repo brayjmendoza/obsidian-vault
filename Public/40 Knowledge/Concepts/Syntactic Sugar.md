@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Desugaring
 fields:
@@ -21,7 +21,7 @@ More generally, translating sugar into the language's core is called **desugarin
 
 # Example
 
-`let` added to Arith, with its meaning defined by function application:
+`let` added to [[Arith]], with its meaning defined by function application:
 
 ```haskell
 data Exp

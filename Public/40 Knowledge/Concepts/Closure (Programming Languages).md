@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Closure
 fields:
@@ -26,7 +26,7 @@ More generally, closures are how every language with first-class functions and s
 
 # Example
 
-Arith with closures:
+[[Arith]] with closures:
 
 ```haskell
 data Exp
@@ -43,7 +43,7 @@ eval env (Apply fexp arg) =
   in eval (envInsert v argval closureEnv) body     -- use the saved environment
 ```
 
-The curried application that failed without closures now works:
+A curried application, which fails without closures (see [[Environment (Programming Languages)#Example|Environment]]), now works:
 
 ```haskell
 eval [] (Apply (Apply (FuncDef "a" (FuncDef "b" (BinOp (Var "b") PlusOp (Var "a")))) (Num 100)) (Num 42))
