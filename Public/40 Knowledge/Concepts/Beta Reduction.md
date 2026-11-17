@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - β-Reduction
   - Normal Form
@@ -12,7 +12,7 @@ last_reviewed: 2026-11-15
 sources:
   - "[[Programming Languages (HMC CS131)]]"
 ---
-**β-reduction** is the lambda calculus's one rule of computation: applying a function to an argument by substituting the argument for the parameter in the function's body.
+**$\beta$-reduction** is the lambda calculus's one rule of computation: applying a function to an argument by substituting the argument for the parameter in the function's body.
 
 Applying `(λx . M)` to `N` reduces to $M[x \mapsto N]$, the body $M$ with every free $x$ replaced by $N$:
 
@@ -31,11 +31,11 @@ Which part of an expression to reduce first can change whether reduction ends. I
 
 This is the same choice an interpreter makes (see [[Evaluation Strategy]]).
 
-More generally, the **Church–Rosser theorem** says that whenever two orders of reduction both reach a normal form, they reach the same one, up to renaming bound variables. **Normal-order** reduction, which always reduces the leftmost outermost application first, is guaranteed to find a normal form if one exists. Substitution in β-reduction has to avoid capturing variables, renaming bound variables first when needed (i.e., α-conversion).
+More generally, the **Church–Rosser theorem** says that whenever two orders of reduction both reach a normal form, they reach the same one, up to renaming bound variables. **Normal-order** reduction, which always reduces the leftmost outermost application first, is guaranteed to find a normal form if one exists. Substitution in $\beta$-reduction has to avoid capturing variables, renaming bound variables first when needed (i.e., $\alpha$-conversion).
 
 # Example
 
-Reducing step by step:
+$\beta$-reducing step by step:
 
 ```
 ((λx . ((x y) z)) h)     →  ((h y) z)                      normal form

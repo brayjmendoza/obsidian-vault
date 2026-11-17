@@ -41,7 +41,7 @@ The course's running theme is [[Abstraction]]. It starts with functions as param
 
 ## Module 4: Interpreting Programs
 
-- Code is data: programs can take other programs as input (see [[Code as Data]]).
+- Code is data: programs can take other programs as input (see [[Concrete and Abstract Syntax]]).
 - An expression computes a value, and a statement is performed for its effect (see [[Expressions and Statements]]).
 - [[Syntax and Semantics|Syntax]] is what the programmer writes, and semantics is what it means.
 - Concrete syntax is the text, and abstract syntax is the tree it stands for, with parsing and pretty printing between them (see [[Concrete and Abstract Syntax]]). Precedence and parentheses belong to concrete syntax.

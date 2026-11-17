@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Data Type
   - Haskell Datatype
@@ -61,7 +61,7 @@ isRunning temp (HeatTo t)    = temp < t
 - [[Recursive Data Type]]: an algebraic data type that refers to itself
 - [[Expression Problem]]: why defining a type by its alternatives organizes a program differently from classes
 - [[Type Class]]: `deriving` adds a type to type classes like `Show` and `Eq`
-- [[Code as Data]]: algebraic data types are how Haskell represents a language's programs as data
+- [[Concrete and Abstract Syntax]]: algebraic data types are how Haskell represents a language's programs as data
 - [[Option Type]]: `Maybe`, a standard algebraic data type with two constructors
 - [[Context-Free Grammar]]: a `data` declaration has the same shape as a grammar rule
 - [[Curry-Howard Correspondence]]: products and sums correspond to logical "and" and "or"

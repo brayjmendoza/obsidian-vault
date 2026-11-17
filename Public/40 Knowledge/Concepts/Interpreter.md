@@ -72,11 +72,10 @@ eval (Apply (Apply (FuncDef "x" (FuncDef "y" (BinOp (Var "x") PlusOp (Var "y")))
 
 # Connections
 
-- [[Concrete and Abstract Syntax]]: an interpreter works on the tree, not the text
+- [[Concrete and Abstract Syntax]]: an interpreter takes code as data, working on the tree rather than the text
 - [[Syntax and Semantics]]: the evaluation function defines the semantics
 - [[Substitution]]: how this interpreter applies a function
 - [[Evaluation Strategy]]: whether the argument is evaluated before it's substituted
-- [[Code as Data]]: an interpreter is a program that takes code as its input
 - [[Currying]]: multi-argument functions as nested one-argument functions
 - [[Syntactic Sugar]]: new syntax given meaning by rewriting it into existing syntax
 - [[Environment (Programming Languages)]] and [[Closure (Programming Languages)]]: how the evaluator replaces substitution, and keeps static scope while doing it

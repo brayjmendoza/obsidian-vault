@@ -32,10 +32,10 @@ The vocabulary:
 - **Lambda abstraction** `(λx . M)`: a function with **parameter** `x` and **body** `M`. Functions have no names, and every function takes one argument, so a function of several arguments is curried (e.g., `(λa . (λb . a))`) (see [[Currying]]).
 - **Function application** `(M N)`: applying the function `M` to the argument `N`.
 - **Bound and free variables:** a variable is bound by the nearest enclosing `λ` with its name, and free otherwise. A **closed** expression has no free variables, and an **open** one does (see [[Free and Bound Variables]]).
-- **α-equivalence:** renaming a bound variable throughout doesn't change an expression's meaning, so `(λx . x)` and `(λy . y)` are α-equivalent. Renaming must not capture a free variable: `(λx . (x y))` is not α-equivalent to `(λy . (y y))`.
+- **$\alpha$-equivalence:** renaming a bound variable throughout doesn't change an expression's meaning, so `(λx . x)` and `(λy . y)` are $\alpha$-equivalent. Renaming must not capture a free variable: `(λx . (x y))` is not $\alpha$-equivalent to `(λy . (y y))`.
 - **≜:** a shorthand name for an expression (e.g., `TRUE ≜ (λa . (λb . a))`). Names are for people, not part of the calculus itself.
 
-Computation is **β-reduction**, applying a function by substituting the argument for the parameter (see [[Beta Reduction]]). Data like Booleans, pairs, and numbers can all be represented as functions (see [[Church Encoding]]), and recursion comes from a fixed-point combinator (see [[Fixed-Point Combinator]]).
+Computation is **$\beta$-reduction**, applying a function by substituting the argument for the parameter (see [[Beta Reduction]]). Data like Booleans, pairs, and numbers can all be represented as functions (see [[Church Encoding]]), and recursion comes from a fixed-point combinator (see [[Fixed-Point Combinator]]).
 
 More generally, the claim that the lambda calculus and Turing machines capture everything that can be computed is the **Church–Turing thesis**. It's a thesis rather than a theorem, since "computable" has no formal definition outside such models, but every model proposed since has turned out equivalent. Functional languages are lambda calculi with extras: Haskell's compiler translates programs into a typed lambda calculus, an extension of **System F** called System FC, and typed lambda calculi are the setting for [[Typing Rule|typing rules]] and the [[Curry-Howard Correspondence|Curry–Howard correspondence]].
 
@@ -43,13 +43,13 @@ More generally, the claim that the lambda calculus and Turing machines capture e
 
 Some lambda expressions:
 
-| Expression | Reading |
-|---|---|
-| `(λx . x)` | The identity function. Closed |
-| `(λx . y)` | A function that ignores its argument and returns `y`. Open, since `y` is free |
-| `(λx . (λy . x))` | A curried function that returns its first argument |
-| `((λx . x) a)` | The identity function applied to `a`, which reduces to `a` |
-| `(x x)` | `x` applied to itself. Open |
+| Expression        | Reading                                                                             |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| `(λx . x)`        | The identity function. Closed                                                       |
+| `(λx . y)`        | A function that ignores its argument and returns `y`. Open, since `y` is free       |
+| `(λx . (λy . x))` | A curried function that returns its first argument                                  |
+| `((λx . x) a)`    | The identity function applied to `a`, which reduces to `a` (as the identity should) |
+| `(x x)`           | `x` applied to itself. Open                                                         |
 
 # Connections
 

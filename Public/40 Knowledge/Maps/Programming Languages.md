@@ -1,7 +1,7 @@
 ---
 type: map
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-16
 field: computer-science
 ---
 ↑ [[Computer Science]]
@@ -65,13 +65,12 @@ field: computer-science
 
 # Interpreters
 
-1. [[Code as Data]] — programs represented as data structures, so other programs can work on them
-2. [[Interpreter]] — evaluating abstract syntax directly, which defines a language's semantics
-3. [[Substitution]] — replacing a variable with an expression, the way function application is first defined
-4. [[Evaluation Strategy]] — whether an argument is evaluated before or after it's passed in
-5. [[Syntactic Sugar]] — new syntax whose meaning is defined by rewriting it into existing syntax, like `let`
-6. [[Environment (Programming Languages)]] — remembering bindings instead of substituting them
-7. [[Closure (Programming Languages)]] — a function packaged with the environment it was defined in
+1. [[Interpreter]] — evaluating abstract syntax directly, which defines a language's semantics
+2. [[Substitution]] — replacing a variable with an expression, the way function application is first defined
+3. [[Evaluation Strategy]] — whether an argument is evaluated before or after it's passed in
+4. [[Syntactic Sugar]] — new syntax whose meaning is defined by rewriting it into existing syntax, like `let`
+5. [[Environment (Programming Languages)]] — remembering bindings instead of substituting them
+6. [[Closure (Programming Languages)]] — a function packaged with the environment it was defined in
 
 
 # Lambda Calculus
