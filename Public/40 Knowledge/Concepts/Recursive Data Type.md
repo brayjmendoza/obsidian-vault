@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Cons List
 fields:
@@ -80,7 +80,7 @@ flowchart TD
 - [[Pattern Matching]]: the pattern `x : xs` takes a list apart the same way `:` builds it
 - [[Lazy Evaluation]]: what lets a recursive structure like a list be infinite
 - [[Parametric Polymorphism]]: `[a]` makes one list type work for elements of every type
-- [[Map (Higher-Order Function)]]: mapping works over any recursive structure, not just lists (e.g., applying a function at every node of a tree)
+- [[Higher-Order Function]]: mapping works over any recursive structure, not just lists (e.g., applying a function at every node of a tree)
 - [[Concrete and Abstract Syntax]]: an abstract syntax tree is a recursive data type, with expressions inside expressions
 
 # Sources

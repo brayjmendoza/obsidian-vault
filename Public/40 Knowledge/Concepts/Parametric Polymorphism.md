@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Parameterized Type
   - Type Variable
@@ -46,7 +46,7 @@ data List a  = Empty | Cons a (List a)
 - [[Type Class]]: the other kind of polymorphism, where one name has a different implementation for each type
 - [[Type Inference]]: Haskell infers the most general polymorphic type a definition allows
 - [[Recursive Data Type]]: Haskell's lists, `[a]`, are the standard parameterized recursive type
-- [[Map (Higher-Order Function)]]: polymorphic in two type variables at once
+- [[Higher-Order Function]]: `map` is polymorphic in two type variables at once
 - [[Option Type]]: `Maybe a`, a parameterized type for values that might be missing
 - [[Parser Combinator]]: `Parser a`, a parser whose result can be any type
 - [[Functor (Functional Programming)]]: a type class over parameterized types, like `Maybe` and `Tree`

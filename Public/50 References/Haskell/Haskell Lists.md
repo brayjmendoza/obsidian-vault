@@ -1,10 +1,10 @@
 ---
 type: reference
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 topic: haskell
 ---
-Haskell's list syntax and the standard list functions. The ideas behind them are in [[Recursive Data Type]], [[Map (Higher-Order Function)]], and [[Filter (Higher-Order Function)]].
+Haskell's list syntax and the standard list functions. The ideas behind them are in [[Recursive Data Type]] and [[Higher-Order Function]] (for `map` and `filter`).
 
 # Writing Lists
 

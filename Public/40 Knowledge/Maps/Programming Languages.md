@@ -8,6 +8,16 @@ field: computer-science
 
 + [ ] Go over all of the PL's notes and give feedback to Claude🔺 
 + [ ] Start `quiz-me` skill by having Claude quiz you on all these concepts and determine `confidence`
+# Functions
+
+1. [[Pattern Matching]] — defining a function by cases, taking values apart by their shape
+2. [[Recursion]] — functions that call themselves on smaller inputs, in place of loops
+3. [[Partial Function]] — functions with no result for some inputs, like the head of an empty list
+4. [[Currying]] — every function takes one argument, so a multi-argument function returns a function
+5. [[Higher-Order Function]] — functions that take or return functions, like map and filter on lists
+6. [[Function Composition]] — chaining two functions into one
+7. [[Point-Free Style]] — defining functions by composition and partial application, without naming arguments
+
 # Functional Programming
 
 1. [[Functional Programming]] — computing by evaluating expressions instead of updating state
@@ -82,14 +92,3 @@ field: computer-science
 5. [[Russell's Paradox]] — the set of sets that don't contain themselves, as a lambda expression with no normal form
 6. [[Fixed-Point Combinator]] — recursion without names, by finding a function's fixed point
 
-# Functions
-
-1. [[Pattern Matching]] — defining a function by cases, taking values apart by their shape
-2. [[Recursion]] — functions that call themselves on smaller inputs, in place of loops
-3. [[Partial Function]] — functions with no result for some inputs, like the head of an empty list
-4. [[Currying]] — every function takes one argument, so a multi-argument function returns a function
-5. [[Higher-Order Function]] — functions that take or return functions, since functions are values
-6. [[Map (Higher-Order Function)]] — applying a function to every element of a list
-7. [[Filter (Higher-Order Function)]] — keeping the elements of a list that pass a test
-8. [[Function Composition]] — chaining two functions into one
-9. [[Point-Free Style]] — defining functions by composition and partial application, without naming arguments

@@ -23,7 +23,7 @@ A grammar is a specification for a parser: a program is syntactically valid exac
 - **Terminal symbols** (e.g., `+`, `(`, and `number`) are the tokens that appear in the program itself (see [[Lexical Analysis]]).
 - **Alternatives,** separated by `|`, are the different ways to produce a non-terminal.
 - **The start symbol** is the non-terminal a whole program must be (e.g., `Expr`).
-- **ε** (epsilon) is an alternative that produces nothing.
+- **$\varepsilon$** (epsilon) is an alternative that produces nothing.
 
 Producing a program from the start symbol, one rule at a time, builds a **parse tree** (also called a **concrete syntax tree**): its root is the start symbol, its inner nodes are non-terminals, and its leaves are terminals, which read left to right give the program's text. A parse tree records every detail of the grammar. An abstract syntax tree keeps only the structure that matters (see [[Concrete and Abstract Syntax]]).
 

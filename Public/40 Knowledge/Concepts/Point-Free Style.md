@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-16
 fields:
   - computer-science
 confidence: 2

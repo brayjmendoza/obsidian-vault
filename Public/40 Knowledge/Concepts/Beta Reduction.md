@@ -22,12 +22,12 @@ $$
 
 It's the same as applying a function in an interpreter by [[Substitution|substitution]]: plug in the argument, then keep evaluating. The `λx` disappears in the step, so the occurrences of `x` it bound are the ones replaced (see [[Free and Bound Variables]]).
 
-An expression that can't be β-reduced any further is in **normal form**. Reducing an expression step by step usually reaches one, but not always. `((λx . (x x)) (λx . (x x)))` reduces to itself in one step, so reduction never ends, and the expression has no normal form.
+An expression that can't be $\beta$-reduced any further is in **normal form**. Reducing an expression step by step usually reaches one, but not always. `((λx . (x x)) (λx . (x x)))` reduces to itself in one step, so reduction never ends, and the expression has no normal form.
 
-Which part of an expression to reduce first can change whether reduction ends. In `((λy . pig) Ω)`, where Ω is the expression above with no normal form:
+Which part of an expression to reduce first can change whether reduction ends. In `((λy . pig) Ω)`, where $\Omega$ is the expression above with no normal form:
 
-- **Substituting first** (call by name) drops Ω, since the function ignores its argument, and reaches `pig`.
-- **Reducing the argument first** (call by value) tries to reduce Ω, and loops forever.
+- **Substituting first** (call by name) drops $\Omega$, since the function ignores its argument, and reaches `pig`.
+- **Reducing the argument first** (call by value) tries to reduce $\Omega$, and loops forever.
 
 This is the same choice an interpreter makes (see [[Evaluation Strategy]]).
 
@@ -52,8 +52,8 @@ A curried two-argument function, applied one argument at a time:
 
 # Connections
 
-- [[Lambda Calculus]]: β-reduction is its rule of computation
-- [[Substitution]]: the operation each β-reduction step performs
+- [[Lambda Calculus]]: $\beta$-reduction is its rule of computation
+- [[Substitution]]: the operation each $\beta$-reduction step performs
 - [[Evaluation Strategy]]: the order of reduction, by name or by value
 - [[Lazy Evaluation]]: Haskell reduces in an order that finds a result whenever one exists, with sharing
 - [[Free and Bound Variables]]: only free occurrences of the parameter are replaced

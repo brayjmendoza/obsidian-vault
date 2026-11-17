@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 aliases:
   - Functor
   - fmap
@@ -20,7 +20,7 @@ Mapping isn't special to lists. Code that adds 1 to every element of a list, to 
 fmap :: Functor f => (a -> b) -> f a -> f b
 ```
 
-It reads "for any functor `f`, `fmap` turns a function from `a` to `b` into a function from `f a` to `f b`." Here `f` stands for a type constructor (e.g., `Maybe`, lists, or `Tree`), not a full type, so `f a` is "an `f` of `a`s." Lists and `Maybe` are built-in functors, and [[Map (Higher-Order Function)|`map`]] is just `fmap` specialized to lists. Any new parameterized data type can become a functor by defining `fmap` in an instance, or by deriving it with the `DeriveFunctor` language extension.
+It reads "for any functor `f`, `fmap` turns a function from `a` to `b` into a function from `f a` to `f b`." Here `f` stands for a type constructor (e.g., `Maybe`, lists, or `Tree`), not a full type, so `f a` is "an `f` of `a`s." Lists and `Maybe` are built-in functors, and [[Higher-Order Function|`map`]] is just `fmap` specialized to lists. Any new parameterized data type can become a functor by defining `fmap` in an instance, or by deriving it with the `DeriveFunctor` language extension.
 
 With functors, code that maps a function can be written once for every structure. A type constraint says the function works for any functor (e.g., `(Functor f, Show a) => f a -> f String`).
 
@@ -52,7 +52,7 @@ showFunctor (Branch 1 Empty (Branch 2 Empty Empty))
 
 # Connections
 
-- [[Map (Higher-Order Function)]]: the list case, which functors generalize to any structure
+- [[Higher-Order Function]]: map, the list case that functors generalize to any structure
 - [[Type Class]]: `Functor` is a type class whose members are type constructors
 - [[Parametric Polymorphism]]: a functor is a parameterized type, like `Maybe a` or `Tree a`
 - [[Monad (Functional Programming)]]: a functor that can also sequence computations

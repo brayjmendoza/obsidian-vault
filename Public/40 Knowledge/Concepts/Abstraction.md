@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-16
 fields:
   - computer-science
 confidence: 2
@@ -43,10 +43,9 @@ Each copy then becomes a call: `f 2`, `f 3`, `(f 4)`, and `f 5`. A change to the
 
 # Connections
 
-- [[Higher-Order Function]]: abstraction one level up, with functions as the parameters
+- [[Higher-Order Function]]: abstraction one level up, with functions as the parameters (e.g., map, what's left when the operation that varies between several list functions becomes a parameter)
 - [[Function Composition]]: an abstraction of the pattern "apply `f`, then `g`"
 - [[Functional Programming]]: the style built around functions as the main unit of abstraction
-- [[Map (Higher-Order Function)]]: what's left when the operation that varies between several list functions becomes a parameter
 - [[Parser Combinator]]: combinators abstract away the state-handling that hand-written parsers repeat
 - [[Functor (Functional Programming)]] and [[Monad (Functional Programming)]]: abstractions over repeated mapping and repeated failure-checking
 

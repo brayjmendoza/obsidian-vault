@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 fields:
   - computer-science
 confidence: 2
@@ -15,7 +15,7 @@ Calling a partial function on an argument it has no result for fails at run time
 
 - **An empty structure.** `head []` and `tail []` have no first element or rest to return.
 - **Missing cases.** A [[Pattern Matching|pattern match]] that doesn't cover every possible value fails on the values it leaves out. A wildcard case catches the rest.
-- **Undefined values.** `undefined` causes an error when evaluated, so a definition can use it where there's no sensible result.
+- **Undefined values.** `undefined` in Haskell causes an error when evaluated, so a definition can use it where there's no sensible result.
 
 More generally, the terms come from mathematics, where a partial function is defined on only part of its domain. A partial function weakens the guarantee that well-typed code produces a result (see [[Static and Dynamic Typing]]). It can be made total by handling every input, either with a default for the missing cases or with a result type that can represent "no result" (e.g., Haskell's `Maybe`, Rust's `Option`, or Java's `Optional`).
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-16
 fields:
   - computer-science
 confidence: 2
@@ -45,7 +45,7 @@ inList e (x : xs) = x == e || inList e xs
 - [[Recursive Data Type]]: data defined recursively, which recursive functions follow case by case
 - [[Pattern Matching]]: the usual way to separate base and recursive cases
 - [[Functional Programming]]: recursion replaces the loops of imperative programming
-- [[Map (Higher-Order Function)]]: a common recursion pattern, abstracted into one function
+- [[Higher-Order Function]]: map and filter are common recursion patterns over lists, each abstracted into a single function
 - [[Recursive-Descent Parser]]: a parser built from mutually recursive functions, one per grammar rule
 - [[Fixed-Point Combinator]]: recursion for anonymous functions, which can't refer to themselves
 

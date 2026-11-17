@@ -36,7 +36,7 @@ The course's running theme is [[Abstraction]]. It starts with functions as param
 - A list is empty, or an element consed onto another list, the standard example of a [[Recursive Data Type|recursive data type]].
 - [[Pattern Matching]] takes data apart by its shape, in function equations, `case` expressions, and bindings. A match that misses a case fails at run time (in general, it makes a [[Partial Function|partial function]]).
 - Type variables and parameterized types let one definition work for every type (in general, [[Parametric Polymorphism|parametric polymorphism]]), and [[Type Class|type classes]] group types that share operations like `(==)` and `show`.
-- Recurring patterns in list functions abstract into [[Map (Higher-Order Function)|map]] and [[Filter (Higher-Order Function)|filter]].
+- Recurring patterns in list functions abstract into map and filter (see [[Higher-Order Function]]).
 - Data types are not classes: functional code groups behavior by operation, and object-oriented code groups it by data (in general, the tradeoff between them is the [[Expression Problem|expression problem]]).
 
 ## Module 4: Interpreting Programs
@@ -87,7 +87,7 @@ The course's running theme is [[Abstraction]]. It starts with functions as param
 
 - Church's lambda calculus and Turing's machines both answered Hilbert's question of whether everything can be computed: no. The lambda calculus sits at the top of a ladder of abstraction, above even pure functional languages (see [[Lambda Calculus]]).
 - Lambda calculus has three kinds of expression: variables, applications, and lambda abstractions. Variables are bound or free, and expressions are closed or open (see [[Free and Bound Variables]]).
-- β-reduction applies a function by substitution, an expression that can't be reduced further is in normal form, and some expressions have none (see [[Beta Reduction]]). α-equivalent expressions differ only in the names of bound variables.
+- $\beta$-reduction applies a function by substitution, an expression that can't be reduced further is in normal form, and some expressions have none (see [[Beta Reduction]]). α-equivalent expressions differ only in the names of bound variables.
 - Booleans, logic, pairs, lists, numbers, and sets can all be encoded as functions (in general, [[Church Encoding|Church encodings]]).
 - Encoding sets as functions turns Russell's paradox into an expression with no normal form (see [[Russell's Paradox]]).
 - The Y combinator repeats a function forever, which gives anonymous functions recursion by finding a fixed point (in general, a [[Fixed-Point Combinator|fixed-point combinator]]).

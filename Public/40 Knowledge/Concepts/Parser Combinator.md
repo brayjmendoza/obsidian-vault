@@ -22,6 +22,7 @@ A **parser** here is a function from input to a result and the remaining input. 
 | `many p` | Parse `p` zero or more times | `A*` |
 | `some p` | Parse `p` one or more times | `A+` |
 | `skipws p` | Skip any whitespace, then parse `p` | |
+**Note:** These functions are not standard Haskell functions and are part of a parser combinator library that was used throughout the [[Programming Languages (HMC CS131)|CS131]] course. Documentation here: https://www.cs.hmc.edu/courses/2021/spring/cs131/parsing/ParserCombinators.html. The same is true for the operators seen in the examples.
 
 A combinator handles the state (i.e., how much input has been consumed), so code that uses one never threads the remaining input by hand. The result is a parser that looks like its grammar. Order matters in alternatives: since `many p` is defined as "one `p` then more, or else succeed without consuming anything," putting the always-succeeding parser first would make it stop immediately.
 
