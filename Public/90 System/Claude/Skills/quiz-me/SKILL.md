@@ -5,7 +5,7 @@ description: Quiz Brayden on concepts in his Obsidian vault that he knows least 
 
 # Quiz Me
 
-Spaced review of the concepts in `40 Knowledge/Concepts/` that Brayden knows least or hasn't reviewed lately. One run is a quiz that takes at most 15 minutes. It asks one question per concept, grades each answer against the concept note, and finishes by updating `confidence` and `last_reviewed`. CONVENTIONS lets a skill change `confidence` only when its instructions explicitly allow it, and this skill allows it, in step 6, once Brayden confirms.
+Spaced review of the concepts in `40 Knowledge/Concepts/` that Brayden knows least or hasn't reviewed lately. One run is a quiz that takes at most 15 minutes. It asks one question per concept, grades each answer against the concept note, and finishes by updating `confidence` and `last_reviewed`. CONVENTIONS lets a skill change `confidence` only when its instructions explicitly allow it, and this skill always allows it, in step 6, without asking first.
 
 ## 1. Start
 
@@ -68,9 +68,8 @@ Rate each answered concept on this scale, from that answer alone:
 | 5 | Was correct, complete, and fluent: covered an edge case or a connection without prompting |
 
 - **New `confidence`:** if the rating is higher than the current `confidence`, add 1, since one good answer isn't mastery. Otherwise use the rating.
-- **Confirm:** show a table of each concept (as a link), its verdict, and its old → new `confidence`. Ask Brayden to confirm or adjust. His numbers win.
+- **Report:** after writing, show a table of each concept (as a link), its verdict, and its old → new `confidence`. Brayden can adjust any number afterward, and his numbers win.
 - **Write:** on every graded concept, set `confidence`, set `last_reviewed` and `updated` to today, and change nothing else. Edit the frontmatter in place (e.g., `sed -i` on just those lines), never by retyping the file.
-- **No answer to the confirmation** (e.g., an unattended run): write nothing, and report the proposed table.
 
 ## 7. Close
 
