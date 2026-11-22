@@ -25,8 +25,8 @@ Spaced review of the concepts in `40 Knowledge/Concepts/` that Brayden knows lea
 ## 3. Pick the Quiz
 
 - **Budget:** about three minutes per question, so 15 minutes holds 5 questions. A worked problem (e.g., a reduction or an evaluation by hand) counts as two. Scale the count to the time or count Brayden gave.
-- **Priority:** lower `confidence` first, then older `last_reviewed`.
-- **Spread:** pick round-robin across groups so the quiz covers as many groups as it can. Group by `fields` first. When every candidate shares a field (as in the pilot), group by the H1 section of the map that links the concept (e.g., Types, Parsing, and Lambda Calculus). Within a group, take the highest-priority concept that's still unpicked.
+- **Priority:** lower `confidence` first, then older `last_reviewed`. Confidence comes before spread: fill the quiz from the lowest `confidence` level that has candidates, and move up a level only when that level runs out (e.g., every candidate at 1 goes in before any at 2).
+- **Spread:** within a `confidence` level, pick round-robin across groups so the quiz covers as many groups as it can. Group by `fields` first. When every candidate shares a field (as in the pilot), group by the H1 section of the map that links the concept (e.g., Types, Parsing, and Lambda Calculus). Within a group, take the highest-priority concept that's still unpicked.
 - **Order:** mix the groups rather than asking one section's questions back to back.
 
 Don't show the list before starting. Say how many questions there are and roughly how long they'll take, then ask the first question.
@@ -42,7 +42,7 @@ Read each picked concept's note in full before writing its question. A question 
   - **Compare:** tell it apart from a nearby concept the note links in Connections.
   - **Spot the error:** give a short wrong claim or buggy code and ask what's wrong.
 - **Match the level:** at `confidence` 1–2, prefer Explain and Compare. At 3 and above, prefer Predict, Apply, and Spot the Error.
-- **One concept per question, in two or three parts.** The parts build on each other (e.g., explain it, then apply it to an example), which leaves room for an answer to show connections to other concepts. No answer is hidden in the wording.
+- **One concept per question, in two or three parts.** The parts build on each other (e.g., explain it, then apply it to an example), which leaves room for an answer to show connections to other concepts. Word each part so it reads only one way, and hide no answer in the wording.
 - **Use the note's language and notation** (e.g., Haskell and [[Arith]] for the Programming Languages concepts).
 
 ## 5. Run the Quiz
@@ -68,6 +68,8 @@ Rate each answered concept on this scale, from that answer alone:
 | 3 | Got the core idea right, with gaps or minor errors |
 | 4 | Was correct and complete, and applied the idea to the example or problem |
 | 5 | Was correct, complete, and fluent: covered an edge case or a connection without prompting |
+
+- **Lenient with slips.** Rate the understanding an answer shows, not its typos. A slip the rest of the answer shows Brayden understands doesn't lower the rating (e.g., a mistyped tree for a running example when he knows the precedence rule it breaks). Neither does a reasonable reading of ambiguous wording (e.g., taking "how does a higher-order function take this one level up" to mean making `f` itself higher-order). Point out the slip in the feedback, and say so when the question's wording caused it.
 
 - **New `confidence`:** if the rating is higher than the current `confidence`, add 1, since one good answer isn't mastery. Otherwise use the rating.
 - **Report:** after writing, show a table of each concept (by name, in plain text), its verdict, and its old → new `confidence`. Brayden can adjust any number afterward, and his numbers win.

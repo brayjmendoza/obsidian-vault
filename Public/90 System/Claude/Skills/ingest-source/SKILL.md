@@ -54,7 +54,7 @@ If no INGEST.md section covers this kind of source or this field, make the calls
 
 In `40 Knowledge/Concepts/`, following the Concept Template and STYLE:
 
-- **Properties:** `aliases` (the source's terms), `fields` (broad fields only: a sub-map keeps its parent's field), `confidence: 2` on creation (never change an existing one), `last_reviewed` today, and `sources` (a link to each source note it draws on).
+- **Properties:** `aliases` (the source's terms), `fields` (broad fields only: a sub-map keeps its parent's field), `confidence: 3` on creation (never change an existing one), `last_reviewed` today, and `sources` (a link to each source note it draws on).
 - **Body:** a one-sentence definition with the term in bold, then what the listed sources teach, then a paragraph starting "More generally," for everything else (e.g., standard terms the sources don't use, history, and other languages or fields).
 - `# Example`: the source's own examples where it has them. An outside example says so (e.g., "For comparison, in Python:").
 - `# Connections`: related concepts, each with a few words on how they relate. Links to concepts not written yet are fine.

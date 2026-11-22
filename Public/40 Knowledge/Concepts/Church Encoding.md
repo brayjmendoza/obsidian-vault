@@ -1,14 +1,14 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-21
 aliases:
   - Church Numeral
   - Church Boolean
   - Functional Encoding
 fields:
   - computer-science
-confidence: 2
+confidence: 3
 last_reviewed: 2026-11-15
 sources:
   - "[[Programming Languages (HMC CS131)]]"

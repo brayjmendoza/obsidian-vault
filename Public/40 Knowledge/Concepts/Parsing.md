@@ -1,13 +1,13 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-16
+updated: 2026-11-21
 aliases:
   - Parser
 fields:
   - computer-science
-confidence: 2
-last_reviewed: 2026-11-15
+confidence: 3
+last_reviewed: 2026-11-21
 sources:
   - "[[Programming Languages (HMC CS131)]]"
 ---
