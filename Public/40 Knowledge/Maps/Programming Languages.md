@@ -1,12 +1,11 @@
 ---
 type: map
 created: 2026-11-11
-updated: 2026-11-16
+updated: 2026-11-21
 field: computer-science
 ---
 ↑ [[Computer Science]]
 
-+ [ ] Start `quiz-me` skill by having Claude quiz you on all these concepts and determine `confidence`
 # Functions
 
 1. [[Pattern Matching]] — defining a function by cases, taking values apart by their shape

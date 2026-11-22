@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-11-08
-updated: 2026-11-09
+updated: 2026-11-21
 aliases:
   - Fitness Tracking
 ---
@@ -12,7 +12,7 @@ Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶
  which day          what to do   what you did  your progress  how to do it
 ```
 
-## The Notes
+# The Notes
 
 | Note | What it's for |
 |---|---|
@@ -24,9 +24,14 @@ Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶
 
 - **One note per movement:** the same exercise in several routines links to one note, so its history stays in one place.
 - **Nothing is typed twice:** an exercise's latest sets and its list of sessions are live views of your session notes.
-- **Progressions:** a routine can hold ladders of an exercise below its workout, with the tier you're on highlighted and linked from the Core Workout. To move up a tier, move the highlight and update the Core Workout.
+- **Progressions:** a routine can hold ladders of an exercise below its workout, with the tier you're on highlighted and linked from the Core Workout. To move up a tier, move the highlight and update the Core Workout. -
 
-## Logging a Workout
+- The exercises are listed as progressions, where I’ll work towards a benchmark before moving onto the harder exercise
+    - Sets/reps in parentheses are the benchmarks
+- Highlight = current tier of progression I’m on
+
+
+# Logging a Workout
 
 1. Press **Start Session** at the top of the routine. It creates today's session note without asking anything: the date comes from today, the routine and its kind from the routine you're on, and three tables from the routine's exercises and targets: Warm-Up, Core Workout, and Cool-Down. The note is named for the kind of workout (e.g., `2026-11-09 Run`, `2026-11-09 Mobility`, or `2026-11-09 Workout` for calisthenics), so a run and a calisthenics workout on the same day get separate notes. If that note already exists, it opens instead.
 2. Fill in what you did as you go.
@@ -34,8 +39,9 @@ Weekly Rotation ──▶ Routine ──▶ Session ──▶ Exercise ──▶
 
 Open an exercise afterward to see the sets you just logged.
 
+#
+
 ## Known Limits
 
-- **Videos don't play on iPhone or iPad,** so each form video also shows a plain link.
 - **Sync is a button, not a trigger:** `last_performed` moves only when you press it.
 - **Only linked exercises reach a session:** an item without a link isn't picked up, so keep routines to the [[Routine Template]].
