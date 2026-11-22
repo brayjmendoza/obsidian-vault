@@ -2,21 +2,6 @@
 type: scratch
 ---
 
-<div style="border: 2px solid #cfcfcf; padding-left: 20px; padding-right: 20px; border-radius: 10px;">  
-	<h2>Overview</h2>
-	<hr>
-	Daily exercise routines with progressions
-	<br>
-	<ul>
-		<li> The exercises are listed as progressions, where I’ll work towards a benchmark before moving onto the harder exercise
-			<ul>
-				<li>Sets/reps in parentheses are the benchmarks</li>
-			</ul>
-		</li>
-		<li>Highlight = current tier of progression I’m on</li>
-	</ul>
-</div>
-
 - [ ] migrate and delete 🔺 
 
 deload every 4th week
