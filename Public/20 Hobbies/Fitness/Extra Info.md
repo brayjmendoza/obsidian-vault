@@ -6,6 +6,7 @@ type: scratch
 
 deload every 4th week
 ## De-Loading
+
 - Calisthenics
     - Do half of the sets listed (i.e. reduce volume by 50%)
     - Keep warm-ups and mobility finishers unchanged
@@ -52,5 +53,3 @@ deload every 4th week
 - Note on Wednesday Nordic curls
     - Soreness typically peaks 24-48 hours after doing these
     - Downgrade Thursday tempo run into a normal or easy run if too sore
-
-Info from [here (ChatGPT)](https://chatgpt.com/g/g-p-6991872abdf081918f99b70a08026e54/c/6a3791c6-dd14-83ea-9460-1466fb2a5598) and [here (Claude)](https://claude.ai/chat/e864d3e4-6b58-473e-b961-3efc228f4d81)

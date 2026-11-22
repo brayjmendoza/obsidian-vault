@@ -138,3 +138,4 @@
 - 2026-11-21 20:54 · quiz-me · 5 concepts: [[Scope]] 2 → 3, [[Higher-Order Function]] 2 → 3, [[Parsing]] 2 → 2, [[Abstraction]] 2 → 3, [[Type Inference]] 2 → 2
 - 2026-11-21 21:03 · manual · Set `confidence: 3` on every concept note at Brayden's request (46 changed, 8 were already 3). Proposed ingest-source creating concepts at `confidence: 3`, and quiz-me grading slips and ambiguous wording leniently. Local copies updated
 - 2026-11-21 21:08 · vault-conventions · Proposed quiz-me filling each quiz from the lowest `confidence` level first, with spread across groups only within a level. Local copy updated
+- 2026-11-22 12:58 · vault-conventions · rebuilt [[Habits]] as recurring Tasks-plugin habits (3 daily, 4 weekly due Sundays) with Today and Later This Week views
