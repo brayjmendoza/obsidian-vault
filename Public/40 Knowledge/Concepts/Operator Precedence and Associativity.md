@@ -1,15 +1,15 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-21
 aliases:
   - Precedence
   - Associativity
   - Fixity Declaration
 fields:
   - computer-science
-confidence: 2
-last_reviewed: 2026-11-11
+confidence: 3
+last_reviewed: 2026-11-21
 sources:
   - "[[Programming Languages (HMC CS131)]]"
 ---

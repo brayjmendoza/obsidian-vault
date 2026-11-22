@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-21
 aliases:
   - Static Typing
   - Dynamic Typing
@@ -9,7 +9,7 @@ aliases:
 fields:
   - computer-science
 confidence: 2
-last_reviewed: 2026-11-11
+last_reviewed: 2026-11-21
 sources:
   - "[[Programming Languages (HMC CS131)]]"
 ---
