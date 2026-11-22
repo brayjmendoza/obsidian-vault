@@ -24,7 +24,7 @@ Spaced review of the concepts in `40 Knowledge/Concepts/` that Brayden knows lea
 
 ## 3. Pick the Quiz
 
-- **Budget:** about two minutes per question, so 15 minutes holds 7 questions. A worked problem (e.g., a reduction or an evaluation by hand) counts as two. Scale the count to the time or count Brayden gave.
+- **Budget:** about three minutes per question, so 15 minutes holds 5 questions. A worked problem (e.g., a reduction or an evaluation by hand) counts as two. Scale the count to the time or count Brayden gave.
 - **Priority:** lower `confidence` first, then older `last_reviewed`.
 - **Spread:** pick round-robin across groups so the quiz covers as many groups as it can. Group by `fields` first. When every candidate shares a field (as in the pilot), group by the H1 section of the map that links the concept (e.g., Types, Parsing, and Lambda Calculus). Within a group, take the highest-priority concept that's still unpicked.
 - **Order:** mix the groups rather than asking one section's questions back to back.
@@ -42,13 +42,15 @@ Read each picked concept's note in full before writing its question. A question 
   - **Compare:** tell it apart from a nearby concept the note links in Connections.
   - **Spot the error:** give a short wrong claim or buggy code and ask what's wrong.
 - **Match the level:** at `confidence` 1–2, prefer Explain and Compare. At 3 and above, prefer Predict, Apply, and Spot the Error.
-- **One idea per question.** Small enough to answer in a minute or two, with no answer hidden in its wording.
+- **One concept per question, in two or three parts.** The parts build on each other (e.g., explain it, then apply it to an example), which leaves room for an answer to show connections to other concepts. No answer is hidden in the wording.
 - **Use the note's language and notation** (e.g., Haskell and [[Arith]] for the Programming Languages concepts).
 
 ## 5. Run the Quiz
 
-- **One question per message.** Number it (e.g., "3/7") and name its map section, but not the concept when the name gives the answer away. Then wait for the answer.
-- **After each answer:** give a verdict (i.e., correct, partial, or missed), then two to four sentences that fix or complete the answer, linking the concept note (or the section that covers the point). Then ask the next question in the same message.
+- **One question per message.** Number it (e.g., "3/5") and name its map section, but not the concept when the name gives the answer away. Then wait for the answer.
+- **After each answer:** give a verdict (i.e., correct, partial, or missed), then two to four sentences that fix or complete the answer, naming the concept note that covers the point. Then ask the next question in the same message.
+- **Plain words in chat.** Write concepts as ordinary words (e.g., "partial application" or "a type class"), never as wikilinks, which don't render in chat. To point Brayden to a note, name it (e.g., "see the Currying note").
+- **Accurate feedback.** Check every claim against the notes and against what's true before sending it, and say exactly when it holds. Don't turn an overlap into an "is a" (e.g., recursive and algebraic data types overlap, but neither is a kind of the other). If a note overstates a claim, correct it in the feedback and list it as a note problem.
 - **"Hint":** give one hint. An answer after a hint is rated 3 at most.
 - **"Skip":** move on. A skipped concept isn't graded or updated.
 - **"I don't know":** a miss, rated 1. Give the answer.
@@ -68,9 +70,9 @@ Rate each answered concept on this scale, from that answer alone:
 | 5 | Was correct, complete, and fluent: covered an edge case or a connection without prompting |
 
 - **New `confidence`:** if the rating is higher than the current `confidence`, add 1, since one good answer isn't mastery. Otherwise use the rating.
-- **Report:** after writing, show a table of each concept (as a link), its verdict, and its old → new `confidence`. Brayden can adjust any number afterward, and his numbers win.
+- **Report:** after writing, show a table of each concept (by name, in plain text), its verdict, and its old → new `confidence`. Brayden can adjust any number afterward, and his numbers win.
 - **Write:** on every graded concept, set `confidence`, set `last_reviewed` and `updated` to today, and change nothing else. Edit the frontmatter in place (e.g., `sed -i` on just those lines), never by retyping the file.
 
 ## 7. Close
 
-Close the run as vault-conventions says. The changelog line names the concepts quizzed with their old → new `confidence` (e.g., `- 2026-11-17 08:10 · quiz-me · 7 concepts: [[Closure (Programming Languages)]] 2 → 3, …`). The report lists any note problems from step 5.
+Close the run as vault-conventions says. The changelog line names the concepts quizzed with their old → new `confidence` (e.g., `- 2026-11-17 08:10 · quiz-me · 5 concepts: [[Closure (Programming Languages)]] 2 → 3, …`). The report lists any note problems from step 5.

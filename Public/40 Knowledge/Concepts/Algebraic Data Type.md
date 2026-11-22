@@ -58,7 +58,7 @@ isRunning temp (HeatTo t)    = temp < t
 # Connections
 
 - [[Pattern Matching]]: how a function takes an algebraic data type apart, one case per constructor
-- [[Recursive Data Type]]: an algebraic data type that refers to itself
+- [[Recursive Data Type]]: an algebraic data type can be recursive (e.g., a list or a tree), but the two kinds of type overlap without either being a case of the other
 - [[Expression Problem]]: why defining a type by its alternatives organizes a program differently from classes
 - [[Type Class]]: `deriving` adds a type to type classes like `Show` and `Eq`
 - [[Concrete and Abstract Syntax]]: algebraic data types are how Haskell represents a language's programs as data

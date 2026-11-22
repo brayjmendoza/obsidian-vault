@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-16
+updated: 2026-11-21
 aliases:
   - Cons List
 fields:
@@ -75,7 +75,7 @@ flowchart TD
 
 # Connections
 
-- [[Algebraic Data Type]]: recursive types are algebraic data types that mention themselves
+- [[Algebraic Data Type]]: in Haskell, recursive types like lists and trees are declared as algebraic data types, but the two kinds of type overlap without either being a case of the other
 - [[Recursion]]: functions over recursive types are recursive in the same places
 - [[Pattern Matching]]: the pattern `x : xs` takes a list apart the same way `:` builds it
 - [[Lazy Evaluation]]: what lets a recursive structure like a list be infinite
