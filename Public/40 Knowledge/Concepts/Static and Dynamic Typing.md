@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Static Typing
   - Dynamic Typing
@@ -54,6 +54,8 @@ total = 1 + 'a'            # TypeError, raised only when this line runs
 - [[Partial Function]]: a well-typed program can still fail at run time when a function has no result for its argument
 - [[Type System]]: the rules being checked, whenever the checking happens
 - [[Typing Rule]]: how static type checking is specified precisely
+- [[Undefined Behavior]]: what C++ gives instead of a run-time error for the mistakes it doesn't check
+- [[Type Conversion]]: a statically typed language decides at compile time where values are converted
 
 # Sources
 

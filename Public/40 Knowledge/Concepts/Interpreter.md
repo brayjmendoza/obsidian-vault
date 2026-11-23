@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Evaluator
   - eval
@@ -80,6 +80,7 @@ eval (Apply (Apply (FuncDef "x" (FuncDef "y" (BinOp (Var "x") PlusOp (Var "y")))
 - [[Syntactic Sugar]]: new syntax given meaning by rewriting it into existing syntax
 - [[Environment (Programming Languages)]] and [[Closure (Programming Languages)]]: how the evaluator replaces substitution, and keeps static scope while doing it
 - [[Parsing]]: the front end that produces the abstract syntax an interpreter evaluates
+- [[Separate Compilation]]: the alternative to interpreting, which translates a program into an executable first
 
 # Sources
 

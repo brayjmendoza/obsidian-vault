@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Subtype
   - Substitutability
@@ -44,6 +44,7 @@ Since `int` ⊑ `double`, subsumption gives `7` the type `double`, and the appli
 - [[Covariance and Contravariance (Type Systems)]]: how subtyping extends to function and container types
 - [[Top and Bottom Types]]: the greatest and least types, and the lattice between them
 - [[Type System]]: subtyping is one way a type system allows flexibility
+- [[Type Conversion]]: using a value where another type is expected by changing its representation, instead of treating it as a subtype
 
 # Sources
 

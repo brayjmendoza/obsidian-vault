@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 fields:
   - computer-science
 confidence: 3
@@ -127,6 +127,7 @@ uv lock --upgrade && uv sync                         # move everything to the la
 - [[Virtual Environment]]: what uv creates and syncs for each project, an isolated folder of packages and its own interpreter
 - [[Lockfile]]: the general idea behind `uv.lock`, recording resolved versions so installs are reproducible
 - [[Dependency Resolution]]: how uv chooses versions that satisfy every constraint in `pyproject.toml` at once
+- [[Build Automation]]: a build tool keeps targets in step with their sources, much as uv keeps an environment in step with its lock file
 
 # Sources
 

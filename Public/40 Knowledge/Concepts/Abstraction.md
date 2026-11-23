@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 fields:
   - computer-science
 confidence: 3
@@ -48,6 +48,9 @@ Each copy then becomes a call: `f 2`, `f 3`, `(f 4)`, and `f 5`. A change to the
 - [[Functional Programming]]: the style built around functions as the main unit of abstraction
 - [[Parser Combinator]]: combinators abstract away the state-handling that hand-written parsers repeat
 - [[Functor (Functional Programming)]] and [[Monad (Functional Programming)]]: abstractions over repeated mapping and repeated failure-checking
+- [[Zero-Overhead Principle]]: the demand that an abstraction cost nothing over the code it replaces
+- [[Black-Box Testing]]: testing an abstraction through its interface alone
+- [[Abstract Data Type]]: an interface abstracts away how a data structure is stored and implemented
 
 # Sources
 

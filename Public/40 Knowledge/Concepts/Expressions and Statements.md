@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Expression
   - Statement
@@ -35,6 +35,7 @@ In C and C++:
 - [[Functional Programming]]: computation by evaluating expressions instead of executing statements
 - [[Referential Transparency]]: an expression without side effects can be replaced by its value
 - [[Syntax and Semantics]]: whether something is an expression or a statement is part of a language's syntax, and what it does is its semantics
+- [[Lvalues and Rvalues]]: an expression either names a location or produces a value
 
 # Sources
 

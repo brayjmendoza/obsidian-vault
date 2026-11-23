@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Maybe
   - Maybe Type
@@ -55,6 +55,7 @@ defaultLookup "y" initialEnv  -- 0.0
 - [[Monad (Functional Programming)]]: `Maybe` is a monad, so `>>=` chains computations that might fail
 - [[Functor (Functional Programming)]]: `fmap` applies a function inside a `Just` and leaves `Nothing` alone
 - [[Top and Bottom Types]]: a catch-all type says nothing, while an option type says exactly what might be missing
+- [[Pointer (Programming Languages)]]: the null pointer, the unchecked way to represent a missing value
 
 # Sources
 

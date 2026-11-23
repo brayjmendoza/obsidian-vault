@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 fields:
   - computer-science
 confidence: 3
@@ -63,6 +63,9 @@ Binding the same name twice in one `let` (e.g., `let x = 2; x = 3 in x`) is an e
 - [[Functional Programming]]: with no reassignment, scope alone decides what a name means
 - [[Substitution]]: substituting into a function has to respect which binding each variable refers to
 - [[Static and Dynamic Scope]]: whether a function's free variables use the bindings at its definition or at its call
+- [[Namespace (Programming Languages)]]: a scope with a name, whose bindings code outside can reach with a qualified name
+- [[Declaration and Definition]]: in C++, a name is visible from its declaration to the end of its scope
+- [[Object Lifetime]]: in C++, a local variable is destroyed when its scope ends
 
 # Sources
 

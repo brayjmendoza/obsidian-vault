@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-31
-updated: 2026-11-16
+updated: 2026-11-23
 claude: read-only
 ---
 # TODOs
@@ -26,6 +26,7 @@ This is a list of improvements or extensions that need to be made to the vault.
 	* CSS snippets
 * Obsidian settings: hotkeys (for keyboard shortcuts)
 	* templater hotkeys
+* Grocery/shopping list
 
 **Order of TODOs**
 1. Make homepages?

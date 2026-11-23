@@ -1,7 +1,7 @@
 ---
 type: map
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 field: computer-science
 ---
 ↑ [[Computer Science]]
@@ -26,8 +26,10 @@ field: computer-science
 # Names and Scope
 
 1. [[Name Binding]] — names bound to expressions once, instead of assigned and reassigned
-2. [[Scope]] — where a binding is visible, and how nested scopes resolve a name
-3. [[Static and Dynamic Scope]] — whether a function's free variables use the bindings at its definition or at its call
+2. [[Initialization (Programming Languages)]] — giving a new variable its first value, as opposed to assigning a new one
+3. [[Scope]] — where a binding is visible, and how nested scopes resolve a name
+4. [[Namespace (Programming Languages)]] — a named collection of names, reached from outside with a qualified name
+5. [[Static and Dynamic Scope]] — whether a function's free variables use the bindings at its definition or at its call
 
 # Types
 
@@ -41,8 +43,27 @@ field: computer-science
 8. [[Type Class]] — families of types that share operations, each with its own implementation
 9. [[Option Type]] — a value or no value, so a missing result is part of the type
 10. [[Subtyping]] — using a value of one type where another is expected
-11. [[Covariance and Contravariance (Type Systems)]] — how subtyping carries over to pairs, lists, and functions
-12. [[Top and Bottom Types]] — the types above and below every other, and the lattice between them
+11. [[Type Conversion]] — turning a value into another type, with or without losing information
+12. [[Covariance and Contravariance (Type Systems)]] — how subtyping carries over to pairs, lists, and functions
+13. [[Top and Bottom Types]] — the types above and below every other, and the lattice between them
+
+# Memory
+
+1. [[Object Lifetime]] — the five phases every object goes through, and when each happens
+2. [[Pointer (Programming Languages)]] — a value holding an object's address, and arithmetic over arrays
+3. [[Reference (Programming Languages)]] — another name for an existing object, never rebound
+4. [[Const-Correctness]] — read-only access through one name, checked by the compiler
+5. [[Lvalues and Rvalues]] — expressions with a location, and temporary results without one
+6. [[Dynamic Memory Allocation]] — heap objects the program creates and frees itself, and what goes wrong
+7. [[Ownership (Memory Management)]] — one owner per heap object, responsible for deleting it
+8. [[Segmentation Fault]] — the operating system stopping a program that touched memory not its own
+
+# Classes and Objects
+
+1. [[Class (Programming Languages)]] — a type that bundles data with the functions that operate on it
+2. [[Constructor (Object-Oriented Programming)]] — initializing a new object, member by member
+3. [[Destructor]] — cleaning up when an object is destroyed, including the heap memory it owns
+4. [[Deep and Shallow Copy]] — copying an object's pointers or what they point to, and the assignment operator
 
 # Data Types
 
@@ -56,6 +77,11 @@ field: computer-science
 2. [[Expressions and Statements]] — computations that produce values, and ones performed for their effects
 3. [[Concrete and Abstract Syntax]] — the text a programmer writes, and the tree it stands for
 4. [[Operator Precedence and Associativity]] — how concrete syntax groups an expression with several operators, function application included
+
+# Language Design
+
+1. [[Zero-Overhead Principle]] — a feature costs nothing to programs that don't use it, so C++ checks nothing at run time
+2. [[Undefined Behavior]] — what happens when a program breaks an unchecked rule: anything
 
 # Functional Abstractions
 

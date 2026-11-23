@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-11-15
-updated: 2026-11-16
-version: "1.7"
+updated: 2026-11-23
+version: "1.9"
 ---
 # Ingest Guide
 
@@ -39,6 +39,7 @@ Tested on CS 131.
 - **Units follow the lecture numbering,** not the folders. A folder can hold slides for more than one lecture (e.g., CS 131's Module 4 folder held 4.1 and 4.2, and its summaries put environments in 5.1, the next unit).
 - **Formulas on slides are often images,** with no text to extract. Render those pages at about 90 dpi, so subscripts and symbols are legible, and write the formulas in LaTeX (e.g., CS 131's typing rules).
 - **Concepts don't mention the course.** The course's running examples appear by name instead (e.g., [[Arith]], the small language CS 131 builds an interpreter for), and a broken slide example is written correctly and reported.
+- **Notes with no lecture numbering are split by topic.** When the material has no modules or weeks (e.g., the CS 70 archive), agree with you on topic units in the course's order before the first run, record them in the source note's Summary, and title each section `## Unit N: Title`.
 - **Running examples get a reference** in `50 References/Examples/`, named for the example, that holds the whole example in one place: what it is, how it grows unit by unit, and its latest version. Each unit that extends the example updates the reference, and every concept that uses it links to the reference at its first mention.
 
 ### Books
@@ -77,9 +78,10 @@ Tested on CS 131's annotations.
 
 ### Old Obsidian Notes
 
-Tested on the CS 131 archive.
+Tested on the CS 131 and CS 70 archives.
 
 - **Cross-check only.** They fill gaps and confirm the main material, but they can be wrong.
+- **Unless they're all there is.** When old notes are the only material for a source (e.g., CS 70), they're the main input. Check every claim and example against what's actually true, since nothing else will catch their mistakes: CS 70's notes had a wrong primality loop, a wrong `double` precision, and a mislabeled bug.
 - **They stay where they are,** in `99 Archive/`, and new notes never link to them.
 
 ## Fields
@@ -91,7 +93,8 @@ A concept from another field gets that field too (e.g., Russell's Paradox, met i
 Tested on CS 131 (i.e., programming languages).
 
 - **The test:** a concept's definition would stay the same with examples from another language. Syntax, commands, and library functions go in `50 References/<Language>/` (e.g., `50 References/Haskell/`).
-- **Map:** [[Computer Science]], with a sub-map per area (e.g., [[Programming Languages]]).
+- **Map:** [[Computer Science]], with a sub-map per area (e.g., [[Programming Languages]]). Data structures and their analysis go on [[Data Structures and Algorithms]], language features for memory (e.g., pointers and object lifetime) go in [[Programming Languages]]'s Memory section, building and testing programs goes on [[Software Engineering]], and how data is stored in bits (e.g., [[Floating-Point Arithmetic]]) goes in Computer Science's Data Representation section.
+- **Tools outside one language** get their own reference folder, named for the tool (e.g., `50 References/Git/`). Make stays with the language it builds (e.g., [[Makefiles]] in `50 References/C++/`).
 - **Examples:** in the source's language. Other languages go in the "More generally," paragraph.
 - **Visuals:** code blocks, Mermaid for trees and pipelines, and math for typing rules.
 - **Pitfalls:** recheck every example's result by hand.
@@ -130,6 +133,9 @@ Tested on CS 131 (i.e., programming languages).
 
 
 ## Changelog
+
+- 2026-11-23 · 1.9 · From CS 70, Unit 2: computer science adds the [[Data Structures and Algorithms]] sub-map, and memory concepts go in [[Programming Languages]]'s Memory section.
+- 2026-11-23 · 1.8 · From CS 70, Unit 1: courses without lecture numbering are split into topic units, titled `## Unit N: Title`. Old Obsidian notes that are a source's only material are its main input. Computer science adds the [[Software Engineering]] sub-map, the Data Representation section, and reference folders for tools outside one language.
 
 - 2026-11-16 · 1.7 · Courses: running examples get a reference in `50 References/Examples/` (e.g., [[Arith]]). The Names example for a shared term is now Monad, since Map and Filter merged into Higher-Order Function.
 - 2026-11-15 · 1.6 · Fields: a concept from another field also lists that field.

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Well-Typed
   - Type Error
@@ -49,6 +49,7 @@ True.upper()      # type error: a bool has no upper method
 - [[Typing Rule]]: how a type system is written down precisely
 - [[Type Inference]]: working out types the programmer didn't write
 - [[Subtyping]]: rules that let a value of one type stand in for another
+- [[Const-Correctness]]: `const` is part of a C++ type, so the type checker enforces read-only access
 
 # Sources
 

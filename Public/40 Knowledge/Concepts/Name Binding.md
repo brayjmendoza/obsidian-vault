@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Binding
 fields:
@@ -50,6 +50,10 @@ GHCi accepts these lines one at a time, since each line it reads starts a new sc
 - [[Substitution]]: a function's parameter is a binding, which substitution must not replace inside the function
 - [[Environment (Programming Languages)]]: the record of bindings an evaluator keeps while a program runs
 - [[Free and Bound Variables]]: an occurrence is bound if some enclosing binding introduces its name
+- [[Initialization (Programming Languages)]]: the imperative counterpart, where a variable gets a first value that assignment can later replace
+- [[Declaration and Definition]]: a definition binds a name, and C++ allows only one per name
+- [[Namespace (Programming Languages)]]: a named collection of bindings, so the same name can be bound in different ones
+- [[Reference (Programming Languages)]]: C++'s way to give an existing object a second name, bound once
 
 # Sources
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-23
 fields:
   - computer-science
 confidence: 3
@@ -50,6 +50,7 @@ next_id() + next_id()  # 1 + 2 = 3,
 - [[Name Binding]]: a bound name is an alias for its expression, which only works because that expression is transparent
 - [[Substitution]]: replacing a name by its expression, the basis of evaluating by substitution
 - [[Monad (Functional Programming)]]: `IO` actions describe effects, so evaluating expressions stays free of them
+- [[Reference (Programming Languages)]]: aliasing, which makes changes hard to track, is harmless when nothing can change
 
 # Sources
 

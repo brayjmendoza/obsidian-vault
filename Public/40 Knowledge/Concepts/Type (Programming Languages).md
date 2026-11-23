@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Type
 fields:
@@ -46,6 +46,8 @@ One 32-bit pattern, read as different types:
 - [[Static and Dynamic Typing]]: when a language checks how values are used against their types
 - [[Algebraic Data Type]]: building new types from alternatives and combinations of existing ones
 - [[Russell's Paradox]]: Russell's theory of types, an early answer to it, began the idea of types
+- [[Type Conversion]]: turning a value of one type into the corresponding value of another
+- [[Floating-Point Arithmetic]]: how a floating-point type interprets its bits
 
 # Sources
 

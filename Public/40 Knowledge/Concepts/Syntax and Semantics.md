@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Syntax
   - Semantics
@@ -38,6 +38,7 @@ Statements about C++, sorted:
 - [[Interpreter]]: an evaluator defines a language's semantics
 - [[Expressions and Statements]]: two kinds of syntax with different semantics
 - [[Context-Free Grammar]]: the usual way to specify a language's syntax
+- [[Undefined Behavior]]: a syntactically valid program that breaks an unchecked rule has no semantics
 
 # Sources
 

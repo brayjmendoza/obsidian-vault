@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-23
 aliases:
   - Data Type
   - Haskell Datatype
@@ -66,6 +66,7 @@ isRunning temp (HeatTo t)    = temp < t
 - [[Context-Free Grammar]]: a `data` declaration has the same shape as a grammar rule
 - [[Curry-Howard Correspondence]]: products and sums correspond to logical "and" and "or"
 - [[Church Encoding]]: the same data represented with functions alone
+- [[Class (Programming Languages)]]: the object-oriented way to define a new type, bundling data with its operations
 
 # Sources
 
