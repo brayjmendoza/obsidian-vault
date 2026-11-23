@@ -1,9 +1,8 @@
 ---
 type: plan
 created: 2026-11-11
-updated: 2026-11-22
+updated: 2026-11-23
 ---
-+ [ ] Turn habits page into a proper list of recurring tasks
 > [!todo] Today
 > ```tasks
 > not done
@@ -35,9 +34,10 @@ updated: 2026-11-22
 
 # Daily
 
-- [ ] Exercise ([[Weekly Exercise Rotation|today's workout]]) 🔁 every day 🏁 delete 📅 2026-11-22
-- [ ] Practice [[Music]] — piano, violin, or composition 🔁 every day 🏁 delete 📅 2026-11-22
-- [ ] Make overnight oats 🔁 every day 🏁 delete 📅 2026-11-22
+- [ ] Exercise ([[Weekly Exercise Rotation|today's workout]]) 🔁 every day 🏁 delete 📅 2026-11-23
+- [ ] Practice ([[Music]]) — piano, violin, or composition 🔁 every day 🏁 delete 📅 2026-11-23
+- [ ] Make [[Overnight Oats|overnight oats]] 🔁 every day 🏁 delete 📅 2026-11-23
+- [ ] Take a `quiz-me` quiz 🔁 every day 🏁 delete 📅 2026-11-23 
 
 # Weekly
 

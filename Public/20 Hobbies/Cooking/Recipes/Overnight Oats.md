@@ -1,7 +1,7 @@
 ---
 type: recipe
 created: 2026-11-11
-updated: 2026-11-11
+updated: 2026-11-23
 status: staple
 servings: 1
 last_cooked: 2026-11-11
@@ -57,4 +57,4 @@ last_cooked: 2026-11-11
 
 # Notes
 
-%% What you'd change next time, substitutions, and how it turned out. %%
+

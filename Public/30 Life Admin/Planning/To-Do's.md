@@ -1,7 +1,7 @@
 ---
 type: task
 created: 2026-11-11
-updated: 2026-11-15
+updated: 2026-11-23
 ---
 * [ ] Finish financial parts of D-Wave Compensation & Benefits
 + [ ] PRIDE stuff (until the damn PR is finally merged)
@@ -10,5 +10,3 @@ updated: 2026-11-15
 + [ ] Convert CD's to mp4's
 + [ ] Plan credit cards -- make a page on this
 + [ ] Track spending behaviors
-+ [x] Listen to Superstar - Beach House 🔺 ✅ 2026-11-16
-+ [x] Listen to You're Losing Me (From the Vault) - Taylor Swift 🔺 ✅ 2026-11-16
