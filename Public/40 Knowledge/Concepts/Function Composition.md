@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -13,7 +13,7 @@ sources:
 
 In mathematics, the composition is written $g \circ f$, read "$g$ after $f$." The function on the right is applied first, and the function on the left is applied to its result. Composition only works when the types line up: the result type of $f$ must be the parameter type of $g$. Order matters, so $g \circ f$ and $f \circ g$ are usually different functions.
 
-Composition comes out of abstracting a pattern. The expressions `increment (double 1)`, `double (increment 1)`, and `increment (square 1)` (with the three functions defined in the [[#Example|example]]) all apply one function to `1` and then another function to the result. Only the functions differ, so they become parameters, and making the starting value a parameter too gives a general `compose`:
+Composition comes out of abstracting a pattern. The expressions `increment (double 1)`, `double (increment 1)`, and `increment (square 1)` (with the three functions defined in the [[#Composing Three Functions|example]]) all apply one function to `1` and then another function to the result. Only the functions differ, so they become parameters, and making the starting value a parameter too gives a general `compose`:
 
 ```haskell
 compose :: (Integer -> Integer) -> (Integer -> Integer) -> Integer -> Integer
@@ -31,7 +31,9 @@ compose g f n = g (f n)
 
 More generally, composition is associative: $h \circ (g \circ f)$ and $(h \circ g) \circ f$ are the same function, so a chain needs no parentheses. The identity function $\mathrm{id}(x) = x$ (`id` in Haskell) leaves any function unchanged when composed with it: $f \circ \mathrm{id} = \mathrm{id} \circ f = f$. Other languages write composition left to right instead, in the order the functions run (e.g., F#'s `>>`, or a Unix pipeline like `sort | uniq`, which passes each command's output to the next).
 
-# Example
+# Examples
+
+## Composing Three Functions
 
 Three small functions:
 
@@ -57,7 +59,9 @@ flowchart LR
     A["1"] -->|double| B["2"] -->|increment| C["3"]
 ```
 
-Composing with map and filter (see [[Higher-Order Function#Example|Higher-Order Function]]):
+## Composition with Map and Filter
+
+Composing with map and filter (see [[Higher-Order Function#Examples|Higher-Order Function]]):
 
 ```haskell
 map (increment . double) [1, 2, 3]              -- [3, 5, 7]

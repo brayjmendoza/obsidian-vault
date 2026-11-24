@@ -45,7 +45,9 @@ Pointers also save copying. To reorder large objects, a program can sort an arra
 
 More generally, a pointer is an explicit **indirection**, and most languages hide it: in Java and Python, every variable that holds an object holds a hidden pointer to it, with no address-of operator and no arithmetic, and following `null` or `None` raises an error instead of causing undefined behavior. Tony Hoare, who added the null reference to ALGOL W in 1965, later called it his "billion-dollar mistake." Many newer languages (e.g., Rust, Swift, and Kotlin) make a possibly missing value part of its type instead (see [[Option Type]]).
 
-# Example
+# Examples
+
+## Normalizing an Array
 
 `normalize` scales an array's values so the largest becomes `newmax`, given a pointer to the first value and a past-the-end pointer:
 

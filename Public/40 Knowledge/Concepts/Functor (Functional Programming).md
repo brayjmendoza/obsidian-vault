@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Functor
   - fmap
@@ -26,7 +26,9 @@ With functors, code that maps a function can be written once for every structure
 
 More generally, an `fmap` instance should obey two **functor laws**, which Haskell can't check: mapping the identity function changes nothing (`fmap id == id`), and mapping two functions one after the other is the same as mapping their composition (`fmap (g . f) == fmap g . fmap f`). The name comes from category theory, where a functor maps between categories. Other languages have the same idea under other names (e.g., `map` on Rust's `Option` and on Java's `Optional` and streams).
 
-# Example
+# Examples
+
+## Mapping over Maybe, Lists, and Trees
 
 The same three functions, once for `Maybe` and once for trees, collapse to `fmap`:
 

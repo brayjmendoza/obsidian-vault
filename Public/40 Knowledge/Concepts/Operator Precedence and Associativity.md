@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Precedence
   - Associativity
@@ -24,7 +24,9 @@ Function application counts as an operator too. In Haskell, it has the highest p
 
 A parser gets precedence and associativity from the shape of its grammar (see [[Context-Free Grammar]]). Each precedence level becomes its own non-terminal, with the lowest level at the top: `Expr` handles `+` and `-` and is built from `Term`s, which handle `*` and `/` and are built from `Factor`s. A tighter-binding operator sits deeper, so it ends up lower in the tree and is applied first. The direction of each rule's recursion sets associativity. A rule that recurs on the left (e.g., `Expr ::= Expr + Term`) groups to the left, and one that recurs on the right (e.g., `Expr ::= Term + Expr`) groups to the right. So a grammar can state left associativity directly, with a left-recursive rule. A recursive-descent parser can't follow left recursion, though, so a grammar written for one recurs on the right and gets left associativity a different way: with a rule that handles a chain of operators, building the tree from the left (see [[Left Recursion]]).
 
-# Example
+# Examples
+
+## Three Groupings of One Expression
 
 `5 - 1 - 2 * 2` has three plausible groupings:
 

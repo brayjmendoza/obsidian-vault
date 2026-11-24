@@ -51,7 +51,9 @@ A few cases follow from these rules:
 
 More generally, the C++ standard calls these kinds of allocation **storage durations** (automatic, static, dynamic, and thread), and its model is simpler than the one above in one respect: compilers usually set up a function's whole stack frame at once, but a local variable's lifetime officially begins at its declaration. Languages with garbage collection, like Java and Python, separate the phases: an object's memory is reclaimed some time after nothing can refer to it, rather than at a point in the code.
 
-# Example
+# Examples
+
+## Phases of Two Variables
 
 For illustration (an example not from the source), each phase of `x` and `y` happens at a brace or a declaration:
 

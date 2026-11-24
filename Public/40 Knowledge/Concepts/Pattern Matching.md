@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Case Expression
 fields:
@@ -36,7 +36,9 @@ Together with [[Recursive Data Type|recursive data types]] and [[Recursion]], pa
 
 More generally, many other languages have pattern matching too (e.g., Rust's `match`, OCaml's `match`, Scala's `match`, and Python's `match` statement), and a match that covers every possible value is called **exhaustive**.
 
-# Example
+# Examples
+
+## Matching Literals
 
 Factorial with a conditional, then with pattern matching on literals:
 
@@ -46,6 +48,8 @@ fact n = if n == 0 then 1 else n * fact (n - 1)
 fact 0 = 1                 -- base case: matches only 0
 fact n = n * fact (n - 1)  -- fall-through: matches anything else
 ```
+
+## Matching Constructors
 
 The same function on a data type, written as equations and as a `case` expression:
 
@@ -59,6 +63,8 @@ isRunning setting = case setting of
   _   -> True
 ```
 
+## Matching Lists
+
 Taking a list apart into head and tail:
 
 ```haskell
@@ -66,6 +72,8 @@ myLength :: [a] -> Int
 myLength []       = 0
 myLength (_ : xs) = 1 + myLength xs
 ```
+
+## Matching Tuples
 
 Taking a tuple apart, using wildcards for the parts that aren't needed:
 

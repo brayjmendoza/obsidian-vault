@@ -25,7 +25,9 @@ A consequence is that C++ doesn't check whether a program follows its rules whil
 
 More generally, Stroustrup states the principle in *The Design and Evolution of C++* (1994), and C++ features built on it, such as templates and inline functions, are often called **zero-cost abstractions**. Rust adopts the same principle. Most languages make the opposite trade: Java and Python, for instance, check array bounds on every access, so a mistake gives an error instead of undefined behavior, at a cost every program pays.
 
-# Example
+# Examples
+
+## Array Indexing
 
 For illustration (an example not from the source), indexing an array in C++ compiles to a single memory access, with no check that the index is in bounds. A bounds check would be a comparison on every access, paid by every program, even one whose indices are always correct. A programmer who wants the check can write it, or use a library function that includes it (e.g., `std::vector`'s `at`), and pays for it only there.
 

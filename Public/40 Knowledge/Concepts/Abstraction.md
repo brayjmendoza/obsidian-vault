@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -21,7 +21,9 @@ Its simplest form is the function. A function is a **parameterized expression**:
 
 More generally, the same move works at every level. A function abstracts over values, a [[Higher-Order Function|higher-order function]] abstracts over functions (e.g., [[Function Composition]] captures "apply one function, then another"), and later constructs abstract over types and whole patterns of computation. Much of programming language design is deciding what a language lets its programmers abstract over.
 
-# Example
+# Examples
+
+## Abstracting a Shared Expression
 
 Four expressions share a shape:
 

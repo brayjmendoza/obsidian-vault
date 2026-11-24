@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Curry–Howard Correspondence
   - Propositions as Types
@@ -19,7 +19,9 @@ Typing rules look like the inference rules of natural deduction, with premises a
 
 More generally, the correspondence extends across logic and type theory. Under it, a pair type $(A, B)$ corresponds to "$A$ and $B$," a sum type (e.g., Haskell's `Either A B`) to "$A$ or $B$," and an empty type to falsehood. Evaluating a program corresponds to simplifying a proof. It's named for Haskell Curry and William Howard, and it's the basis of proof assistants like Coq (now Rocq), Agda, and Lean, where proving a theorem means writing a program of the theorem's type. Note that typing derivations are proofs too, but of a different statement: a derivation proves "this program has this type," while Curry–Howard reads the program itself as the proof.
 
-# Example
+# Examples
+
+## Modus Ponens as Application
 
 Function application next to modus ponens:
 

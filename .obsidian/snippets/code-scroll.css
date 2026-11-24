@@ -1,0 +1,14 @@
+/* Reading view: one horizontal scroll bar per code block */
+.markdown-rendered pre {
+  overflow-x: auto;
+}
+.markdown-rendered pre code {
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* Live Preview: stop wrapping inside code blocks */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  white-space: pre;
+}

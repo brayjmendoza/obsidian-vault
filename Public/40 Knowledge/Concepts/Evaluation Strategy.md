@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Call by Value
   - Call by Name
@@ -38,7 +38,9 @@ C++ uses call by value by default, and offers call by reference through [[Refere
 
 More generally, the strategies give different results for when evaluating the argument either fails or never finishes but the function itself doesn't actually use the problematic argument: call by name returns a result, and call by value doesn't. With side effects, they can also differ in what happens and how often. Most languages use call by value (e.g., C, Java, and Python). Java and Python pass objects as hidden pointers by value, sometimes called **call by sharing**: a function can change the object it's given, but not which object the caller's variable refers to. Haskell uses **call by need**, which is [[Lazy Evaluation|lazy evaluation]]: call by name, plus remembering an argument's value once it's computed, so it's evaluated at most once.
 
-# Example
+# Examples
+
+## Call by Name and by Value in Arith
 
 The two versions of `eval` for function application, from [[Arith]]'s interpreter:
 
@@ -52,6 +54,8 @@ eval (Apply (FuncDef v body) arg) =
   let val = eval arg
   in eval (substitute val (Var v) body)
 ```
+
+## Value Parameters in C++
 
 In C++, `spotTransplant` moves one cow's spots to another, but with value parameters it changes only its copies:
 

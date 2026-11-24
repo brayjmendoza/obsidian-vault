@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Constructor
   - Default Constructor
@@ -33,7 +33,9 @@ Members are always initialized in the order the class declares them, whatever or
 
 More generally, nearly every object-oriented language has constructors: Java's look like C++'s, and Python's `__init__` plays the same role. Few separate initialization from the constructor's body as C++ does, since their members can't be indeterminate. The constructors of an [[Algebraic Data Type|algebraic data type]] are different: they build values from their fields and run no code.
 
-# Example
+# Examples
+
+## A Parameterized Constructor
 
 `Cow`'s parameterized constructor initializes both members in its initialization list, then prints:
 
@@ -46,7 +48,9 @@ Cow::Cow(int numSpots, int age)
 }
 ```
 
-Its copy constructor copies each member from `other`, in the order the class declares them (`numSpots_`, then `age_`):
+## A Copy Constructor
+
+`Cow`'s copy constructor copies each member from `other`, in the order the class declares them (`numSpots_`, then `age_`):
 
 ```c++
 Cow::Cow(const Cow& other)

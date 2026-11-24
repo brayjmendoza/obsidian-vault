@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Syntax
   - Semantics
@@ -20,7 +20,9 @@ Implementing a language means handling both. Syntax comes in two forms: the text
 
 More generally, there are several formal ways to define semantics. Defining a language's meaning with an evaluation function, as an [[Interpreter|interpreter]] does (e.g., [[Arith]]'s `eval`), is a kind of **operational semantics**, which defines meaning by how a program runs. Others define meaning mathematically (**denotational semantics**) or by what can be proved about a program (**axiomatic semantics**). The gap between symbol and meaning reaches beyond programming, into linguistics and the philosophy of mind.
 
-# Example
+# Examples
+
+## Statements about C++
 
 Statements about C++, sorted:
 

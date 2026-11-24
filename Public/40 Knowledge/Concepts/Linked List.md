@@ -27,7 +27,9 @@ C++'s `std::list` is a doubly linked list. Its iterators are **bidirectional**: 
 
 More generally, linked lists are a classic [[Recursive Data Type|recursive data type]]: a list is either empty or a node holding an item and the rest of the list, which is exactly how Haskell's lists are defined. On modern hardware, a linked list is often slower in practice than its costs suggest, since following pointers to nodes scattered across memory defeats the processor's caches, while a dynamic array's contiguous items suit them. So dynamic arrays are the usual default, and linked lists are kept for when insertions in the middle, or stable iterators, matter.
 
-# Example
+# Examples
+
+## Inserting in the Middle
 
 For illustration (an example not from the source), inserting into the middle of a `std::list` touches only the neighbors:
 

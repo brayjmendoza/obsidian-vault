@@ -30,7 +30,9 @@ More generally, each organization makes one kind of change easy and the other ha
 
 The right choice depends on which changes a program expects. The name comes from Philip Wadler, who posed it as the problem of getting both kinds of extension at once without editing existing code.
 
-# Example
+# Examples
+
+## Shapes in Haskell
 
 The functional organization, in Haskell:
 

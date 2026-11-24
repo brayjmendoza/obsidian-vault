@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Recursive Descent
 fields:
@@ -21,7 +21,9 @@ The grammar has to suit the technique. Recursive descent can't follow a left-rec
 
 More generally, recursive descent is **top-down** parsing: it starts from the start symbol and works toward the tokens. A **predictive** recursive-descent parser picks an alternative by looking at the next token, without backtracking, which works for the class of grammars called LL(1). Parser generators usually build **bottom-up** parsers instead (e.g., LR parsers), which handle left recursion directly.
 
-# Example
+# Examples
+
+## A Grammar with Precedence
 
 The grammar, with precedence built in:
 
@@ -30,6 +32,8 @@ Expr   ::= Term + Expr   | Term - Expr   | Term
 Term   ::= Factor * Term | Factor / Term | Factor
 Factor ::= number | ( Expr )
 ```
+
+## Parsing a Factor
 
 A parsing function for `Factor`, which consumes tokens and builds part of the AST:
 

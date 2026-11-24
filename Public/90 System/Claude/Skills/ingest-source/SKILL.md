@@ -56,7 +56,7 @@ In `40 Knowledge/Concepts/`, following the Concept Template and STYLE:
 
 - **Properties:** `aliases` (the source's terms), `fields` (broad fields only: a sub-map keeps its parent's field), `confidence: 3` on creation (never change an existing one), `last_reviewed` today, and `sources` (a link to each source note it draws on).
 - **Body:** a one-sentence definition with the term in bold, then what the listed sources teach, then a paragraph starting "More generally," for everything else (e.g., standard terms the sources don't use, history, and other languages or fields).
-- `# Example`: the source's own examples where it has them. An outside example says so (e.g., "For comparison, in Python:").
+- `# Examples`: the source's own examples where it has them, each under an H2 named for what it shows (e.g., `## Matching Tuples`), even when there's only one. An outside example says so (e.g., "For comparison, in Python:"). A link to an example points to its H2.
 - `# Connections`: related concepts, each with a few words on how they relate. Links to concepts not written yet are fine.
 - `# Sources`, then `# Maps` with `![[Map.base#Maps]]`.
 

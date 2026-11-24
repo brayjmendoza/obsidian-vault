@@ -39,7 +39,9 @@ Lookup, insert, and delete are still $O(n)$: in the worst case, $\Theta(n)$. But
 
 More generally, Conrado Martínez and Salvador Roura described randomized BSTs in 1998. A **treap** (Cecilia Aragon and Raimund Seidel, 1989) reaches the same distribution of shapes differently: each node gets a random priority, and the tree is kept as a heap by priority. Skip lists apply the same idea, randomness in place of balance rules, to linked lists.
 
-# Example
+# Examples
+
+## Inserting into Three Nodes
 
 Inserting into a subtree of $N = 3$ nodes: with probability $\frac{1}{4}$, the new key becomes the root of that subtree, by insert-at-root. Otherwise, with probability $\frac{3}{4}$, insertion moves into the child subtree where the key belongs, say one of $1$ node, and there the new key becomes its root with probability $\frac{1}{2}$, or else continues down. When the new key reaches an empty subtree, $N = 0$, and the probability is $\frac{1}{1} = 1$: it becomes a leaf, as in a plain BST.
 

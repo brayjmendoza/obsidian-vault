@@ -31,7 +31,9 @@ How much to grow matters. Growing by a constant factor, such as doubling the cap
 
 More generally, every major language has one: Java's `ArrayList` and Python's `list` are dynamic arrays. Languages differ in the growth factor they use, often 2 or 1.5: a smaller factor wastes less space, at the cost of copying more often.
 
-# Example
+# Examples
+
+## Growing by a Fixed Amount
 
 A program reads elephants until the user stops, so it can't know in advance how many to store. The source grows its heap array by a fixed two slots whenever it fills:
 

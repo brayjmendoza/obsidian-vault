@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - λ-Calculus
   - Lambda Abstraction
@@ -39,7 +39,9 @@ Computation is **$\beta$-reduction**, applying a function by substituting the ar
 
 More generally, the claim that the lambda calculus and Turing machines capture everything that can be computed is the **Church–Turing thesis**. It's a thesis rather than a theorem, since "computable" has no formal definition outside such models, but every model proposed since has turned out equivalent. Functional languages are lambda calculi with extras: Haskell's compiler translates programs into a typed lambda calculus, an extension of **System F** called System FC, and typed lambda calculi are the setting for [[Typing Rule|typing rules]] and the [[Curry-Howard Correspondence|Curry–Howard correspondence]].
 
-# Example
+# Examples
+
+## Reading Lambda Expressions
 
 Some lambda expressions:
 

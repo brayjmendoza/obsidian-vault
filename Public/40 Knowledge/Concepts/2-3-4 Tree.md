@@ -36,7 +36,9 @@ Three kinds of node are awkward to implement, so a 2-3-4 tree is usually **binar
 
 More generally, a 2-3-4 tree is a **B-tree** of order 4. B-trees, introduced by Rudolf Bayer and Edward McCreight in 1970, allow many keys per node, which suits disks and databases, where reading one large node costs about as much as reading a small one. The **2-3 tree** (John Hopcroft, 1970) is the version without 4-nodes.
 
-# Example
+# Examples
+
+## Inserting Four Keys
 
 For illustration (an example not from the source), inserting $10$, $20$, $30$, then $40$:
 

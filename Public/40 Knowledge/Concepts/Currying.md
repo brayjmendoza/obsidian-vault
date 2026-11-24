@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Curried Function
   - Partial Application
@@ -23,7 +23,9 @@ Two associativity rules make curried functions read like ordinary ones (see [[Op
 
 Each argument applied peels one arrow off the type. Supplying fewer arguments than a function can take is **partial application**, and its result is a function waiting for the rest. Partial application is how new functions are made from old ones without writing a definition with parameters (see [[Point-Free Style]]). Since a curried function returns a function, every multi-argument function in Haskell is a [[Higher-Order Function|higher-order function]].
 
-# Example
+# Examples
+
+## Reading a Two-Argument Function
 
 `average` can be read two ways, and both are correct:
 

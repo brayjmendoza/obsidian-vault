@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Maybe
   - Maybe Type
@@ -27,7 +27,9 @@ data Maybe a = Nothing | Just a
 
 More generally, option types appear in many languages (e.g., Rust's `Option`, Swift's optionals, OCaml's `option`, and Java's `Optional`). They're the standard alternative to a **null** value that can stand in for any type: with an option type, the type checker knows which values might be missing and makes the code handle them. Using one is how a [[Partial Function|partial function]] becomes total.
 
-# Example
+# Examples
+
+## A Lookup with a Default
 
 A lookup with a default value, handling both cases:
 

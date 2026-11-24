@@ -38,7 +38,9 @@ If a base class has no data members and every member function is pure virtual, i
 
 More generally, inheritance mixes two things: reusing a base class's code, and declaring a subtype. Many designers now prefer **composition**, building a class from objects of other classes, for reuse, and keep inheritance for genuine "is a" relationships. The **Liskov substitution principle** states when a derived class is a proper subtype: wherever the base class works, the derived class must too. Java separates the two uses of abstract classes, with `interface` types that a class can implement many of and classes it can inherit from only one of. C++ allows a class to have several base classes, **multiple inheritance**.
 
-# Example
+# Examples
+
+## An Abstract Animal
 
 For illustration (an example not from the source), an abstract `Animal` and two concrete classes derived from it:
 

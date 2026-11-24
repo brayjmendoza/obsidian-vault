@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Floating-Point Number
   - Floating Point
@@ -24,11 +24,13 @@ The significand $m$ holds the number's digits, and the **exponent** $e$ says whe
 
 The significand's bits set the **precision**, how many significant digits a number keeps: 24 bits is about 7 decimal digits, and 53 bits is about 16. The exponent's bits set the **range**, how large or small a number can be. C++ only promises that `sizeof(float)` $\le$ `sizeof(double)` $\le$ `sizeof(long double)`, but nearly every machine uses the sizes in the table. A `double` suits non-integer data where scientific notation would be natural (e.g., measurements).
 
-Since the significand has a fixed number of bits, only some real numbers can be represented exactly, and the rest are rounded to the nearest one that can. Representable numbers are densest near zero and spread out as they grow, since the same number of significand bits covers each power of two: between $2^{32}$ and $2^{33}$, consecutive `float` values are $2^{32-23} = 512$ apart. So converting a large integer to a `float` can change its value (see [[Type Conversion#Example|Type Conversion]]).
+Since the significand has a fixed number of bits, only some real numbers can be represented exactly, and the rest are rounded to the nearest one that can. Representable numbers are densest near zero and spread out as they grow, since the same number of significand bits covers each power of two: between $2^{32}$ and $2^{33}$, consecutive `float` values are $2^{32-23} = 512$ apart. So converting a large integer to a `float` can change its value (see [[Type Conversion#Rounding a Long to a Float|Type Conversion]]).
 
 More generally, nearly all hardware follows the IEEE 754 standard (1985), which fixes these formats. It stores one sign bit and leaves the significand's leading 1 implicit, which is how a `float` gets 24 bits of precision from 23 stored bits ($1 + 8 + 23 = 32$), and a `double` gets 53 from 52 ($1 + 11 + 52 = 64$). It also defines special values: positive and negative infinity, and NaN ("not a number," the result of operations like $0/0$). Rounding makes floating-point arithmetic differ from real arithmetic: addition isn't associative, and familiar decimals like $0.1$ have no exact binary form.
 
-# Example
+# Examples
+
+## Adding 0.1 and 0.2
 
 For comparison, in Python, whose `float` is a 64-bit `double`, $0.1$ and $0.2$ are each rounded, and so is their sum:
 

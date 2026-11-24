@@ -27,7 +27,9 @@ C++ infers types in a more limited way. A variable declared with `auto` takes th
 - **Use `auto`** when the type is complicated, genuinely doesn't matter, or is clear from context (e.g., an iterator's type in a loop).
 - **Avoid `auto`** when the type is simple and known, important for understanding the code, or unclear from context.
 
-# Example
+# Examples
+
+## Inference in Haskell
 
 No annotations are needed for Haskell to check these:
 
@@ -47,6 +49,8 @@ average x y = (x + y) / 2
 ```
 
 In GHCi, `:type` (or `:t`) shows the type Haskell infers for any expression (e.g., `:t True` prints `True :: Bool`).
+
+## Auto in C++
 
 In C++, `auto` saves writing the long type of an [[Iterator|iterator]], an object that steps through a container's items. Here the type is clear from `begin()`, which gives an iterator to a list's first item:
 

@@ -33,7 +33,9 @@ All are linear data structures. A [[Linked List|linked list]] with pointers to b
 
 More generally, queues order work that should be handled in arrival order, like print jobs, requests to a server, and the frontier of a breadth-first search. When items should leave by importance rather than arrival, the structure is a **[[Priority Queue|priority queue]]**. C++'s standard library provides `std::queue` and `std::deque`, and Python's `collections.deque` is a deque.
 
-# Example
+# Examples
+
+## Enqueuing and Dequeuing
 
 For illustration (an example not from the source), enqueuing `A`, `B`, and `C`, then dequeuing twice:
 

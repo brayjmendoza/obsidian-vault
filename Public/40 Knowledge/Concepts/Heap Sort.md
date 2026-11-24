@@ -33,7 +33,9 @@ HEAP-SORT(arr):
 
 More generally, heap sort is one of the standard $O(n \log n)$ comparison sorts, beside merge sort and quicksort, and no comparison sort can do better in the worst case. Its strengths are a worst case of $O(n \log n)$, which quicksort lacks, and sorting in place, which merge sort doesn't. Its weaknesses are that it isn't **stable**, so equal items can change their relative order, and that it jumps around the array, which caches handle poorly, so quicksort is usually faster in practice. C++'s `std::sort` falls back on heap sort when quicksort recurses too deeply, an approach called introsort.
 
-# Example
+# Examples
+
+## Sorting Three Items
 
 For illustration (an example not from the source), sorting `[3, 1, 2]`:
 

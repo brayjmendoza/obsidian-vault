@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-11-01
-updated: 2026-11-16
-version: "1.1"
+updated: 2026-11-24
+version: "1.2"
 ---
 # Writing Style
 
@@ -36,7 +36,7 @@ These rules matter most in concepts and sources, where a reader is learning the 
 - **Spell out comparisons in full** (e.g., "a subtype of the other pair's corresponding component," not "a subtype of the other").
 - **Tie a term's name to its meaning** when the name explains it (e.g., a parametrically polymorphic definition takes types as parameters).
 - **Name the thing instead of writing "one."** Write "heating to a temperature," not "heating to one," and "keep the first parser's result or the second's," not "keep just one."
-- **Don't assume the reader has seen something.** Introduce a term or example before referring to it. A sentence that relies on an example elsewhere links to it, in the same note (e.g., `(see the [[#Example|example]])`) or another note (e.g., "the grammar in [[Context-Free Grammar#Example|Context-Free Grammar]]"). A running example used across notes (e.g., [[Arith]]) links to its reference note at its first mention in each note.
+- **Don't assume the reader has seen something.** Introduce a term or example before referring to it. A sentence that relies on an example elsewhere links to it, in the same note (e.g., `(see the [[#Composing Three Functions|example]])`) or another note (e.g., "the grammar in [[Context-Free Grammar#A Grammar for Arithmetic|Context-Free Grammar]]"), pointing to the example's own header. A running example used across notes (e.g., [[Arith]]) links to its reference note at its first mention in each note.
 - **A cross-reference leads to the explanation.** Point only to a note or section that actually covers the point it's attached to. If none does, explain the point in place.
 
 ## Documentation
@@ -81,6 +81,7 @@ Documentation notes (i.e., the `documentation` type) are concise, high-level ove
 - **Tables** for anything compared across the same attributes (e.g., note types, properties, roles). Cells are fragments with no final period. A cell with two sentences gets a period between them but none at the end.
 - **Bullet endings:** a full sentence ends with a period, a fragment doesn't.
 - **Bold** marks a key term where it's defined (e.g., "is a **domain**") or the main rule of a paragraph. *Italics* are only for contrast (e.g., "*understand* it or just *look it up*").
+- **A concept's Examples section** holds one H2 per example, even when there's only one, named for what the example shows (e.g., "Inserting Four Keys" or "Matching Tuples"), not "Example 1."
 - **Source sections earn their place.** In a source note, Open Questions and Quotes stay empty unless something relevant adds value. Leave the heading with nothing under it rather than filling it.
 - **Overview footer:** documentation notes in `90 System/Overview/` end with `---`, then `← [[Previous]] · Next: [[Next]] →`.
 
@@ -117,6 +118,7 @@ There are no model concept, source, or log notes yet. Add some here once you've 
 
 ## Changelog
 
+- 2026-11-24 · 1.2 · A concept's Example section is now Examples, with a descriptive H2 for each example. Links to an example point to its H2.
 - 2026-11-16 · 1.1 · From the review of the CS 131 concepts: added Clear Explanations (exact claims, concrete terms, examples that show their point, full comparisons, names tied to meanings, no "one" for a noun, links to earlier examples, and cross-references that explain). Symbols are LaTeX in concepts and sources, except in code and properties. Link aliases set the grammar around them.
 - 2026-11-15 · Concepts separate what their sources teach from general knowledge: standard terms as titles, source terms as aliases, and outside material in a "More generally," paragraph.
 - 2026-11-11 · URLs in bodies are allowed, so the no-URLs rule is gone: a body URL is a Markdown link with the page's title. A source note's Open Questions and Quotes stay empty unless something there adds value.

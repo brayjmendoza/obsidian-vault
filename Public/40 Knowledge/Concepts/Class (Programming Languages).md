@@ -40,7 +40,9 @@ Three more features complete the picture:
 
 More generally, classes are the core of **object-oriented programming**, and Java and Python use different words for the same things: a **method** is a member function, a **field** or **instance variable** is a member variable, and creating an object, which C++ calls **construction**, is **instantiation**. Python has no access control enforced by the language, only the convention that a name starting with an underscore is private. The distinction between grouping behavior by data, as classes do, and by operation, as functions over data types do, is the [[Expression Problem|expression problem]].
 
-# Example
+# Examples
+
+## A Cow Class
 
 A `Cow` knows how many spots it has and how old it is, and can moo. Its definition goes in `cow.hpp`:
 

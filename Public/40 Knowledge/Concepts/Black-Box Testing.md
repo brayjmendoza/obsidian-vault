@@ -27,7 +27,9 @@ Beyond those rules, a test suite should help find *where* code is wrong, not jus
 
 More generally, the opposite approach is **white-box testing**, which uses knowledge of the implementation to choose tests (e.g., one test per branch in the code, measured as **code coverage**). A test of one small unit of code, such as a class or function, is a **unit test**, and writing the tests before the implementation is the core of test-driven development. As Edsger Dijkstra noted in 1970, testing can show that bugs are present, but never that they're absent.
 
-# Example
+# Examples
+
+## Testing a Stack
 
 A test for a stack checks what any stack promises: the last item pushed is the first popped (an example not from the source).
 

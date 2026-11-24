@@ -33,7 +33,9 @@ A binary tree is **balanced** when every node's left and right subtrees have sim
 
 More generally, trees appear far beyond search: abstract syntax trees represent programs (see [[Concrete and Abstract Syntax]]), file systems are trees of folders, and heaps are binary trees with an ordering property. In graph theory, a tree is a connected graph with no cycles, and a rooted tree adds a chosen root. Some authors count height in nodes rather than edges, so a one-node tree has height $1$. In functional languages, a binary tree is a [[Recursive Data Type|recursive data type]], defined exactly as the recursive definition above.
 
-# Example
+# Examples
+
+## A Perfect Binary Tree
 
 For illustration (an example not from the source), a binary tree of seven nodes:
 

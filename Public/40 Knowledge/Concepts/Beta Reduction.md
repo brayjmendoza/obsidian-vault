@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - β-Reduction
   - Normal Form
@@ -33,7 +33,9 @@ This is the same choice an interpreter makes (see [[Evaluation Strategy]]).
 
 More generally, the **Church–Rosser theorem** says that whenever two orders of reduction both reach a normal form, they reach the same one, up to renaming bound variables. **Normal-order** reduction, which always reduces the leftmost outermost application first, is guaranteed to find a normal form if one exists. Substitution in $\beta$-reduction has to avoid capturing variables, renaming bound variables first when needed (i.e., $\alpha$-conversion).
 
-# Example
+# Examples
+
+## Reducing Step by Step
 
 $\beta$-reducing step by step:
 
@@ -42,6 +44,8 @@ $\beta$-reducing step by step:
 (((λx . x) (λa . b)) y)  →  ((λa . b) y)  →  b             normal form
 ((λx . (x x)) (λx . (x x)))  →  ((λx . (x x)) (λx . (x x)))  →  …   no normal form
 ```
+
+## A Curried Function
 
 A curried two-argument function, applied one argument at a time:
 

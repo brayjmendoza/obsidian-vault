@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Lvalue
   - Rvalue
@@ -34,7 +34,9 @@ The model also shows how calls are evaluated: one function call at a time, with 
 
 More generally, the terms come from the language CPL and passed through C to C++. Modern C++ refines them into **value categories** (lvalue, xvalue, and prvalue), and C++11 added **rvalue references** (`&&`), which bind only to temporaries so their contents can be moved rather than copied, since nothing else will use them.
 
-# Example
+# Examples
+
+## Chained Output
 
 Each `<<` returns a reference to its left-hand stream, so a chain of them is a chain of calls on temporaries:
 

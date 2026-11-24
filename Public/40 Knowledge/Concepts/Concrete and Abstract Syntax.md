@@ -27,7 +27,9 @@ Parentheses and [[Operator Precedence and Associativity|precedence]] belong to c
 
 More generally, an abstract syntax can be designed well or badly. A good one has a constructor for each kind of construct, without repeating structure or leaving out distinctions that matter (see the example). Most compilers and interpreters work on an AST, since it's far easier to analyze and transform than text. In the Lisp family of languages, code is written directly in the language's own list syntax, so a program can build and run code with the same operations it uses on lists.
 
-# Example
+# Examples
+
+## An Expression as a Tree
 
 `(4 + 2) * 7` as a tree:
 
@@ -39,6 +41,8 @@ flowchart TD
     A --> T["2"]
 ```
 
+## The Same Tree as Haskell Data
+
 The same structure as Haskell data:
 
 ```haskell
@@ -47,6 +51,8 @@ data Exp = Num Double | BinOp Exp Op Exp
 
 BinOp (BinOp (Num 4) PlusOp (Num 2)) TimesOp (Num 7)
 ```
+
+## Five Designs for Exp
 
 Five ways to design `Exp` for arithmetic:
 

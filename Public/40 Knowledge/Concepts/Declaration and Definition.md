@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Declaration
   - Definition
@@ -28,7 +28,9 @@ A name may be declared many times but defined only once, which is C++'s **one de
 
 More generally, the distinction matters most in languages compiled one file at a time, like C, C++, and Objective-C, where a file has to know a function's type without seeing its body. Many languages blur it: in Python, `def` both declares and defines a function, at the moment it runs. Haskell and Java let code use a name defined later in the same file or class, so they need no forward declarations. The one definition rule's general form is that a name is bound once per scope (see [[Name Binding]]).
 
-# Example
+# Examples
+
+## A Header Included Twice
 
 `pi.hpp` defines a constant, and `tau.hpp` includes `pi.hpp` to define another:
 

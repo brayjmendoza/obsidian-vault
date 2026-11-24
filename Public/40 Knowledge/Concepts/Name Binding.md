@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Binding
 fields:
@@ -23,7 +23,9 @@ A few related terms:
 
 Since a name can't be rebound, an apparent update is something else. `x = x + 1` doesn't add one to `x`. It defines `x` in terms of itself, so evaluating `x` requires evaluating `x` first, and evaluation never finishes.
 
-# Example
+# Examples
+
+## Top-Level Bindings
 
 Two top-level bindings, read as "bind `x` to the expression `21`" and "bind `y` to the expression `2 * x`":
 
@@ -31,6 +33,8 @@ Two top-level bindings, read as "bind `x` to the expression `21`" and "bind `y` 
 x = 21
 y = 2 * x
 ```
+
+## Binding a Name Twice
 
 Binding `x` again in the same file is an error, not an update:
 

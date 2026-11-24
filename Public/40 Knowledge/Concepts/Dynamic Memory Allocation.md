@@ -38,7 +38,9 @@ The usual guard against all three is to give every heap object one clear owner (
 
 More generally, C does the same with the functions `malloc` and `free`, which allocate bytes rather than objects. Modern C++ rarely calls `delete` directly: **smart pointers** like `std::unique_ptr` delete their object when they're destroyed. Languages with **garbage collection**, like Java, Python, and Haskell, have no `delete`: they find objects nothing points to and reclaim them automatically, which rules out dangling pointers and double deletes at some cost in time and memory. The heap of memory allocation is unrelated to the heap data structure (see [[Binary Heap]]).
 
-# Example
+# Examples
+
+## A Growing Heap Array
 
 A program reads elephants until the user stops, storing them in a heap array that grows when it fills up:
 

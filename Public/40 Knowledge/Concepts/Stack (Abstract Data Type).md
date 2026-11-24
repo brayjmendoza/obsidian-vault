@@ -21,7 +21,9 @@ A stack is like an ideal plane boarding: the first passengers to board sit at th
 
 More generally, stacks are everywhere a computation must return to where it was: a program's **call stack** holds each active function call's stack frame (see [[Object Lifetime]]), undo histories are stacks, and checking that brackets match pushes each opening bracket and pops at each closing one. The term "first in, last out" (FILO) means the same as LIFO.
 
-# Example
+# Examples
+
+## Matching Brackets
 
 Matching brackets with a stack (an example not from the source): push each opening bracket, and at each closing bracket, pop and check that it's the matching kind.
 

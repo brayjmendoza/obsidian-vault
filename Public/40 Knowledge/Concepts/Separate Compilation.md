@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Compilation Stages
   - Linking
@@ -33,7 +33,9 @@ Separate compilation pays off in two ways. Changing one source file means recomp
 
 More generally, most compiled languages separate compiling from linking, though not always with C++'s four visible stages: Java compiles each class to its own `.class` file and links them while the program runs, and Rust compiles a whole crate at once. C and C++ headers are textual inclusion, which is why a large header slows down every file that includes it. C++20's modules replace them with compiled interfaces that each file imports instead of pasting in.
 
-# Example
+# Examples
+
+## Compiling Two Files
 
 `cowchat.cpp` calls `printMoos`, which is defined in `printmoos.cpp`. Compiled alone, `cowchat.cpp` fails, since the compiler has never seen `printMoos`. A declaration of it fixes that:
 

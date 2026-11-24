@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-16
-updated: 2026-11-16
+updated: 2026-11-24
 topic: programming-languages
 ---
 **Arith** is the small language that [[Programming Languages (HMC CS131)]] implements in Haskell, one feature at a time. It starts as arithmetic on numbers and grows variables, functions, and local bindings. Concept notes use it as their running example, and this note holds the whole language in one place.
@@ -84,7 +84,7 @@ evalOp (Num x) DivOp   (Num y) = Num (x / y)
 evalOp _       _       _       = error "arithmetic on a non-number"
 ```
 
-`envLookup` and `envInsert` are in [[Environment (Programming Languages)#Example|Environment]].
+`envLookup` and `envInsert` are in [[Environment (Programming Languages)#The Environment as a List|Environment]].
 
 Running a program that binds a function to a name and calls it:
 
@@ -97,10 +97,10 @@ eval [] (Let "double" (FuncDef "x" (BinOp (Var "x") TimesOp (Num 2)))
 
 # Front End
 
-- **Tokens:** `Token` and `tokenize` are in [[Lexical Analysis#Example|Lexical Analysis]].
-- **Grammar:** the grammar for arithmetic expressions is in [[Context-Free Grammar#Example|Context-Free Grammar]], and a version with precedence built in is in [[Recursive-Descent Parser#Example|Recursive-Descent Parser]].
+- **Tokens:** `Token` and `tokenize` are in [[Lexical Analysis#A Tokenizer for Arith|Lexical Analysis]].
+- **Grammar:** the grammar for arithmetic expressions is in [[Context-Free Grammar#A Grammar for Arithmetic|Context-Free Grammar]], and a version with precedence built in is in [[Recursive-Descent Parser#A Grammar with Precedence|Recursive-Descent Parser]].
 - **Parsers:** a hand-written parser is in [[Recursive-Descent Parser]], and one built from combinators is in [[Parser Combinator]].
-- **Printing:** a `Show` instance that prints `Exp` in prefix notation is in [[Type Class#Example|Type Class]].
+- **Printing:** a `Show` instance that prints `Exp` in prefix notation is in [[Type Class#A Show Instance for Arith|Type Class]].
 
 # Related
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -19,7 +19,9 @@ In a purely functional language like Haskell, every expression is referentially 
 - **Evaluation can be delayed or shared.** When an expression is evaluated can't change its value, so evaluation can wait until the value is needed and reuse a result once computed (see [[Lazy Evaluation]]).
 - **Evaluation order is free.** Independent expressions can be evaluated in any order, or in parallel.
 
-# Example
+# Examples
+
+## Replacing an Expression
 
 In Haskell, `3 * 4` can be swapped for its result anywhere:
 
@@ -28,6 +30,8 @@ double x = x + x
 
 double (3 * 4)  -- = double 12 = 12 + 12 = 24
 ```
+
+## A Counter with a Side Effect
 
 A function with a side effect breaks this. In Python, a counter that increments on every call isn't an alias for any one value:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -20,7 +20,9 @@ A **side effect** is anything an evaluation does to change state besides produci
 - **Evaluation order is free.** No expression can observe another's effects, so evaluation can wait until a result is needed (see [[Lazy Evaluation]]) or run in parallel.
 - **Output needs separate machinery.** Printing is a side effect, so ordinary expressions can't print. Haskell handles input and output with the `IO` type, a [[Monad (Functional Programming)|monad]] that keeps effects out of ordinary expressions.
 
-# Example
+# Examples
+
+## Imperative and Functional Factorial
 
 Factorial, written imperatively in Python and functionally in Haskell:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Typing Judgment
   - Type Environment
@@ -71,7 +71,9 @@ $$
 
 More generally, this style of presenting a type system comes from the study of the typed lambda calculus, and the same derivations are what a type checker builds as it works. A type system is **sound** when well-typed programs can't go wrong at run time in the ways the types rule out, often stated as "progress and preservation." Checking a derivation is mechanical, while finding one without annotations is [[Type Inference|type inference]].
 
-# Example
+# Examples
+
+## A Derivation for Let
 
 A derivation of $y :: \text{bool} \vdash \text{let } x = 5 \text{ in } x + 1 :: \text{int}$, using the rules for `let`, `+`, variables, and numbers:
 

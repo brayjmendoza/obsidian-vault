@@ -25,13 +25,13 @@ From slowest-growing to fastest:
 
 # The Asymptotic Family
 
-| Notation | In words | Like | Limit of $f(n)/g(n)$ |
-|---|---|---|---|
-| $f(n) \in o(g(n))$ | $f$ is definitely better than $g$ | $x < y$ | $0$ |
-| $f(n) \in O(g(n))$ | $f$ is no worse than $g$ | $x \le y$ | Finite |
-| $f(n) \in \Theta(g(n))$ | $f$ is similar to $g$ | $x = y$ | Finite and positive |
-| $f(n) \in \Omega(g(n))$ | $f$ is no better than $g$ | $x \ge y$ | Positive, or $\infty$ |
-| $f(n) \in \omega(g(n))$ | $f$ is definitely worse than $g$ | $x > y$ | $\infty$ |
+| Notation                | In words                          | Like      | Limit of $f(n)/g(n)$  |
+| ----------------------- | --------------------------------- | --------- | --------------------- |
+| $f(n) \in o(g(n))$      | $f$ is definitely better than $g$ | $x < y$   | $0$                   |
+| $f(n) \in O(g(n))$      | $f$ is no worse than $g$          | $x \le y$ | Finite                |
+| $f(n) \in \Theta(g(n))$ | $f$ is similar to $g$             | $x = y$   | Finite and positive   |
+| $f(n) \in \Omega(g(n))$ | $f$ is no better than $g$         | $x \ge y$ | Positive, or $\infty$ |
+| $f(n) \in \omega(g(n))$ | $f$ is definitely worse than $g$  | $x > y$   | $\infty$              |
 
 **Mnemonic:** Charlie Chaplin jumping over a puddle under the full moon. From top to bottom: little $o$ is the moon, a strict upper bound. Big $O$ is Charlie's head, an upper bound. $\Theta$ is his body, both an upper and a lower bound. $\Omega$ is his legs, a lower bound. Little $\omega$ is the puddle, a strict lower bound.
 

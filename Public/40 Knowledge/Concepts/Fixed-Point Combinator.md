@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Y Combinator
   - Fixpoint Combinator
@@ -35,7 +35,9 @@ so `fact = g fact`: `fact` is a fixed point of `g`. The Y combinator finds it, s
 
 More generally, this Y diverges under call-by-value evaluation, since `(Y g)` keeps expanding before `g` ever runs, so eager languages use a variant called the **Z combinator**, which delays the self-application behind a lambda. In Haskell, the self-application `x x` can't be typed at all, so `Y` can't be written as above. Instead, recursion supplies the fixed point directly: `fix f = f (fix f)` (in `Data.Function`), which laziness makes work. Haskell Curry discovered the Y combinator, and the startup accelerator Y Combinator is named after it.
 
-# Example
+# Examples
+
+## Recursive Functions with a Fixed Point
 
 Recursive functions written with a fixed-point combinator (in Haskell, with `fix` playing the role of `Y`):
 

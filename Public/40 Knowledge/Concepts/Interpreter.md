@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Evaluator
   - eval
@@ -14,7 +14,7 @@ sources:
 ---
 An **interpreter** is a program that takes another program, represented as abstract syntax, and computes its value directly.
 
-An interpreter's core is an **evaluation function**, `eval`, that traverses the abstract syntax tree (see [[Concrete and Abstract Syntax]]). For example, with the grammar for expressions (see [[Context-Free Grammar#Example|Context-Free Grammar]]), the `eval` function would have one case per kind of expression, matched with [[Pattern Matching|pattern matching]]: a number evaluates to itself, and an operation evaluates its operands recursively and then combines the results. Writing `eval` defines a language's [[Syntax and Semantics|semantics]]: the function says what every expression means. [[Arith]], a small language of arithmetic expressions, is built this way, with both its abstract syntax and its semantics written in Haskell.
+An interpreter's core is an **evaluation function**, `eval`, that traverses the abstract syntax tree (see [[Concrete and Abstract Syntax]]). For example, with the grammar for expressions (see [[Context-Free Grammar#A Grammar for Arithmetic|Context-Free Grammar]]), the `eval` function would have one case per kind of expression, matched with [[Pattern Matching|pattern matching]]: a number evaluates to itself, and an operation evaluates its operands recursively and then combines the results. Writing `eval` defines a language's [[Syntax and Semantics|semantics]]: the function says what every expression means. [[Arith]], a small language of arithmetic expressions, is built this way, with both its abstract syntax and its semantics written in Haskell.
 
 When developing the Arith language, we implement one feature at a time. Each feature requires a new constructor and a new case in `eval`:
 
@@ -29,7 +29,9 @@ Adding functions changes `eval`'s result type from `Double` to `Exp`, so that ev
 
 More generally, an interpreter written in one language for another is a **definitional interpreter**. The language being implemented (here, Arith) is the **object language**, and the language the interpreter is written in (here, Haskell) is the **metalanguage**. The other main way to implement a language is a **compiler**, which translates a program into another language (e.g., machine code) to run later, instead of computing its value itself.
 
-# Example
+# Examples
+
+## Arith with Functions
 
 Arith with functions (with `Eq` derived, which the comparison `v == w` in substitution needs):
 
@@ -61,6 +63,8 @@ evalOp (Num x) MinusOp (Num y) = Num (x - y)
 evalOp (Num x) TimesOp (Num y) = Num (x * y)
 evalOp (Num x) DivOp   (Num y) = Num (x / y)
 ```
+
+## A Two-Argument Function
 
 Adding with a two-argument function:
 

@@ -33,7 +33,9 @@ A [[Splay Tree|splay tree]] moves a node up two levels at a time with **double r
 
 More generally, rotations are the common tool of balanced trees, including AVL trees (1962, the first self-balancing BST), red-black trees, and splay trees. Some authors name a rotation by the direction the parent moves, so the same operation can be called left or right in different texts.
 
-# Example
+# Examples
+
+## A Right Rotation
 
 A right rotation on the node containing $d$, with $b$ as its left child and $a$, $c$, and $e$ as subtrees:
 

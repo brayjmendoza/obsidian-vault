@@ -32,7 +32,9 @@ Despite the name, a type class is not a class in the object-oriented sense. An o
 
 More generally, type classes give a kind of polymorphism different from [[Parametric Polymorphism]]. A parametrically polymorphic function runs the same code for every type. An operation from a type class, like `(==)`, has a separate implementation for each member type, chosen by the type it's used at. This is **ad hoc polymorphism**, or overloading. Similar mechanisms in other languages include Rust's traits and Swift's protocols. A class can also describe type constructors rather than types (e.g., [[Functor (Functional Programming)|Functor]] and [[Monad (Functional Programming)|Monad]], whose members are types like `Maybe` and lists that take a type parameter).
 
-# Example
+# Examples
+
+## Deriving Standard Classes
 
 Deriving the standard classes:
 
@@ -44,6 +46,8 @@ show Hearts              -- "Hearts", from Show
 Clubs < Hearts           -- True, from Ord: Clubs is declared first
 read "Clubs" :: CardSuit -- Clubs, from Read. Without the annotation, it's ambiguous
 ```
+
+## A Show Instance for Arith
 
 Writing a `Show` instance by hand, so [[Arith]] expressions print in prefix notation instead of as constructors:
 

@@ -46,7 +46,9 @@ Marking either one `explicit` means it's used only when a conversion is asked fo
 
 More generally, an automatic conversion is called a **coercion**, or an **implicit conversion**, and a requested one is a **cast**. What this note calls a promotion is usually called a **widening conversion**, and a conversion that can lose information is a **narrowing conversion**. The C++ standard itself uses "promotion" more narrowly, for converting small integer types to `int` and `float` to `double`, and what it forbids in brace initialization is exactly narrowing. Languages differ in how much they coerce: Java widens automatically but requires a cast to narrow, and Haskell never converts numbers implicitly, so mixing an `Int` with a `Double` needs an explicit function like `fromIntegral`.
 
-# Example
+# Examples
+
+## Rounding a Long to a Float
 
 A `float` has 24 bits of precision, too few to hold every 10-digit integer. Converting a `long` to a `float` and back rounds the value to the nearest one a `float` can represent:
 
@@ -59,6 +61,8 @@ std::cout << worldPop << std::endl                  // 7960583250
 
 The round trip loses 82: near 8 billion, consecutive `float` values are 512 apart, so 7,960,583,250 rounds to the nearest multiple of 512, 7,960,583,168. Integer to floating point is always a conversion, and this is the information it can lose (see [[Floating-Point Arithmetic]]).
 
+## A Promotion
+
 A promotion, by contrast, changes the type and keeps the value:
 
 ```c++
@@ -67,6 +71,8 @@ std::cout << dollar << " " << int(dollar);   // prints "$ 36"
 ```
 
 Printed as a `char`, the value is the character with code 36, a dollar sign. Promoted to an `int`, the same value prints as a number.
+
+## A Class Conversion
 
 A class conversion lets `makeDinner`, which takes a `FuzzyBool`, accept a plain `bool`:
 

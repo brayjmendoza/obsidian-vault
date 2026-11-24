@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Data Type
   - Haskell Datatype
@@ -34,7 +34,9 @@ Values are built by applying constructors and taken apart by [[Pattern Matching]
 
 More generally, a type built this way is called algebraic because of how it combines other types. A choice between constructors is a **sum**: a value is one constructor *or* another. The values a constructor carries form a **product**: a value has one field *and* another. Counting values shows why: if `A` has 2 values and `B` has 3, a type that holds either an `A` or a `B` has $2 + 3$ values, and a pair of an `A` and a `B` has $2 \times 3$. A type whose constructors carry nothing is an **enumeration**, and a tuple (e.g., `(Bool, Double)`) is an anonymous product. Many other languages have the same idea under other names (e.g., Rust's `enum`, Swift's `enum` with associated values, and OCaml's variant types).
 
-# Example
+# Examples
+
+## Thermostat Settings
 
 A thermostat setting is off, cooling to a temperature, heating to a temperature, or out of service with a message:
 

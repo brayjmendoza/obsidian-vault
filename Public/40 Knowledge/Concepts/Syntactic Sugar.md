@@ -23,7 +23,9 @@ C++'s **range-based `for` loop** is sugar for a loop over [[Iterator|iterators]]
 
 More generally, translating sugar into the language's core is called **desugaring**, and the smaller language left after it is the **core language**. Many familiar features are sugar in some language (e.g., list comprehensions in Haskell and Python, `for` loops over `while` loops, and `+=`). Keeping the core small keeps the semantics small too, since only the core has to be defined and implemented directly.
 
-# Example
+# Examples
+
+## Let in Arith
 
 `let` added to [[Arith]], with its meaning defined by function application:
 
@@ -38,6 +40,8 @@ eval env (Let v e body) = eval env (Apply (FuncDef v body) e)
 ```
 
 So `Let "x" (Num 100) (BinOp (Var "x") PlusOp (Num 17))` evaluates exactly like `Apply (FuncDef "x" (BinOp (Var "x") PlusOp (Num 17))) (Num 100)`, to `Num 117`.
+
+## Range-Based For Loops
 
 A range-based `for` loop in C++:
 

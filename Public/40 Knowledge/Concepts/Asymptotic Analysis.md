@@ -55,7 +55,9 @@ An algorithm's cost often depends on which input of size $n$ it gets, not just o
 
 More generally, the notation comes from mathematics: Paul Bachmann introduced $O$ in 1894, Edmund Landau popularized it along with $o$, and Donald Knuth introduced $\Omega$ and $\Theta$ in their modern sense in 1976. The limit definitions above need the limit to exist. The standard definitions use constants instead, and cover every case: $f(n) \in O(g(n))$ when there are constants $c > 0$ and $n_0$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$, and $\Omega$ reverses the inequality. Writing $f(n) = O(g(n))$, with an equals sign, is common, though $f$ is a member of a set rather than equal to one.
 
-# Example
+# Examples
+
+## Comparing Orders with a Limit
 
 To compare $f(n) = 3n^2 + 100n$ with $g(n) = n^2$:
 

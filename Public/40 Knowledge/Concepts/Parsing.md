@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Parser
 fields:
@@ -31,7 +31,9 @@ There are four ways to get a parser:
 
 More generally, parser generators are common in compilers (e.g., yacc, Bison, and ANTLR), while many production compilers, including those for C, Go, and Rust, use hand-written recursive-descent parsers for better error messages. The reverse direction, from a tree back to text, is **pretty printing**.
 
-# Example
+# Examples
+
+## Parsing an Arith Expression
 
 Parsing the text `1 + 2 * 3` into [[Arith]]'s abstract syntax:
 

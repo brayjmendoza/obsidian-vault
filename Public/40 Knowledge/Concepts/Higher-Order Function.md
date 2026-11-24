@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - First-Class Function
   - map
@@ -39,7 +39,9 @@ filter p (x : xs) =
 
 More generally, nearly every language with first-class functions has map and filter (e.g., Python's `map`, `filter`, and list comprehensions, and JavaScript's `Array.prototype.map` and `Array.prototype.filter`). Map also extends beyond lists to any structure with elements in it (e.g., applying a function at every node of a tree), which is what a [[Functor (Functional Programming)|functor]] generalizes.
 
-# Example
+# Examples
+
+## Map with Different Functions
 
 Three list functions with the same shape, differing only in what they do to each element:
 
@@ -58,6 +60,8 @@ emphasizeList = map (++ "!")
 
 map length ["Haskell", "Python", "Java"]  -- [7, 6, 4]
 ```
+
+## Filter with Different Predicates
 
 Filter with different predicates:
 

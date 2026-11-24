@@ -9,6 +9,8 @@ Kowainik's style guide for formatting and writing Haskell, drawn from commercial
 
 **Reach for it when:** you're unsure how to lay out a module (e.g., how to order imports or indent a `where`), or you want sensible GHC warnings and default extensions for a new project.
 
+# Key Points
+
 - Indent blocks 4 spaces, and `where` 2 spaces on its own line
 - Lines are at most 90 characters
 - Imports are explicit or qualified, in four groups separated by blank lines

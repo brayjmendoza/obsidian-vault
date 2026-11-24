@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -26,7 +26,9 @@ A **let expression** binds names for one expression: `let` introduces the bindin
 
 Which binding a function's free variables refer to, the one where it's defined or the one where it's called, is a separate choice (see [[Static and Dynamic Scope]]).
 
-# Example
+# Examples
+
+## Local Bindings with Let and Where
 
 Three ways to define $f(x) = x^2 + \frac{1}{x^2}$:
 
@@ -40,12 +42,16 @@ f x = value + 1 / value
   where value = x * x             -- value's scope: all of f's body
 ```
 
+## Nested Scopes
+
 Nested scopes resolve from the inside out:
 
 ```haskell
 let x = 21 in let x = 10000 in x  -- 10000: the inner x shadows the outer one
 let x = 21 in let y = 5 in x + y   -- 26: the inner scope doesn't bind x, so x is the outer one
 ```
+
+## Several Bindings in One Let
 
 A single `let` can bind several names, aligned in the same column, and one can reference another:
 

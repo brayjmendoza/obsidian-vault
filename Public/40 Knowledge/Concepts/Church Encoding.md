@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Church Numeral
   - Church Boolean
@@ -27,7 +27,9 @@ Each encoding only makes sense in context: `TRUE` on its own is just a function 
 
 More generally, the encodings are named for Alonzo Church. They show that data and control are interchangeable: a value can be represented by the operation that uses it, the same idea behind the visitor pattern in object-oriented design and behind continuation-passing style. In the typed setting, these encodings correspond to the algebraic data types they simulate (see [[Algebraic Data Type]]).
 
-# Example
+# Examples
+
+## Booleans and Pairs
 
 The Boolean and pair encodings:
 
@@ -43,11 +45,15 @@ SND    ≜ (λp . (p FALSE))
 SUCC   ≜ (λn . (λf . (λx . (f ((n f) x)))))
 ```
 
+## Reducing NOT TRUE
+
 Checking `NOT TRUE`:
 
 ```
 (NOT TRUE)  →  ((TRUE FALSE) TRUE)  →  ((λb . FALSE) TRUE)  →  FALSE
 ```
+
+## Sets as Functions
 
 Sets as functions, in Haskell:
 

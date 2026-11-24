@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Expression
   - Statement
@@ -20,7 +20,9 @@ The two divide programming styles. In imperative programming, computation means 
 
 More generally, languages differ in how much they make into expressions. In expression-oriented languages (e.g., Haskell, Rust, and Ruby), constructs like `if` produce values, so `if` can appear inside an arithmetic expression. In statement-oriented languages (e.g., C and Java), `if` is a statement, and a separate operator (`?:`) serves as the expression form.
 
-# Example
+# Examples
+
+## Expressions and Statements in C
 
 In C and C++:
 

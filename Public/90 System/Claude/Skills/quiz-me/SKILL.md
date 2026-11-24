@@ -33,7 +33,7 @@ Don't show the list before starting. Say how many questions there are and roughl
 
 ## 4. Write the Questions
 
-Read each picked concept's note in full before writing its question. A question tests what the note teaches, so it can be graded against the note. That means its definitions, its sources' material, and its Example section.
+Read each picked concept's note in full before writing its question. A question tests what the note teaches, so it can be graded against the note. That means its definitions, its sources' material, and its Examples section.
 
 - **Kinds:** vary them across the quiz:
   - **Explain:** say what it is and why it exists (e.g., "What problem does a closure solve in an environment-based interpreter?").

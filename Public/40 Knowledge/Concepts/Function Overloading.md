@@ -33,7 +33,9 @@ C++'s operators are functions too, named `operator` followed by the symbol (e.g.
 
 More generally, overloading is a form of **ad hoc polymorphism** (see [[Polymorphism (Computer Science)]]): the name works only for the types someone wrote a definition for. Java overloads methods by parameter types much as C++ does, but doesn't let programs overload operators. Python has no overloading by parameter type, since its functions don't declare types, though classes can define operators through special methods like `__add__`. Haskell has no overloading as such: a [[Type Class|type class]] gives a family of types one shared name for an operation, with an implementation per type, so `==` and `+` work across types in a more structured way.
 
-# Example
+# Examples
+
+## Combining Numbers and Strings
 
 ```c++
 int combine(double x, double y) {

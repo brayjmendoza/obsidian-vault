@@ -29,7 +29,9 @@ When the worst case is possible but vanishingly unlikely, the expected case is t
 
 More generally, "average case" is the usual name for the expected case over a distribution of inputs, and "expected" is used more for the average over an algorithm's own random choices. A fourth measure, the cost of a whole sequence of operations, is [[Amortized Analysis|amortized]] cost, which, unlike an expected case, is a guarantee with no probability involved.
 
-# Example
+# Examples
+
+## Linear Search
 
 Linear search checks each element of an array in turn for a value `x`:
 

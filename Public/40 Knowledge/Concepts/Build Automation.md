@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Build System
   - Incremental Build
@@ -22,7 +22,9 @@ Rules don't have to produce files. A **phony target** names a task rather than a
 
 More generally, the first tool of this kind was Make, written by Stuart Feldman at Bell Labs in 1976, and its Makefiles are still common for C and C++. Make decides what's out of date by comparing file modification times. Later build systems (e.g., CMake, Bazel, and Cargo) generate or replace these rules, and some compare file contents instead of times, so touching a file without changing it doesn't trigger a rebuild. Make's syntax is in [[Makefiles]].
 
-# Example
+# Examples
+
+## Rebuilding after an Edit
 
 A program `generateSegfault` is built from two source files, and both include `helloSayer.hpp`. Its rules form this dependency graph, with each arrow pointing from a target to a prerequisite:
 

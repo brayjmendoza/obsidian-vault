@@ -50,7 +50,9 @@ No data structure is best overall: each has different trade-offs, and the best o
 
 More generally, the idea comes from Barbara Liskov and Stephen Zilles, who introduced abstract data types in 1974, and from David Parnas's principle of **information hiding** (1972): hide each design decision that's likely to change behind an interface. "Encoding" is a less common word for what's usually called the **representation**. Java and Go state interfaces as types of their own, separate from any class that implements them, and Haskell does much the same with [[Type Class|type classes]].
 
-# Example
+# Examples
+
+## A Resizable List
 
 For illustration (an example not from the source), a resizable list of `int`s might have this interface:
 

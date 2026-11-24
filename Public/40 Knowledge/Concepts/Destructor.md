@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Destructors
 fields:
@@ -21,7 +21,9 @@ The synthesized destructor destroys only the members themselves. A member that's
 
 More generally, deleting what an object owns in its destructor is the heart of the C++ idiom RAII, and the **rule of three** says a class that needs a custom destructor almost always needs a custom copy constructor and assignment operator too, since copying would otherwise create two owners of the same memory (see [[Deep and Shallow Copy]]). Languages with garbage collection have no destructors in this sense: Java's finalizers and Python's `__del__` run at no guaranteed time, so those languages release resources like files with explicit constructs instead (e.g., Python's `with`).
 
-# Example
+# Examples
+
+## A Barn's Destructor
 
 A `Barn` holds an array of pointers to cows, `residentCows_`, with the array and every cow on the heap. Its destructor deletes each cow, then the array:
 

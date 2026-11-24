@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Namespace
   - Scope Resolution
@@ -21,7 +21,9 @@ Writing every qualified name in full is long, so C++ can bring a namespace's nam
 
 More generally, nearly every language has some form of namespace, though not always by that name: Python's modules, Java's packages, and Haskell's modules all qualify names (e.g., `math.sqrt` in Python, or `Data.Map.lookup` in Haskell), and each has its own way to import names unqualified, with the same trade-off. A namespace is a kind of [[Scope|scope]] with a name, so code outside it can refer to what's inside.
 
-# Example
+# Examples
+
+## Two Functions with One Name
 
 For illustration (an example not from the source), two libraries both define `print`. Each in its own namespace, they can live in one program:
 

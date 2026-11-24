@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Parsing Library
 fields:
@@ -32,7 +32,7 @@ The parser's type evolves as the library grows:
 2. `String -> (Bool, String)`: success and the remaining input.
 3. `String -> (String, String)`: a result, but there's no obvious result for a failure.
 4. `String -> Maybe (String, String)`: failure is `Nothing`, success is `Just` a result and the rest (see [[Option Type]]).
-5. `Parser a = String -> Maybe (a, String)`: a result of any type, so a parser can return an `Exp` and build the AST (see [[Parametric Polymorphism]] and the [[#Example|example]]).
+5. `Parser a = String -> Maybe (a, String)`: a result of any type, so a parser can return an `Exp` and build the AST (see [[Parametric Polymorphism]] and the [[#Parsers with Results|example]]).
 
 Parser combinators are [[Abstraction|abstraction]] at work: they can be used without knowing how they work. That same abstraction is what makes them hard at first. Implementing a combinator feels like imperative programming, with sequential updates to the state, while using one feels like functional programming, trusting that it just works. Testing small pieces separately makes them easier to debug.
 
@@ -40,7 +40,9 @@ The sequencing combinators all share one shape: run the first parser, fail if it
 
 More generally, parser combinator libraries exist for many languages (e.g., Haskell's Parsec and Megaparsec, and Rust's nom). To use Haskell's own `>>=` and `do` notation, the parser has to be a `newtype` rather than a type synonym, with instances of `Functor`, `Applicative`, and `Monad`.
 
-# Example
+# Examples
+
+## The Arithmetic Parser
 
 The arithmetic grammar, and the parser written with combinators. Note the resemblance between the grammar and the parser:
 
@@ -60,6 +62,8 @@ factor =  number
       <||> (sym '(' <&&> expr <&&> sym ')')
 ```
 
+## Sequence and Alternative
+
 Sequence and alternative, for parsers of type `String -> (Bool, String)`:
 
 ```haskell
@@ -74,6 +78,8 @@ Sequence and alternative, for parsers of type `String -> (Bool, String)`:
 many p = (p <&&> many p) <||> psucceed
 some p = p <&&> many p
 ```
+
+## Parsers with Results
 
 Once parsers have the type `Parser a = String -> Maybe (a, String)`, a successful parse returns a **result**: a value of type `a` holding what the parser recognized, turned into data. A parser of type `String -> (Bool, String)` only says *whether* it matched. A `Parser Char` also hands back the character it matched, and a `Parser Exp` hands back an abstract syntax tree:
 
@@ -96,6 +102,8 @@ Sequencing combinators then decide what to do with the results of the two parser
 ```
 
 Combined, `sym '(' <-+> expr <+-> sym ')'` parses a parenthesized expression and returns only the `Exp` inside, with the parentheses checked but left out of the tree. That's how a combinator parser builds an AST instead of only answering yes or no.
+
+## Sequencing with Bind
 
 The same combinator, before and after bind:
 

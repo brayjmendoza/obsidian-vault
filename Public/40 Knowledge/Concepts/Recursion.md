@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -15,7 +15,9 @@ A recursive definition has two parts. The **base case** answers the smallest inp
 
 In functional languages, recursion takes the place of loops. A loop repeats by changing a variable, which a pure language doesn't allow (see [[Name Binding]]), so repetition is written as a function that calls itself with new arguments instead. Recursion over a [[Recursive Data Type]] is especially direct: the base case handles the alternative with no recursive field (e.g., the empty list), and the recursive case handles the rest.
 
-# Example
+# Examples
+
+## Recursion on a Number
 
 Factorial recurs on a number:
 
@@ -23,6 +25,8 @@ Factorial recurs on a number:
 fact 0 = 1                  -- base case
 fact n = n * fact (n - 1)   -- recursive case: n - 1 is closer to 0
 ```
+
+## Recursion on a List
 
 Checking whether a list contains an element recurs on the list:
 

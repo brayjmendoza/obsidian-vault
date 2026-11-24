@@ -33,7 +33,9 @@ Three methods prove amortized bounds:
 
 More generally, Robert Tarjan formalized amortized analysis in 1985. The banker's and physicist's methods are usually called the **accounting method** and the **potential method**. In the potential method, an operation's amortized cost is its actual cost plus the change in potential it causes, and if the potential starts at zero and never goes negative, the amortized costs bound the actual total. Splay trees and hash tables that resize are standard examples, besides dynamic arrays.
 
-# Example
+# Examples
+
+## Doubling a Dynamic Array
 
 A dynamic array doubles its capacity whenever it's full, at sizes 1, 2, 4, 8, and so on. Adding an item to the end costs $\Theta(1)$ when there's room, and $\Theta(n)$ when the array must be copied.
 
@@ -41,7 +43,7 @@ By the aggregate method, start from empty and add $m$ items. Each addition does 
 
 $$1 + 2 + 4 + \cdots + 2^{\lfloor \log_2 m \rfloor} < 2m$$
 
-items. The total is under $m + 2m = 3m$, which is $\Theta(m)$, so each addition is $\Theta(1)$ amortized time, though the occasional addition that copies takes $\Theta(n)$ on its own. Growing by a fixed amount instead of doubling breaks this: the copies then add up to $\Theta(m^2)$ (see the [[Dynamic Array#Example|example in Dynamic Array]]).
+items. The total is under $m + 2m = 3m$, which is $\Theta(m)$, so each addition is $\Theta(1)$ amortized time, though the occasional addition that copies takes $\Theta(n)$ on its own. Growing by a fixed amount instead of doubling breaks this: the copies then add up to $\Theta(m^2)$ (see the [[Dynamic Array#Growing by a Fixed Amount|example in Dynamic Array]]).
 
 # Connections
 

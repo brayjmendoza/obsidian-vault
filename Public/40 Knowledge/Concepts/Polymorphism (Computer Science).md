@@ -30,7 +30,9 @@ The kinds also differ in when the choice of code is made. Templates and overload
 
 More generally, Christopher Strachey distinguished parametric from ad hoc polymorphism in 1967, and Luca Cardelli and Peter Wegner's 1985 survey added subtyping as a third kind. In Haskell, parametric polymorphism uses type variables, and [[Type Class|type classes]] give a disciplined form of ad hoc polymorphism, where each type supplies its own implementation of the class's operations. Java has all three kinds: inheritance, generics, and overloading.
 
-# Example
+# Examples
+
+## Max through Templates and Overloads
 
 The same operation, `max`, through parametric and ad hoc polymorphism:
 

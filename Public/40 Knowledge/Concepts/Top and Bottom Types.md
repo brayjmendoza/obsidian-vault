@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Any Type
   - None Type
@@ -23,7 +23,9 @@ The subtype relationships among a set of types can be drawn as a **type lattice*
 
 More generally, many languages have a top type (e.g., Java's `Object`, TypeScript's `unknown`, and Scala's `Any`) and some have a bottom type (e.g., TypeScript's `never`, Rust's `!`, Scala's `Nothing`, and Haskell's `Void`). A bottom type is the type of computations that never return a value, such as one that throws an error or loops forever. Python's `None` is unrelated: it's a single ordinary value with its own type, closer to Haskell's unit `()`. In order theory, a lattice requires every pair of elements to have a least upper bound and a greatest lower bound, which Any and None help guarantee.
 
-# Example
+# Examples
+
+## A Type Lattice
 
 A type lattice with Any and None:
 

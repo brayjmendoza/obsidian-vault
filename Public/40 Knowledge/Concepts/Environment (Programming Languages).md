@@ -28,7 +28,9 @@ Evaluating with environments raises a new question: which environment a function
 
 More generally, environments are how nearly every real interpreter works, and compilers have a matching structure, the **symbol table**, built before the program runs. Persistent maps (e.g., Haskell's `Data.Map`, a balanced tree with $O(\log n)$ lookups) suit environments in a functional language, since extending one for a function call leaves the caller's environment unchanged.
 
-# Example
+# Examples
+
+## Applying a Four-Parameter Function
 
 Applying a four-parameter function, one argument at a time:
 
@@ -48,6 +50,8 @@ eval [] (Apply (Apply (Apply (Apply
 | Look up the variables | | `Num 10` |
 
 The body is never rewritten. Each variable is looked up once, when the sum is computed. The table shows the idea, but the first environment-based `eval` doesn't get there: evaluating the inner function returns it without the binding for `a`, so the sum fails with "unbound identifier: a." Keeping each function's environment with it, in a [[Closure (Programming Languages)|closure]], fixes that.
+
+## The Environment as a List
 
 The environment and its operations, as a list of pairs:
 

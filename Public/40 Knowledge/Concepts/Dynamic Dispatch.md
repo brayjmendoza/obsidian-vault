@@ -28,7 +28,9 @@ Dynamic dispatch happens only through pointers and references. Passing a `Cow` b
 
 More generally, C++ makes dynamic dispatch opt-in because it has a cost: each call looks up the right function at run time, usually in a per-class table of function pointers (a **vtable**), and can't be inlined. That fits the [[Zero-Overhead Principle|zero-overhead principle]]: a class that doesn't use `virtual` doesn't pay for it. Java and Python dispatch every method call dynamically by default, and Java's `final` opts a method out. Since the code a call runs is decided late, at run time, dynamic dispatch is also called **late binding**.
 
-# Example
+# Examples
+
+## Virtual and Non-Virtual Calls
 
 For illustration (an example not from the source):
 

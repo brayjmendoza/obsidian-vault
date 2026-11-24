@@ -30,7 +30,9 @@ Compared with a [[Red-Black Tree|red-black tree]]:
 
 More generally, Daniel Sleator and Robert Tarjan invented splay trees in 1985, and proved the amortized bound with the potential method. Splay trees are used where access patterns are skewed, as in caches, memory allocators, and some network routers. Their weakness is that even lookups change the tree, which makes them awkward to share between threads.
 
-# Example
+# Examples
+
+## Inserting in Order
 
 For illustration (an example not from the source), inserting $1$, $2$, and $3$ in that order. Each new key goes in as the right child of the root, the previous maximum, and one rotation splays it to the root:
 

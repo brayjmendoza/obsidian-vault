@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Russell's Set
   - Russell Paradox
@@ -29,7 +29,9 @@ Asking whether $R$ contains itself means reducing `(R R)`, which gives `(Not (R 
 
 More generally, Bertrand Russell found the paradox in 1901, in Gottlob Frege's system for founding mathematics on logic. It led to axiomatic set theories (e.g., Zermelo–Fraenkel set theory), which restrict how sets can be formed so that $R$ can't be built, and to Russell's theory of types, an early ancestor of type systems: in a typed lambda calculus, `(x x)` can't be typed, so the paradox can't be written. It's closely related to the liar paradox ("this statement is false") and to the diagonal arguments behind Cantor's theorem and the halting problem.
 
-# Example
+# Examples
+
+## Applying R to Itself
 
 `(R R)` reducing without end:
 

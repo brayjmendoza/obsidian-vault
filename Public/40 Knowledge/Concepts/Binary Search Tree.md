@@ -46,7 +46,9 @@ All three rearrange the tree with [[Tree Rotation|tree rotations]], which change
 
 More generally, BSTs date to the early 1960s, and balanced BSTs underlie the ordered maps and sets of most standard libraries (e.g., C++'s `std::map`). A BST keeps its keys sorted, which a hash table doesn't, so it can also answer questions like "the smallest key greater than $x$" efficiently. Allowing duplicate keys needs a convention, such as sending equal keys right, which breaks the strict ordering above.
 
-# Example
+# Examples
+
+## Lookup and Insertion
 
 A BST of eleven keys:
 

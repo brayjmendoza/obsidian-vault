@@ -19,7 +19,9 @@ The list is the standard example. It's built from two constructors: the empty li
 
 Functions over a recursive type follow its shape. Each constructor gets a case, and each recursive field gets a recursive call, so a function over lists has an empty case and a non-empty case, and a function over trees recurs on both subtrees. More generally, this pattern is called **structural recursion** (see [[Recursion]]), and it always terminates on finite values, since each call is on a smaller part. A list built this way is called a **cons list**, after Lisp's `cons`, and most functional languages build their standard list the same way (e.g., OCaml, Scala, and Clojure). Adding to the front is cheap, since the existing list is shared rather than copied, which is safe because the list never changes.
 
-# Example
+# Examples
+
+## A List of Integers
 
 A list of integers, built from scratch, and its length:
 
@@ -42,6 +44,8 @@ intListLength (Cons _ xs) = 1 + intListLength xs
 flowchart LR
     A["3"] -->|:| B["7"] -->|:| C["15"] -->|:| D["4"] -->|:| E["[]"]
 ```
+
+## A Binary Tree of Strings
 
 A binary tree of strings, with no empty trees:
 

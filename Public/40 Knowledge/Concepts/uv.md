@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -80,7 +80,9 @@ uv also offers `uv pip`, a lower-level interface that mirrors pip's commands. It
 | Install from the lockfile, failing if it's stale | `uv sync --locked` |
 | Run a tool without installing it | `uvx <tool>` |
 
-# Example
+# Examples
+
+## The Vault's Own Tooling
 
 The vault's own tooling in `Public/91 Tooling/` is a uv project. Its `pyproject.toml` declares a build system, three runtime dependencies, a `dev` group of tools, and console scripts (abridged):
 

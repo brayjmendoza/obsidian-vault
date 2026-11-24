@@ -25,7 +25,9 @@ C++ provides parametric polymorphism through **templates**. A **function templat
 
 More generally, a **polymorphic** definition is one that works with more than one type, and in parametric polymorphism it works with all of them the same way: the code never inspects which type it was given, so one definition serves every type. As the name suggests, a parametrically polymorphic definition takes types as parameters: its type variables are parameters, filled in with an actual type at each use, just as a function's parameters are filled in with values. Many languages offer the same idea as **generics** (e.g., Java's `List<T>` and Rust's `Vec<T>`). It differs from the polymorphism a [[Type Class]] provides, where a function's behavior depends on the type.
 
-# Example
+# Examples
+
+## Types of List Functions
 
 The types of some list functions (newer versions of GHCi add constraints to a few, e.g., `HasCallStack` on `head`):
 
@@ -40,12 +42,16 @@ The types of some list functions (newer versions of GHCi add constraints to a fe
 
 `3 : [17, 10, 5]` fills `a` with a number, and `'h' : "ello"` fills it with `Char`. `True : "ello"` is a type error, since `a` can't be both `Bool` and `Char`.
 
+## Generalizing a List Type
+
 A list of integers, generalized to a list of anything:
 
 ```haskell
 data IntList = Empty | Cons Int IntList
 data List a  = Empty | Cons a (List a)
 ```
+
+## A Fill Template in C++
 
 In C++, `fill` sets every item in a range to one value. Written for lists of `double`s, it works only for them:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Segfault
   - Access Violation
@@ -20,7 +20,9 @@ A segmentation fault is a symptom, not a guarantee. Those mistakes are [[Undefin
 
 More generally, the name comes from **segmentation**, an older way of dividing memory into segments. Modern systems divide memory into pages instead, but the name stuck on Unix-like systems, where the signal is `SIGSEGV`. Windows calls the same error an **access violation**. A tool like Valgrind, or a compiler's address sanitizer, catches many bad accesses that don't segfault.
 
-# Example
+# Examples
+
+## Following a Null Pointer
 
 For illustration (an example not from the source), following a null pointer:
 

@@ -33,7 +33,9 @@ Compared with a [[Splay Tree|splay tree]], a red-black tree gives a worst-case b
 
 More generally, Rudolf Bayer invented the structure in 1972, and Leonidas Guibas and Robert Sedgewick gave it its colors in 1978. Red-black trees commonly implement C++'s `std::map` and `std::set`, and Java's `TreeMap`. Linux's Completely Fair Scheduler kept its runnable tasks in one. Deletion, which also uses recoloring and rotations, is the notoriously intricate part. The AVL tree is the main alternative with worst-case guarantees: more strictly balanced, so faster to search, but with more rotations on insertion.
 
-# Example
+# Examples
+
+## Inserting into a 3-Node
 
 A black $50$ with a red left child $40$ is the 3-node $[40, 50]$. Inserting $30$ puts it in $40$'s left subtree, as a red node:
 

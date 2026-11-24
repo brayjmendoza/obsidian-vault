@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -29,7 +29,9 @@ Lazy evaluation has four main benefits:
 
 Laziness also changes which programs terminate. An expression that would diverge or fail is harmless as long as nothing needs its value.
 
-# Example
+# Examples
+
+## An Ignored Argument
 
 A function that ignores its first argument never evaluates it:
 
@@ -40,6 +42,8 @@ ignoreFirstArgument _ y = y
 ignoreFirstArgument (1 + 2) (3 * 4)  -- 1 + 2 is never evaluated
 ignoreFirstArgument undefined 5      -- 5, even though undefined is an error
 ```
+
+## Bindings in GHCi
 
 In GHCi, binding a name is instant, and the work happens the first time the name is used. With a slow function `expensive`:
 

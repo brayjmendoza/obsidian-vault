@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Monad
   - Bind
@@ -41,7 +41,9 @@ Because actions are values, [[Referential Transparency|referential transparency]
 
 More generally, monad instances should obey three **monad laws**, which Haskell can't check: `return` is an identity for bind on the left and on the right, and bind is associative. Monads can represent many kinds of effects, such as failure, non-determinism (lists), state, and I/O. In current Haskell, every `Monad` must also be a [[Functor (Functional Programming)|Functor]] and an `Applicative`, and `return` defaults to `Applicative`'s `pure`. The name comes from category theory. Similar ideas elsewhere include JavaScript's promise chaining with `then`, Rust's `?` operator on `Option` and `Result`, and Scala's `for` comprehensions. One way to picture `IO` is as a function from the state of the world to a result and a new state of the world, `World -> (a, World)`, which is a parser's shape with the world in place of the input string. GHC implements `IO` essentially this way, with a token standing for the world that it threads through every step, so the steps can't be reordered or skipped.
 
-# Example
+# Examples
+
+## Chaining Maybe
 
 Chaining functions that might fail, by hand and with bind:
 
@@ -69,6 +71,8 @@ doubleOnlyOdd 3  -- Just 6
 doubleOnlyOdd 4  -- Nothing
 ```
 
+## Do Notation in IO
+
 The same `do` notation in `IO`:
 
 ```haskell
@@ -79,6 +83,8 @@ main = do
   let qualifier = if input == reverse input then " is " else " is not "
   putStrLn (input ++ qualifier ++ "a palindrome")
 ```
+
+## Running an Action Twice
 
 An action named and used twice runs twice, since the name only stands for the recipe:
 

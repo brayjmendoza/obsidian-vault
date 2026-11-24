@@ -51,7 +51,9 @@ For a max-heap, swap MIN for MAX and "smaller" for "larger" throughout.
 
 More generally, J. W. J. Williams introduced the binary heap in 1964, as part of [[Heap Sort|heap sort]], and Robert Floyd gave the $\Theta(n)$ heapify the same year. Its cost: at most $\lceil n / 2^{h+1} \rceil$ nodes sit at height $h$, and each sifts down at most $h$ levels, so the total is at most $\sum_{h} h \cdot \frac{n}{2^{h+1}} \le n$. Variants such as $d$-ary heaps, binomial heaps, and Fibonacci heaps trade simplicity for faster operations like merging two heaps or decreasing a key. This heap is unrelated to the heap of memory allocation (see [[Dynamic Memory Allocation]]).
 
-# Example
+# Examples
+
+## A Min-Heap of Ten Keys
 
 A min-heap of ten keys, with each node's array index:
 
@@ -69,6 +71,8 @@ graph TD
 ```
 
 As an array, it's `[6, 16, 13, 26, 21, 68, 19, 65, 31, 32]`. The children of `16`, at index $1$, are at $2 \cdot 1 + 1 = 3$ and $4$: `26` and `21`. Though `68` is larger than `26`, it's higher up: only parent and child are ordered.
+
+## Popping the Minimum
 
 **POP-MIN** moves the last key, `32`, to the root. Its children are `16` and `13`, so it swaps with the smaller, `13`. At index $2$, its children are `68` and `19`, so it swaps with `19`, and at index $6$ it has no children, so it stops. The heap is now `[13, 16, 19, 26, 21, 68, 32, 65, 31]`, with the new minimum, `13`, at the root, after two swaps for nine items.
 

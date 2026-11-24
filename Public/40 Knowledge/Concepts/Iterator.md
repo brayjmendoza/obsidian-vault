@@ -55,7 +55,9 @@ So an interface must say which operations invalidate iterators, and documentatio
 
 More generally, other languages build iteration into their loops: Python's `for` calls `iter` and `next` and stops at a `StopIteration` exception, and Java's `Iterator` has `hasNext` and `next`. C++'s pair-of-iterators style, from Alexander Stepanov's Standard Template Library, lets algorithms like `std::sort` and `std::find` work on any container's range. C++ also has categories of iterator by what they can do: a **forward** iterator only moves ahead, a **bidirectional** iterator can also move back with `--`, and a **random-access** iterator can jump any distance, as a pointer can.
 
-# Example
+# Examples
+
+## Erasing while Iterating
 
 Erasing items while iterating needs care, since `erase` invalidates the iterator passed to it. In the C++ standard library, `erase` returns an iterator to the item after the erased one, so a loop continues from there:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Reference
   - Referent
@@ -39,7 +39,9 @@ So a pointer is the more general of the two, and a reference is simpler and safe
 
 More generally, the C++ reference is one form of **aliasing**, two names for the same storage. Languages like Java and Python call their hidden pointers "references," but those can be null and can be made to refer to another object, so they're closer to C++ pointers. Aliasing makes programs harder to reason about, since a change through one name affects another, which is part of why [[Referential Transparency|pure functional languages]] avoid mutable state altogether.
 
-# Example
+# Examples
+
+## Two Names for One Variable
 
 `a` and `b` name the same `int`:
 

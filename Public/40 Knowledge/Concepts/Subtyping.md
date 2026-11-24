@@ -31,7 +31,9 @@ In C++, a class derived from another is a subtype of it, so a `Student` derived 
 
 More generally, subtyping is central to object-oriented languages, where a subclass is a subtype of its superclass, and the substitutability test is known there as the **Liskov substitution principle**. Haskell has no subtyping: its numeric types are separate, and conversions between them are explicit (e.g., `fromIntegral`). Languages also differ in whether subtyping is declared by name (**nominal**, as in Java) or follows from a type's structure (**structural**, as in TypeScript).
 
-# Example
+# Examples
+
+## An Int as a Double
 
 A function of a `double`, applied to an `int`:
 
@@ -40,6 +42,8 @@ A function of a `double`, applied to an `int`:
 ```
 
 Since `int` ⊑ `double`, subsumption gives `7` the type `double`, and the application type-checks.
+
+## A Derived Class
 
 In C++, a function written for `Person` accepts a `Student`, since a derived class is a subtype of its base class:
 

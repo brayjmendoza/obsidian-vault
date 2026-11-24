@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Closure
 fields:
@@ -24,7 +24,9 @@ Closures also give functions names. Binding a function with `let` puts it in the
 
 More generally, closures are how every language with first-class functions and static scope implements them (e.g., JavaScript, Python, and Haskell). A closure can outlive the call that created it, which is why its environment has to be stored with the function rather than on a stack frame that disappears. Closures are a common way to keep private state in languages that allow mutation (e.g., a counter function that increments a variable only it can see).
 
-# Example
+# Examples
+
+## Arith with Closures
 
 [[Arith]] with closures:
 
@@ -43,7 +45,9 @@ eval env (Apply fexp arg) =
   in eval (envInsert v argval closureEnv) body     -- use the saved environment
 ```
 
-A curried application, which fails without closures (see [[Environment (Programming Languages)#Example|Environment]]), now works:
+## A Curried Application
+
+A curried application, which fails without closures (see [[Environment (Programming Languages)#Applying a Four-Parameter Function|Environment]]), now works:
 
 ```haskell
 eval [] (Apply (Apply (FuncDef "a" (FuncDef "b" (BinOp (Var "b") PlusOp (Var "a")))) (Num 100)) (Num 42))

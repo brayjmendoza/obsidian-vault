@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Initialization
   - Default Initialization
@@ -24,7 +24,9 @@ Copy initialization happens in more places than declarations. When a function is
 
 More generally, languages differ in whether a variable can exist without a value. Java gives fields a default value (e.g., `0` or `null`) and rejects a local variable read before it's assigned, and Rust rejects any variable used before it's initialized, so neither has indeterminate values. In a pure functional language like Haskell, there's no assignment at all: a name is bound to its expression once, and binding is the only kind of initialization (see [[Name Binding]]). C++ also offers **value initialization** with empty braces (e.g., `int x{};`), which sets a primitive variable to zero.
 
-# Example
+# Examples
+
+## Initializing in a Function Call
 
 Function calls copy-initialize both their parameters and their result:
 

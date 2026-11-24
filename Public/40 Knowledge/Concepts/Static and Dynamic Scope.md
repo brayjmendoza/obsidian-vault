@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Static Scope
   - Dynamic Scope
@@ -24,7 +24,9 @@ An interpreter that evaluates a function's body in the caller's [[Environment (P
 
 More generally, static scope is also called **lexical scope**, since the bindings a name can refer to can be read off the program's text. Nearly every modern language uses it (e.g., Haskell, Python, JavaScript, and Java), because a function then means the same thing wherever it's called. Dynamic scope survives in a few places (e.g., Emacs Lisp without lexical binding turned on, and `local` variables in Bash), and it began in early Lisp largely by accident.
 
-# Example
+# Examples
+
+## A Function Called in Another Scope
 
 ```haskell
 let v = 42 in

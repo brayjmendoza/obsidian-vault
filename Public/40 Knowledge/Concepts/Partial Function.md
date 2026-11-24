@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -19,7 +19,9 @@ Calling a partial function on an argument it has no result for fails at run time
 
 More generally, the terms come from mathematics, where a partial function is defined on only part of its domain. A partial function weakens the guarantee that well-typed code produces a result (see [[Static and Dynamic Typing]]). It can be made total by handling every input, either with a default for the missing cases or with a result type that can represent "no result" (e.g., Haskell's `Maybe`, Rust's `Option`, or Java's `Optional`).
 
-# Example
+# Examples
+
+## Head and Tail of a List
 
 `head` and `tail` are partial on lists, since an empty list has no head or tail:
 
@@ -31,6 +33,8 @@ intListHead (Cons x _)  = x
 head [3]   -- 3
 head []    -- error: empty list
 ```
+
+## A Missing Case
 
 A pattern match with a missing case is partial too:
 

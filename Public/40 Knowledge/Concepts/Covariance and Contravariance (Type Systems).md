@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Covariance
   - Contravariance
@@ -37,7 +37,9 @@ The substitutability test explains it. Picture a factory between a farm and a sh
 
 More generally, variance is everywhere that subtyping meets generics. Java's arrays are covariant, which is unsound for writing: storing a `double` into an array that's really an `int[]` fails at run time. Java's generics are invariant by default, with wildcards (`? extends`, `? super`) to choose a direction, and C# and Kotlin mark it with `out` and `in`. A mutable container has to be **invariant**, since reading from it wants covariance and writing to it wants contravariance.
 
-# Example
+# Examples
+
+## Apples and Pies
 
 The rule applied, with `apple` ⊑ `fruit` and `pie` ⊑ `dessert`:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Grammar
   - BNF
@@ -19,7 +19,7 @@ A **context-free grammar** is a set of rules that specifies which sequences of s
 
 A grammar is a specification for a parser: a program is syntactically valid exactly when the grammar can produce it. It's written as **production rules**, each saying how to produce one kind of phrase:
 
-- **Non-terminal symbols** (e.g., `Expr`, see the [[#Example|example]]) name kinds of phrases, and each has a rule.
+- **Non-terminal symbols** (e.g., `Expr`, see the [[#A Grammar for Arithmetic|example]]) name kinds of phrases, and each has a rule.
 - **Terminal symbols** (e.g., `+`, `(`, and `number`) are the tokens that appear in the program itself (see [[Lexical Analysis]]).
 - **Alternatives,** separated by `|`, are the different ways to produce a non-terminal.
 - **The start symbol** is the non-terminal a whole program must be (e.g., `Expr`).
@@ -29,9 +29,11 @@ Producing a program from the start symbol, one rule at a time, builds a **parse 
 
 A grammar is **ambiguous** when some program has two different parse trees. The simplest grammar for arithmetic is ambiguous: it doesn't say whether `1 + 2 * 3` multiplies first. Rewriting the grammar can remove the ambiguity, building [[Operator Precedence and Associativity|precedence and associativity]] into its rules. A grammar can also need rewriting so that a parser can follow it (see [[Left Recursion]]).
 
-More generally, the `::=` and `|` notation when defining a grammar (see the [[#Example|example]]) is **Backus–Naur form** (BNF), first used to define ALGOL 60. "Context-free" means each rule applies to a non-terminal regardless of what surrounds it. Context-free grammars sit between regular expressions, which can't describe nested parentheses, and more powerful formalisms in the Chomsky hierarchy. Haskell's `data` declarations follow the same shape as a grammar, with constructors as alternatives (see [[Algebraic Data Type]]).
+More generally, the `::=` and `|` notation when defining a grammar (see the [[#A Grammar for Arithmetic|example]]) is **Backus–Naur form** (BNF), first used to define ALGOL 60. "Context-free" means each rule applies to a non-terminal regardless of what surrounds it. Context-free grammars sit between regular expressions, which can't describe nested parentheses, and more powerful formalisms in the Chomsky hierarchy. Haskell's `data` declarations follow the same shape as a grammar, with constructors as alternatives (see [[Algebraic Data Type]]).
 
-# Example
+# Examples
+
+## A Grammar for Arithmetic
 
 A grammar for arithmetic expressions:
 

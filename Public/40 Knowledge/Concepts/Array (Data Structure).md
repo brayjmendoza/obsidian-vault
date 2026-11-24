@@ -27,7 +27,9 @@ A local array lives on the stack, so the compiler must know its size: in C++, th
 
 More generally, most languages build their resizable lists on arrays (e.g., C++'s `std::vector`, Java's `ArrayList`, and Python's `list`), and many check every index, raising an error instead of reading past the end. Contiguity also makes arrays fast in practice: scanning one reads memory in order, which is what processor caches are built for.
 
-# Example
+# Examples
+
+## Declaring and Initializing Arrays
 
 ```c++
 int values[42];                   // 42 ints, indeterminate values

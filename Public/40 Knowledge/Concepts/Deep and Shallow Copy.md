@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Deep Copy
   - Shallow Copy
@@ -36,7 +36,9 @@ Steps 2 and 3 repeat the destructor and copy constructor. The **copy-and-swap id
 
 More generally, the **rule of three** says that a class needing any one of a custom destructor, copy constructor, or assignment operator almost always needs all three, since all come from owning a resource. C++11's move operations extend it to the rule of five. Languages where variables hold hidden pointers to objects, like Java and Python, never copy objects on assignment: `a = b` makes `a` refer to the same object, and a copy must be asked for (e.g., Python's `copy.copy` for a shallow copy and `copy.deepcopy` for a deep one).
 
-# Example
+# Examples
+
+## Copying a Barn
 
 A `Barn`'s members are its capacity, its count of cows, and `residentCows_`, a heap array of pointers to cows on the heap. Its copy constructor makes a deep copy, a new array and a new copy of every cow:
 
@@ -51,6 +53,8 @@ Barn::Barn(const Barn& other)
     }
 }
 ```
+
+## Copy-and-Swap Assignment
 
 With the copy constructor and destructor written, copy-and-swap gives the assignment operator:
 

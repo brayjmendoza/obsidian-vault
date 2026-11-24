@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Type
 fields:
@@ -27,7 +27,9 @@ Types serve several purposes. They catch programming errors, they let compilers 
 
 More generally, type theory, the mathematical study of types, began as a foundation for mathematics (e.g., Russell's theory of types, which avoided paradoxes in set theory), well before programming languages existed. In programming, the "set of values" view is the usual starting point, and the "set of operations" view leads to abstract data types and interfaces.
 
-# Example
+# Examples
+
+## One Bit Pattern, Many Types
 
 One 32-bit pattern, read as different types:
 

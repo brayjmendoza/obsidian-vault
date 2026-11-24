@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Expression Substitution
 fields:
@@ -35,7 +35,9 @@ The last case hides two problems, which this version sets aside by assuming name
 
 More generally, the inner function **binds** its parameter, so occurrences of that name inside it are **bound**, and substitution must stop there. The second danger is **variable capture**: substituting an expression that mentions a variable $y$ into a function whose parameter is also $y$ changes what $y$ refers to. **Capture-avoiding substitution** fixes this by renaming the parameter first. Both problems lead to [[Scope]] and to evaluation with [[Environment (Programming Languages)|environments]], which avoid substitution altogether.
 
-# Example
+# Examples
+
+## Substitution in Haskell
 
 An implementation in Haskell, where `substitute e' (Var v) e` computes $e[v \mapsto e']$:
 
@@ -48,6 +50,8 @@ substitute e' var     (BinOp left op right) =
 substitute e' var     (FuncDef v body)      = FuncDef v (substitute e' var body)
 substitute _  _       _                     = error "bad substitution"
 ```
+
+## Applying Plus One
 
 Applying the "plus one" function to 5:
 

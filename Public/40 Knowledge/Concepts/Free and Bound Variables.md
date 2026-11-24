@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Free Variable
   - Bound Variable
@@ -22,7 +22,9 @@ The distinction matters whenever expressions are rewritten. [[Substitution]] rep
 
 More generally, the same distinction runs through all of programming. A function's free variables are exactly what its environment must supply: [[Static and Dynamic Scope|static and dynamic scope]] are two answers to where they come from, and a [[Closure (Programming Languages)|closure]] stores the bindings for them. In logic, quantifiers bind variables the same way (e.g., $x$ is bound in $\forall x . P(x)$), and in calculus, the variable of integration is bound.
 
-# Example
+# Examples
+
+## Classifying Variables
 
 | Expression | Bound | Free | Closed? |
 |---|---|---|---|

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Indeterminate Value
 fields:
@@ -27,7 +27,9 @@ A related idea is the **indeterminate value**: the value of a variable that was 
 
 More generally, undefined behavior is a feature of C and C++ above all, and it's what lets their compilers optimize aggressively: a compiler may assume no rule is ever broken (e.g., that a loop's index never overflows) and generate code that's only correct under that assumption. It differs from **unspecified behavior**, where the language allows a few outcomes and an implementation picks one (e.g., the order in which a function's arguments are evaluated), and from **implementation-defined behavior**, where the implementation picks and documents the outcome (e.g., the size of an `int`). Languages like Java and Python define what happens in these situations instead, usually by raising an error, and pay for the checks at run time. Rust allows undefined behavior only inside code marked `unsafe`.
 
-# Example
+# Examples
+
+## An Off-by-One Search
 
 A linear search with an off-by-one mistake (an example not from the source) compares `x` against one element too many. When `i` equals `arrSize`, `arr[i]` reads past the end of the array:
 

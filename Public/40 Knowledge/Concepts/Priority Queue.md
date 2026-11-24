@@ -29,7 +29,9 @@ Priority queues serve algorithms that repeatedly take the most urgent thing next
 
 More generally, a [[Queue (Abstract Data Type)|queue]] is the special case where priority is arrival time, and a [[Stack (Abstract Data Type)|stack]] is the case where it's the reverse of arrival time. Operating systems schedule processes with priority queues, and simulations keep pending events in one, ordered by time. C++'s `std::priority_queue` is a max-heap by default, and Python's `heapq` module keeps a min-heap in a list.
 
-# Example
+# Examples
+
+## Order of Removal
 
 Three items inserted with keys 5, 3, and 10 come out in order of key, not of insertion:
 

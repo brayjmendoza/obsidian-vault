@@ -25,7 +25,9 @@ Associative data structures are usually encoded with **[[Binary Search Tree|bina
 
 More generally, every major language provides maps: Python's `dict`, Java's `Map` interface (with `HashMap` and `TreeMap`), and C++'s `std::map` (a balanced binary search tree) and `std::unordered_map` (a hash table). In compilers, a map from names to what they mean is a **symbol table**, much like an interpreter's environment (see [[Environment (Programming Languages)]]).
 
-# Example
+# Examples
+
+## A Phone Book
 
 For illustration (an example not from the source), a phone book in Python, a `dict`:
 

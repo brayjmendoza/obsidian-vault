@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Ownership
   - Principle of Ownership
@@ -21,7 +21,9 @@ An owner is usually an object whose [[Object Lifetime|lifetime]] is managed auto
 
 More generally, tying a resource's release to an owner's destruction is the C++ idiom called **RAII** ("resource acquisition is initialization"), and it applies to any resource that must be released, such as files and locks, not just memory. The standard library's smart pointers encode ownership in types: a `std::unique_ptr` is a sole owner that deletes its object when destroyed, and `std::shared_ptr` allows shared ownership, deleting the object when its last owner goes. Rust builds ownership into the language itself, so the compiler rejects code that would leak, dangle, or delete twice.
 
-# Example
+# Examples
+
+## A Barn and Its Array
 
 For illustration (an example not from the source), a `Barn` owns the heap array of cows it allocates, and nothing else deletes it:
 

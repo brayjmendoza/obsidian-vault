@@ -31,7 +31,9 @@ Neither is best: which to use depends on which operations the program needs most
 
 More generally, Python's `list` and Java's `List` interface are lists in this sense. In functional languages, "list" usually means an immutable singly linked list, built from an empty list and an item consed onto another list (see [[Recursive Data Type]]).
 
-# Example
+# Examples
+
+## A Playlist and a Leaderboard
 
 For illustration (an example not from the source), a playlist that's played in order, with songs inserted wherever the listener drags them, needs insertion at a known position more than reaching a song by number. A linked list does each insertion in constant time, while a dynamic array would shift every later song. A leaderboard read by rank ("show the 10th score") needs the reverse, so a dynamic array suits it.
 

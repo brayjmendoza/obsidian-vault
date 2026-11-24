@@ -29,7 +29,9 @@ More generally, statically typed languages include Haskell, Java, and Rust, and 
 
 A **type annotation** is information the programmer writes about a type (e.g., `successor :: Integer -> Integer`, read "`successor` has type `Integer -> Integer`"). Static typing doesn't require annotations everywhere: a language with [[Type Inference]] works most of them out itself.
 
-# Example
+# Examples
+
+## A Mixed List in Haskell and Python
 
 Haskell rejects a list of mixed types before evaluating anything, since every element of a list must have the same type:
 

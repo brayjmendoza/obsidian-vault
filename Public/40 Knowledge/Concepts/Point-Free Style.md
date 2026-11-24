@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-21
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -19,7 +19,9 @@ The "points" are the arguments a function is applied to. A definition in point-f
 
 Point-free definitions are often shorter and put the structure of a computation in front. Pushed too far, they get harder to read, so whether to use them is a matter of style.
 
-# Example
+# Examples
+
+## Removing the Argument Step by Step
 
 Rewriting `increment` step by step, each line equivalent to the last:
 

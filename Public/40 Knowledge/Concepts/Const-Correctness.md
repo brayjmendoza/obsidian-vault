@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Const
   - const Reference
@@ -45,7 +45,9 @@ A member function can be `const` too, written at the end of its declaration (e.g
 
 More generally, the term "const-correctness" comes from the C++ community, and C has `const` too. Other languages offer read-only access in other ways: Java's `final` fixes a variable but not the object it refers to, much like `float* const`, and Rust makes every reference read-only unless it's marked `&mut`, which inverts C++'s default. In a pure functional language, nothing can be changed, so the question never comes up (see [[Referential Transparency]]).
 
-# Example
+# Examples
+
+## A Read-Only Array Parameter
 
 `max_value` only reads the array, but its parameters are plain pointers:
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Well-Typed
   - Type Error
@@ -29,7 +29,9 @@ They also differ in when they report a conflict: before the program runs, or as 
 
 More generally, a language that converts values between types implicitly, as JavaScript and Perl do, is often called **weakly typed**, and one that reports a conflict instead is **strongly typed**, though the terms have no exact definition. Strength is a separate question from when checking happens: Python is dynamically and strongly typed, and C is statically but fairly weakly typed. In C++, `"one" + 2` isn't an error at all: it compiles to pointer arithmetic, giving the string `"e"`.
 
-# Example
+# Examples
+
+## Type Errors in Java and Python
 
 Two type conflicts, in Java and in Python:
 

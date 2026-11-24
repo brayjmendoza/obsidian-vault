@@ -20,7 +20,9 @@ A set is an [[Associative Array|associative data structure]], like a map with ke
 
 More generally, the abstract data type follows the mathematical set, where membership is all that matters, and many languages add operations like union and intersection. Python's `set`, Java's `Set` interface, and C++'s `std::set` (a balanced binary search tree) and `std::unordered_set` (a hash table) all implement it, and C++ has `std::multiset` for multisets.
 
-# Example
+# Examples
+
+## Counting Distinct Words
 
 For illustration (an example not from the source), counting the distinct words in a text:
 
