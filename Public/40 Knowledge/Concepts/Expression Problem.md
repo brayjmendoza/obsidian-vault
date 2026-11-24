@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Functional vs Object-Oriented Programming
 fields:
@@ -55,6 +55,7 @@ Adding a `perimeter` function touches nothing else. Adding a `Rectangle` means a
 - [[Pattern Matching]]: how each function handles every alternative of the data
 - [[Functional Programming]]: puts operations, not objects, at the top level of a program
 - [[Class (Programming Languages)]]: the object-oriented way to group behavior with its data
+- [[Inheritance (Object-Oriented Programming)]]: adding a derived class adds a new kind of data without touching existing code
 
 # Sources
 

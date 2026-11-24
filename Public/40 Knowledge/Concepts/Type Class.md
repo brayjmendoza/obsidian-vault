@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Typeclass
 fields:
@@ -71,6 +71,8 @@ show (BinOp (Num 1) PlusOp (Num 2))  -- "+ 1.0 2.0"
 - [[Type Inference]]: inferred types carry class constraints (e.g., `successor n = n + 1` gets the type `Num a => a -> a`)
 - [[Functor (Functional Programming)]] and [[Monad (Functional Programming)]]: type classes for types that hold or produce values of another type
 - [[Abstract Data Type]]: a type class states an interface, much as a C++ class's public members do
+- [[Polymorphism (Computer Science)]]: type classes are Haskell's structured form of ad hoc polymorphism
+- [[Function Overloading]]: the unstructured form, one definition per type under one name
 
 # Sources
 

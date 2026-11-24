@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 topic: c++
 ---
 C++ syntax for writing a class: where each part goes, constructors, destructors, copying, `static` members, and conversions. The ideas are in [[Class (Programming Languages)]], [[Constructor (Object-Oriented Programming)]], [[Destructor]], [[Deep and Shallow Copy]], and [[Abstract Data Type]].
@@ -123,6 +123,24 @@ size_t Cow::totalCowsEver = 0;           // in cow.cpp, without the word static
 ```
 
 Use them as `Cow::MAX_LEGS`, not through an object. Write `static` only in the class definition.
+
+# Operator Overloading
+
+An operator is a function named `operator` plus its symbol, so a class can define what it means for its own type (see [[Function Overloading]]):
+
+```c++
+class Fraction {
+ public:
+    Fraction operator+(const Fraction& other) const;   // a + b calls a.operator+(b)
+    bool operator==(const Fraction& other) const;
+};
+
+// Printing: a free function, returning the stream so << can chain
+std::ostream& operator<<(std::ostream& out, const Fraction& f);
+```
+
+- **`operator<<` returns its stream by reference,** so `cout << a << b` works.
+- **Operators that don't change the object are `const`.**
 
 # Conversions
 

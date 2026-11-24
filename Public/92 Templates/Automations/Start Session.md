@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-08
-updated: 2026-11-15
-version: "0.44"
+updated: 2026-11-24
+version: "0.45"
 ---
 <%*
 // Start Session: creates today's session note for the routine you're on, in

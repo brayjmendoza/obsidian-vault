@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Heap Memory
   - Dynamic Allocation
@@ -36,7 +36,7 @@ Three mistakes come from getting that wrong:
 
 The usual guard against all three is to give every heap object one clear owner (see [[Ownership (Memory Management)]]).
 
-More generally, C does the same with the functions `malloc` and `free`, which allocate bytes rather than objects. Modern C++ rarely calls `delete` directly: **smart pointers** like `std::unique_ptr` delete their object when they're destroyed. Languages with **garbage collection**, like Java, Python, and Haskell, have no `delete`: they find objects nothing points to and reclaim them automatically, which rules out dangling pointers and double deletes at some cost in time and memory. The heap of memory allocation is unrelated to the heap data structure.
+More generally, C does the same with the functions `malloc` and `free`, which allocate bytes rather than objects. Modern C++ rarely calls `delete` directly: **smart pointers** like `std::unique_ptr` delete their object when they're destroyed. Languages with **garbage collection**, like Java, Python, and Haskell, have no `delete`: they find objects nothing points to and reclaim them automatically, which rules out dangling pointers and double deletes at some cost in time and memory. The heap of memory allocation is unrelated to the heap data structure (see [[Binary Heap]]).
 
 # Example
 
@@ -69,6 +69,7 @@ The number of elephants isn't known until the program runs, so the array must be
 - [[Array (Data Structure)]]: a heap array's size can be chosen at run time
 - [[Undefined Behavior]]: following a dangling pointer, or deleting twice
 - [[Destructor]]: where a class deletes the heap memory it allocated
+- [[Dynamic Array]]: growing by allocating a bigger array and deleting the old one
 
 # Sources
 

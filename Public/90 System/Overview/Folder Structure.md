@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-08
+updated: 2026-11-24
 ---
 # Folder Structure
 
@@ -16,6 +16,7 @@ Public/
 ├── 30 Life Admin/     one domain per responsibility (e.g., Finance, Home)
 ├── 40 Knowledge/      sources, concepts, and maps
 ├── 50 References/     how-tos and look-up info
+├── 51 Examples/       running examples that concepts share
 ├── 90 System/         the rules and these docs
 ├── 91 Tooling/        the schemas and the scripts that check them
 ├── 92 Templates/      templates for new notes, and automations
@@ -45,7 +46,7 @@ Ask in order:
 2. A hobby you keep doing → `20 Hobbies/`
 3. A responsibility that never ends → `30 Life Admin/`
 4. Something learned → `40 Knowledge/`
-5. Something looked up → `50 References/`
+5. Something looked up → `50 References/`, or `51 Examples/` for a running example concepts share
 
 If nothing fits clearly, the note stays in `00 Inbox/` and Claude asks where it goes.
 

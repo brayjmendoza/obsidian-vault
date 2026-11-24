@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Lifetime
   - Storage Duration
@@ -77,6 +77,7 @@ void f() {           // x and y allocated
 - [[Lvalues and Rvalues]]: temporaries, unnamed objects whose lifetime is one line of code
 - [[Constructor (Object-Oriented Programming)]]: what initialization runs for an object of class type
 - [[Destructor]]: what destruction runs for an object of class type
+- [[Stack (Abstract Data Type)]]: the call stack is a stack of stack frames, last in, first out
 
 # Sources
 

@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Zero-Cost Abstraction
   - What You Don't Use, You Don't Pay For
@@ -35,6 +35,7 @@ For illustration (an example not from the source), indexing an array in C++ comp
 - [[Abstraction]]: the principle asks that an abstraction add no cost over the code it abstracts
 - [[Static and Dynamic Typing]]: checks done before a program runs cost nothing at run time, which is why C++ does its type checking statically
 - [[Array (Data Structure)]]: C++ doesn't check array indices, so indexing costs one memory access
+- [[Dynamic Dispatch]]: C++ makes virtual calls opt-in, so classes without them don't pay for them
 
 # Sources
 

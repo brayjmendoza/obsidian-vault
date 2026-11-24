@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Array
   - Primitive Array
@@ -49,6 +49,9 @@ With braces, any elements without a value are zero-initialized, so `a` holds `{1
 - [[Dynamic Memory Allocation]]: arrays whose size is chosen at run time
 - [[Object Lifetime]]: each element goes through every phase, in order
 - [[Undefined Behavior]]: indexing outside the array
+- [[Dynamic Array]]: an array that grows, by copying into a bigger one
+- [[Asymptotic Analysis]]: indexing an array takes $\Theta(1)$ time, whatever the index
+- [[Binary Heap]]: a tree stored in an array, with children found by index arithmetic
 
 # Sources
 

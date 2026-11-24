@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Class
   - Object
@@ -80,6 +80,7 @@ Code that uses a `Cow` can call its public member functions but can't touch `age
 - [[Const-Correctness]]: `const` member functions promise not to change their object
 - [[Algebraic Data Type]]: the functional way to define a new type, by its alternatives instead of by bundled data and functions
 - [[Expression Problem]]: classes make new kinds of data easy to add, and new operations hard
+- [[Inheritance (Object-Oriented Programming)]]: defining a class as an extension of another
 
 # Sources
 

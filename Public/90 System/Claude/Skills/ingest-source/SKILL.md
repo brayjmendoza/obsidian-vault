@@ -66,7 +66,7 @@ Show ideas the way INGEST.md says for the field. In general: math notation for r
 
 In `50 References/<Topic>/`, with `type: reference` and a `topic`. They use the default voice ("you" is fine): tables, short rules, and links to the concepts that explain the ideas.
 
-**Running examples:** an example the source builds up across units (e.g., Arith, the language CS 131 grows one feature at a time) gets a reference in `50 References/Examples/`, named for the example. It holds the whole example in one place: what it is, how it grows, and its latest version. Each unit that extends the example updates it, and every concept that uses the example links to it at its first mention.
+**Running examples:** an example the source builds up across units (e.g., Arith, the language CS 131 grows one feature at a time) gets a reference in `51 Examples/`, named for the example. It holds the whole example in one place: what it is, how it grows, and its latest version. Each unit that extends the example updates it, and every concept that uses the example links to it at its first mention.
 
 ### Source Note
 

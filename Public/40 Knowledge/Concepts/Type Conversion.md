@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Promotion
   - Conversion
@@ -93,6 +93,7 @@ Declared `explicit FuzzyBool(bool preciseBool);`, the constructor allows only th
 - [[Static and Dynamic Typing]]: a statically typed language decides at compile time where conversions happen
 - [[Initialization (Programming Languages)]]: brace initialization refuses narrowing conversions
 - [[Constructor (Object-Oriented Programming)]]: a one-parameter constructor converts values into its class
+- [[Function Overloading]]: overload resolution ranks candidates by the promotions and conversions they need
 
 # Sources
 

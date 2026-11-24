@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-08
-updated: 2026-11-15
-version: "0.44"
+updated: 2026-11-24
+version: "0.45"
 ---
 <%* tR = "" -%>
 %% Source format, shared by papers, books, courses, and articles: a summary, the key ideas, open questions, and short quotes. Written in the third person (see [[STYLE]]). Open Questions and Quotes may stay empty. Delete this comment once the source is written. %%

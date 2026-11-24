@@ -1,8 +1,8 @@
 ---
 type: template
 created: 2026-11-11
-updated: 2026-11-15
-version: "0.44"
+updated: 2026-11-24
+version: "0.45"
 ---
 <%*
 // Sync Last Cooked: keeps each recipe's `last_cooked` at the latest date of the

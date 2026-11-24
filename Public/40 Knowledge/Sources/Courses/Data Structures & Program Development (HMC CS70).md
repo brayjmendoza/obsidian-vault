@@ -1,7 +1,7 @@
 ---
 type: course
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 authors:
   - Melissa O'Neill
 year: 2023
@@ -55,6 +55,47 @@ The course's C++ syntax is collected in `50 References/C++/`, starting with [[C+
 - `this` points to the object a member function was called on, and `static` members belong to the class rather than to any object (see [[Class (Programming Languages)]]).
 - The synthesized copy constructor and assignment operator copy pointers, not what they point to, so a class that owns heap memory writes its own to make deep copies (see [[Deep and Shallow Copy]]). Copy-and-swap builds the assignment operator from the copy constructor and destructor.
 - A one-argument constructor converts values into a class, a type-cast operator converts out of it, and `explicit` stops either from happening automatically (see [[Type Conversion]]).
+
+## Unit 4: Generic Programming and Polymorphism
+
+- A function is polymorphic if a parameter accepts arguments of more than one type, and C++ has three kinds: subtype, parametric, and ad hoc (see [[Polymorphism (Computer Science)]]).
+- Function and class templates take types as parameters, and the compiler generates code for each type used (in general, [[Parametric Polymorphism|parametric polymorphism]]). A template's definition goes in a header, since it can't be compiled on its own.
+- Overloading gives several functions one name, and C++ picks among them by the arguments' types, preferring exact matches, then promotions, then conversions (see [[Function Overloading]]). Operators are overloadable functions too, which is how `<<` prints every type.
+- A derived class is a subtype of its base class (see [[Inheritance (Object-Oriented Programming)]] and [[Subtyping]]). A pure virtual function makes its class abstract, and a class of only pure virtual functions is an interface.
+- A `virtual` member function is chosen by the object's actual type at run time, and `override` marks a derived class's version (in general, [[Dynamic Dispatch|dynamic dispatch]]).
+- An iterator marks one item's place in a collection, and supports begin, next, fetch, and is-done (see [[Iterator]]). Its rules, like never dereferencing past-the-end, prevent undefined behavior, and changing a container can invalidate its iterators.
+- The range-based `for` loop is shorthand for a loop over iterators (in general, [[Syntactic Sugar|syntactic sugar]]).
+- `std::vector` is a dynamic array, with a size and a capacity it grows when full (in general, a [[Dynamic Array|dynamic array]]), and `std::list` is a doubly [[Linked List|linked list]].
+
+## Unit 5: Asymptotic and Amortized Analysis
+
+- Asymptotic analysis asks how an algorithm's cost scales as its input grows, ignoring constant factors and smaller terms, and compares cost functions by the limit of their ratio (see [[Asymptotic Analysis]]).
+- $O$, $\Theta$, and $\Omega$ are sets of functions that grow no faster than, as fast as, and no slower than a given function, and little $o$ and $\omega$ are their strict versions.
+- The orders of complexity, from constant and logarithmic up to exponential and factorial, are $\Theta$ sets that don't overlap (see [[Orders of Complexity]]).
+- An algorithm can have different best, worst, and expected costs, as linear search does: $\Theta(1)$, $\Theta(n)$, and $\Theta(n)$ (see [[Best, Worst, and Expected Case]]).
+- Amortized time bounds the total cost of a sequence of operations from the start, not each operation, so pushing onto an array-backed list that doubles when full is $\Theta(1)$ amortized (see [[Amortized Analysis]] and [[Dynamic Array]]). The aggregate, banker's, and physicist's methods prove such bounds.
+- Stacks, queues, steques, deques, and lists are linear data structures, encoded with array-backed or linked lists (see [[Stack (Abstract Data Type)]], [[Queue (Abstract Data Type)]], and [[List (Abstract Data Type)]]).
+- Sets, maps, multisets, and multimaps are associative data structures, encoded with binary search trees or hash tables (see [[Set (Abstract Data Type)]] and [[Associative Array]]).
+- No data structure is best: linear structures keep order, associative ones search, and priority queues find the minimum, so the choice depends on the application (see [[Abstract Data Type#Choosing a Data Structure|Choosing a Data Structure]]).
+
+## Unit 6: Search Trees
+
+- A tree has a root, parents and children, leaves, and subtrees, and its height is the longest path from the root to a leaf, $-1$ for the empty tree (see [[Tree (Data Structure)]]). A binary tree is empty, or a node with a left and a right subtree.
+- In a binary search tree, every key is greater than those in its left subtree and less than those in its right, so lookup is binary search, and an in-order traversal visits keys in sorted order (see [[Binary Search Tree]]). Its operations take time proportional to its height, from $\Theta(\log n)$ when balanced to $\Theta(n)$ for a stick.
+- A rotation raises a child into its parent's place in constant time, keeping the keys in order, and every balancing strategy uses rotations (see [[Tree Rotation]]).
+- A randomized BST makes each new key the root of the subtree it's entering with probability $rac{1}{N+1}$, which simulates inserting keys in random order and gives expected $\Theta(\log n)$ height (see [[Randomized Binary Search Tree]]).
+- A splay tree moves every inserted or found key to the root with double rotations, taking advantage of temporal locality, for $O(\log n)$ amortized time (see [[Splay Tree]]).
+- A 2-3-4 tree has 2-, 3-, and 4-nodes, splits 4-nodes by promoting their middle key, and stays perfectly balanced (see [[2-3-4 Tree]]).
+- A red-black tree is a binarized 2-3-4 tree, with red nodes marking keys that share a 2-3-4 node, and it guarantees $O(\log n)$ time in the worst case (see [[Red-Black Tree]]).
+- The trees trade off expected, amortized, and worst-case guarantees against extra space, extra rotations, locality, and how hard they are to implement (see [[Search Tree Comparison]]).
+
+## Unit 7: Heaps and Priority Queues
+
+- A priority queue gives each item an ordered key, and always removes the item with the smallest key next (see [[Priority Queue]]). It supports insert, get-min, pop-min, and change-priority, and serves algorithms like shortest paths and Huffman coding.
+- A binary heap is a complete binary tree in which every node's key is no larger than its children's, the most common encoding of a priority queue (see [[Binary Heap]]).
+- A heap is stored as an array in level order, where node $i$'s children are at $2i + 1$ and $2i + 2$ and its parent at $\lfloor (i - 1)/2 \rfloor$.
+- Insert adds at the end and swaps upward, and pop-min moves the last item to the root and swaps it down with its smaller child, each in $O(\log n)$. Heapify builds a heap from an arbitrary array in $\Theta(n)$.
+- Heap sort max-heapifies an array, then pops the maximum into the slot each pop frees at the end, sorting in place in $O(n \log n)$ (see [[Heap Sort]]).
 
 # Open Questions
 

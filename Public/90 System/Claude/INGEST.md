@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-11-15
-updated: 2026-11-23
-version: "1.9"
+updated: 2026-11-24
+version: "1.11"
 ---
 # Ingest Guide
 
@@ -40,7 +40,7 @@ Tested on CS 131.
 - **Formulas on slides are often images,** with no text to extract. Render those pages at about 90 dpi, so subscripts and symbols are legible, and write the formulas in LaTeX (e.g., CS 131's typing rules).
 - **Concepts don't mention the course.** The course's running examples appear by name instead (e.g., [[Arith]], the small language CS 131 builds an interpreter for), and a broken slide example is written correctly and reported.
 - **Notes with no lecture numbering are split by topic.** When the material has no modules or weeks (e.g., the CS 70 archive), agree with you on topic units in the course's order before the first run, record them in the source note's Summary, and title each section `## Unit N: Title`.
-- **Running examples get a reference** in `50 References/Examples/`, named for the example, that holds the whole example in one place: what it is, how it grows unit by unit, and its latest version. Each unit that extends the example updates the reference, and every concept that uses it links to the reference at its first mention.
+- **Running examples get a reference** in `51 Examples/`, named for the example, that holds the whole example in one place: what it is, how it grows unit by unit, and its latest version. Each unit that extends the example updates the reference, and every concept that uses it links to the reference at its first mention.
 
 ### Books
 
@@ -94,7 +94,8 @@ Tested on CS 131 (i.e., programming languages).
 
 - **The test:** a concept's definition would stay the same with examples from another language. Syntax, commands, and library functions go in `50 References/<Language>/` (e.g., `50 References/Haskell/`).
 - **Map:** [[Computer Science]], with a sub-map per area (e.g., [[Programming Languages]]). Data structures and their analysis go on [[Data Structures and Algorithms]], language features for memory (e.g., pointers and object lifetime) go in [[Programming Languages]]'s Memory section, building and testing programs goes on [[Software Engineering]], and how data is stored in bits (e.g., [[Floating-Point Arithmetic]]) goes in Computer Science's Data Representation section.
-- **Tools outside one language** get their own reference folder, named for the tool (e.g., `50 References/Git/`). Make stays with the language it builds (e.g., [[Makefiles]] in `50 References/C++/`).
+- **Tools outside one language** get their own reference folder, named for the tool (e.g., `50 References/Git/`). Make stays with the language it builds (e.g., [[Makefiles]] in `50 References/C++/`). Look-up tables about algorithms in general go in `50 References/Algorithms/` (e.g., [[Orders of Complexity]]).
+- **Asymptotic notation is math too,** so [[Asymptotic Analysis]] has `fields: [computer-science, math]`. Concepts that only apply it (e.g., [[Amortized Analysis]]) stay `computer-science`.
 - **Examples:** in the source's language. Other languages go in the "More generally," paragraph.
 - **Visuals:** code blocks, Mermaid for trees and pipelines, and math for typing rules.
 - **Pitfalls:** recheck every example's result by hand.
@@ -134,6 +135,8 @@ Tested on CS 131 (i.e., programming languages).
 
 ## Changelog
 
+- 2026-11-24 · 1.11 · Running examples get their reference in `51 Examples/`, not `50 References/Examples/`.
+- 2026-11-24 · 1.10 · From CS 70, Unit 5: algorithm look-up tables go in `50 References/Algorithms/`, and asymptotic notation also counts as math.
 - 2026-11-23 · 1.9 · From CS 70, Unit 2: computer science adds the [[Data Structures and Algorithms]] sub-map, and memory concepts go in [[Programming Languages]]'s Memory section.
 - 2026-11-23 · 1.8 · From CS 70, Unit 1: courses without lecture numbering are split into topic units, titled `## Unit N: Title`. Old Obsidian notes that are a source's only material are its main input. Computer science adds the [[Software Engineering]] sub-map, the Data Representation section, and reference folders for tools outside one language.
 

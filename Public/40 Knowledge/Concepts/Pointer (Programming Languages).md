@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Pointer
   - Null Pointer
@@ -75,6 +75,7 @@ It has a bug: for an empty range, `firstValPtr` equals `pastEndPtr`, so the firs
 - [[Const-Correctness]]: a pointer to `const` can read its target but not change it
 - [[Undefined Behavior]]: following an invalid, null, or past-the-end pointer
 - [[Option Type]]: making "no value" explicit in the type, instead of a null pointer
+- [[Iterator]]: a pointer into an array is the simplest iterator
 
 # Sources
 

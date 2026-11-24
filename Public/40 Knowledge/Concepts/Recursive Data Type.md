@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Cons List
 fields:
@@ -82,6 +82,9 @@ flowchart TD
 - [[Parametric Polymorphism]]: `[a]` makes one list type work for elements of every type
 - [[Higher-Order Function]]: mapping works over any recursive structure, not just lists (e.g., applying a function at every node of a tree)
 - [[Concrete and Abstract Syntax]]: an abstract syntax tree is a recursive data type, with expressions inside expressions
+- [[Linked List]]: the pointer-based form of a recursive list
+- [[List (Abstract Data Type)]]: the abstract interface a recursive list implements
+- [[Tree (Data Structure)]]: a binary tree is empty, or a node with two subtrees
 
 # Sources
 

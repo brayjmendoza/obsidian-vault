@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Environment
   - Env
@@ -72,6 +72,7 @@ envInsert v e ((key, val) : rest) =
 - [[Closure (Programming Languages)]]: a function paired with the environment it was defined in
 - [[Name Binding]]: an environment records a program's bindings while it runs
 - [[Typing Rule]]: a type environment maps variables to types, as a value environment maps them to values
+- [[Associative Array]]: an environment is a map from names to values
 
 # Sources
 

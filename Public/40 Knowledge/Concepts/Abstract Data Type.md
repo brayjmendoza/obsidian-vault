@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - ADT
   - Interface
@@ -36,6 +36,18 @@ At each level, the designer has to decide which promises it makes and which it d
 
 A promise made at the encoding level, a relationship that must hold whenever no operation is in progress, is a **representation invariant**. Every operation may assume it on entry and must restore it before returning.
 
+## Choosing a Data Structure
+
+Interfaces fall into three broad categories, each good at something different:
+
+| Category | Examples | Good at | Not good at |
+|---|---|---|---|
+| **Linear** | [[List (Abstract Data Type)\|List]], [[Stack (Abstract Data Type)\|stack]], and [[Queue (Abstract Data Type)\|queue]] | Keeping items in a particular order | Searching for a particular item |
+| **Associative** | [[Set (Abstract Data Type)\|Set]], and [[Associative Array\|map]] | Searching for a particular item | Keeping track of order |
+| **[[Priority Queue\|Priority queue]]** | A category of its own | Finding the smallest item (or the largest) | Searching, and keeping order, beyond repeatedly removing the smallest |
+
+No data structure is best overall: each has different trade-offs, and the best one depends on the application. The more that's known about the data to be stored (e.g., that keys arrive in random order, or that recent items are looked up most), the easier it is to pick the best structure. For small problems, the choice may make no noticeable difference, so extra work to optimize isn't always worth it.
+
 More generally, the idea comes from Barbara Liskov and Stephen Zilles, who introduced abstract data types in 1974, and from David Parnas's principle of **information hiding** (1972): hide each design decision that's likely to change behind an interface. "Encoding" is a less common word for what's usually called the **representation**. Java and Go state interfaces as types of their own, separate from any class that implements them, and Haskell does much the same with [[Type Class|type classes]].
 
 # Example
@@ -57,6 +69,9 @@ One encoding is a heap array `values_` with `capacity_` slots, of which the firs
 - [[Black-Box Testing]]: tests check only the interface's promises, so they work for any encoding
 - [[Type Class]]: Haskell's way to state an interface many types can implement
 - [[Expression Problem]]: what an interface makes easy and hard to extend
+- [[Asymptotic Analysis]]: how an interface states the cost of its operations
+- [[Inheritance (Object-Oriented Programming)]]: an interface class states an interface as a C++ type
+- [[Iterator]]: a container's interface for visiting its items
 
 # Sources
 

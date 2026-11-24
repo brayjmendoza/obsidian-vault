@@ -51,7 +51,7 @@
 # Versioning: shares one version number with CONVENTIONS.md and
 # properties-schema.yaml.
 
-version: "0.44"
+version: "0.45"
 
 # ---------------------------------------------------------------------------
 # Skipped everywhere: OS and app clutter.
@@ -150,6 +150,10 @@ root:
     types: [reference]
     open: true              # group references in topic subfolders as needed
     max_depth: 1            # one level of topic subfolders, no deeper
+
+  "51 Examples":
+    types: [reference]      # running examples that concepts share, e.g., Arith
+    flat: true
 
   "90 System":
     types: [system]

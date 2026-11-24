@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 fields:
   - computer-science
 confidence: 3
@@ -48,7 +48,7 @@ average x y = (x + y) / 2
 
 In GHCi, `:type` (or `:t`) shows the type Haskell infers for any expression (e.g., `:t True` prints `True :: Bool`).
 
-In C++, `auto` saves writing the long type of an iterator, an object that steps through a container's items. Here the type is clear from `begin()`, which gives an iterator to a list's first item:
+In C++, `auto` saves writing the long type of an [[Iterator|iterator]], an object that steps through a container's items. Here the type is clear from `begin()`, which gives an iterator to a list's first item:
 
 ```c++
 std::list<double> values{1.5, 2.5};

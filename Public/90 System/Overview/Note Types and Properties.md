@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-16
+updated: 2026-11-24
 ---
 # Note Types and Properties
 
@@ -27,7 +27,7 @@ Every note outside `00 Inbox/` and `98 Attachments/` has a `type`, which decides
 | spending | Finance | One month's spending |
 | account, asset, contractor, benefit | Finance, Home, and Work | Things you own, use, or rely on |
 | log | Health and Home | A dated record (e.g., a checkup or a repair) |
-| reference | `50 References/` | A how-to or look-up |
+| reference | `50 References/` and `51 Examples/` | A how-to or look-up, or a running example that concepts share |
 | system | `90 System/` and `91 Tooling/` | The vault's rules |
 | template | `92 Templates/` | A template for new notes, or an automation |
 | documentation | `90 System/Overview/`, and a domain's About page | Notes like this one, and a domain's own documentation |

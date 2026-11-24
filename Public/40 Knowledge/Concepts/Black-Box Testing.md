@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Interface Testing
   - Writing Tests
@@ -51,6 +51,7 @@ It uses only `push`, `pop`, `top`, and `empty`, so it passes for a stack built o
 - [[Undefined Behavior]]: tests must avoid it, since its outcome isn't defined
 - [[Abstraction]]: an interface hides an implementation, and a black-box test respects what it hides
 - [[Abstract Data Type]]: the interface a black-box test is written against
+- [[Stack (Abstract Data Type)]]: the interface the example's tests are written against
 
 # Sources
 

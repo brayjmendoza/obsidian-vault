@@ -50,7 +50,7 @@
 # version number. Bump all three and add a line to CONVENTIONS.md section 8
 # whenever any of them changes.
 
-version: "0.44"
+version: "0.45"
 
 # ---------------------------------------------------------------------------
 # Global property types: every property name allowed anywhere in the vault,
@@ -413,8 +413,9 @@ types:
     optional: []
 
   # --- References ----------------------------------------------------------
-  # General look-up material and how-tos. Notes about your own situation are
-  # items in their domain instead.
+  # General look-up material and how-tos in 50 References/, and running
+  # examples that concepts share in 51 Examples/. Notes about your own
+  # situation are items in their domain instead.
   reference:
     required: [topic]
     optional: [url, review_by]

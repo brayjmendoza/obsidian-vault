@@ -1,7 +1,7 @@
 ---
 type: map
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 field: computer-science
 ---
 ↑ [[Computer Science]]
@@ -64,6 +64,13 @@ field: computer-science
 2. [[Constructor (Object-Oriented Programming)]] — initializing a new object, member by member
 3. [[Destructor]] — cleaning up when an object is destroyed, including the heap memory it owns
 4. [[Deep and Shallow Copy]] — copying an object's pointers or what they point to, and the assignment operator
+
+# Polymorphism
+
+1. [[Polymorphism (Computer Science)]] — one piece of code for values of many types, in three kinds
+2. [[Function Overloading]] — one name, a definition per type, chosen at compile time
+3. [[Inheritance (Object-Oriented Programming)]] — a derived class as an extension and subtype of its base class
+4. [[Dynamic Dispatch]] — choosing a member function's implementation from the object's actual type at run time
 
 # Data Types
 

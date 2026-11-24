@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-11
-updated: 2026-11-23
+updated: 2026-11-24
 aliases:
   - Static Typing
   - Dynamic Typing
@@ -56,6 +56,7 @@ total = 1 + 'a'            # TypeError, raised only when this line runs
 - [[Typing Rule]]: how static type checking is specified precisely
 - [[Undefined Behavior]]: what C++ gives instead of a run-time error for the mistakes it doesn't check
 - [[Type Conversion]]: a statically typed language decides at compile time where values are converted
+- [[Dynamic Dispatch]]: the same static-versus-dynamic split, for choosing which function a call runs
 
 # Sources
 

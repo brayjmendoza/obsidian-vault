@@ -1,8 +1,8 @@
 ---
 type: system
 created: 2026-10-10
-updated: 2026-11-16
-version: "0.44"
+updated: 2026-11-24
+version: "0.45"
 ---
 # Vault Conventions
 
@@ -21,7 +21,7 @@ This file is the contract between you and every Claude skill that maintains this
 
 The schemas are checked by scripts, so they win on anything they cover. This file doesn't restate them.
 
-Status: **v0.44**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
+Status: **v0.45**. This file and all schemas share one version number. Bump all of them, and add a line to the top of section 8, whenever any of them changes.
 
 ---
 
@@ -41,7 +41,7 @@ Ask these in order:
 2. Is it a hobby you keep doing? → `20 Hobbies/`
 3. Is it a responsibility that never ends? → `30 Life Admin/`
 4. Is it something learned? → `40 Knowledge/`
-5. Is it something looked up? → `50 References/`
+5. Is it something looked up? → `50 References/`, or `51 Examples/` for a running example that concepts share
 
 If none of these fits clearly, leave the note in `00 Inbox/` and ask with a `#question` line.
 
@@ -75,7 +75,8 @@ Placement decisions that follow:
 - Nutrition guidance goes to References, and your own eating plan is a Health plan note.
 - A travel idea is a trip note with `status: idea`.
 - Trips are items even though they end: one trip note is both plan and record.
-- `reference` notes live only in `50 References/`. Notes about your own situation (e.g., accounts, contractors, and benefit elections) are items.
+- `reference` notes live only in `50 References/` and `51 Examples/`. Notes about your own situation (e.g., accounts, contractors, and benefit elections) are items.
+- A running example that concepts in `40 Knowledge/` share (e.g., [[Arith]]) is a `reference` note in `51 Examples/`, named for the example. Each concept that uses it links to it instead of repeating it.
 - Composers are items shared by every instrument in Music — biography and style analysis go to Knowledge.
 
 New domains, role folders, top-level folders, or fields need your approval and a `structure-schema.yaml` edit before Claude creates them. Every new domain gets a hub.
@@ -95,7 +96,7 @@ Top-level folders are named `NN Name`. The first digit is the **band** (i.e., th
 | 2 | Hobbies | `20 Hobbies/` | Hobbies you keep doing, one domain each |
 | 3 | Life Admin | `30 Life Admin/` | Responsibilities that never end, one domain each |
 | 4 | Knowledge | `40 Knowledge/` | Things learned: sources, concepts, and maps |
-| 5 | References | `50 References/` | Things looked up: how-tos and look-up info |
+| 5 | References | `50 References/`, `51 Examples/` | Things looked up: how-tos and look-up info, and the running examples that concepts share |
 | 6–8 | Unused | none | Reserved for new kinds of content that fit none of bands 1–5 |
 | 9 | System | `90 System/`, `91 Tooling/`, `92 Templates/`, `93 Views/`, `98 Attachments/`, `99 Archive/` | Not content. Counting up from 90: the vault's rules and docs, its tooling, then the templates and views that make it work. Storage for embedded files and retired notes counts down from 99 |
 
@@ -179,6 +180,7 @@ Tags are only for things that cut across types. Use only these, exactly as writt
 
 ## 8. Changelog of This File
 
+- 2026-11-24 · v0.45 · Added `51 Examples/`, the second folder in band 5, for running examples that concepts in `40 Knowledge/` share (e.g., [[Arith]]). It's flat and holds `reference` notes, so `reference` now lives in `50 References/` and `51 Examples/` (see section 2).
 - 2026-11-16 · v0.44 · Section 4: `vault-validate` reports each scratch note as a `scratch-note` warning. It still checks nothing else about one. No version bump: no schema changed.
 - 2026-11-15 · v0.44 · `90 System/Claude/` gains a `Skills/` subfolder holding a local copy of each Claude skill (`<skill>/SKILL.md`), which neither validator checks, and the file [[INGEST]] for the ingest-source skill. Every skill starts by running the vault-conventions skill (see section 7).
 - 2026-11-15 · v0.43 · Undoes the `programming-languages` field from v0.42. A sub-map keeps its parent's field (e.g., [[Programming Languages]] has `field: computer-science`), so `fields` lists only broad fields, and links alone record which maps hold a concept. A concept's Maps section is now a live view, `Map.base`, of the maps that link to it, instead of hand-kept links.

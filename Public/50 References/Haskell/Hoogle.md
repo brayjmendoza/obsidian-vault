@@ -1,11 +1,10 @@
 ---
 type: reference
 created: 2026-11-15
-updated: 2026-11-15
+updated: 2026-11-24
 topic: haskell
 url: https://hoogle.haskell.org/
 ---
-
 Search engine for Haskell's libraries. Find a function by its name, or by its approximate type signature when you know what it should do but not what it's called.
 
 **Reach for it when:** you need a function you suspect already exists (e.g., `(a -> b) -> [a] -> [b]` finds `map`), or you want a function's type and documentation.

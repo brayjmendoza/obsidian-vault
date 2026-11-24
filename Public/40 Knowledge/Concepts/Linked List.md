@@ -48,6 +48,8 @@ std::cout << *i;          // still 4: i is still valid
 - [[Iterator]]: a linked list's iterators follow its links
 - [[Recursive Data Type]]: a list is empty, or an item followed by a list
 - [[Abstract Data Type]]: a list interface that either kind of list can encode
+- [[List (Abstract Data Type)]]: the interface a linked list encodes
+- [[Binary Search Tree]]: a BST built from sorted keys degenerates into a linked list
 
 # Sources
 

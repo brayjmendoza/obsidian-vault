@@ -1,7 +1,7 @@
 ---
 type: concept
 created: 2026-11-15
-updated: 2026-11-21
+updated: 2026-11-24
 aliases:
   - Abstract Syntax
   - Abstract Syntax Tree
@@ -67,6 +67,7 @@ Five ways to design `Exp` for arithmetic:
 - [[Interpreter]]: evaluates the AST, not the text
 - [[Parsing]]: how concrete syntax becomes abstract syntax
 - [[Context-Free Grammar]]: specifies the concrete syntax, and its parse trees are concrete syntax trees
+- [[Tree (Data Structure)]]: the general structure an abstract syntax tree is an instance of
 
 # Sources
 

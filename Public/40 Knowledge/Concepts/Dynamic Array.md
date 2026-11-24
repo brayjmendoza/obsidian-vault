@@ -27,7 +27,9 @@ Since the items are still in one contiguous array, a dynamic array keeps an arra
 
 C++'s `std::vector` is a dynamic array. Besides its size, it reports its `capacity()`, and two member functions manage capacity directly: `reserve(n)` makes room for at least `n` items at once, avoiding repeated copies when the final size is known, and `shrink_to_fit()` gives back the spare space once the vector won't grow any more. Copying everything to a new array moves the items, so growing invalidates every [[Iterator|iterator]] into the vector.
 
-More generally, every major language has one: Java's `ArrayList` and Python's `list` are dynamic arrays. How much to grow matters. Adding a fixed number of slots each time makes adding $n$ items take time proportional to $n^2$, while multiplying the capacity by a constant factor (often 2, or 1.5) makes it proportional to $n$, so each addition takes constant time on average.
+How much to grow matters. Growing by a constant factor, such as doubling the capacity at sizes 1, 2, 4, 8, and so on, makes adding an item at the end take $\Theta(1)$ amortized time: an occasional addition copies the whole array, in $\Theta(n)$ time, but the total over any sequence of $m$ additions is $\Theta(m)$ (see [[Amortized Analysis]]). Growing by a fixed number of slots instead makes $m$ additions take $\Theta(m^2)$ time in all.
+
+More generally, every major language has one: Java's `ArrayList` and Python's `list` are dynamic arrays. Languages differ in the growth factor they use, often 2 or 1.5: a smaller factor wastes less space, at the cost of copying more often.
 
 # Example
 
@@ -53,6 +55,8 @@ This is a hand-written dynamic array, with `elephantCapacity` as its capacity an
 - [[Linked List]]: the other way to store a list, with different costs
 - [[Dynamic Memory Allocation]]: allocating the new array and deleting the old one
 - [[Iterator]]: growing invalidates every iterator
+- [[Amortized Analysis]]: why doubling gives constant amortized time per addition
+- [[List (Abstract Data Type)]]: the interface a dynamic array encodes
 - [[Abstract Data Type]]: a list interface that a dynamic array or a linked list can encode
 
 # Sources

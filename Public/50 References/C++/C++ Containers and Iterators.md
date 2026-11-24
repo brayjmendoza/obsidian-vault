@@ -22,7 +22,7 @@ A [[Dynamic Array|dynamic array]]. Needs `#include <vector>`.
 | `capacity()` | How many fit in the array underneath before it must grow |
 | `reserve(n)` | Makes room for at least `n` elements now |
 | `shrink_to_fit()` | Gives back the spare capacity |
-| `push_back(x)` | Adds `x` at the end, growing if needed (amortized constant time) |
+| `push_back(x)` | Adds `x` at the end, growing if needed ($\Theta(1)$ amortized time, see [[Amortized Analysis]]) |
 | `pop_back()` | Removes the last element, without returning it |
 | `front()`, `back()` | References to the first and last elements (e.g., `v.back() = 7.3;`) |
 | `v[i]` | Element `i`, unchecked |

@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-25
-updated: 2026-11-11
+updated: 2026-11-24
 aliases:
   - Knowledge layer
   - How 40 Knowledge works
@@ -30,6 +30,7 @@ Every concept appears on at least one map, so nothing is unreachable. Fields are
 
 - **From domains:** a hub links to the maps behind it, so the Music hub reaches music theory without copying it (see [[Domain Skeleton#What Stays Out of a Domain|What Stays Out of a Domain]]).
 - **Knowledge or References:** ask whether you want to *understand* it or just *look it up*. Understanding goes in a concept, by way of a source, and a how-to or cheat sheet goes in `50 References/` (see [[#Sources or References]]).
+- **Running examples:** an example that several concepts build on (e.g., [[Arith]]) is a reference in `51 Examples/`. It holds the whole example once, and each concept links to it.
 - **Learning goals with a deadline:** "finish this course by June" is a project that links to the course note.
 
 ## Sources or References
