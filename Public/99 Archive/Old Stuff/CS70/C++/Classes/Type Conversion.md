@@ -4,7 +4,7 @@ Classes can provide type conversion
 C++ considers **single-argument constructors** as a way to automatically convert a value into that type
 #### Example
 Consider a class `FuzzyBool` that supports the idea of Yes/No/Maybe
-```c++
+```cpp
 class FuzzyBool {
     // ...
     FuzzyBool(bool preciseBool);
@@ -12,7 +12,7 @@ class FuzzyBool {
 };
 ```
 with the following member function
-```c++
+```cpp
 void makeDinner(FuzzyBool opinion) {
     if (opinion.positiveEnough()) {
         // make the dinner
@@ -41,7 +41,7 @@ What if we want to turn `FuzzyBool`s into normal `bool`s?
 
 #### Example
 **Declaration:**
-```c++
+```cpp
 class FuzzyBool {
     // ...
     operator bool();
@@ -50,7 +50,7 @@ class FuzzyBool {
 ```
 
 **Definition:**
-```c++
+```cpp
 FuzzyBool::operator bool() {
     return state_ != NO;
 };
@@ -61,7 +61,7 @@ FuzzyBool::operator bool() {
 The `explicit` keyword will ensure that a conversion constructor or type-cast operator is only used when you explicitly ask for it
 #### Example: explicit constructor
 Here, `FuzzyBool` instead has an `explicit` single-argument constructor
-```c++
+```cpp
 class FuzzyBool {
     // ...
     explicit FuzzyBool(bool preciseBool);
@@ -77,7 +77,7 @@ But this doesn't
 
 #### Example: explicit type-cast operator
 An explicit type-cast operator will only be called if we explicitly ask for the conversion
-```c++
+```cpp
 class FuzzyBool {
     // ...
     explicit operator bool();

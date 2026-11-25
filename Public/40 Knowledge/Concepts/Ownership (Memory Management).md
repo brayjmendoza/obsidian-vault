@@ -27,7 +27,7 @@ More generally, tying a resource's release to an owner's destruction is the C++ 
 
 For illustration (an example not from the source), a `Barn` owns the heap array of cows it allocates, and nothing else deletes it:
 
-```c++
+```cpp
 void visit() {
     Barn barn{10};   // barn's constructor allocates its array of cows with new[]
     barn.addCow(Cow{3, 12});

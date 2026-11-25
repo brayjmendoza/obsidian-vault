@@ -35,7 +35,7 @@ More generally, "average case" is the usual name for the expected case over a di
 
 Linear search checks each element of an array in turn for a value `x`:
 
-```c++
+```cpp
 bool lookUp(float x, const float* arr, size_t arrSize) {
     for (size_t i = 0; i < arrSize; ++i) {
         if (arr[i] == x) {

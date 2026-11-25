@@ -36,7 +36,7 @@ More generally, Christopher Strachey distinguished parametric from ad hoc polymo
 
 The same operation, `max`, through parametric and ad hoc polymorphism:
 
-```c++
+```cpp
 // Parametric: one template for every type with >
 template <typename T>
 const T& max(const T& x, const T& y) {

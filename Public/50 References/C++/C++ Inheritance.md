@@ -8,7 +8,7 @@ C++ syntax for derived classes, virtual functions, and abstract classes. The ide
 
 # Syntax
 
-```c++
+```cpp
 class Animal {
  public:
     virtual void speak() const = 0;        // pure virtual: Animal is abstract
@@ -22,12 +22,12 @@ class Cow : public Animal {                // Cow is derived from Animal
 };
 ```
 
-| Keyword | Means |
-|---|---|
-| `class Cow : public Animal` | `Cow` is derived from `Animal`, and its public members stay public |
-| `virtual` | Calls are dispatched on the object's actual type. Write it in the base class |
-| `override` | Overrides a virtual function. A compile error if no base class function matches |
-| `= 0` | Pure virtual: no implementation here, and the class is abstract |
+| Keyword                     | Means                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| `class Cow : public Animal` | `Cow` is derived from `Animal`, and its public members stay public              |
+| `virtual`                   | Calls are dispatched on the object's actual type. Write it in the base class    |
+| `override`                  | Overrides a virtual function. A compile error if no base class function matches |
+| `= 0`                       | Pure virtual: no implementation here, and the class is abstract                 |
 
 # Rules
 

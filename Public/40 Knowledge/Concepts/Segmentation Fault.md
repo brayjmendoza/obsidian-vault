@@ -26,7 +26,7 @@ More generally, the name comes from **segmentation**, an older way of dividing m
 
 For illustration (an example not from the source), following a null pointer:
 
-```c++
+```cpp
 int* p = nullptr;
 std::cout << *p;   // usually: Segmentation fault (core dumped)
 ```

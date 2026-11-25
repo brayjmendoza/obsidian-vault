@@ -8,7 +8,7 @@ C++ syntax for function and class templates, and where their code goes. The idea
 
 # Function Templates
 
-```c++
+```cpp
 template <typename T>
 void printVal(const T& x) {
     std::cout << x << std::endl;
@@ -29,7 +29,7 @@ void fill(Iter start, Iter pastEnd, const Value& value) {
 
 # Class Templates
 
-```c++
+```cpp
 template <typename F, typename S>
 class Pair {
  public:
@@ -44,7 +44,7 @@ class Pair {
 
 Every member function defined outside the class repeats the template line, and names the class with its parameters:
 
-```c++
+```cpp
 template <typename F, typename S>
 Pair<F, S>::Pair(const F& first, const S& second)
     : first_{first}, second_{second} {
@@ -77,7 +77,7 @@ When a template and ordinary functions share a name:
 | An ordinary function matches as well as the template | The ordinary function |
 | The template matches exactly, and an ordinary function would need a conversion | The template |
 
-```c++
+```cpp
 template <typename T> void print(const T& val);   // "templated print"
 void print(int val);                              // "int print"
 void print(double val);                           // "double print"

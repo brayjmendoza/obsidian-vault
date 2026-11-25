@@ -9,7 +9,7 @@
 	    - $O(\log{n})$ complexity
 
 #### Example
-```c++
+```cpp
 PriorityQueue pq;
 pq.insert("First", 5); // Item, key
 pq.insert("Second", 3);

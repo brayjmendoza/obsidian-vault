@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 topic: c++
 ---
 C++ syntax for arrays, pointers, references, and the heap. The ideas behind them are in [[Array (Data Structure)]], [[Pointer (Programming Languages)]], [[Reference (Programming Languages)]], and [[Dynamic Memory Allocation]].
@@ -44,7 +44,7 @@ Where `const` goes in a pointer type is in [[Reading C++ Declarations]].
 
 Loop over a range with a pointer to the start and a past-the-end pointer:
 
-```c++
+```cpp
 for (const float* p = first; p != pastEnd; ++p) {
     std::cout << *p << std::endl;
 }

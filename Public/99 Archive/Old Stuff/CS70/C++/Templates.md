@@ -1,7 +1,7 @@
 ## Function Templates
 
 Consider a function fill that fills a list with a value `val`
-```c++
+```cpp
 void fill(list<double>::iterator startingPoint, list<double>::iterator pastTheEnd, double val) {
     for (list<double>::iterator iter = startingPoint; iter != pastTheEnd; ++iter) {
         *iter = val;
@@ -15,7 +15,7 @@ A ***function template*** is essentially a recipe for generating a function
 + We can use a use a variable to generalize types
 
 **Example**
-```c++
+```cpp
 template <typename T>
 void printVal(const T& x) {
     std::cout << x << std::endl;
@@ -34,7 +34,7 @@ void printVal(const T& x) {
 
 
 We can use function templates to generalize our `fill()` function from above too:
-```c++
+```cpp
 template <typename Iter, typename Value>
 void fill(Iter start, Iter pastEnd, Value value) {
     for (Iter iter = start; iter != pastEnd; ++iter) {
@@ -46,7 +46,7 @@ void fill(Iter start, Iter pastEnd, Value value) {
 
 #### Compilation issues
 Consider `printVal` again
-```c++
+```cpp
 template <typename T>
 void printVal(T x) {
     cout << x << endl;
@@ -64,7 +64,7 @@ On it's own, the compiler can't compile this function because it can't translate
 	+ And an `.hpp` file that defines the template (instead of `.cpp` like usual)
 ##### Example:
 `main.cpp` – a source file that uses the template
-```c++
+```cpp
 #include "printval.hpp"
 
 int main() {
@@ -74,7 +74,7 @@ int main() {
 ```
 
 `printval.hpp` – a header file that _declares_ the template
-```c++ 
+```cpp
 #ifndef PRINTVAL_HPP_INCLUDED
 #define PRINTVAL_HPP_INCLUDED
 
@@ -87,7 +87,7 @@ void printVal(const T& x);
 ```
 
 `printval-private.hpp` – a file that _defines_ the template
-```c++
+```cpp
 #include <iostream>
 
 template <typename T>
@@ -105,7 +105,7 @@ Class templates are useful for data structures that might store different types 
 
 #### Example
 Consider a simple class IntPair
-```c++
+```cpp
 class IntPair {
   public:
     IntPair(int f, int s);
@@ -123,7 +123,7 @@ class IntPair {
 We can convert this into a class template to generalize the types for a Pair. If we wanted a pair like IntPair, we would say `Pair<int, int>`. We could do Pairs with different types too like `Pair<std::string, bool>`
 
 `pair.hpp` – declarations (include guard omitted)
-```c++
+```cpp
 template <typename F, typename S>
 class Pair {
   public:
@@ -141,7 +141,7 @@ class Pair {
 ```
 
 `pair-private.hpp`– definitions
-```c++
+```cpp
 template <typename F, typename S>
 Pair<F, S>::Pair(const F& first, const S& second) :
     first_{first},
@@ -172,7 +172,7 @@ Both overloading and template are ways to provide a family of functions with the
 + Function templates are used over type promotions/conversions
 
 **Example**
-```c++
+```cpp
 #include <iostream>
 #include <string>
 

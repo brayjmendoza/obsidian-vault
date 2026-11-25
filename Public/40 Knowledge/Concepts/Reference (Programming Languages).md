@@ -17,7 +17,7 @@ A **reference** is another name for an existing object: the reference and the ob
 
 In C++, `&` in a type means "reference to," and a reference is bound to its referent when it's initialized:
 
-```c++
+```cpp
 int x = 5;
 int& z = x;   // z is a reference to an int, and its referent is x
 ```
@@ -45,7 +45,7 @@ More generally, the C++ reference is one form of **aliasing**, two names for the
 
 `a` and `b` name the same `int`:
 
-```c++
+```cpp
 int a = 2;
 int& b = a;
 int c = 31;

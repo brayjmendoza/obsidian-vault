@@ -31,7 +31,7 @@ More generally, most languages build their resizable lists on arrays (e.g., C++'
 
 ## Declaring and Initializing Arrays
 
-```c++
+```cpp
 int values[42];                   // 42 ints, indeterminate values
 int oneTwoThree[3] = {1, 2, 3};
 int fourFiveSix[3]{4, 5, 6};

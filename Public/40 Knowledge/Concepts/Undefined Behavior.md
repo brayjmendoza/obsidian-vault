@@ -33,7 +33,7 @@ More generally, undefined behavior is a feature of C and C++ above all, and it's
 
 A linear search with an off-by-one mistake (an example not from the source) compares `x` against one element too many. When `i` equals `arrSize`, `arr[i]` reads past the end of the array:
 
-```c++
+```cpp
 bool lookUp(float x, const float* arr, size_t arrSize) {
     for (size_t i = 0; i <= arrSize; ++i) {   // should be i < arrSize
         if (arr[i] == x) {

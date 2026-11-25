@@ -42,7 +42,7 @@ More generally, the **rule of three** says that a class needing any one of a cus
 
 A `Barn`'s members are its capacity, its count of cows, and `residentCows_`, a heap array of pointers to cows on the heap. Its copy constructor makes a deep copy, a new array and a new copy of every cow:
 
-```c++
+```cpp
 Barn::Barn(const Barn& other)
     : cowCapacity_{other.cowCapacity_},
       cowCount_{other.cowCount_},
@@ -58,7 +58,7 @@ Barn::Barn(const Barn& other)
 
 With the copy constructor and destructor written, copy-and-swap gives the assignment operator:
 
-```c++
+```cpp
 Barn& Barn::operator=(Barn other) {    // other is a deep copy of the right-hand side
     std::swap(cowCapacity_, other.cowCapacity_);
     std::swap(cowCount_, other.cowCount_);

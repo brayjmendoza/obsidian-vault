@@ -44,7 +44,7 @@ More generally, C does the same with the functions `malloc` and `free`, which al
 
 A program reads elephants until the user stops, storing them in a heap array that grows when it fills up:
 
-```c++
+```cpp
 Elephant* elephants = new Elephant[elephantCapacity];
 // ...
 if (numElephants > elephantCapacity) {

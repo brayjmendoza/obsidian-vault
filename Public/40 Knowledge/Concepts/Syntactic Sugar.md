@@ -45,7 +45,7 @@ So `Let "x" (Num 100) (BinOp (Var "x") PlusOp (Num 17))` evaluates exactly like 
 
 A range-based `for` loop in C++:
 
-```c++
+```cpp
 for (TYPE var : thing) {
     ... var ...
 }
@@ -53,7 +53,7 @@ for (TYPE var : thing) {
 
 means the same as:
 
-```c++
+```cpp
 {
     auto _past_end = std::end(thing);
     for (auto _i = std::begin(thing); _i != _past_end; ++_i) {

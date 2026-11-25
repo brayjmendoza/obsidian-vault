@@ -21,7 +21,7 @@ The names come from the two sides of an assignment like `x = y + z`. The left si
 
 Whenever C++ calls a function or operator that returns a value, or calls a constructor directly, and the result isn't put straight into a named variable, the result is stored in a **temporary**: an unnamed object that lasts until the end of the line of code that made it. A call like `passByConstRef(x + y)` can be modeled as:
 
-```c++
+```cpp
 {
     int _temp1 = x + y;
     passByConstRef(_temp1);
@@ -40,13 +40,13 @@ More generally, the terms come from the language CPL and passed through C to C++
 
 Each `<<` returns a reference to its left-hand stream, so a chain of them is a chain of calls on temporaries:
 
-```c++
+```cpp
 std::cout << 42 << 'x';
 ```
 
 can be modeled as:
 
-```c++
+```cpp
 {
     std::ostream& _temp1 = std::cout << 42;
     _temp1 << 'x';

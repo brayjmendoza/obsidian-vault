@@ -27,7 +27,7 @@ More generally, deleting what an object owns in its destructor is the heart of t
 
 A `Barn` holds an array of pointers to cows, `residentCows_`, with the array and every cow on the heap. Its destructor deletes each cow, then the array:
 
-```c++
+```cpp
 Barn::~Barn() {
     for (size_t i = 0; i < cowCount_; ++i) {
         delete residentCows_[i];

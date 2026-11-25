@@ -51,7 +51,7 @@ More generally, a pointer is an explicit **indirection**, and most languages hid
 
 `normalize` scales an array's values so the largest becomes `newmax`, given a pointer to the first value and a past-the-end pointer:
 
-```c++
+```cpp
 void normalize(float newmax, float* firstValPtr, float* pastEndPtr) {
     float maxval = *firstValPtr;
     for (float* p = firstValPtr; p < pastEndPtr; ++p) {

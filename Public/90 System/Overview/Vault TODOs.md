@@ -1,7 +1,7 @@
 ---
 type: documentation
 created: 2026-10-31
-updated: 2026-11-23
+updated: 2026-11-24
 claude: read-only
 ---
 # TODOs
@@ -21,7 +21,6 @@ This is a list of improvements or extensions that need to be made to the vault.
 * Skill for creating a note from a chat
 * Move stuff out of archive
 * Note style
-	* Horizontal scroll for code snippets
 	* Vault theme & fonts (Appearance settings in obsidian)
 	* CSS snippets
 * Obsidian settings: hotkeys (for keyboard shortcuts)

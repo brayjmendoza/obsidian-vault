@@ -18,7 +18,7 @@ A **declaration** introduces a name and says what kind of thing it is, and a **d
 
 A declaration tells the compiler enough to check code that uses the name. For a function, that's its name, parameter types, and return type, written with a semicolon in place of the body:
 
-```c++
+```cpp
 void printMoos(int numMoos);
 ```
 
@@ -34,7 +34,7 @@ More generally, the distinction matters most in languages compiled one file at a
 
 `pi.hpp` defines a constant, and `tau.hpp` includes `pi.hpp` to define another:
 
-```c++
+```cpp
 // pi.hpp
 constexpr double PI = 3.1415926535897932;
 
@@ -45,7 +45,7 @@ constexpr double TAU = 2 * PI;
 
 A file that includes both gets `pi.hpp`'s contents twice, once directly and once through `tau.hpp`:
 
-```c++
+```cpp
 // circles.cpp
 #include "pi.hpp"
 #include "tau.hpp"     // includes pi.hpp again: PI is defined twice

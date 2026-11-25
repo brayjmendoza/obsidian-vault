@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 topic: c++
 url: https://www.doxygen.nl/
 ---
@@ -22,7 +22,7 @@ Interface comments say *what* a class or function does, never how. They go in th
 
 A function:
 
-```c++
+```cpp
 /**
  * \brief               Returns the quotient of two numbers
  * \param numerator     The number being divided
@@ -35,7 +35,7 @@ double divide(double numerator, double denominator);
 
 A class:
 
-```c++
+```cpp
 /**
  * \class Sheep
  * \brief A simple sheep implementation with a hat
@@ -54,7 +54,7 @@ Implementation comments say *how* and *why* the code works. They go in the `.cpp
 
 A comment that translates the code:
 
-```c++
+```cpp
 // Run a for loop with i starting at one, and increase i by one
 // every time as long as i is less than vec.size()
 for (size_t i = 1; i < vec.size(); ++i) {
@@ -62,7 +62,7 @@ for (size_t i = 1; i < vec.size(); ++i) {
 
 A comment that explains it:
 
-```c++
+```cpp
 // We need to print the first element of vec separately to avoid
 // putting a comma before it (as long as vec is not empty)
 if (!vec.empty()) {

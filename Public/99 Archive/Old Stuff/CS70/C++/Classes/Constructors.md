@@ -45,7 +45,7 @@ Or it can be invoked implicitly with default initialization. The default constru
 
 **`delete`** keyword
 + If we <u>do not</u> want a default constructor, we use `delete`
-```c++
+```cpp
 class Cow {
  public:
     // tells C++ that the Cow class should not have a default              // constructor
@@ -75,7 +75,7 @@ Like default constructors, if we don't write a copy constructor, the compiler wi
 > `Cow(const Cow& other);
 + This constructor would be used to create new `Cows` that behave the same as the `Cow` that is passed in
 #### Implementation:
-```c++
+```cpp
 Cow::Cow(const Cow& other) :
     age_{other.age_},
     numSpots_{other.numSpots_} {
@@ -93,7 +93,7 @@ We fix this issue with a **deep copy**, which requires us to write our own copy 
 + Goes through and makes copies of all the heap memory, so that we'll have truly separate instances of classes
 
 ##### Example: Barn
-```c++
+```cpp
 Barn::Barn(const Barn& other) :
     cowCapacity_{other.cowCapacity_},
     cowCount_{other.cowCount_},
@@ -116,12 +116,12 @@ A `Barn`'s member variables are the maximum number of `Cow`s it can hold (`cowCa
 ## Constructing Objects
 #### Curly Brace Initialization
 Both of the following are valid ways to use a constructor to create objects
-```c++
+```cpp
 Cow bessie{3, 12};
 const Cow mabel{1, 2};
 ```
 and
-```c++
+```cpp
 Cow bessie(3, 12);
 const Cow mabel(1, 2);
 ```
@@ -131,7 +131,7 @@ However, the curly braces `{}` are stricter
 + Curly braces only allow for promotions, NOT conversions (where data can be lost)
 
 For copy initialization, you could use `=` or `{}`
-```c++
+```cpp
 // both Sheep are copy initialized
 Sheep dolly{fluffy};   // dolly is initialized to be a copy of fluffy,
 Sheep denise = dolly;  // denise is a copy of dolly

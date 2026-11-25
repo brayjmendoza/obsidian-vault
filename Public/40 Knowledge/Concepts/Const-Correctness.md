@@ -18,7 +18,7 @@ sources:
 
 In C++, `const` in a type makes access through that name read-only. A `const` variable can't be changed at all, and a reference to `const` or a pointer to `const` can read its target but not change it. The key idea is that **`const` affects access through that name only**. It doesn't make the data itself unchangeable: other, non-`const` names for the same data can still change it.
 
-```c++
+```cpp
 int a = 3;
 const int& b = a;
 ++a;   // fine: a isn't const, and b sees the new value, 4
@@ -51,7 +51,7 @@ More generally, the term "const-correctness" comes from the C++ community, and C
 
 `max_value` only reads the array, but its parameters are plain pointers:
 
-```c++
+```cpp
 float max_value(float* firstValPtr, float* pastEndPtr);
 
 const float temps[3]{1.5, 3.5, 2.5};
@@ -60,7 +60,7 @@ max_value(temps, temps + 3);   // compile error
 
 The call fails because `*firstValPtr` *could* be used to change a `const` array. Declaring the parameters as pointers to `const` fixes it:
 
-```c++
+```cpp
 float max_value(const float* firstValPtr, const float* pastEndPtr);
 ```
 

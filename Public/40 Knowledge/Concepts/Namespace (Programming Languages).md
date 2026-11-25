@@ -27,7 +27,7 @@ More generally, nearly every language has some form of namespace, though not alw
 
 For illustration (an example not from the source), two libraries both define `print`. Each in its own namespace, they can live in one program:
 
-```c++
+```cpp
 namespace barn {
     void print();
 }

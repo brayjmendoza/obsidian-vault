@@ -34,7 +34,7 @@ More generally, C++ makes dynamic dispatch opt-in because it has a cost: each ca
 
 For illustration (an example not from the source):
 
-```c++
+```cpp
 class Animal {
  public:
     void describe() const { std::cout << "an animal" << std::endl; }    // not virtual

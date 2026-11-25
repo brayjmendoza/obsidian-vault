@@ -39,7 +39,7 @@ More generally, nearly every object-oriented language has constructors: Java's l
 
 `Cow`'s parameterized constructor initializes both members in its initialization list, then prints:
 
-```c++
+```cpp
 Cow::Cow(int numSpots, int age)
     : numSpots_{numSpots},
       age_{age}
@@ -52,7 +52,7 @@ Cow::Cow(int numSpots, int age)
 
 `Cow`'s copy constructor copies each member from `other`, in the order the class declares them (`numSpots_`, then `age_`):
 
-```c++
+```cpp
 Cow::Cow(const Cow& other)
     : numSpots_{other.numSpots_},
       age_{other.age_}

@@ -24,7 +24,7 @@ Three types of polymorphism in C++:
 
 ## Parametric Polymorphism
 Consider the following function template:
-```c++
+```cpp
 template <typename T>
 const T& max(const T& x, const T& y) {
     if (x > y) {

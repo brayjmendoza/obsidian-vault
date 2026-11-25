@@ -54,7 +54,7 @@ In GHCi, `:type` (or `:t`) shows the type Haskell infers for any expression (e.g
 
 In C++, `auto` saves writing the long type of an [[Iterator|iterator]], an object that steps through a container's items. Here the type is clear from `begin()`, which gives an iterator to a list's first item:
 
-```c++
+```cpp
 std::list<double> values{1.5, 2.5};
 for (auto p = values.begin(); p != values.end(); ++p) {   // p is a std::list<double>::iterator
     *p *= 2;

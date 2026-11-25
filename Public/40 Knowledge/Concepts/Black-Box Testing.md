@@ -33,7 +33,7 @@ More generally, the opposite approach is **white-box testing**, which uses knowl
 
 A test for a stack checks what any stack promises: the last item pushed is the first popped (an example not from the source).
 
-```c++
+```cpp
 void testPushThenPop() {
     Stack s;
     s.push(1);

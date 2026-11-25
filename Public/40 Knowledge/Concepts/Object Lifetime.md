@@ -57,7 +57,7 @@ More generally, the C++ standard calls these kinds of allocation **storage durat
 
 For illustration (an example not from the source), each phase of `x` and `y` happens at a brace or a declaration:
 
-```c++
+```cpp
 void f() {           // x and y allocated
     int x = 1;       // x initialized
     {

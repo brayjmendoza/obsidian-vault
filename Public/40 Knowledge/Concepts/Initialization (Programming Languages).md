@@ -30,7 +30,7 @@ More generally, languages differ in whether a variable can exist without a value
 
 Function calls copy-initialize both their parameters and their result:
 
-```c++
+```cpp
 float myFun(int x, float f) {
     return x + f;
 }

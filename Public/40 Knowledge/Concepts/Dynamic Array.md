@@ -37,7 +37,7 @@ More generally, every major language has one: Java's `ArrayList` and Python's `l
 
 A program reads elephants until the user stops, so it can't know in advance how many to store. The source grows its heap array by a fixed two slots whenever it fills:
 
-```c++
+```cpp
 if (numElephants > elephantCapacity) {
     Elephant* newElephants = new Elephant[elephantCapacity + ELEPHANTS_TO_ADD];
     for (size_t i = 0; i < elephantCapacity; ++i) {

@@ -28,7 +28,7 @@ A derived class can **override** a member function of its base class, giving its
 
 Sometimes a base class can say what its derived classes must do, but not how. A **pure virtual** member function is declared in the base class with `= 0` and has no implementation there:
 
-```c++
+```cpp
 virtual void speak() const = 0;
 ```
 
@@ -44,7 +44,7 @@ More generally, inheritance mixes two things: reusing a base class's code, and d
 
 For illustration (an example not from the source), an abstract `Animal` and two concrete classes derived from it:
 
-```c++
+```cpp
 class Animal {
  public:
     virtual void speak() const = 0;   // pure virtual: Animal is abstract

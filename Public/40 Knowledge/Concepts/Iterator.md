@@ -27,7 +27,7 @@ So code that uses only an iterator can walk through an array, a linked list, or 
 
 In C++, an iterator is any type that supports this loop:
 
-```c++
+```cpp
 for (auto i = c.begin(); i != c.end(); ++i) {
     ... *i ...
 }
@@ -61,7 +61,7 @@ More generally, other languages build iteration into their loops: Python's `for`
 
 Erasing items while iterating needs care, since `erase` invalidates the iterator passed to it. In the C++ standard library, `erase` returns an iterator to the item after the erased one, so a loop continues from there:
 
-```c++
+```cpp
 std::list<int> values{1, 2, 3, 4};
 for (auto i = values.begin(); i != values.end(); ) {
     if (*i % 2 == 0) {

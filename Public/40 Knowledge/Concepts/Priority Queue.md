@@ -35,7 +35,7 @@ More generally, a [[Queue (Abstract Data Type)|queue]] is the special case where
 
 Three items inserted with keys 5, 3, and 10 come out in order of key, not of insertion:
 
-```c++
+```cpp
 PriorityQueue pq;
 pq.insert("First", 5);    // item, key
 pq.insert("Second", 3);

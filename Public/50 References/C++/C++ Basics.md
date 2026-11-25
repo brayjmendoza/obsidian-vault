@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 topic: c++
 ---
 The syntax for a first C++ program: functions, console input and output, variables, and namespaces. Types are in [[C++ Types]], and building a program is in [[Compiling C++]].
@@ -10,7 +10,7 @@ The syntax for a first C++ program: functions, console input and output, variabl
 
 A function states its return type and each parameter's type:
 
-```c++
+```cpp
 bool isPrime(int n) {
     if (n < 2) {
         return false;
@@ -32,7 +32,7 @@ A function can be declared before it's defined, with a semicolon in place of its
 
 # Console Input and Output
 
-```c++
+```cpp
 #include <iostream>
 #include <string>
 
@@ -56,7 +56,7 @@ std::cout << "Hello, " << name << "!" << std::endl;
 
 Every variable has a type, a name, a value, and a location in memory. The type must be written, or inferred with `auto` (see [[Type Inference]]):
 
-```c++
+```cpp
 int x = 3;   // an int with the value 3
 int y;       // an int with an indeterminate value: give it one before using it
 ```

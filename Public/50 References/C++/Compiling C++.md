@@ -1,7 +1,7 @@
 ---
 type: reference
 created: 2026-11-23
-updated: 2026-11-23
+updated: 2026-11-24
 topic: c++
 ---
 Commands and file conventions for building a C++ program from several files with `clang++`. Why the steps exist is in [[Separate Compilation]], and automating them is in [[Makefiles]].
@@ -39,7 +39,7 @@ Common flags:
 
 Every header starts and ends with an include guard, so including it twice in one file doesn't define things twice:
 
-```c++
+```cpp
 #ifndef PI_HPP_INCLUDED
 #define PI_HPP_INCLUDED
 

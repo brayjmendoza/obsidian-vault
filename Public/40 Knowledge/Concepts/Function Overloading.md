@@ -37,7 +37,7 @@ More generally, overloading is a form of **ad hoc polymorphism** (see [[Polymorp
 
 ## Combining Numbers and Strings
 
-```c++
+```cpp
 int combine(double x, double y) {
     return (x + y) / 2;
 }

@@ -59,7 +59,7 @@ eval (Apply (FuncDef v body) arg) =
 
 In C++, `spotTransplant` moves one cow's spots to another, but with value parameters it changes only its copies:
 
-```c++
+```cpp
 void spotTransplant(Cow donor, Cow recipient) {
     recipient.setNumSpots(donor.getNumSpots() + recipient.getNumSpots());
     donor.setNumSpots(0);

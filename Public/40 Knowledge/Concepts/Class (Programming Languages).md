@@ -46,7 +46,7 @@ More generally, classes are the core of **object-oriented programming**, and Jav
 
 A `Cow` knows how many spots it has and how old it is, and can moo. Its definition goes in `cow.hpp`:
 
-```c++
+```cpp
 class Cow {
  public:
     Cow(int numSpots, int age);
@@ -66,7 +66,7 @@ class Cow {
 
 Its member functions are defined in `cow.cpp`, each name qualified with `Cow::` so the compiler knows which class it belongs to (see [[Namespace (Programming Languages)]]):
 
-```c++
+```cpp
 void Cow::setAge(int age) {
     age_ = age;
 }

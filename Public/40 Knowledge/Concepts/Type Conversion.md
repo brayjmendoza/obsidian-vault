@@ -52,7 +52,7 @@ More generally, an automatic conversion is called a **coercion**, or an **implic
 
 A `float` has 24 bits of precision, too few to hold every 10-digit integer. Converting a `long` to a `float` and back rounds the value to the nearest one a `float` can represent:
 
-```c++
+```cpp
 long worldPop = 7960583250;     // assumes a 64-bit long
 std::cout << worldPop << std::endl                  // 7960583250
           << float(worldPop) << std::endl           // 7.96058e+09
@@ -65,7 +65,7 @@ The round trip loses 82: near 8 billion, consecutive `float` values are 512 apar
 
 A promotion, by contrast, changes the type and keeps the value:
 
-```c++
+```cpp
 signed char dollar = 36;
 std::cout << dollar << " " << int(dollar);   // prints "$ 36"
 ```
@@ -76,7 +76,7 @@ Printed as a `char`, the value is the character with code 36, a dollar sign. Pro
 
 A class conversion lets `makeDinner`, which takes a `FuzzyBool`, accept a plain `bool`:
 
-```c++
+```cpp
 class FuzzyBool {
  public:
     FuzzyBool(bool preciseBool);   // converts bool into FuzzyBool

@@ -47,7 +47,7 @@ Since `int` ⊑ `double`, subsumption gives `7` the type `double`, and the appli
 
 In C++, a function written for `Person` accepts a `Student`, since a derived class is a subtype of its base class:
 
-```c++
+```cpp
 void greet(const Person& p);
 Student ada{"Ada"};
 greet(ada);    // fine: every Student is a Person

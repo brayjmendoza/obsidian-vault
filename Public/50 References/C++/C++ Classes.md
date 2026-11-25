@@ -24,7 +24,7 @@ C++ syntax for writing a class: where each part goes, constructors, destructors,
 | `cow.cpp` | `#include "cow.hpp"`, then each member function's definition, named `Cow::` |
 | Any file using `Cow` | `#include "cow.hpp"` |
 
-```c++
+```cpp
 // cow.hpp
 #ifndef COW_HPP_INCLUDED
 #define COW_HPP_INCLUDED
@@ -44,7 +44,7 @@ class Cow {
 #endif  // COW_HPP_INCLUDED
 ```
 
-```c++
+```cpp
 // cow.cpp
 #include "cow.hpp"
 
@@ -74,7 +74,7 @@ Add `= default` to ask for the synthesized version, or `= delete` to forbid it (
 
 ## Initialization Lists
 
-```c++
+```cpp
 Cow::Cow(int numSpots, int age)
     : numSpots_{numSpots},
       age_{age}
@@ -89,7 +89,7 @@ List members in the order the class declares them: that's the order they're init
 
 Copy-and-swap, given a working copy constructor and destructor:
 
-```c++
+```cpp
 Barn& Barn::operator=(Barn other) {
     std::swap(cowCapacity_, other.cowCapacity_);
     std::swap(cowCount_, other.cowCount_);
@@ -112,7 +112,7 @@ Written by hand instead: check `if (this == &other) return *this;`, delete the o
 
 # Static Members
 
-```c++
+```cpp
 class Cow {
     static constexpr int MAX_LEGS = 4;   // a compile-time constant: declared and defined here
     static size_t totalCowsEver;         // declared here; define it in cow.cpp
@@ -128,7 +128,7 @@ Use them as `Cow::MAX_LEGS`, not through an object. Write `static` only in the c
 
 An operator is a function named `operator` plus its symbol, so a class can define what it means for its own type (see [[Function Overloading]]):
 
-```c++
+```cpp
 class Fraction {
  public:
     Fraction operator+(const Fraction& other) const;   // a + b calls a.operator+(b)

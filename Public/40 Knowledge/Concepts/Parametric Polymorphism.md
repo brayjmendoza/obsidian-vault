@@ -55,13 +55,13 @@ data List a  = Empty | Cons a (List a)
 
 In C++, `fill` sets every item in a range to one value. Written for lists of `double`s, it works only for them:
 
-```c++
+```cpp
 void fill(std::list<double>::iterator start, std::list<double>::iterator pastEnd, double val);
 ```
 
 As a template over the iterator type and the value type, one definition serves every container and element type:
 
-```c++
+```cpp
 template <typename Iter, typename Value>
 void fill(Iter start, Iter pastEnd, const Value& value) {
     for (Iter i = start; i != pastEnd; ++i) {

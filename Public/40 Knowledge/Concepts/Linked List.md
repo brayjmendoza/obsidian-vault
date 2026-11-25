@@ -33,7 +33,7 @@ More generally, linked lists are a classic [[Recursive Data Type|recursive data 
 
 For illustration (an example not from the source), inserting into the middle of a `std::list` touches only the neighbors:
 
-```c++
+```cpp
 std::list<int> values{1, 2, 4};
 auto i = values.begin();
 ++i; ++i;                 // i is at 4

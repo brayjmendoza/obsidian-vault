@@ -39,7 +39,7 @@ More generally, most compiled languages separate compiling from linking, though 
 
 `cowchat.cpp` calls `printMoos`, which is defined in `printmoos.cpp`. Compiled alone, `cowchat.cpp` fails, since the compiler has never seen `printMoos`. A declaration of it fixes that:
 
-```c++
+```cpp
 // cowchat.cpp
 #include <iostream>
 #include <string>
