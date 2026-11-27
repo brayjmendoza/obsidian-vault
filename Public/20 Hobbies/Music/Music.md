@@ -1,7 +1,7 @@
 ---
 type: hub
 created: 2026-11-07
-updated: 2026-11-11
+updated: 2026-11-27
 ---
 # Subdomain Hubs
 
@@ -61,7 +61,9 @@ sort by priority
 
 ![[Pieces.base#Repertoire]]
 
-
-## Retired
+# Retired
 
 ![[Pieces.base#Retired]]
+
+# Wishlist
+![[Pieces.base#Wishlist]]

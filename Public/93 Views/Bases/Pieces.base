@@ -375,3 +375,9 @@ views:
       - last_practiced
     columnSize:
       file.name: 364
+  - type: table
+    name: Wishlist
+    filters:
+      and:
+        - type == "piece"
+        - status == "wishlist"
